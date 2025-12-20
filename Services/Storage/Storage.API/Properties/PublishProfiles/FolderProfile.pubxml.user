@@ -3,7 +3,7 @@
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\bin\Release\net7.0\publish\</_PublishTargetUrl>
-    <History>True|2025-12-19T08:00:54.4401029Z||;True|2025-12-19T13:31:57.7543488+07:00||;True|2025-12-19T08:53:43.0798705+07:00||;True|2025-12-18T17:08:29.6202230+07:00||;True|2025-12-15T14:47:19.3130504+07:00||;True|2025-12-02T11:23:52.1015288+07:00||;True|2025-12-02T09:21:55.9552777+07:00||;</History>
+    <History>True|2025-12-20T02:34:24.3350184Z||;True|2025-12-19T15:00:54.4401029+07:00||;True|2025-12-19T13:31:57.7543488+07:00||;True|2025-12-19T08:53:43.0798705+07:00||;True|2025-12-18T17:08:29.6202230+07:00||;True|2025-12-15T14:47:19.3130504+07:00||;True|2025-12-02T11:23:52.1015288+07:00||;True|2025-12-02T09:21:55.9552777+07:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

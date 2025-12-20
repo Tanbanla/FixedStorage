@@ -15,10 +15,6 @@
         "Action": "Start"
       },
       {
-        "Path": "Services\\Common.API\\Common.API.csproj",
-        "Action": "Start"
-      },
-      {
         "Path": "WebApp\\WebApp.csproj",
         "Action": "Start"
       },

@@ -121,9 +121,19 @@ namespace Storage.API.Service
                 userViewDepartmentIds = historyFilterModel.Departments.Select(x => x.ToUpper()).ToList();
             }
 
-            var userViewFactoryIds = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY)
-                                                        .Select(x => x.ClaimValue.ToUpper()).ToList()
-                                        ?? historyFilterModel.Factories;
+            // Xác định danh sách nhà máy người dùng được phép xem
+            IEnumerable<string> userViewFactoryIds;
+            if (historyFilterModel.isAllFactories || historyFilterModel.Factories == null || historyFilterModel.Factories.Count == 0)
+            {
+                // Lấy theo quyền của user
+                userViewFactoryIds = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY)
+                                                    .Select(x => x.ClaimValue.ToLower()).ToList();
+            }
+            else
+            {
+                // Lấy theo filter từ client
+                userViewFactoryIds = historyFilterModel.Factories.Select(x => x.ToLower()).ToList();
+            }
 
             //Nếu không có quyền xem nhà máy hay phòng ban nào => không tìm thấy dữ liệu phù hợp
             if (userViewFactoryIds?.Any() == false)
@@ -139,7 +149,8 @@ namespace Storage.API.Service
 
             if (userViewFactoryIds?.Any() == true)
             {
-                condition = condition.And(x => userViewFactoryIds.Select(x => Guid.Parse(x)).ToList().Contains(x.FactoryId));
+                var parsedFactoryGuids = userViewFactoryIds.Select(f => Guid.Parse(f)).ToList();
+                condition = condition.And(x => parsedFactoryGuids.Contains(x.FactoryId));
             }
 
             //Tìm kiếm theo danh sách phòng ban
@@ -318,9 +329,17 @@ namespace Storage.API.Service
                 userViewDepartmentIds = historyFilterModel.Departments;
             }
 
-            var userViewFactoryIds = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY)
-                                                        .Select(x => x.ClaimValue.ToLower())
-                                        ?? historyFilterModel.Factories;
+            // Xác định danh sách nhà máy người dùng được phép xem (theo quyền hoặc theo filter từ client)
+            IEnumerable<string> userViewFactoryIds;
+            if (historyFilterModel.isAllFactories || historyFilterModel.Factories == null || historyFilterModel.Factories.Count == 0)
+            {
+                userViewFactoryIds = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY)
+                                                    .Select(x => x.ClaimValue.ToLower()).ToList();
+            }
+            else
+            {
+                userViewFactoryIds = historyFilterModel.Factories.Select(x => x.ToLower()).ToList();
+            }
 
             //Nếu không có quyền xem nhà máy hay phòng ban nào => không tìm thấy dữ liệu phù hợp
             if (userViewFactoryIds?.Any() == false)
@@ -334,7 +353,8 @@ namespace Storage.API.Service
 
             if (userViewFactoryIds?.Any() == true)
             {
-                query = query.Where(x => string.IsNullOrEmpty(x.FactoryId) ? false : userViewFactoryIds.Contains(x.FactoryId.ToLower()));
+                var lowered = userViewFactoryIds.Select(f => f.ToLower()).ToList();
+                query = query.Where(x => string.IsNullOrEmpty(x.FactoryId) ? false : lowered.Contains(x.FactoryId.ToLower()));
             }
 
 

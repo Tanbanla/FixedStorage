@@ -1,0 +1,325 @@
+﻿#searchModal .modal-xl {
+    max-width: 90vw;
+    min-width: 80vw;
+}
+
+#searchModal .modal-content {
+    resize: auto;
+    overflow: auto;
+}
+
+.title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    /* identical to box height */
+
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.canchinh {
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+.canchinh label {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #828282;
+}
+
+.canchinh input[type="text"] {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px !important;
+    color: #111111;
+}
+
+.chan {
+    margin-left: 22%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+}
+
+#searchDatatable {
+}
+
+.search-position-sticky th {
+    padding-left: 0 !important;
+}
+
+/*.pagingBar {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .pagination li {
+        width: 32px;
+        height: 32px !important;
+        margin-left: 6px;
+        border-radius: 4px;
+    }*/
+
+.search-table-scroll {
+    width: 100%;
+    table-layout: fixed;
+    max-height: 450px;
+    white-space: nowrap;
+}
+
+input.search-act {
+    height: 22px;
+    width: 22px;
+    padding-top: 2% !important;
+}
+
+img.search-act {
+    margin-left: 12px;
+    margin-top: -14px;
+    cursor: pointer;
+}
+
+button#btnQuickSearch {
+    margin-left: 6px;
+}
+
+#searchTable {
+    text-align: left;
+}
+
+#searchTable_processing {
+    background: transparent;
+    transform: scale(1.5);
+}
+
+.assignLeadModal {
+    display: block;
+    padding: 15px 0;
+    background: white;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.assignLeadModal {
+    display: block;
+    width: 30%;
+    box-shadow: 0 4px 10px 2px #3333333b;
+}
+
+.assignlead-body {
+    display: flex;
+    margin: auto;
+}
+
+#tblTeleSaleList {
+    text-align: left;
+}
+
+.assignlead-child {
+    margin-left: 10%;
+}
+
+.leadassign-name {
+    text-align: left;
+}
+
+input[name="leadassign"] {
+    transform: scale(1.3);
+}
+
+.leadassign-name {
+    font-size: 18px;
+}
+
+#SearchAllLead .select2-container {
+    display: block !important;
+}
+
+#SearchAllLead .select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    height: 41px;
+    text-align: left;
+    padding-top: 7px;
+}
+
+.spinner {
+    margin: auto;
+    position: relative;
+    top: -200px;
+}
+
+@@media only screen and (min-width: 1200px) {
+    #searchModal .modal-xl {
+        max-width: 90%;
+    }
+}
+
+#searchModal .pagination {
+    width: 60%;
+    float: right;
+}
+
+#QuickLookModal {
+    z-index: 9999;
+}
+
+    #QuickLookModal .modal-xl {
+        box-shadow: 0px 20px 15px 6px #5a5a5a47;
+    }
+
+.pagination li {
+    width: 100%;
+    height: 60% !important;
+    margin-left: 6px;
+    border-radius: 4px;
+}
+
+    .pagination li a {
+        width: 100%;
+        height: 60% !important;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+.modal-dialog-scrollable .modal-body {
+    bottom: 16px;
+}
+
+#SearchQuickLead {
+    position: relative;
+    top: 16px;
+}
+
+.dataTables_scrollBody {
+    position: relative;
+    margin-bottom: 6px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+    background-color: #eff2f7;
+}
+
+.paginate_button {
+    max-width: 50px;
+}
+
+#btnCloseAssignLeadModal {
+    float: right;
+    position: relative;
+    top: -50px;
+    right: 10px;
+    font-size: 15px;
+}
+
+.teleList-container {
+    height: 500px;
+    overflow: auto;
+}
+
+.custombox-content.custombox-x-center.custombox-y-center.custombox-fadein.custombox-open {
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #22222247;
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--single {
+    background-color: #eff2f7 !important;
+}
+
+#SearchAllLead input {
+    color: black;
+}
+/*#SearchAllLead input::placeholder {
+        color: #efefef;
+    }*/
+
+#SearchQuickLead table#searchTable {
+    overflow: scroll !important;
+    width: 100%;
+}
+
+#SearchQuickLead .dataTables_scrollBody.scrollbar {
+    overflow: unset !important;
+}
+
+.dataTables_scrollHead {
+    overflow: inherit !important;
+}
+
+.dataTables_scrollBody.scrollbar {
+    overflow: inherit !important;
+}
+
+tr td:last-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 20em;
+}
+
+tr td:last-child:hover{
+    cursor: pointer;
+}
+
+/*prevent click using CSS*/
+#searchModal .disabled {
+    -webkit-user-select: none;
+    pointer-events: none;
+    filter: opacity(0.5);
+}
+
+.currentStaff {
+    color: #007eff;
+}
+
+
+/*Lam tooltip mac dinh HTML title nhanh hon*/
+/*[data-tooltip] {
+    position: relative;
+}
+*/
+/*[data-tooltip]:after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 2%;
+    bottom: 100%;
+    font-size: 13px;
+    background: #f19b51;
+    border: solid black 1px;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 2px 7px;
+    border: solid #cfcfcf 1px;
+    opacity: 0;
+    -webkit-transition: opacity 0.1s ease-in-out; 
+    z-index: 999999;
+}
+
+[data-tooltip]:hover:after {
+    opacity: 1;
+}
+[data-tooltip]:focus:after{
+    opacity: 0;
+}*/
+
+.expanded{
+    display: flex;
+    flex-direction: column;
+}
+.collapsed {
+    display: flex;
+    flex-direction: row;
+}

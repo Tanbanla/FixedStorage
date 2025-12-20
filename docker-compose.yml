@@ -1,0 +1,70 @@
+version: '3.4'
+
+services:
+  webgateway:
+   image: ${DOCKER_REGISTRY-}webgateway
+   build:
+     context: .
+     dockerfile: ./ApiGateways/WebGateway/Dockerfile
+   restart: unless-stopped
+   networks: 
+    - storage-net
+  identity.api:
+   image: ${DOCKER_REGISTRY-}identityapi
+   volumes:
+     - upload-file:c:/app/wwwroot
+   build:
+     context: .
+     dockerfile: ./Services/Identity/Identity.API/Dockerfile
+   restart: unless-stopped
+   networks: 
+    - storage-net
+  identity.background:
+   image: ${DOCKER_REGISTRY-}identitybackground
+   build:
+     context: .
+     dockerfile: ./Services/Identity/Identity.Background/Dockerfile
+   restart: unless-stopped
+   networks: 
+    - storage-net
+  storage.api:
+   image: ${DOCKER_REGISTRY-}storageapi
+   build:
+     context: .
+     dockerfile: ./Services/Storage/Storage.API/Dockerfile
+   restart: unless-stopped
+   networks: 
+    - storage-net
+  inventory.api:
+    image: ${DOCKER_REGISTRY-}inventoryapi
+    volumes:
+     - upload-file:c:/app/wwwroot
+    build:
+      context: .
+      dockerfile: ./Services/Inventory/Inventory.API/Dockerfile
+    restart: unless-stopped
+    networks:
+        - storage-net
+  # signalrhub:
+  #  image: ${DOCKER_REGISTRY-}signalrhub
+  #  build:
+  #    context: .
+  #    dockerfile: ./Services/Storage/SignalRHub/Dockerfile
+  #  restart: unless-stopped
+  #  networks: 
+  #   - storage-net
+  webapp:
+    image: ${DOCKER_REGISTRY-}webapp
+
+    build:
+      context: .
+      dockerfile: ./WebApp/Dockerfile
+    restart: unless-stopped
+    networks:
+        - storage-net
+volumes:
+ upload-file:
+networks:
+  storage-net:
+    name: bivn_network
+    

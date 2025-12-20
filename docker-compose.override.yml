@@ -1,0 +1,62 @@
+version: '3.4'
+
+services:
+  webgateway:
+   environment:
+     - ASPNETCORE_ENVIRONMENT=Production
+     - ASPNETCORE_URLS=http://+:80
+     - Urls__Identity=http://172.26.248.68:9223
+     - Urls__Storage=http://172.26.248.68:9101
+     - Urls__Inventory=http://172.26.248.68:9201
+     - Clusters__storage__Destinations__destination0__Address=http://172.26.248.68:9101
+     - Clusters__identity__Destinations__destination0__Address=http://172.26.248.68:9223
+     - Clusters__inventory__Destinations__destination0__Address=http://172.26.248.68:9201
+   ports:
+     - "9121:80"
+      
+  identity.api:
+   environment:
+     - ASPNETCORE_ENVIRONMENT=Production
+     - ASPNETCORE_URLS=http://+:80
+     - IdentityServiceUrl__Address=http://172.26.248.68:9223
+     - UploadPath=/app/wwwroot
+   ports:
+     - "9223:80"
+
+  identity.background:
+   environment:
+     - ASPNETCORE_ENVIRONMENT=Production
+     - IdentityServiceUrl__Address=http://172.26.248.68:9223
+     - BackgroundJob__LockUsersInterval=60  
+
+  # signalrhub:
+  #  environment:
+  #    - ASPNETCORE_ENVIRONMENT=Development
+  #    - ASPNETCORE_URLS=http://+:80
+  #    - ConnectionStrings__EventBus=192.168.50.63
+  #  ports:
+  #    - "5112:80"
+   
+
+  storage.api:
+   environment:
+     - ASPNETCORE_ENVIRONMENT=Production
+     - ASPNETCORE_URLS=http://+:80
+   ports:
+     - "9101:80"
+  inventory.api:
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Production
+     - ASPNETCORE_URLS=http://+:80
+     - APIGateWay__BaseAddress=http://172.26.248.68:9121
+     - UploadPath=/app/wwwroot
+    ports:
+      - "9201:80"
+  webapp:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+      - APIGateWay__BaseAddress=http://172.26.248.68:9121
+      - CookieSettings__Domain=localhost
+    ports:
+      - "9999:80"

@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "webapp": "StartDebugging",
+        "webgateway": "StartDebugging",
+        "storage.api": "StartDebugging",
+        "identity.api": "StartDebugging",
+        "inventory.api": "StartDebugging",
+        "signalrhub": "StartDebugging",
+        "identity.background": "StartDebugging"
+      }
+    }
+  }
+}

@@ -1,0 +1,165 @@
+﻿.ImageFrontCCCD {
+    position: relative;
+}
+
+button#btnFrontCCCD {
+    position: absolute;
+    bottom: 10px;
+    right: 135px;
+}
+
+.ImageBackCCCD {
+    position: relative;
+}
+
+button#btnBackCCCD {
+    position: absolute;
+    right: 135px;
+    bottom: 10px;
+}
+
+.inlineBlock label {
+    display: inline-block;
+    width: 150px;
+}
+
+input.inputInlineBlock {
+    width: 77%;
+    display: inline-block;
+}
+
+.inlineBlock {
+    margin-bottom: 10px;
+}
+
+.inlineBlockCheckRadio p {
+    display: inline-block;
+}
+
+.checkRadio {
+    display: inline-block;
+    font-size: 22px;
+    margin-left: 15px;
+}
+
+.image-upload {
+    text-align: center;
+}
+    .image-upload button {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+.btnAddPicture {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.form-base {
+    margin-top: 20px;
+}
+
+.btn.ActionForm {
+    width: 100%;
+    text-align: right;
+    margin-top: 20px;
+}
+
+button.btnDeleteFile {
+    position: absolute;
+    right: 20px;
+    top: -2px;
+    width: 35px;
+    height: 30px;
+    background: white;
+    transform: scale(0.6);
+    font-weight: bold;
+}
+
+img.image-upload {
+    width: 141px;
+    height: 165px;
+}
+
+.GiayBaoDiemThi label {
+    display: inline-block;
+    width: 140px;
+}
+
+.GiayBaoDiemThi input {
+    display: inline-block;
+    width: 55%;
+}
+.GiayBaoDiemThi select {
+    display: inline-block;
+    width: 55%;
+}
+img#imageGiayBao {
+    width: 100%;
+    height:165px;
+}
+
+.imageUploadGiayBaoDuThi {
+    text-align: center;
+    margin-top: 10px;
+}
+
+select#Gioitinh {
+    width: 77%;
+    display: inline-block;
+}
+
+img#graResImg {
+    width: 100%;
+    height: 165px;
+}
+
+.uploadFileGraduateCertificateContainer {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.graduateExamResultsCertificate label {
+    display: inline-block;
+    width: 140px;
+}
+
+.graduateExamResultsCertificate input {
+    display: inline-block;
+    width: 55%;
+}
+
+.graduateExamResultsCertificate select {
+    display: inline-block;
+    width: 55%;
+}
+
+/*Zoom SchoolProfile NE Document*/
+div#ZoomSchoolProfile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #333333c9;
+    z-index: 99999;
+}
+
+div#ContentZoomSchoolProfile {
+    width: 90%;
+    margin: auto;
+    height: 95%;
+    position: relative;
+    top: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.ExitZoomSchoolProfile {
+    text-align: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}

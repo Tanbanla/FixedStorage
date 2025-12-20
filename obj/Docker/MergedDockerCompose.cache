@@ -1,0 +1,122 @@
+name: dockercompose3813107729126464420
+services:
+  identity.api:
+    build:
+      context: C:\khanhmf\IOS_APP\fixed-storage\fixed-storage\src
+      dockerfile: ./Services/Identity/Identity.API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:80
+      IdentityServiceUrl__Address: http://172.26.248.68:9223
+      UploadPath: /app/wwwroot
+    image: identityapi
+    networks:
+      storage-net: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "9223"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: upload-file
+        target: c:/app/wwwroot
+        volume: {}
+  identity.background:
+    build:
+      context: C:\khanhmf\IOS_APP\fixed-storage\fixed-storage\src
+      dockerfile: ./Services/Identity/Identity.Background/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      BackgroundJob__LockUsersInterval: "60"
+      IdentityServiceUrl__Address: http://172.26.248.68:9223
+    image: identitybackground
+    networks:
+      storage-net: null
+    restart: unless-stopped
+  inventory.api:
+    build:
+      context: C:\khanhmf\IOS_APP\fixed-storage\fixed-storage\src
+      dockerfile: ./Services/Inventory/Inventory.API/Dockerfile
+    environment:
+      APIGateWay__BaseAddress: http://172.26.248.68:9121
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:80
+      UploadPath: /app/wwwroot
+    image: inventoryapi
+    networks:
+      storage-net: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "9201"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: upload-file
+        target: c:/app/wwwroot
+        volume: {}
+  storage.api:
+    build:
+      context: C:\khanhmf\IOS_APP\fixed-storage\fixed-storage\src
+      dockerfile: ./Services/Storage/Storage.API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:80
+    image: storageapi
+    networks:
+      storage-net: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "9101"
+        protocol: tcp
+    restart: unless-stopped
+  webapp:
+    build:
+      context: C:\khanhmf\IOS_APP\fixed-storage\fixed-storage\src
+      dockerfile: ./WebApp/Dockerfile
+    environment:
+      APIGateWay__BaseAddress: http://172.26.248.68:9121
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:80
+      CookieSettings__Domain: localhost
+    image: webapp
+    networks:
+      storage-net: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "9999"
+        protocol: tcp
+    restart: unless-stopped
+  webgateway:
+    build:
+      context: C:\khanhmf\IOS_APP\fixed-storage\fixed-storage\src
+      dockerfile: ./ApiGateways/WebGateway/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:80
+      Clusters__identity__Destinations__destination0__Address: http://172.26.248.68:9223
+      Clusters__inventory__Destinations__destination0__Address: http://172.26.248.68:9201
+      Clusters__storage__Destinations__destination0__Address: http://172.26.248.68:9101
+      Urls__Identity: http://172.26.248.68:9223
+      Urls__Inventory: http://172.26.248.68:9201
+      Urls__Storage: http://172.26.248.68:9101
+    image: webgateway
+    networks:
+      storage-net: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "9121"
+        protocol: tcp
+    restart: unless-stopped
+networks:
+  storage-net:
+    name: bivn_network
+volumes:
+  upload-file:
+    name: dockercompose3813107729126464420_upload-file

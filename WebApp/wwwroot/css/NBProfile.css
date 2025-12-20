@@ -1,0 +1,59 @@
+﻿img#FileNBImage {
+    width: 252px;
+    height: 180px;
+}
+input.width368 {
+    width: 368px;
+    height: 40px;
+}
+select.width352 {
+    width: 352px;
+    height: 40px;
+}
+
+input.width352 {
+    width: 352px;
+    height: 40px;
+}
+@media only screen and (max-width: 1600px){
+    input.width368 {
+        width: 230px !important;
+        height: 40px !important;
+    }
+
+    select.width352 {
+        width: 230px !important;
+        height: 40px;
+    }
+    input.width352 {
+        width: 230px !important;
+        height: 40px;
+    }
+
+    img#FileNBImage {
+        width: 230px !important;
+        height: 180px !important;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    input.width368 {
+        width: 270px !important;
+        height: 40px !important;
+    }
+
+    select.width352 {
+        width: 270px !important;
+        height: 40px;
+    }
+
+    input.width352 {
+        width: 270px !important;
+        height: 40px;
+    }
+
+    img#FileNBImage {
+        width: 260px !important;
+        height: 200px !important;
+    }
+}

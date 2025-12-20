@@ -106,3 +106,4 @@ C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\r
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\Inventory.API.pdb
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\Inventory.API.genruntimeconfig.cache
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\ref\Inventory.API.dll
+C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\Inventory.API.sourcelink.json

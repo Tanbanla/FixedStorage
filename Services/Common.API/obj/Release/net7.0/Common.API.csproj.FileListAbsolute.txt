@@ -12,3 +12,4 @@ C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\refint\Common.
 C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\Common.API.pdb
 C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\Common.API.genruntimeconfig.cache
 C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\ref\Common.API.dll
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\Common.API.sourcelink.json

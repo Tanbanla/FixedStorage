@@ -1,0 +1,112 @@
+﻿@using BIVN.FixedStorage.Services.Common.API.Dto.ErrorInvestigation
+@{
+    var errorCategories = ViewBag.ErrorCategories as IEnumerable<ErrorCategoryManagementDto>;
+}
+
+<!--ViewDetailUser Modal -->
+<div class="modal fade" id="ErrorInvestigationDocumentConfirmModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="ErrorInvestigationDocumentConfirmModalLabel"
+     aria-hidden="true"
+     data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg modal-md modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="ErrorInvestigationDocumentConfirm_title">
+                    <h4>@Html.Translate("Điều chỉnh dữ liệu điều tra")</h4>
+                </div>
+                @* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> *@
+            </div>
+            <div class="modal-body">
+                <form id="wrapper_table_error_investigation_confirm_form">
+                    <div class="ErrorInvestigationConfirm_Investigating_Top_Container">
+                        <div class="ErrorInvestigationConfirm_ComponentCode_Container">
+                            <h5>@Html.Translate("Mã linh kiện"): <label class="ErrorInvestigationConfirm_ComponentCode">LU22365759</label></h5>
+                        </div>
+                        <div class="ErrorInvestigationConfirm_Status_Container">
+                            <h5>@Html.Translate("Trạng thái"): <label class="ErrorInvestigationConfirm_Status">Đã điều tra</label></h5>
+                        </div>
+                    </div>
+                    
+                    <div class="ErrorInvestigationConfirm_Investigating_Container mt-2">
+                        <div class="ErrorInvestigationConfirm_ErrorQuantity_Container">
+                            <label class="ErrorInvestigationConfirm_Title">@Html.Translate("Điều chỉnh"): </label>
+                            <input type="text" class="ErrorInvestigationConfirm_ErrorQuantity" name="ErrorInvestigationConfirm_ErrorQuantity" placeholder="@Html.Translate("Nhập số lượng")..." />
+                        </div>
+                        <div class="ErrorInvestigationConfirm_ErrorCategory_Container">
+                            <label class="ErrorInvestigationConfirm_Title">@Html.Translate("Phân loại"): </label>
+                            <select class="ErrorInvestigationConfirm_ErrorCategory" name="ErrorInvestigationConfirm_ErrorCategory">
+                                @* <option value="">@Html.Translate("Chọn phân loại")</option>
+                                <option value="0">@Html.Translate("Kiểm kê sai")</option>
+                                <option value="1">@Html.Translate("Quy cách đóng gói")</option>
+                                <option value="2">@Html.Translate("Linh kiện lỗi")</option>
+                                <option value="3">@Html.Translate("Điều chỉnh nhầm")</option>
+                                <option value="4">@Html.Translate("BOM sai")</option>
+                                <option value="5">@Html.Translate("Dùng nhầm")</option>
+                                <option value="6">@Html.Translate("Khác")</option> *@
+                                <option value="">@Html.Translate("Chọn phân loại")</option>
+                                @if (errorCategories != null || errorCategories.Any())
+                                {
+                                    @foreach (var item in errorCategories)
+                                    {
+                                        <option value="@item.ErrorCategoryKey">@item.ErrorCategoryName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ErrorInvestigationConfirm_ErrorDetail_Container mt-4">
+                        <h5 class="ErrorInvestigationConfirm_Title">@Html.Translate("Chi tiết điều tra"): </h5>
+                        <textarea id="ErrorInvestigationConfirm_ErrorDetail" name="ErrorInvestigationConfirm_ErrorDetail" rows="8" cols="100" placeholder="@Html.Translate("Nhập chi tiết điều tra")..."></textarea>
+                    </div>
+                    <div class="ErrorInvestigationConfirm_Images_Container row mt-4">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div class="ErrorInvestigationConfirm_Images1_Container">
+                                <div class="Image1-Preview-Container">
+                                    <img id="defaultImage1" src="~/assets/images/icons/default-image.png" alt="Ảnh mặc định" style="width: 100%; max-width: 300px;">
+                                    <button class="delete-image-btn" onclick="removeImage(event, 'defaultImage1')">
+                                        &#128465;
+                                    </button>
+                                </div>
+                                <div class="btn-UploadImage1-Container">
+                                    <button class="btn-UploadImage1">@Html.Translate("Tải ảnh")</button>
+                                    <input type="file" id="uploadImage1" class="btn-UploadImage" style="margin-top: 10px; display: none;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div class="ErrorInvestigationConfirm_Images2_Container">
+                                <div class="Image2-Preview-Container">
+                                    <img id="defaultImage2" src="~/assets/images/icons/default-image.png" alt="Ảnh mặc định" style="width: 100%; max-width: 300px;">
+                                    <button class="delete-image-btn" onclick="removeImage(event, 'defaultImage2')">
+                                        &#128465; 
+                                    </button>
+                                </div>
+                                <div class="btn-UploadImage2-Container">
+                                    <button class="btn-UploadImage2">@Html.Translate("Tải ảnh")</button>
+                                    <input type="file" id="uploadImage2" class="btn-UploadImage" style="margin-top: 10px; display: none;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ErrorInvestigationDocumentConfirm-Button">
+                        <div class="ErrorInvestigationDocumentConfirm_Cancel_Container">
+                            <button class="btn-ErrorInvestigationDocumentConfirmCancel">@Html.Translate("Quay lại")</button>
+                        </div>
+                        <div class="ErrorInvestigationDocumentConfirm_Update_Container" style="display:none;">
+                            <button class="btn-ErrorInvestigationDocumentConfirmUpdate">@Html.Translate("Cập nhật")</button>
+                        </div>
+                        <div class="ErrorInvestigationDocumentConfirm_Compelete_Container">
+                            <button class="btn-ErrorInvestigationDocumentConfirmComplete">@Html.Translate("Xác nhận")</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+

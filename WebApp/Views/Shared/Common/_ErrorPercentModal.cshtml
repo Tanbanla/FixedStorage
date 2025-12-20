@@ -1,0 +1,38 @@
+﻿<div class="modal fade" id="ErrorPercentModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="ErrorPercentModalLabel"
+     aria-hidden="true"
+     data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="ErrorPercent_title">
+                    <h4>@Html.Translate("Tỷ lệ sai số")</h4>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <table class="centered-table">
+                    <thead>
+                        <tr>
+                            <th>Plant</th>
+                            <th>Tỷ lệ sai số</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ErrorPercentModalTableBody">
+                        <tr>
+                            <td>Plant 01</td>
+                            <td>0.1%</td>
+                        </tr>
+                        <tr>
+                            <td>Plant 02</td>
+                            <td>0.2%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5 style="display:none;">@Html.Translate("Không có dữ liệu")</h5>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,178 @@
+﻿@using bivnConstant = BIVN.FixedStorage.Services.Common.API.Constants;
+
+@{
+    ViewBag.Title = Html.Translate("Lịch sử xuất nhập kho");
+}
+
+@{
+    var departments = ViewBag.Departments as IEnumerable<DepartmentDto>;
+    var factories = ViewBag.Factories as IEnumerable<FactoryInfoModel>;
+    var layouts = ViewBag.Layouts as IEnumerable<DropDownListItemDto>;
+}
+
+
+<section class="@nameof(Views_Storage_InOutHistory)">
+    <section class="bg-white rounded container_field_search">
+        <form id="history_search_form">
+            <div class="row d-flex mb-2">
+                <div class="col">
+                    <label class="text_label">@Html.Translate("Người thao tác")</label>
+                    <input id="input_actor" name="ActorName" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập người thao tác")...">
+                </div>
+                <div class="col">
+                    <label class="text_label">@Html.Translate("Mã linh kiện")</label>
+                    <input id="input_componentcode" name="ComponentCode" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập mã linh kiện")...">
+                </div>
+                <div class="col">
+                    <label class="text_label">@Html.Translate("Vị trí cố định")</label>
+                    <input id="input_positioncode" name="PositionCode" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập vị trí cố định")...">
+                </div>
+                <div class="col">
+                    <label class="text_label">@Html.Translate("Loại nghiệp vụ")</label>
+                    <select hidden id="select_activity_type" multiple name="Types" placeholder="Chọn nghiệp vụ..." data-search="false" data-silent-initial-value-set="true">
+                        <option value="0">@Html.Translate("Nhập kho")</option>
+                        <option value="1">@Html.Translate("Xuất kho")</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="text_label">@Html.Translate("Nhà máy")</label>
+                    @{
+                        var userViewFactoryIds = User?.Claims?.Where(x => x.Type == bivnConstant.Permissions.FACTORY_DATA_INQUIRY).Select(x => x.Value.ToString().ToLower());
+                        var filteredFactories = factories?.Where(x => userViewFactoryIds?.Contains(x.Id.ToString().ToLowerInvariant()) == true);
+                    }
+                    <select hidden id="select_factories" multiple name="Factories" placeholder="Chọn nhà máy..." data-search="true" data-silent-initial-value-set="true">
+                        @if (filteredFactories != null && filteredFactories.Any())
+                        {
+                                @foreach (var factory in filteredFactories)
+                                {
+                                    <option value="@factory.Id">@factory.Name</option>
+                                }
+                        }
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="text_label">@Html.Translate("Khu vực")</label>
+                    <select hidden id="select_areas" multiple name="Areas" placeholder="Chọn khu vực..." data-search="true" data-silent-initial-value-set="true">
+                        @if (layouts?.Any() == true)
+                        {
+                                @foreach (var layout in layouts)
+                                {
+                                    <option value="@layout.Id">@layout.Name</option>
+                                }
+                        }
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="text_label">@Html.Translate("Phòng ban")</label>
+                    @{
+                        var userViewDepartmentIds = User?.Claims?.Where(x => x.Type == bivnConstant.Permissions.DEPARTMENT_DATA_INQUIRY).Select(x => x.Value.ToString().ToLower());
+                        var filteredDepartments = departments?.Where(x => userViewDepartmentIds?.Contains(x.Id.ToLower()) == true);
+                    }
+                    <select hidden id="select_departments" multiple name="Departments" placeholder="Chọn phòng ban..." data-search="true" data-silent-initial-value-set="true">
+                        @if (filteredDepartments != null && filteredDepartments.Any() == true)
+                        {
+                            @foreach (var department in filteredDepartments)
+                            {
+                                <option value="@department.Id">@department.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row d-flex mb-4">
+                <div class="col-3">
+                    <label class="text_label">@Html.Translate("Khoảng số lượng")</label>
+                    <div class="row">
+                        <div class="col pe-0">
+                            <input id="input_quantity_range_from" name="QuantityRangeFrom" placeholder="@Html.Translate("Nhập SL")..." type="text" class="form-control background-color-grey text_ellipsis">
+                        </div>
+                        <div class="custom_arrow_right">
+                            <div><img src="./assets/images/icons/Muitensangphai.png"></div>
+                        </div>
+                        <div class="col ps-0">
+                            <input id="input_quantity_range_to" name="QuantityRangeTo" placeholder="@Html.Translate("Nhập SL")..." type="text" class="form-control background-color-grey text_ellipsis">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5 col-md-7 col-sm-7">
+                    <div class="row">
+                        <div class="col pe-0">
+                            <label class="text_label">@Html.Translate("Thời gian thao tác")</label>
+                            <input id="input_date_from" name="DateFrom" placeholder="DD/MM/YYYY" type="text" class="form-control background-color-grey">
+                            <svg class="calendar_icon custom-cursor-on-hover" width="20" height="20" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="right:3px;top:34px">
+                                <path d="M8.20044 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M16.2004 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M3.70044 9.08984H20.7004" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M21.2004 8.5V17C21.2004 20 19.7004 22 16.2004 22H8.20044C4.70044 22 3.20044 20 3.20044 17V8.5C3.20044 5.5 4.70044 3.5 8.20044 3.5H16.2004C19.7004 3.5 21.2004 5.5 21.2004 8.5Z" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M15.8951 13.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M15.8951 16.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M12.1959 13.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M12.1959 16.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M8.49475 13.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M8.49475 16.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="col-1 custom_arrow_right mt-4">
+                            <div><img src="./assets/images/icons/Muitensangphai.png"></div>
+                        </div>
+                        <div class="col ps-0">
+                            <label class="text_label">@Html.Translate("Thời gian thao tác")</label>
+                            <input id="input_date_to" name="DateTo" type="text" placeholder="DD/MM/YYYY" class="form-control background-color-grey" >
+                            <svg class="calendar_icon custom-cursor-on-hover" width="20" height="20" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="top:34px">
+                                <path d="M8.20044 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M16.2004 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M3.70044 9.08984H20.7004" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M21.2004 8.5V17C21.2004 20 19.7004 22 16.2004 22H8.20044C4.70044 22 3.20044 20 3.20044 17V8.5C3.20044 5.5 4.70044 3.5 8.20044 3.5H16.2004C19.7004 3.5 21.2004 5.5 21.2004 8.5Z" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M15.8951 13.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M15.8951 16.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M12.1959 13.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M12.1959 16.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M8.49475 13.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M8.49475 16.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col d-flex justify-content-end mt-4">
+                    @await Html.PartialAsync("~/Views/Shared/_commonSearch.cshtml")
+                </div>
+            </div>
+
+        </form>
+    </section>
+
+    <section class="bg-white py-2 px-3 mt-4 rounded">
+        <div class="container_top_table">
+            <div id="export_file" class="export_file">
+                <div class="icon_excel">
+                    <img src="./assets/images/icons/export_excel.png">
+                </div>
+                <h5>@Html.Translate("Xuất file")</h5>
+            </div>
+        </div>
+        <table id="history_table" class="table table-responsive custom_table" width="100%">
+            <thead>
+                <tr class="title_table">
+                    <th>STT</th>
+                    <th>@Html.Translate("Mã nhân viên")</th>
+                    <th>@Html.Translate("Người thao tác")</th>
+                    <th>@Html.Translate("Thời gian thao tác")</th>
+                    <th>@Html.Translate("Phòng ban")</th>
+                    <th>@Html.Translate("Loại nghiệp vụ")</th>
+                    <th>@Html.Translate("Mã linh kiện")</th>
+                    <th>@Html.Translate("Vị trí cố định")</th>
+                    <th>@Html.Translate("Số lượng")</th>
+                    <th>@Html.Translate("Ghi chú")</th>
+                    <th>@*Xem chi tiết*@</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    @await Html.PartialAsync("~/Views/Shared/Common/_HistoryDetailModal.cshtml")
+</section>
+
+<script asp-append-version="true" src="./assets/js/History.js"></script>
+

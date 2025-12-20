@@ -1,0 +1,384 @@
+﻿.container_modal_add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btn_ErrorInvestigation_Investigating, #btn_ErrorInvestigation_UploadInvestigatingData, .confirm_investigation_container, #btn_ErrorInvestigation_UpdatePivot {
+    margin-right: 15px;
+}
+
+.confirm_investigation_container {
+    background-color: grey !important;
+}
+.update_investigation_data {
+    background-color: #fb6730 !important;
+}
+
+.ErrorInvestigationBackground .vscomp-toggle-button {
+    border-radius: 4px !important;
+    background: #f1f0f4;
+    color: #303030;
+    font-size: 1em;
+}
+
+.ErrorInvestigationBackground.vscomp-ele{
+    max-width: 150px !important;
+}
+
+table.ErrorInvestigation_DataTable thead th, .ErrorInvestigationDocumentTable thead th {
+    white-space: nowrap;
+    max-width: 150px; /* Bạn có thể điều chỉnh giá trị này cho phù hợp */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+table.ErrorInvestigation_DataTable tbody td, .ErrorInvestigationDocumentTable tbody td {
+    white-space: nowrap;
+    max-width: 150px; /* Bạn có thể điều chỉnh giá trị này cho phù hợp */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+/* Rút gọn bằng ...  (chỉ cho cột errorDetail) */
+.error-detail-cell {
+    display: inline-block;
+    max-width: 150px; /* giới hạn chiều rộng cột */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer; /* gợi ý có thể bấm */
+}
+
+/* Cho phép tooltip dài, xuống dòng */
+.tooltip-inner {
+    max-width: 600px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background-color: #0d2ea0 !important;
+}
+
+#Error_Investigation_DataTable_length select, #ErrorInvestigationDocumentTable_length select {
+    background-image: url('/assets/images/icons/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+    border: 1px solid #E4E4E4;
+    padding-right: 20px;
+    border-radius: 4px;
+    font-size: 12px !important;
+    font-weight: 400;
+    color: #333333;
+}
+
+#ErrorInvestigationDocumentModal .modal-footer {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 5px 0;
+}
+
+.ErrorInvestigationDocument-Button button {
+    border: none;
+    background: #fb6730;
+    border-radius: 5px;
+    padding: 8px 25px;
+    color: white;
+}
+
+.ErrorInvestigationDocumentConfirm_title{
+    text-align:center;
+}
+
+div#ErrorInvestigationDocumentModal .modal-header h4, .ErrorInvestigationDocumentConfirm_title h4 {
+    color: #0d2ea0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+div#ErrorInvestigationDocumentModal .modal-header {
+    text-align: center;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+}
+
+a.Investigation_Controls_Documents_ViewDetail, a.ErrorInvestigationDocument_ViewDetail {
+    cursor: pointer;
+    text-decoration: underline !important;
+}
+
+.ErrorInvestigationDocument_title, .ErrorInvestigationDocumentConfirm_title {
+    width: 100%;
+}
+
+.ErrorInvestigationConfirm_Investigating_Container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ErrorInvestigationDocumentConfirm-Button {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button.btn-ErrorInvestigationDocumentConfirmComplete, button.btn-ErrorInvestigationDocumentConfirmUpdate {
+    border: none;
+    background: #0d2ea0;
+    color: white;
+    border-radius: 5px;
+    padding: 8px 25px;
+}
+
+/*button.btn-ErrorInvestigationDocumentConfirmUpdate {
+    border: none;
+    background: orange;
+    color: white;
+    border-radius: 5px;
+    padding: 8px 25px;
+}*/
+
+button.btn-ErrorInvestigationDocumentConfirmCancel {
+    border: none;
+    background: #a7a7a7;
+    color: white;
+    border-radius: 5px;
+    padding: 8px 25px;
+}
+
+input.ErrorInvestigationConfirm_ErrorQuantity, .ErrorInvestigationConfirm_ErrorCategory {
+    font-size: 13px;
+    height: 40px;
+    border: 1px solid #80808030;
+    border-radius: 4px;
+}
+
+textarea#ErrorInvestigationConfirm_ErrorDetail {
+    font-size: 13px;
+    border: 1px solid #80808030;
+    border-radius: 4px;
+    width:100%;
+    padding-left: 10px;
+}
+label#ErrorInvestigationConfirm_ErrorCategory-error {
+    display: block;
+}
+.ErrorInvestigationConfirm_ErrorCategory{
+    color:grey;
+}
+textarea#ErrorInvestigationConfirm_ErrorQuantity {
+    font-size: 13px;
+}
+
+.ErrorInvestigationConfirm_Images1_Container, .ErrorInvestigationConfirm_Images2_Container {
+    text-align: center;
+}
+
+.btn-UploadImage1-Container, .btn-UploadImage2-Container {
+    margin-top: 10px;
+}
+
+button.btn-UploadImage1, button.btn-UploadImage2 {
+    border: none;
+    background: orange;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 13px;
+}
+.ErrorInvestigationDocumentConfirm-Button {
+    margin-top: 25px;
+}
+#defaultImage1, #defaultImage2 {
+    width: 300px; /* Chiều rộng cố định */
+    height: 300px; /* Chiều cao cố định */
+    object-fit: cover; /* Cắt ảnh cho vừa khung mà không làm méo */
+}
+
+label#ErrorInvestigationConfirm_ErrorQuantity-error {
+    display: block;
+}
+
+a.ErrorInvestigationInventoryHistoryControls_ViewDetail, a.ErrorInvestigationHistory_ViewDetail {
+    cursor: pointer;
+    text-decoration: underline !important;
+}
+
+.ErrorInvestigationInventoryHistory_title, .ErrorInvestigationHistory_title {
+    width: 100%;
+    text-align: center;
+}
+
+    .ErrorInvestigationInventoryHistory_title h4, .ErrorInvestigationHistory_title h4 {
+        color: #0d2ea0;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+.ErrorInvestigationDocumentInventoryHistoryTop h5 {
+    font-size: 13px;
+}
+
+.ErrorInvestigationDocumentInventoryHistoryCenter_Item, .ErrorInvestigationHistoryCenter_Item {
+    border-radius: 5px;
+    background: #80808038;
+    padding-left: 15px;
+    padding-top: 10px;
+    margin-bottom: 15px;
+}
+
+    .ErrorInvestigationDocumentInventoryHistoryCenter_Item h5, .ErrorInvestigationHistoryCenter_Item h5 {
+        margin: 0;
+        font-size: 15px;
+    }
+
+    .ErrorInvestigationDocumentInventoryHistoryCenter_Item p, .ErrorInvestigationHistoryCenter_Item p {
+        margin: 0;
+        font-size: 15px;
+    }
+
+.ErrorInvestigationDocumentInventoryHistoryCenter, .ErrorInvestigationHistoryCenter {
+    margin-top: 30px;
+}
+
+.ErrorInvestigationDocumentInventoryHistoryTopContainer {
+    display: flex;
+    align-items: center;
+}
+
+.ErrorInvestigationDocumentInventoryHistoryTop_Title {
+    font-size: 13px;
+    padding-right: 10px;
+}
+
+.ErrorInvestigationDocumentInventoryHistoryTop_Content h5 {
+    font-size: 13px;
+}
+
+.ErrorInvestigationHistoryCenter_Images, .ErrorInvestigationDocumentInventoryHistory_Images {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 0 15px 0;
+}
+
+.ErrorInvestigationHistoryCenterItem_Images img, .ErrorInvestigationDocumentInventoryHistoryItem_Images img {
+    width: 300px; /* Chiều rộng cố định */
+    height: 300px; /* Chiều cao cố định */
+    object-fit: cover; /* Cắt ảnh cho vừa khung mà không làm méo */
+}
+
+.ErrorInvestigationInventoryHistoryTop h5 {
+    font-size: 13px;
+}
+#ErrorInvestigationDocumentInventoryHistory_Inventory {
+    min-width: 150px;
+}
+.ErrorInvestigationDocumentInventoryHistoryCenter p.no-data-message, .ErrorInvestigationHistoryCenter p.no-data-message {
+    text-align: center;
+    font-size: 13px;
+}
+.modal_header_inventory .btn-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.ErrorInvestigationConfirm_Investigating_Top_Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ErrorInvestigationConfirm_Status_Container {
+    min-width: 240px;
+}
+
+#ErrorInvestigation_ErrorCategory .vscomp-dropbox-container, #ErrorInvestigation_Status .vscomp-dropbox-container{
+    min-width: 235px;
+}
+
+.color-blue {
+    color: #0A1DC7;
+}
+.color-red{
+    color: red;
+}
+.Image1-Preview-Container, .Image2-Preview-Container {
+    position: relative;
+}
+
+button.delete-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 40px;
+    background: #80808069;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+    button.delete-image-btn:hover {
+        background: grey;
+    }
+#ErrorPercentModal .modal-content{
+    text-align: center;
+}
+#ErrorPercentModal table {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+#ErrorPercentModal th, #ErrorPercentModal td {
+    border: 1px solid black !important;
+    padding: 8px;
+    text-align:center;
+}
+
+#ErrorPercentModal th {
+    background-color: #f2f2f2;
+}
+
+#ErrorPercentModal .centered-table {
+    width: 50%; /* Chiếm 80% modal */
+    margin: auto; /* Căn giữa bảng */
+    border-collapse: collapse;
+}
+.ErrorPercent_title h4 {
+    color: #0d2ea0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.ErrorPercent_title {
+    width: 100%;
+}
+
+.highlight-orange, tr.selected.highlight-orange {
+    background-color: #FAD2C6 !important;
+}
+.color-grey-status {
+    color: #7C7C7C;
+}
+.color-red-status {
+    color: #FF8C18;
+}
+.color-green-status {
+    color: #09AE28;
+}
+
+#ErrorInvestigation_InventoryName .vscomp-dropbox-container {
+    min-width: 200px;
+}

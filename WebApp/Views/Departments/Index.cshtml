@@ -1,0 +1,50 @@
+﻿@using bivnConstant = BIVN.FixedStorage.Services.Common.API.Constants;
+
+@{
+    ViewBag.Title = Html.Translate("Quản lý phòng ban");
+
+    var User = (ValidateTokenResultDto)Context.Items[commonAPIConstant.HttpContextModel.UserKey];
+}
+
+@{
+    var hasDepartmentPermission = User?.RoleClaims?.Any(x => x.ClaimType == bivnConstant.Permissions.DEPARTMENT_MANAGEMENT);
+}
+
+
+
+<section class="page-heading d-flex justify-content-end">
+    <div class="container_modal_add mb-3">
+        <button class="btn_add" type="button" id="btnCreate_User" data-bs-toggle="modal" data-bs-target="#Views_Shared_Common__NewDepartmentModal">
+            <img src="./assets/images/icons/icon-plus.svg">
+            @Html.Translate("Thêm phòng ban")
+        </button>
+    </div>
+</section>
+
+@{
+    var Departments = ViewBag.Departments as IEnumerable<DepartmentDto>;
+}
+<section class="@nameof(Views_Departments_Index)">
+    @if(Departments?.Any() == true)
+    {
+        <div class="department_list grid" style="display: grid; grid-row-gap: 1em;">
+            @foreach (var department in Departments)
+            {
+                @await Component.InvokeAsync("DepartmentItem", department)
+            }
+        </div>
+    }
+</section>
+
+@await Html.PartialAsync("~/Views/Shared/Common/_NewDepartmentModal.cshtml", new CreateNewDepartmentDto())
+@await Html.PartialAsync("~/Views/Shared/Common/_DeleteDepartmentModal.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Common/_EditDepartmentModal.cshtml")
+
+<script asp-append-version="true" src="./assets/js/Department.js"></script>
+
+@*<script>
+    $(".btnOpenCreateNewDepartmentModal").click((e) => {
+        $("#Views_Shared_Common__NewDepartmentModal").modal("show");
+    })
+</script>*@
+

@@ -1,0 +1,23 @@
+﻿<link href="./assets/css/InventoryAssignment.css" asp-append-version="true" rel="stylesheet" />
+@{
+    ViewBag.Title = Html.Translate("Phân quyền thao tác kiểm kê");
+}
+
+<div id="@nameof(Views_InventoryAssignment_Index)">
+    <div id="Assignment_Layout">
+        <div class="row Assignment_Header mb-3">
+            <button class="changeTab active" id="area">@Html.Translate("Khu vực")</button>
+            <button class="changeTab" id="employee">@Html.Translate("Người thao tác")</button>
+        </div>
+
+    </div>
+
+    <div id="area-tab" class="tab-content">
+        @await Html.PartialAsync("~/Views/Shared/Common/_InventoryAssignmentArea.cshtml")
+    </div>
+    <div id="employee-tab" class="tab-content">
+        @await Html.PartialAsync("~/Views/Shared/Common/_InventoryAssignmentEmployee.cshtml")
+    </div>
+</div>
+
+<script asp-append-version="true" defer src="./assets/js/InventoryAssignment.js"></script>

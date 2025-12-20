@@ -1,0 +1,279 @@
+﻿@using webapConstants = BIVN.FixedStorage.Services.Common.API.Constants;
+@{
+    ViewBag.Title = Html.Translate("Quản lý linh kiện");
+    var layoutDropdownList = ViewBag.LayoutList as List<DropDownListItemDto>;
+    var layoutDropdownListJSON = System.Text.Json.JsonSerializer.Serialize(layoutDropdownList);
+    var inventoryStatusDropdownList = ViewBag.InventoryStatusList as List<DropDownListItemDto>;
+    string selectedLayout = (string) ViewBag.SelectedLayout;
+    string selectedInventoryStatus = (string) ViewBag.SelectedInventoryStatus;
+}
+
+<link href="./assets/css/Components.css" asp-append-version="true" rel="stylesheet" />
+<div id="ListComponent">
+    <input type="hidden" id="txtSelectedLayout" value="@selectedLayout" />
+
+    <form id="ListComponent_Search_Option_Form">
+        <div class="ListComponent_Search_Option">
+            <div class="">
+                <div class="row justify-content-between mb-4">
+                    <div class="custom_col_7 ip-form-update">
+                        <label class="text_label">@Html.Translate("Mã linh kiện")</label>
+                        <input id="Component_code" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập mã linh kiện")..." />
+                    </div>
+                    <div class="custom_col_7 ip-form-update">
+                        <label class="text_label">@Html.Translate("Tên linh kiện")</label>
+                        <input id="Component_Name" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập tên linh kiện")..." />
+                    </div>
+                    <div class="custom_col_7 ip-form-update">
+                        <label class="text_label">@Html.Translate("Nhà cung cấp")</label>
+                        <input id="Supplier_Name" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập tên NCC")..." />
+                    </div>
+                    <div class="custom_col_7 ip-form-update">
+                        <label class="text_label">@Html.Translate("Điều kiện khác")</label>
+                        <select id="InventoryStatus" class="form-select background-color-grey select-tag-custom custom_select text_ellipsis">
+                            @if (inventoryStatusDropdownList?.Any() == true)
+                            {
+                                if (!string.IsNullOrEmpty(selectedInventoryStatus))
+                                {
+                                    @foreach (var inventoryStatus in inventoryStatusDropdownList)
+                                    {
+                                        if (inventoryStatus.Id == selectedInventoryStatus)
+                                        {
+                                            <option selected value="@(inventoryStatus.Id)">@Html.Translate(inventoryStatus.Name)</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@(inventoryStatus.Id)">@Html.Translate(inventoryStatus.Name)</option>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    @foreach (var inventoryStatus in inventoryStatusDropdownList)
+                                    {
+                                        <option value="@(inventoryStatus.Id)">@Html.Translate(inventoryStatus.Name)</option>
+                                    }
+                                }                           
+                            }
+                        </select>
+                    </div>
+                    <div class="custom_col_7 ip-form-update">
+                        <label class="text_label">@Html.Translate("Khu vực")</label>
+                        <select id="Component_Layout" multiple name="native-select" placeholder="Chọn khu vực" data-search="true" data-silent-initial-value-set="true" hidden>
+                            @if(layoutDropdownList?.Any() == true)
+                            {
+                                if (!string.IsNullOrEmpty(selectedLayout))
+                                {
+                                    @foreach (var layout in layoutDropdownList)
+                                    {
+                                        if(layout.Id!=null)
+                                        {
+                                            if (layout.Id.ToLower() == selectedLayout.ToLower())
+                                            {
+                                                <option selected value="@(layout.Id)">@layout.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@(layout.Id)">@layout.Name</option>
+                                            }
+                                        }
+                                       
+                                    }
+                                }
+                                else
+                                {
+                                    @foreach (var layout in layoutDropdownList)
+                                    {
+                                        if (layout.Id != null)
+                                        {
+                                            <option value="@(layout.Id)">@layout.Name</option>
+                                        }
+                                       
+                                    }
+                                }                            
+                            }
+                        </select>
+                    </div>
+                    <div class="custom_col_7 ip-form-update">
+                        <label class="text_label">@Html.Translate("Vị trí cố định")</label>
+                        <input id="Component_Position" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập vị trí cố định")..." />
+                    </div>
+                    <div class="custom_col_7 ip-form-update pe-0">
+                        <label class="text_label">@Html.Translate("Khoảng số lượng tồn kho")</label>
+                        <div class="row">
+                            @*Component_Inventory_Qty_container*@
+                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 Component_Inventory_Qty_Start pe-0">
+                                <input id="Component_Inventory_Qty_Start" name="Component_Inventory_Qty_Start" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập SL")..." />
+                                <span id="Component_Inventory_Qty_Start_span-error" class="error-notification" />
+                            </div>
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 custom_arrow_right">
+                                <img src="./assets/images/icons/Muitensangphai.png" />
+                            </div>
+                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 Component_Inventory_Qty_End ps-0">
+                                <input id="Component_Inventory_Qty_End" name="Component_Inventory_Qty_End" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập SL")..." />
+                                <span id="Component_Inventory_Qty_End_span-error" class="error-notification" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mb-3">
+                    @await Html.PartialAsync("~/Views/Shared/_commonSearch.cshtml")
+
+                    @if (User.IsGrant(webapConstants.Permissions.MASTER_DATA_WRITE)){
+                        <div class="container_modal_add">
+                            <button class="btn_add" type="button" id="btnCreate_Component" 
+                                        @*data-toggle="modal" data-bs-target="#AddNewUserModal"*@>
+                                <img src="./assets/images/icons/icon-plus.svg" />
+                                @Html.Translate("Thêm linh kiện")
+                            </button>
+                        </div>
+                    }
+                </div>
+                   
+            </div>
+        </div>
+    </form>
+
+
+    <div class=" ListComponent_Container mt-3">
+        <div class="container_top_table">
+            @if (User.IsGrant(webapConstants.Permissions.MASTER_DATA_WRITE)){
+                <button class="btn_delete_row ListComponent_Delete" disabled>
+                    <div class="ListComponent_Delete_Images icon_excel">
+                        <img src="./assets/images/icons/Delete_Grey.svg" />
+                    </div>
+                    <h5 class="delete_text ListComponent_Delete_Title">@Html.Translate("Xóa")</h5>
+                </button>
+            }
+                <form class="form-horizontal" role="form" id="frmComponentsImportExcel">
+                    @if (User.IsGrant(webapConstants.Permissions.MASTER_DATA_WRITE))
+                    {
+                        @*<div class="ListComponent_ImportExcel">
+                            <div class="ListComponent_ImportExcel_Images">
+                                <img src="./assets/images/icons/export_excel.png" />
+                            </div>
+                            <h5 class="ListComponent_ImportExcel_Title">Nhập file</h5>
+                        </div>*@
+                        <div class="import_file" id="btn_import_input_component">
+                            <div class="icon_excel">
+                                <img src="./assets/images/icons/export_excel.png">
+                            </div>
+                            <h5>@Html.Translate("Nhập file")</h5>
+                        </div>
+                        <input type="file" id="inputComponentsFileExcel" hidden class="form-control" onlyExcels />
+                    }                    
+                </form>  
+                
+                <button class="export_file ListComponent_ExportExcel">
+                    <div class="distance-icon-text">
+                        <img src="./assets/images/icons/export_excel.png" />
+                    </div>
+                    <h5>@Html.Translate("Xuất file")</h5>
+                </button>
+
+            <button id="btnDownloadImportComopnentTemplate" class="export_file">
+                    <div class="distance-icon-text">
+                        <img src="./assets/images/icons/export_excel.png">
+                    </div>
+                    <h5>@Html.Translate("Tải biểu mẫu")</h5>
+                </button>
+            </div>
+
+        <table id="ListComponent_DataTable" class="table table-responsive custom_table" style="width:100%">
+            <thead>
+                <tr class="title_table">
+                    <th class="th-sm">
+                        <input type="checkbox" id="Component_CheckAll" />
+                    </th>
+                    <th class="th-sm">
+                        STT
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Mã linh kiện")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Tên linh kiện")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Tên nhà cung cấp")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Vị trí cố định")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Tồn kho thực tế")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Tồn kho (lớn nhất)")
+                    </th>
+                    <th class="th-sm">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @*<tr>
+                <td><input type="checkbox" id="Component_check" /></td>
+                <td>1</td>
+                <td>098765432</td>
+                <td>Tên linh kiện 1</td>
+                <td>Tên nhà cung cấp 1</td>
+                <td>6T5F3-14-1</td>
+                <td>200</td>
+                <td>5000</td>
+
+                <td>
+                <div class="Controls_Container">
+                <div class="ViewDetail_Controls mx-3">
+                <a class="ListComponent_ViewDetail_Controls" data-id="420B3623-3EBD-46CD-3F5A-08DBC9532CFB">Xem chi tiết</a>
+                </div>
+                <div class="EditListComponent_Controls mx-3">
+                <i class="fas fa-pencil-alt"></i>
+                </div>
+                </div>
+                </td>
+                </tr>*@
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@*AddNewUserModal*@
+@await Html.PartialAsync("~/Views/Shared/Common/_ListComponentViewDetailModal.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Common/_AddNewComponentModal.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Common/_EditComponentModal.cshtml")
+<input type="hidden" id="editUserId" />
+
+<script>
+    $(document).ready(function () {
+        // $('#ListComponent_DataTable').DataTable({
+        //     //"pagingType": "full_numbers",
+        //     //"language": {
+        //     //    "lengthMenu": "Hiển thị _MENU_", // Chỉnh sửa thành tiếng Việt
+        //     //    "zeroRecords": "Không tìm thấy kết quả",
+        //     //    "info": "Trang _PAGE_ trên _PAGES_",
+        //     //    "infoEmpty": "Không có mục nào để hiển thị",
+        //     //    "infoFiltered": "(đã lọc từ tổng số _MAX_ mục)",
+        //     //    "search": "Tìm kiếm:"
+        //     //},
+        //     //"dom": 'rt<"bottom"lip><"clear">'
+        //     "ordering": false,
+        //     "pageLength": 10, // Số lượng mặc định hiển thị trên mỗi trang
+        //     "lengthMenu": [10, 30, 50, 200], // Số lượng tùy chọn cho người dùng
+        //     "pagingType": "full_numbers",
+        //     "language": {
+        //         "url": "/assets/libs/datatables.net/vietnamese.js"
+        //     }
+        // });      
+
+        let layoutDropdownList = JSON.parse(`@Html.Raw(@layoutDropdownListJSON)`);              
+    })
+
+</script>
+
+
+
+<script asp-append-version="true" src="./assets/js/Component.js"></script>
+

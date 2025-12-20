@@ -1,0 +1,14 @@
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\bin\Release\net7.0\Common.API.deps.json
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\bin\Release\net7.0\Common.API.runtimeconfig.json
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\bin\Release\net7.0\Common.API.dll
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\bin\Release\net7.0\Common.API.pdb
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\Common.API.csproj.AssemblyReference.cache
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\Common.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\Common.API.AssemblyInfoInputs.cache
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\Common.API.AssemblyInfo.cs
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\Common.API.csproj.CoreCompileInputs.cache
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\Common.API.dll
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\refint\Common.API.dll
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\Common.API.pdb
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\Common.API.genruntimeconfig.cache
+C:\khanhmf\FIX_Stock_Sever\Services\Common.API\obj\Release\net7.0\ref\Common.API.dll

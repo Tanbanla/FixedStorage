@@ -1,0 +1,395 @@
+
+/*#region Quản lý danh sách người dùng*/
+
+#ListUsers .dataTables_length label {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    flex-direction: row;
+    align-content: center;
+}
+
+#ListUsers .dataTables_length select {
+    margin-left: 10px;
+}
+
+.background-color-grey {
+    background-color: #F1F0F4;
+}
+
+#ListUsers h5.ListUsers_Title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0D2EA0;
+}
+
+#ListUsers p.ListUsers_Description {
+    font-size: 14px;
+    color: #6A707E;
+}
+
+.ListUsers_Search_Option, #ListUsers_DataTable_wrapper {
+    background-color: white;
+    padding: 10px;
+}
+
+.box-container label {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+
+.select-tag-custom {
+    background: url('../images/table_icons/arrow-down.svg') right 8px center no-repeat;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    background-color: #F1F0F4;
+    padding: 0.8rem;
+    font-size: 0.875rem!important;
+}
+
+    .select-tag-custom:focus {
+        background-color: #F1F0F4;
+        border: 1px solid #ced4da;
+    }
+
+#btnSearch_User {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 12px;
+    border: none;
+    background: #0D2EA0;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.btnSearch_User_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.btnReset_User_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+}
+
+.btnSearch_User_image, .btnReset_User_image {
+    width: 30px;
+    height: 30px;
+    padding-right: 5px;
+}
+
+.btnCreate_User_image {
+    padding-right: 10px;
+}
+
+.Controls_Container {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    font-size: 18px;
+}
+
+.Delete_Controls {
+    color: red;
+}
+
+.User_Account_Type, .User_Account_Type_Personal, .User_Role, .Status_User, .User_Department {
+    border: none;
+    background-color: white;
+    font-size: 14px !important;
+}
+
+.User_Role {
+    font-weight: 500;
+    font-style:normal;
+    color: #5092FC;
+}
+
+.User_Account_Type {
+    font-weight: 500;
+    font-style: normal;
+    color: #ffd800;
+}
+
+.User_Account_Type_Personal {
+    font-weight: 500;
+    font-style: normal;
+    color: #5092FC;
+}
+
+.User_Department {
+    font-weight: 500;
+    font-style: normal;
+    color: black;
+}
+
+.Status_User {
+    color: #17AE5C;
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+#ListUsers_DataTable_filter {
+    display: none;
+}
+
+.ListUsers_Container {
+    background-color: white;
+}
+
+.ListUsers_ExportExcel {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    justify-items: center;
+    padding: 10px 15px 0 0;
+}
+
+.btnExportExcel_ListUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: white;
+    color: #5092FC;
+    font-weight: bold;
+}
+
+#btnReset_User {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 12px;
+    border: none;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-right: 12px;
+}
+
+a.ListUsers_ViewDetail_Controls {
+    /*font-weight: bold;*/
+    text-decoration: underline !important;
+    cursor: pointer;
+    color: #5092FC;
+    font-size: 14px;
+}
+
+.Top_ListUsersViewDetail h4 {
+    font-size: 24px;
+    color: #0D2EA0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.label_detail_bold {
+    font-weight: bold;
+}
+
+.Content_Top_ListUsersViewDetail {
+    border-bottom: 1px dashed #0000004d;
+    padding: 20px 0;
+}
+
+.Content_Bottom_ListUsersViewDetail {
+    padding-top: 20px;
+}
+
+/* .Content_Bottom_ListUsersViewDetail h4 {
+        font-weight: bold;
+    }*/
+
+.TitleAndSlideOn_Container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.SlideonContainer .slideon input:checked ~ .slideon-slider {
+    background-color: #17AE5C;
+}
+
+.DatetimeUnit_Container {
+    position: relative;
+}
+
+    .DatetimeUnit_Container h5.Add_Users_Unit, .DatetimeUnit_Container h5.Edit_Users_Unit {
+        position: absolute;
+        top: 12px;
+        right: 10px;
+        font-size:0.875rem;
+        /*font-weight: bold;*/
+    }
+
+.EditUser_Controls {
+    cursor: pointer;
+}
+
+#Add_Users_Password, #Add_Users_UserName, #Add_Users_FullName, #Add_Users_Code, #Add_Users_DateTimeNoChangePassword, #Add_Users_DateTimeNoInteration,
+#Edit_Users_Password, #Edit_Users_UserName, #Edit_Users_FullName, #Edit_Users_Code, #Edit_Users_DateTimeNoChangePassword, #Edit_Users_DateTimeNoInteration {
+    color: black;
+}
+
+#Add_Users_Password-error, #Add_Users_UserName-error, #Add_Users_FullName-error, #Add_Users_Code-error, #Add_Users_DateTimeNoChangePassword-error, #Add_Users_DateTimeNoInteration-error,
+#Edit_Users_Password-error, #Edit_Users_UserName-error, #Edit_Users_FullName-error, #Edit_Users_Code-error, #Edit_Users_DateTimeNoChangePassword-error, #Edit_Users_DateTimeNoInteration-error,
+#Username_span, #Code_span {
+    color: #E60000 !important;
+    font-weight: 400 !important;
+    /* --bs-text-opacity: 1;
+    color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity)) !important; */
+}
+
+a.Edit_Users_ChangePassword {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.ListUser_Button_Container {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.AddUser_Password_Container {
+    position: relative;
+}
+
+.btn_Password_AddNew_Image {
+    position: absolute;
+    top: 32px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.export-color-grey {
+    color: #D1D0D6;
+}
+
+.export-color-blue {
+    color: #5092FC;
+}
+
+/*region Mutilple selected*/
+
+#Users_Department .vscomp-toggle-button, #Users_Role .vscomp-toggle-button,
+#Users_Status .vscomp-toggle-button, #Users_AccountType .vscomp-toggle-button {
+    height: 41.5px;
+    background: #F1F0F4;
+    border-radius: 5px;
+}
+
+#Users_Department.vscomp-ele, #Users_Status.vscomp-ele, #Users_Role.vscomp-ele, #Users_AccountType.vscomp-ele {
+    max-width: 100% !important;
+}
+/*endregion Mutilple selected*/
+
+
+.color-yellow {
+    color: #ffd800 !important;
+}
+
+.color-blue {
+    color: #5092FC !important;
+}
+
+.color-green {
+    color: #17AE5C !important;
+}
+
+.color-grey {
+    color: #87868C !important;
+}
+.color-red {
+    color: #E60000 !important;
+}
+.form-control-lg {
+    padding: .5rem 1rem !important;
+    font-size: 1.25rem !important;
+
+}
+
+::placeholder {
+    font-size: 0.875rem;
+}
+.modal-content {
+    /*width: 43.75rem;*/
+}
+
+.btn-primary {
+    border-radius: 4px;
+    background: #5092FC;
+}
+.btn-light {
+    border-radius: 4px;
+    border: 1px solid #DCDCDC;
+    background: #F1F0F4;
+}
+label{
+    font-size:0.75rem!important;
+    color:#333!important;
+}
+
+a {
+    color: #0D2EA0;
+}
+
+/*#endregion Quản lý danh sách người dùng*/
+
+.User_Account_Type option[value="0"], .User_Account_Type_Personal option[value="0"] {
+    color: #ffd800;
+}
+
+.User_Account_Type option[value="1"], .User_Account_Type_Personal option[value="1"] {
+    color: #5092FC;
+}
+
+.TitleAndSlideOn_Container h5.label {
+    margin-bottom: 0;
+}
+
+#EditUserModal .TitleAndSlideOn_Container {
+    margin-bottom: 0;
+}
+
+#EditUserModal .TitleAndSlideOn_Container .SlideonContainer {
+    margin-bottom: 2px;
+}
+
+label.bottom2 {
+    transform: translateY(2px);
+}
+#btnChangePassword_ViewDetailUser {
+    background: #0D2EA0 !important;
+}
+
+    #btnChangePassword_ViewDetailUser:hover {
+        background: #0D2EA0 !important;
+        color: #FFFFFF !important;
+        filter: none !important;
+    }
+
+.custom_table_listUser td {
+    padding: 6px 12px;
+}
+
+#ChangePassword_ViewDetailUser_Form .icon_eye {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+}
+
+#ChangePassword_ViewDetailUser_Form input {
+    height: 38px;
+    font-size: 14px !important;
+}

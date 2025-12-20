@@ -1,0 +1,25 @@
+﻿.ErrorCategoryManagement_List .Title {
+    border: 1px solid #80808038;
+    border-radius: 5px;
+}
+
+    .ErrorCategoryManagement_List .Title .Image {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        right: 5px;
+    }
+
+    .ErrorCategoryManagement_List .Title h4 {
+        margin: 0;
+        font-size: 14px;
+        height: 100%;
+        padding: 10px;
+    }
+.btnRemove_ErrorCategoryManagement {
+    margin-left: 5px;
+}
+
+.btnUpdate_ErrorCategoryManagement, .btnRemove_ErrorCategoryManagement {
+    cursor: pointer;
+}

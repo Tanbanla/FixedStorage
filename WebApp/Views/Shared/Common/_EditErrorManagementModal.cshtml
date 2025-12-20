@@ -1,0 +1,29 @@
+﻿<div id="EditErrorManagementModal" class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="h-100 d-flex justify-content-center">
+        <form id="EditErrorCategoryManagementForm" class="w-50">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h3 class="modal-title text-center txt-bolder">@Html.Translate("Chỉnh sửa phân loại lỗi")</h3>
+                        <div class="form-group">
+                            <label class="control-label font-size-12 m-0">@Html.Translate("Tên phân loại")</label>
+                            <span class="required_directive">*</span>
+                            <input id="EditInputErrorCategoryName" name="EditInputErrorCategoryName" class="form-control" placeholder="@Html.Translate("Nhập tên phân loại")..." />
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container-fluid d-flex justify-content-between">
+                            <button type="button" class="btn btn_custom_danger w-50 mx-2" data-bs-dismiss="modal">@Html.Translate("Hủy bỏ")</button>
+                            <button id="btnConfirmEditErrorCategory" type="button" class="btn btn_custom_primary w-50 mx-2">@Html.Translate("Đồng ý")</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

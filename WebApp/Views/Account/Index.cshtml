@@ -1,0 +1,77 @@
+﻿@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewBag.Title = Html.Translate("Đăng nhập hệ thống");
+    Layout = "~/Views/Shared/AccountLayout.cshtml";
+    var userClaim = Context.Items[commonAPIConstant.HttpContextModel.UserKey];
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureList = ViewBag.Cultures as List<SelectListItem>;
+    Context.Request.Cookies.TryGetValue(CookieRequestCultureProvider.DefaultCookieName, out var cookieValue);
+
+}
+@section TopLoginTitle {
+    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 top-login-pages-title">
+        <label class="TopLoginTitle">
+            <a href="@Url.Action("Index", "Account")">@Html.Translate("Đăng nhập")</a>
+
+        </label>
+        <form id="selectLanguage" class="MultiLanguages custom_select" asp-controller="Language"
+              asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" method="post" role="form" style="width: 100%">
+            <label class="language">@Html.Translate("Ngôn ngữ")</label>
+            @*             <select class="form-control" name="culture"
+                    asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items=" ViewBag.Cultures as List<SelectListItem>" onchange="this.form.submit()"></select> *@
+            @if (!string.IsNullOrEmpty(cookieValue) && cookieValue.Contains("en-US"))
+            {
+                <button class="btn" name="culture" value="vi-VN"> <img src="~/assets/images/flags/vn.png" height="20" /></button>
+                <button class="btn btn-outline-primary" name="culture" value="en-US"><img src="~/assets/images/flags/us.jpg" height="20" /></button>
+            }
+            else
+            {
+                <button class="btn btn-outline-primary" name="culture" value="vi-VN"> <img src="~/assets/images/flags/vn.png" height="20" /></button>
+                <button class="btn" name="culture" value="en-US"><img src="~/assets/images/flags/us.jpg" height="20" /></button>
+            }
+
+
+        </form>
+    </div>
+
+}
+<h4 class="Title_Login">@Html.Translate("Đăng nhập")</h4>
+<div class="NetworkOptionContainer">
+    <div class="NetworkOption">
+        @* <div class="option-container">
+            <input type="radio" name="option" value="bivnioswifim01" />
+            <label>bivnioswifim01</label>
+        </div>
+        <div class="option-container">
+            <input type="radio" name="option" value="B-WINS" />
+            <label>B-WINS</label>
+        </div>*@
+    </div>
+</div>
+
+<form id="BIVN_LoginForm">
+    <div class="row LoginForm">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ip-form-update box-container mb-4">
+            <label>@Html.Translate("Tài khoản đăng nhập")</label>
+            <input id="UserName_Login" name="UserName_Login" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập tài khoản đăng nhập")..." />
+            <span id="Username_span" class="error-notification"></span>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ip-form-update box-container mb-4">
+            <label>@Html.Translate("Mật khẩu")</label>
+            <div class="Password_Login_Container">
+                <input id="Password_Login" name="Password_Login" type="password" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập mật khẩu")..." />
+                <div class="btn_Password_Login_Image">
+                    <img id="BIVN_ShowPassword" src="./assets/images/icons/eye.png" />
+                    <img id="BIVN_HidePassword" style="display:none;" src="./assets/images/icons/hidePass.png" />
+                </div>
+            </div>
+            <span id="Password_span" class="error-notification"></span>
+        </div>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ip-form-update mt-4">
+            <button type="button" id="btnLogin_Form">
+                @Html.Translate("Đăng nhập")
+            </button>
+        </div>
+    </div>
+</form>

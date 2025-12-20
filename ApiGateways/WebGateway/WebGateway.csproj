@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<AssemblyName>WebGateway</AssemblyName>
+		<RootNamespace>BIVN.FixedStorage.ApiGateways.WebGateway</RootNamespace>
+		
+		<ImplicitUsings>enable</ImplicitUsings>
+		
+		
+		
+		<DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
+		
+		
+		
+		<UserSecretsId>ca93656c-f049-4050-9998-b14b4db31d6a</UserSecretsId>
+		
+		
+		
+		<DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+		
+		
+		
+		<DockerfileContext>..\..</DockerfileContext>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
+		<PackageReference Include="SkiaSharp" />
+		<PackageReference Include="Yarp.ReverseProxy" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Services\Common.API\Common.API.csproj" />
+	</ItemGroup>
+
+</Project>

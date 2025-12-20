@@ -1,0 +1,347 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Localization
+@using static BIVN.FixedStorage.Services.Common.API.Constants;
+@{
+    var userId = Context.Request.Cookies[BIVN.FixedStorage.Services.Common.API.Constants.UserClaims.UserId];      
+    var userName = Context.Request.Cookies[BIVN.FixedStorage.Services.Common.API.Constants.UserClaims.Username];
+    var fullName = Context.Request.Cookies[BIVN.FixedStorage.Services.Common.API.Constants.UserClaims.FullName];
+    var roleName = Context.Request.Cookies[BIVN.FixedStorage.Services.Common.API.Constants.UserClaims.RoleName];
+    var departmentName = Context.Request.Cookies[BIVN.FixedStorage.Services.Common.API.Constants.UserClaims.DepartmentName];
+    var avatar = Context.Request.Cookies[BIVN.FixedStorage.Services.Common.API.Constants.UserClaims.Avatar];
+
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    Context.Request.Cookies.TryGetValue(CookieRequestCultureProvider.DefaultCookieName, out var cookieValue);
+}
+<header id="page-topbar">
+    <div class="navbar-header" @*style="box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);"*@>
+        <div class="d-flex">
+            <!-- LOGO -->
+            <div class="navbar-brand-box" style="background: #0D2EA0;">
+                <a href="@Url.Action("Index", "Home")" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="./assets/images/logo/logo-white.svg" alt="" height="25">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="./assets/images/logo/logo-white.svg" alt="" height="56">
+                    </span>
+                </a>
+
+                <a href="/" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="./assets/images/logo/logo-white.svg" alt="" height="25">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="./assets/images/logo/logo-white.svg" alt="" height="56">
+                    </span>
+                </a>
+            </div>
+
+            @*<h3 class="mb-0 font-size-18 px-3 pt-4" style="font-weight:bold">
+               
+            </h3>*@
+            @Html.BuildBreadcrumbNavigation()
+            <!-- App Search-->
+            @*<form class="app-search d-none d-lg-block">
+                    <div class="position-relative">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span class="bx bx-search-alt"></span>
+                    </div>
+                </form>*@
+        </div>
+
+        <div class="d-flex">
+            <input type="hidden" value="" id="current_position_staff" />
+            <input type="hidden" value="" id="staff_role" />
+            <div class="dropdown d-inline-block d-lg-none ms-2">
+                <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="mdi mdi-magnify"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                     aria-labelledby="page-header-search-dropdown">
+
+                    @*<form class="p-3">
+                            <div class="form-group m-0">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>*@
+                </div>
+            </div>
+            @*<div class="dropdown d-none d-lg-inline-block ms-1 position-relative">
+                <button type="button" id="calendarngay" class="btn header-item noti-icon waves-effect">
+                    <i class="mdi mdi-calendar-month-outline text-primary" style="font-size:31px"></i>
+                </button>
+                <div id="countCalendartoday" class="position-absolute text-light bg-danger" style="display: none;"></div>
+            </div>*@
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <style>
+                #countCalendartoday {
+                    border-radius: 50%;
+                    width: 26px;
+                    height: 22px;
+                    top: 14%;
+                    right: 12%;
+                    z-index: 999;
+                    text-align: center;
+                    font-size: 13px;
+                    cursor: pointer;
+                    padding: 2px;
+                }
+            </style>
+            
+            <style>
+                #countNotification {
+                    border-radius: 50%;
+                    width: 26px;
+                    height: 22px;
+                    top: 14%;
+                    right: 12%;
+                    z-index: 999;
+                    text-align: center;
+                    font-size: 13px;
+                    cursor: pointer;
+                    padding: 2px;
+                }
+
+                .User_Info_Topbar {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .Right_User_Info_Topbar{
+                    padding-left:5px;
+                }
+
+                .Right_User_Info_Topbar h5 {
+                    text-align: left;
+                }
+
+                h5.fw-bold{
+                    font-weight:bold;
+                }
+
+                .pd-left{
+                    padding-left: 3px;
+                }
+                /*css thong tin ca nhan modal*/
+                .Password_Login_Container {
+                    position: relative;
+                }
+
+                .btn_Password_Login_Image {
+                    position: absolute;
+                    top: 8px;
+                    right: 5px;
+                    width: 20px;
+                    height: 20px;
+                }
+
+                .Top_ViewDetailUser {
+                    text-align: center;
+                }
+
+                .Image_Top_ViewDetalUser {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                    .Image_Top_ViewDetalUser img {
+                        object-fit: contain;
+                    }
+
+                .Image_Left_Content_ViewDetalUser img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    border: 1px solid #80808047;
+                    border-radius: 7px;
+                }
+
+                .UploadAvatar_ViewDetailUser_Container {
+                    width: 100%;
+                    border: 1px dashed;
+                    border-radius: 5px;
+                    background: #E0FFE2;
+                    border-color: #17ae5cb0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 12px 0;
+                    color: #17ae5c;
+                }
+
+                .UploadAvatar_ViewDetailUser_Title {
+                    padding-left: 5px;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+
+                .ChangePassword_Modal {
+                    font-size: 16px;
+                    color: #5092FC;
+                    cursor: pointer;
+                    padding:0px 0 26px 0;
+                }
+
+                .btn.btn-primary {
+                    width: 100%;
+                }
+
+                .Image_Left_Content_ViewDetalUser {
+                    width: 100%;
+                    height: 20rem;
+                    /*margin-top: 10px;*/
+                    border-radius: 6px;
+                    /*padding: 0 50px;*/
+                }
+
+                .cursor-poister {
+                    cursor: pointer;
+                }
+
+                #OldPassword_ChangePassword_ViewDetailUser, #NewPassword_ChangePassword_ViewDetailUser, #ConfirmNewPassword_ChangePassword_ViewDetailUser{
+                    color:black;
+                }
+
+                #OldPassword_ChangePassword_ViewDetailUser-error, #NewPassword_ChangePassword_ViewDetailUser-error, #ConfirmNewPassword_ChangePassword_ViewDetailUser-error {
+                    color: red;
+                }
+
+                .header-profile-user {
+                    height: 40px;
+                    width: 40px;
+                    background-color: $gray-300;
+                    /*padding: 3px;*/
+                    border: 2px solid #0D2EA0;
+                }
+                .background-color-white{
+                    background-color: white !important;
+                }
+                .text-grey{
+                    color: #87868c;
+                }
+
+                #ViewDetailUserModal .modal-header {
+                    border-bottom: none;
+                }
+
+            </style>
+
+
+            <div class="dropdown d-inline-block right-top-bar-container">
+                <div class="LanguagesDropdownContainer">
+                    <form id="selectLanguage" currentLanguage class="MultiLanguages custom_select" asp-controller="Language"
+                          asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" method="post" role="form" style="width: 100%">
+                        <label class="language">@Html.Translate("Ngôn ngữ")</label>
+                        @if (!string.IsNullOrEmpty(cookieValue) && cookieValue.Contains("en-US"))
+                        {
+                            <button class="btn" name="culture" value="vi-VN"> <img src="~/assets/images/flags/vn.png" height="20" /></button>
+                            <button class="btn btn-outline-primary" name="culture" value="en-US"><img src="~/assets/images/flags/us.jpg" height="20" /></button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-outline-primary" name="culture" value="vi-VN"> <img src="~/assets/images/flags/vn.png" height="20" /></button>
+                            <button class="btn" name="culture" value="en-US"><img src="~/assets/images/flags/us.jpg" height="20" /></button>
+                        }
+
+
+                    </form>
+                </div>
+                <div class="UserInfoContainer">
+                    <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @*@if (!string.IsNullOrEmpty(User.GetSpecificClaim(Constants.UserClaims.Avatar)))
+                        {
+                            <img class="rounded-circle header-profile-user" src="@User.GetSpecificClaim(Constants.UserClaims.Avatar)"
+                                 alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ms-1" key="t-user">@User.Identity.Name</span>
+                        }
+                        else
+                        {
+                            <img class="rounded-circle header-profile-user" src="./assets/images/users/avatar-0.png"
+                                 alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ms-1" key="t-user">@User.GetSpecificClaim(Constants.UserClaims.UserName)</span>
+                        }*@
+                        <div class="User_Info_Topbar">
+                            <div class="Left_User_Info_Topbar">
+
+                                <img class="rounded-circle header-profile-user" style="height: 40px; width: 40px;border: 2px solid #0D2EA0;" src="./assets/images/icons/AVT DEFAULT.svg" alt="avatar">
+                            
+                            </div>
+                            <div class="Right_User_Info_Topbar">
+                                <input id="txtUserIdStr" type="hidden" value="@userId" />
+                                <h5 class="fw-bold" @*class="d-none d-xl-inline-block ms-1" key="t-user"*@>@fullName</h5>
+                                <h5 @*class="d-none d-xl-inline-block ms-1" key="t-user"*@>@Html.Translate("Phòng"): @departmentName</h5>
+
+                                @*<i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>*@
+                            </div>
+                        </div>
+                    
+                    
+                    </button>
+
+                    <div class="dropdown-menu dropdown-menu-end cursor-poister">
+                        <!-- item-->
+                        @*<a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Hồ sơ</span></a>
+                        <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end"></span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Thiết lập</span></a>
+                        <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Khóa màn hình</span></a>
+                        <div class="dropdown-divider"></div>*@
+
+                        <div id="ClickToViewDetailModal" href="#" class="dropdown-item font-size-16 align-middle me-1" @*href="/ChangePassword/ChangePassword"*@>
+                            <i class="fas fa-pencil-alt"></i><span class="pd-left">@Html.Translate("Xem thông tin cá nhân")</span>
+                        </div>
+                   
+                        @* <a class="dropdown-item text-danger logout-web" href="/Account/Logout"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Đăng xuất</span></a> *@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+@await Html.PartialAsync("~/Views/Shared/Common/_ViewDetailUserModal.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Common/_ChangePasswordUpdateUserInfoModal.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Common/_ChangePasswordViewDetailUserModal.cshtml")
+<script src="./assets/js/UpdateUserInfo.js" asp-append-version="true"></script>
+
+<script>
+    function getCookie(name) {
+        let cookieArr = document.cookie.split(";");
+        for (let i = 0; i < cookieArr.length; i++) {
+            let cookiePair = cookieArr[i].trim();
+            // Kiểm tra tên cookie
+            if (cookiePair.startsWith(name + "=")) {
+                return cookiePair.substring(name.length + 1);
+            }
+        }
+        return null; // Không tìm thấy cookie
+    }
+    
+    $.ajax({
+        url: '/language/GetAllTranslatedKeys',  // URL của endpoint backend
+        type: 'GET',
+        success: function (data) {
+            // biến toàn cục lưu trữ json ngôn ngữ:
+            window.languageData = data;  
+
+            let languageCookieName = '.AspNetCore.Culture'; // Tên cookie mặc định của CookieRequestCultureProvider
+            let cookieValue = getCookie(languageCookieName);
+
+            // biến toàn cục lấy ngôn ngữ hiện tại:
+            let language = (cookieValue && cookieValue.includes("en-US")) ? "en-US" : "vi-VN";
+            window.currentLanguage = language;
+
+        },
+        error: function (error) {
+            console.error('Error fetching translated keys:', error);
+        }
+    });
+
+</script>

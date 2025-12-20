@@ -1,0 +1,100 @@
+﻿@using bivnConstant = BIVN.FixedStorage.Services.Common.API.Constants;
+
+<div id="InputStorageDetailModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true"
+     data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="custom_modal_header">
+                <div class="container_checkbox input_detail_status_controls">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="checkbox-temporary-save" checked>
+                        <label class="form-check-label temporary_save" for="checkbox-temporary-save">
+                            @Html.Translate("Lưu tạm thời")
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="checkbox-return-bwin" >
+                        <label class="form-check-label return_bwin" for="checkbox-return-bwin">
+                            @Html.Translate("Trả về Bwin")
+                        </label>
+                    </div>
+                </div>
+                <h4>@Html.Translate("Nhập kho")</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body py-0">
+                <div class="main_detail">
+                    <div class="top_detail border_bottom">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-4 modal_title_top">@Html.Translate("Người nhập"):</div>
+                                    <div id="input_detail_inputUserName" class="col-8 modal_content_top line_height_unset">Nguyễn Công Thành</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-4 modal_title_top">@Html.Translate("Thời gian"):</div>
+                                    <div id="input_detail_createdAt" class="col-8 modal_content_top line_height_unset">07/09/2023 10:00</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-5 modal_title_top">@Html.Translate("Tổng số linh kiện"):</div>
+                                    <div id="input_detail_total" class="col-7 modal_content_top line_height_unset">7.000</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-4 modal_title_top">@Html.Translate("Mã nhân viên"):</div>
+                                    <div id="input_detail_userCode" class="col-8 modal_content_top line_height_unset">M0009676</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-4 modal_title_top">@Html.Translate("Trạng thái"):</div>
+                                    <div id="input_detail_status" class="col-8 modal_content_top line_height_unset">Tạm thời</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-5 modal_title_top">@Html.Translate("Số linh kiện còn dư"):</div>
+                                    <div id="input_detail_remainingNumber" class="col-7 modal_content_top line_height_unset">2.000</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="input_storage_detail_form" class="mt-2">
+                        <table id="input_storage_detail_table" class="table table-responsive py-2 custom_table" width="100%">
+                            <thead>
+                                <tr class="title_table">
+                                    <th>@Html.Translate("Mã chỉ thị xuất kho")</th>
+                                    <th>@Html.Translate("Mã linh kiện")</th>
+                                    <th>@Html.Translate("Mã nhà cung cấp")</th>
+                                    <th>@Html.Translate("Vị trí")</th>
+                                    <th>@Html.Translate("Số lượng")</th>
+                                    <th>@Html.Translate("Ghi chú")</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="container-fluid d-flex justify-content-between">
+                    <button id="btnConfirmImport" class="btn btn_custom_primary w-100 mx-2">@Html.Translate("Xác nhận")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

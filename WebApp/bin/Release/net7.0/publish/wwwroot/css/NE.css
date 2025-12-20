@@ -1,0 +1,284 @@
+﻿/* school profile */
+#SchoolProfile10 {
+    position: relative;
+}
+
+.btnCloseSchoolProfile10 {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    border: 1px solid red;
+    width: 30px;
+    height: 26px;
+    text-align: center;
+    border-radius: 2px;
+    background: white;
+}
+
+#SchoolProfile11 {
+    position: relative;
+}
+
+.btnCloseSchoolProfile11 {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    border: 1px solid red;
+    width: 30px;
+    height: 26px;
+    text-align: center;
+    border-radius: 2px;
+    background: white;
+}
+
+#SchoolProfile12 {
+    position: relative;
+}
+
+.btnCloseSchoolProfile12 {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    border: 1px solid red;
+    width: 30px;
+    height: 26px;
+    text-align: center;
+    border-radius: 2px;
+    background: white;
+}
+
+/*CSS học bạ lớp 10:*/
+.col-sm-4.File {
+    position: relative;
+}
+
+.DeleteImage {
+    position: absolute;
+    right: 28px;
+    top: 5px;
+    background: white;
+    transform: scale(0.75);
+}
+
+button.btnDelete {
+    position: absolute;
+    right: 10px;
+    top: -2px;
+    width: 35px;
+    height: 30px;
+    background: white;
+    transform: scale(0.6);
+    font-weight: bold;
+}
+
+.UploadFile {
+    text-align: center;
+    margin-top: 10px;
+}
+
+button.btnUploadImageFile {
+    width: 100px;
+    font-size: 16px;
+}
+
+/*.AddMoreFile {
+                    position: absolute;
+                    bottom: 48px;
+                    right: -120px;
+                }*/
+
+button.btnAddMoreFile {
+    font-size: 16px;
+}
+
+.AddMoreFile {
+    width: 180px;
+    height: 32px;
+}
+
+.File img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.File {
+    margin-left: 15px;
+    margin-bottom: 30px;
+}
+
+input.checkStatus_NE {
+    border-radius: 50% !important;
+}
+
+input.noncheckStatus_NE {
+    border-radius: 50% !important;
+}
+/* school profile */
+
+/* HouseholdBook */
+#SchoolProfile10 {
+    position: relative;
+}
+
+.btnCloseSchoolProfile10 {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    border: 1px solid red;
+    width: 30px;
+    height: 26px;
+    text-align: center;
+    border-radius: 2px;
+    background: white;
+}
+
+#SchoolProfile11 {
+    position: relative;
+}
+
+.btnCloseSchoolProfile11 {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    border: 1px solid red;
+    width: 30px;
+    height: 26px;
+    text-align: center;
+    border-radius: 2px;
+    background: white;
+}
+
+#SchoolProfile12 {
+    position: relative;
+}
+
+.btnCloseSchoolProfile12 {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    border: 1px solid red;
+    width: 30px;
+    height: 26px;
+    text-align: center;
+    border-radius: 2px;
+    background: white;
+}
+
+/*CSS học bạ lớp 10:*/
+.col-sm-4.FileNEHouseholdBook {
+    position: relative;
+}
+
+.DeleteImage {
+    position: absolute;
+    right: 28px;
+    top: 5px;
+    background: white;
+    transform: scale(0.75);
+}
+
+button.btnDeleteFileNEHouseholdBook {
+    position: absolute;
+    right: 20px;
+    top: -2px;
+    width: 35px;
+    height: 30px;
+    background: white;
+    transform: scale(0.6);
+    font-weight: bold;
+}
+
+.UploadFileSchoolProfile {
+    text-align: center;
+    margin-top: 10px;
+}
+
+button.btnUploadNEHouseholdBook {
+    width: 100px;
+    font-size: 16px;
+}
+
+/*.AddMoreFileSchoolProfile {
+        position: absolute;
+        bottom: 48px;
+        right: -120px;
+    }*/
+
+button.btnAddMoreFileSchoolProfile {
+    font-size: 16px;
+}
+
+.AddMoreFileNEHouseholdBook {
+    width: 180px;
+    height: 32px;
+}
+
+.FileNEHouseholdBook img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.FileNEHouseholdBook {
+    margin-bottom: 30px;
+}
+/* HouseholdBook */
+
+/* other file */
+#btnCloseAdmission {
+    background: transperant;
+    padding: 4px 2em;
+    border: solid #f27125 1px;
+    font-size: 16px;
+    color: #f27125;
+}
+
+#btnSendFixAdmission {
+    background: #f27125;
+    background-color: none;
+    font-size: 16px;
+    border: none;
+    padding: 6px 20px;
+    color: white;
+}
+
+.hidebtn {
+    display: none;
+}
+
+.upload-file {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+button.btnDeleteAddFile {
+    position: absolute;
+    right: 10px;
+    top: -2px;
+    width: 35px;
+    height: 30px;
+    background: white;
+    transform: scale(0.6);
+    font-weight: bold;
+}
+
+.File img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.File {
+    margin-bottom: 30px;
+}
+/* other file */
+
+/* transaction */
+.modal-xl {
+    max-width: 1250px;
+}
+/* transaction */
+
+

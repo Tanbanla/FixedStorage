@@ -1,0 +1,269 @@
+﻿@using BIVN.FixedStorage.Services.Common.API.Dto.ErrorInvestigation
+@using BIVN.FixedStorage.Services.Common.API.Dto.Inventory
+<link href="./assets/css/ErrorInvestigationHistory.css" asp-append-version="true" rel="stylesheet" />
+@{
+    ViewBag.Title = Html.Translate("Lịch sử điều tra sai số");
+}
+
+@{
+    var currentUser = Context.UserFromContext();
+    var canViewErrorInvestigationHistory = Context.IsPromoter() || Context.IsInventory();
+    var inventoryNames = ViewBag.InventoryNames as IEnumerable<ListInventoryModel>;
+    var errorCategories = ViewBag.ErrorCategories as IEnumerable<ErrorCategoryManagementDto>;
+
+}
+
+<div id="ErrorInvestigationHistory">
+    <form id="ErrorInvestigationHistory_Search_Option_Form">
+        <div class="ErrorInvestigationHistory_Search_Option">
+            <div class="">
+                <div class="row justify-content-between mb-4">
+                    <div class="col">
+                        <label class="text_label">@Html.Translate("Đợt kiểm kê")</label>
+                        <select id="ErrorInvestigationHistory_InventoryName" class="ErrorInvestigationHistoryBackground" multiple name="native-select" placeholder="@Html.Translate("Chọn đợt kiểm kê")" data-search="true" data-silent-initial-value-set="true" hidden>
+                            @if (inventoryNames != null || inventoryNames.Any())
+                            {
+                                @foreach (var item in inventoryNames)
+                                {
+                                    <option value="@item.InventoryId">@item.InventoryName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="text_label">@Html.Translate("Plant")</label>
+                        <input id="ErrorInvestigationHistory_Plant" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập plant")..." />
+                    </div>
+                    <div class="col">
+                        <label class="text_label">@Html.Translate("WH.Loc")</label>
+                        <input id="ErrorInvestigationHistory_WHLoc" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập WH.Loc")..." />
+                    </div>
+                    <div class="col">
+                        <label class="text_label">@Html.Translate("Mã linh kiện")</label>
+                        <input id="ErrorInvestigationHistory_ComponentCode" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập mã linh kiện")..." />
+                    </div>
+                    <div class="col">
+                        <label class="text_label">@Html.Translate("Phân loại lỗi")</label>
+                        <select id="ErrorInvestigationHistory_ErrorCategory" class="ErrorInvestigationHistoryBackground" multiple name="native-select" placeholder="@Html.Translate("Chọn phân loại lỗi")" data-search="true" data-silent-initial-value-set="true" hidden>
+                            @* <option value="0">@Html.Translate("Kiểm kê sai")</option>
+                            <option value="1">@Html.Translate("Quy cách đóng gói")</option>
+                            <option value="2">@Html.Translate("Linh kiện lỗi")</option>
+                            <option value="3">@Html.Translate("Điều chỉnh nhầm")</option>
+                            <option value="4">@Html.Translate("BOM sai")</option>
+                            <option value="5">@Html.Translate("Dùng nhầm")</option>
+                            <option value="6">@Html.Translate("Khác")</option> *@
+                            @if (errorCategories != null || errorCategories.Any())
+                            {
+                                @foreach (var item in errorCategories)
+                                {
+                                    <option value="@item.ErrorCategoryKey">@item.ErrorCategoryName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="text_label">@Html.Translate("Tài khoản phân phát")</label>
+                        <input id="ErrorInvestigationHistory_AssigneeAccount" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập tài khoản phân phát")..." />
+                    </div>
+                    @* <div class="col">
+                        <label class="text_label">@Html.Translate("Mã linh kiện")</label>
+                        <input id="ErrorInvestigationHistory_ComponentCode" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập mã linh kiện")..." />
+                    </div>
+                    <div class="col">
+                        <label class="text_label">@Html.Translate("Trạng thái điều tra")</label>
+                        <select id="ErrorInvestigationHistory_Status" multiple name="native-select" class="ErrorInvestigationHistoryBackground" placeholder="Chọn khu vực" data-search="true" data-silent-initial-value-set="true" hidden>
+                            <option value="0">@Html.Translate("Chưa điều tra")</option>
+                            <option value="1">@Html.Translate("Đang điều tra")</option>
+                            <option value="2">@Html.Translate("Đã điều tra")</option>
+                        </select>
+                    </div> *@
+
+                    <div class="col-2 pe-0">
+                        <label class="text_label">@Html.Translate("Số lượng sai số")</label>
+                        <div class="row">
+                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 ErrorInvestigationHistory_ErrorQuantity_Qty_Start pe-0">
+                                <input id="ErrorInvestigationHistory_ErrorQuantity_Qty_Start" name="ErrorInvestigationHistory_ErrorQuantity_Qty_Start" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Từ")..." />
+                                <span id="ErrorInvestigationHistory_ErrorQuantity_Qty_Start_span-error" class="error-notification" />
+                            </div>
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 custom_arrow_right">
+                                <img src="./assets/images/icons/Muitensangphai.png" />
+                            </div>
+                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 ErrorInvestigationHistory_ErrorQuantity_Qty_End ps-0">
+                                <input id="ErrorInvestigationHistory_ErrorQuantity_Qty_End" name="ErrorInvestigationHistory_ErrorQuantity_Qty_End" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Đến")..." />
+                                <span id="ErrorInvestigationHistory_ErrorQuantity_Qty_End_span-error" class="error-notification" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-2 pe-0">
+                        <label class="text_label">@Html.Translate("Giá trị sai số")</label>
+                        <div class="row">
+                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 ErrorInvestigationHistory_ErrorMonney_Qty_Start pe-0">
+                                <input id="ErrorInvestigationHistory_ErrorMonney_Qty_Start" name="ErrorInvestigationHistory_ErrorMonney_Qty_Start" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Từ $")..." />
+                                <span id="ErrorInvestigationHistory_ErrorMonney_Qty_Start_span-error" class="error-notification" />
+                            </div>
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 custom_arrow_right">
+                                <img src="./assets/images/icons/Muitensangphai.png" />
+                            </div>
+                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 ErrorInvestigationHistory_ErrorMonney_Qty_End ps-0">
+                                <input id="ErrorInvestigationHistory_ErrorMonney_Qty_End" name="ErrorInvestigationHistory_ErrorMonney_Qty_End" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Đến $")..." />
+                                <span id="ErrorInvestigationHistory_ErrorQuantity_Qty_End_span-error" class="error-notification" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-between mb-3">
+                    @await Html.PartialAsync("~/Views/Shared/_commonSearch.cshtml")
+
+                    @* @if (canViewErrorInvestigationHistory)
+                    {
+                        <div class="container_modal_add">
+                            <button class="btn_add" type="button" id="btn_ErrorInvestigationHistory_UploadInvestigatingData">
+                                @Html.Translate("Upload dữ liệu điều chỉnh")
+                            </button>
+                            <button class="btn_add" type="button" id="btn_ErrorInvestigationHistory_Investigating">
+                                @Html.Translate("Điều chỉnh dữ liệu")
+                            </button>
+                            <button class="btn_add" type="button" id="btn_ErrorInvestigationHistory_SaveData">
+                                @Html.Translate("Lưu dữ liệu")
+                            </button>
+                        </div>
+
+                    } *@
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+
+    <div class=" ErrorInvestigationHistory_Container mt-5">
+        <div class="container_top_table">
+            <button class="export_file ErrorInvestigationHistory_ExportExcel">
+                <div class="distance-icon-text">
+                    <img src="./assets/images/icons/export_excel.png" />
+                </div>
+                <h5>@Html.Translate("Xuất file")</h5>
+            </button>
+        </div>
+
+        <table id="Error_Investigation_History_DataTable" class="ErrorInvestigationHistory_DataTable table table-responsive custom_table" style="width:100%">
+            <thead>
+                <tr class="title_table">
+                    <th class="th-sm">
+                        STT
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Đợt kiểm kê")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Plant")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("WH Loc.")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Mã linh kiện")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Vị trí")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Số lượng kiểm kê")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Số lượng hệ thống")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Chênh lệch")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Giá trị")
+                    </th>
+
+                    @* <th class="th-sm">
+                        @Html.Translate("Đơn giá")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Chênh lệch ABS")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Giá tiền (ABS)")
+                    </th> *@
+                    <th class="th-sm">
+                        @Html.Translate("Tài khoản phân phát")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Số lượng điều chỉnh")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Phân loại lỗi")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Nguyên nhân sai số")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Người điều tra")
+                    </th>
+                    @* <th class="th-sm">
+                        @Html.Translate("Tổng số lượng điều tra")
+                    </th> *@
+                    <th class="th-sm">
+                        @Html.Translate("Trạng thái")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Lịch sử điều tra")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Lịch sử các đợt kiểm kê")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Tên linh kiện")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Lịch sử điều chỉnh")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Ghi chú")
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @*<tr>
+                <td><input type="checkbox" id="Component_check" /></td>
+                <td>1</td>
+                <td>098765432</td>
+                <td>Tên linh kiện 1</td>
+                <td>Tên nhà cung cấp 1</td>
+                <td>6T5F3-14-1</td>
+                <td>200</td>
+                <td>5000</td>
+
+                <td>
+                <div class="Controls_Container">
+                <div class="ViewDetail_Controls mx-3">
+                <a class="ErrorInvestigationHistory_ViewDetail_Controls" data-id="420B3623-3EBD-46CD-3F5A-08DBC9532CFB">Xem chi tiết</a>
+                </div>
+                <div class="EditErrorInvestigationHistory_Controls mx-3">
+                <i class="fas fa-pencil-alt"></i>
+                </div>
+                </div>
+                </td>
+                </tr>*@
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* @await Html.PartialAsync("~/Views/Shared/Common/_ListErrorInvestigationDocumentDetailModal.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Common/_ErrorInvestigationConfirmModal.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Common/_InventoryDocumentDetailModal.cshtml") *@
+
+@await Html.PartialAsync("~/Views/Shared/Common/_ErrorInvestigationHistoryInventoriesModal.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Common/_ErrorInvestigationHistoryModal.cshtml")
+
+<script asp-append-version="true" defer src="./assets/js/ErrorInvestigationHistory.js"></script>

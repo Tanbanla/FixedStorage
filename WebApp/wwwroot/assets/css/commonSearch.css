@@ -1,0 +1,35 @@
+.container_search {
+  display: flex;
+}
+
+.container_search .btn_reset {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #E4E4E4;
+  font-weight: 400;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #F1F0F4;
+  padding: 12px;
+  color: #333333;
+}
+
+.container_search .btn_search {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #0d2ea0;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 12px;
+}
+
+.container_search .icon_reset,
+.container_search .icon_search {
+  padding-right: 5px;
+}

@@ -1,0 +1,37 @@
+﻿<div class="InventoryAssignment_Employee">
+    <div class="InventoryAssignment_feature_container">
+        <button class="InventoryAssignment_ExportExcel">
+            <div class="InventoryAssignment_ExportExcel_Images">
+                <img src="./assets/images/icons/export_excel.png" />
+            </div>
+            <h5 class="InventoryAssignment_ExportExcel_Title txt-light-blue font-size-16">@Html.Translate("Xuất file")</h5>
+        </button>
+    </div>
+    <table id="InventoryAssignment_DataTable" class="table custom_table table-responsive"  style="width:100%">
+        <thead>
+            <tr class="title_table">
+                <th class="th-sm">
+                    STT
+                </th>
+                <th class="th-sm">
+                    @Html.Translate("Người thao tác")
+                </th>
+                <th class="th-sm">
+                    @Html.Translate("Vai trò")
+                </th>
+                <th class="th-sm">
+                    @Html.Translate("Khu vực")
+                </th>
+                <th class="th-sm">
+                    @Html.Translate("Nhà máy")
+                </th>
+                <th class="th-sm">
+                    @Html.Translate("Phòng ban")
+                </th>
+            </tr>
+        </thead>
+        <tbody id="employee_table">
+            
+        </tbody>
+    </table>
+</div>

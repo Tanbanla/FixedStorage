@@ -1,0 +1,282 @@
+﻿@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-Thin.ttf);
+    font-style:normal;
+    font-weight:100;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-ThinItalic.ttf);
+    font-style: italic;
+    font-weight: 100;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-Light.ttf);
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-LightItalic.ttf);
+    font-style: italic;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-Regular.ttf);
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-Regular.ttf);
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-Medium.ttf);
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-MediumItalic.ttf);
+    font-style: italic;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-Bold.ttf);
+    font-style: normal;
+    font-weight: 700;
+    font-weight:bold;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-BoldItalic.ttf);
+    font-style: italic;
+    font-weight: 700;
+    font-weight: bold;
+}
+
+
+body {
+    font-family: Roboto !important;
+    font-size: 16px !important;
+}
+   
+
+.menu-title 
+{    
+    font-size: 16px !important;    
+}
+
+#sidebar-menu ul li a, 
+ul.sub-menu li a 
+{
+    font-size: 16px !important;
+}
+
+.form-control,
+.form-select,
+.btn,
+tbody th,
+.page-title-box h4,
+.card-title,
+.dropdown-menu,
+.parsley-errors-list > li 
+{
+    font-size: 1rem !important;
+}
+
+body[data-sidebar=dark] .menu-title,
+#sidebar-menu ul li ul.sub-menu li a,
+#sidebar-menu ul li a {
+    /*color: aqua !important;*/
+}
+
+/*Display date picker in modal*/
+.datepicker {
+    z-index: 1600 !important;  /*has to be larger than 1050 */
+}
+
+.btn-responsive-size {
+    padding: 5px;
+    width: 100%;
+}
+
+.btn-medium-size {
+    padding: 5px;
+    width: 150px;
+}
+
+.btn-small-size
+{
+    padding: 5px;
+    width: max-content;
+}
+
+.asterisk-symbol
+{
+    color:red;
+    font-size: 12px !important;
+}
+
+/*.custom-datatable thead,
+.custom-datatable tr {
+    margin-bottom: 1rem;
+    color: #212529;
+    border: 1px solid #a4a1a1;
+}
+*/
+
+.custom-datatable th, .custom-datatable td {
+    border-top: 1px solid #dee2e6;
+}
+
+.custom-datatable thead th {
+    border-bottom: 2px solid #dee2e6;
+}
+
+.text-error {
+    font-size: 13px !important;
+    height: 40px;    
+    /*margin-top: 0.25rem;*/
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity)) !important;
+}
+
+.text-error.small-height 
+{
+    height: 26px !important;
+}
+
+.small-margin-bottom 
+{
+    height: 20px !important;
+}
+
+.padding-zero {
+    padding-bottom: 0 !important;
+}
+
+.scheduler-border.bottom {
+    padding-bottom: 0 !important;    
+}
+
+.scheduler-border.bottom.enditem 
+{
+    margin-bottom: 0 !important;
+}
+
+/* --- Remove arrows/spinners from input type number ---*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.datepicker-input {
+    border-radius: 0.25rem !important;
+    background: url(/Image/calendar-icon.svg) right 7px center no-repeat;
+}
+
+/*.form-switch.form-switch-large-size .form-check-input {
+    height: 2.5rem;
+    width: calc(4rem + 0.75rem);
+    border-radius: 5rem;
+}*/
+
+.custom-check-label{
+    padding-left: 10px;
+}
+.table-responsive::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #fff;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: #D5DCE5;
+    border-radius: 25px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+.checked_task {
+    color: #17AE5C;
+}
+
+.unchecked_task {
+    color: #6A707E;
+}
+
+.role_uncheck {
+    color: #cfcfcf;
+}
+
+.slideon input:checked ~ .slideon-slider {
+    background-color: #17AE5C;
+}
+
+.form-check-input:checked {
+    background-color: #17AE5C;
+    border-color: #17AE5C;
+}
+#sidebar-menu ul.metismenu.mm-show > li.mm-active > a {
+    background-color: #0D2EA0;
+    color: #FFFFFF!important;
+}
+#sidebar-menu ul.metismenu.mm-show > li.mm-active > a > svg > path {
+    fill: #FFFFFF!important;
+}
+
+/*.mm-active .active {
+    font-weight: 500;
+    color: #0D2EA0!important;
+}*/
+.arrow-right {
+    background: url("./assets/images/table_icons/arrow-right.svg") left 7px center no-repeat;
+}
+.modal-header {
+    border-bottom: hidden;
+    padding: 1rem 1rem 0.5rem;
+}
+.lbl-small{
+    font-size:12px;
+    margin-bottom:0.25rem;
+
+}
+.lbl-color {
+    color: #495057
+}
+.lbl-light {
+    font-weight: 400;
+}
+.lbl-color-disabled {
+    color: #87868C;
+}
+.modal-body {
+    padding: 1rem 2rem 0.5rem 2rem;
+}
+
+.vertical-collpsed .vertical-menu{
+    position: fixed !important;
+}

@@ -1,0 +1,98 @@
+﻿img#prizeScholarshipImage2 {
+    width: 165px;
+    height: 170px;
+}
+img.NationalImage2 {
+    width: 250px;
+    height: 170px;
+}
+
+img.NationalImage3 {
+    width: 250px;
+    height: 170px;
+}
+
+
+img.ScoreGPAImage2 {
+    width: 250px;
+    height: 170px;
+}
+
+img.ScoreGPAImage3 {
+    width: 250px;
+    height: 170px;
+}
+
+
+select#ExamScholarship2 {
+    width: 352px;
+}
+
+select#ExamScholarship3 {
+    width: 352px;
+}
+
+
+select.Width352 {
+    width: 352px;
+}
+input.Width352 {
+    width: 352px;
+}
+.hideOtherFile2_Admission_Eroll2 img {
+    width: 220px;
+    height: 170px;
+}
+.hideOtherFile2_Admission_Eroll2 {
+    padding-bottom: 30px;
+}
+.hideOtherFileScholarship_Eroll2 {
+    padding-bottom: 30px;
+}
+
+.hideOtherFileScholarship_Eroll2 img {
+    width: 165px;
+    height: 170px;
+}
+
+.hideOtherFile2_Admission_Eroll3 {
+    padding-bottom: 30px;
+}
+
+    .hideOtherFile2_Admission_Eroll3 img {
+        width: 165px;
+        height: 170px;
+    }
+.hideOtherFileScholarship_Eroll3 {
+    padding-bottom: 30px;
+}
+
+    .hideOtherFileScholarship_Eroll3 img {
+        width: 165px;
+        height: 170px;
+    }
+
+img#prizeScholarshipImage3 {
+    width: 165px;
+    height: 170px;
+}
+
+input#SubmissionDate_Scholarship2 {
+    display: block;
+    width: 100%;
+}
+
+input#SubmissionDate_REG2 {
+    display: block;
+    width: 100%;
+}
+
+input#SubmissionDate_Scholarship3 {
+    display: block;
+    width: 100%;
+}
+
+input#SubmissionDate_REG3 {
+    display: block;
+    width: 100%;
+}

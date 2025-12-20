@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Identity.Background": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

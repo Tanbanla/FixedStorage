@@ -1,0 +1,219 @@
+﻿body{
+    background-color: white;
+}
+
+/*Responsive*/
+@media (max-width: 500px) {
+    .AuditTargetDetail_ComponentInfo {
+        padding: 16px 0 10px 0;
+    }
+
+    label.AuditTargetDetail_ComponentInfo_left {
+        font-size: 14px;
+        font-weight: 400;
+        min-width: 100px;
+        color: #333333;
+    }
+
+    .AuditTargetDetail_DataTable_Container_AddColumn {
+        text-align: right;
+    }
+
+    button.AddNewRow_btn {
+        background: none;
+        border: none;
+        color: #17AE5C;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    input.QuantityPerBom, input.QuantityOfBom {
+        border: none;
+        min-width: none;
+        width: 100%;
+        font-size: 24px !important;
+        text-overflow: ellipsis;
+        padding: 16px 12px;
+        font-weight: 500;
+        color: #333333;
+    }
+
+        input.QuantityPerBom::placeholder, input.QuantityOfBom::placeholder{
+            font-size: 14px;
+        }
+
+        .AuditTargetDetail_DataTable_Delete {
+            background: #0D2EA0;
+            border: none;
+            text-align: center;
+        }
+    #AuditTargetDetail_DataTable th {
+        border: 1px solid #E4E4E4;
+        border-bottom: none;
+        color: #333333;
+    }
+
+    #AuditTargetDetail_DataTable tfoot td.datatable_tfoot_container {
+        border: 1px solid #E4E4E4;
+        border-top: none;
+        color: #333333;
+    }
+
+    table#AuditTargetDetail_DataTable {
+        width: 100%;
+    }
+        table#AuditTargetDetail_DataTable thead tr {
+            background: #F1F0F4;
+        }
+
+    .Quantity_Container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Quantity_Container_Text, .Quantity_Container_Value {
+        font-size: 24px;
+        font-weight: 700;
+        color: #0D2EA0;
+    }
+        .Quantity_Container_Text{
+            padding-left: 20px;
+        }
+        .Quantity_Container_Value {
+            padding-right: 20px;
+        }
+
+    .AuditTargetDetail_Comment_TextArea .Comment_Here{
+        padding: 12px 8px;
+        border-radius: 4px;
+        background-color: #F1F0F4;
+        border: 1px solid #E4E4E4;
+        outline: none;
+    }
+
+    .AuditTargetDetail_History p {
+        font-size: 14px;
+        color: #333333;
+    }
+
+    .AuditTargetDetail_History_Item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        margin-bottom: 16px;
+        box-shadow: 2px 2px 8px 0px #00000014;
+    }
+
+    .AuditTargetDetail_History_Item_Right button {
+        border: none;
+        background-color: white;
+    }
+
+    .AuditTargetDetail_Buttons {
+        padding: 16px 0 24px 0;
+        box-shadow: 0px -2px 4px 0px #0000000A;
+    }
+
+    .AuditTargetDetail_Buttons .FailAudit_Btn {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 16px;
+        border-radius: 4px;
+        background-color: #F1F0F4;
+        border: 1px solid #DCDCDC;
+        font-weight: 500;
+        font-size: 18px;
+        color: #333333;
+        line-height: 21.09px;
+    }
+
+        .AuditTargetDetail_Buttons .SuccessAudit_Btn, .AuditTargetDetail_Buttons .UpdateAudit_Btn {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 16px;
+            border-radius: 4px;
+            background-color: #17AE5C;
+            border: none;
+            font-weight: 500;
+            font-size: 18px;
+            color: #FFFFFF;
+            line-height: 21.09px;
+        }
+    .border_is_delete {
+        border: 1px solid #E4E4E4;
+    }
+
+    .border_is_delete_left {
+        border-top: 1px solid #0D2EA0 !important;
+        border-left: 1px solid #0D2EA0;
+        border-bottom: 1px solid #0D2EA0;
+        border-right: 1px solid #E4E4E4;
+    }
+
+    .border_is_delete_right {
+        border-top: 1px solid #0D2EA0 !important;
+        border-right: 1px solid #0D2EA0;
+        border-bottom: 1px solid #0D2EA0;
+        border-left: 1px solid #E4E4E4;
+    }
+
+    .pointer-events {
+        pointer-events: none;
+    }
+    .opacity-0{
+        opacity: 0;
+    }
+    .opacity-1{
+        opacity: 1;
+    }
+    .opacity-haftpart-1{
+        opacity: 0.5;
+    }
+
+    .display-none {
+        display: none;
+    }
+
+    .color-0D2EA0 {
+        color: #0D2EA0;
+        font-weight: 500;
+    }
+
+    .color-87868C {
+        color: #87868C;
+        font-weight: 500;
+    }
+    .color-F3A600 {
+        color: #F3A600;
+        font-weight: 500;
+    }
+    .color-ED7200 {
+        color: #ED7200;
+        font-weight: 500;
+    }
+    .color-17AE5C {
+        color: #17AE5C;
+        font-weight: 500;
+    }
+    .color-E60000 {
+        color: #E60000;
+        font-weight: 500;
+    }
+    .color-5092FC {
+        color: #5092FC;
+        font-weight: 500;
+    }
+    .color-333333 {
+        color: #333333;
+        font-weight: 500;
+    }
+    .white-space {
+        white-space: pre-line;
+    }
+}

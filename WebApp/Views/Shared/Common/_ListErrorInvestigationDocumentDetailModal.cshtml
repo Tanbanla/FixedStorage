@@ -1,0 +1,117 @@
+﻿<!--ViewDetailUser Modal -->
+<div class="modal fade table_controls" id="ErrorInvestigationDocumentModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="ErrorInvestigationDocumentModalLabel"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+    <div class="modal-dialog modal-xl modal-lg modal-md modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="ErrorInvestigationDocument_title">
+                    <h4>@Html.Translate("Danh sách phiếu cần điều tra")</h4>
+                </div>
+                <button type="button" class="btn-close" id="closeErrorInvestigationDocumentModal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="wrapper_table_result">
+                    <div class="ErrorInvestigationDocument row">
+                        <div class="col">
+                            @* <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <h5 class="label-bold">@Html.Translate("TOP"): </h5>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                    <h5 id="ErrorInvestigationDocument_Top_Detail" class="">1</h5>
+                                </div>
+                            </div> *@
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <h5 class="label-bold">@Html.Translate("Mã linh kiện"): </h5>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                    <h5 id="ErrorInvestigationDocument_ComponentCode_Detail"></h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <h5 class="label-bold">@Html.Translate("Vị trí"): </h5>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                    <h5 id="ErrorInvestigationDocument_Position_Detail"></h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <h5 class="label-bold">@Html.Translate("Số lượng kiểm kê"): </h5>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                    <h5 id="ErrorInvestigationDocument_TotalQuantity_Detail"></h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <h5 class="label-bold">@Html.Translate("Số lượng hệ thống"): </h5>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                    <h5 id="ErrorInvestigationDocument_AccountQuantity_Detail"></h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <h5 class="label-bold">@Html.Translate("Sai số"): </h5>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                    <h5 id="ErrorInvestigationDocument_ErrorQuantity_Detail"></h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <h5 class="label-bold">@Html.Translate("Giá trị"): </h5>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                    <h5 id="ErrorInvestigationDocument_ErrorMoney_Detail"></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrapper_table_detail">
+                    <div>
+                        <table id="ErrorInvestigationDocumentTable" class="ErrorInvestigationDocumentTable table table-bordered custom_table" style="width:100%">
+                            <thead>
+                                <tr class="title_table">
+                                    <th style="width: 5%">STT</th>
+                                    <th>@Html.Translate("Số phiếu")</th>
+                                    <th style="width: 20%">@Html.Translate("Model code")</th>
+                                    <th style="width: 20%">@Html.Translate("Mã linh kiện")</th>
+                                    <th style="width: 20%">@Html.Translate("BOM")</th>
+                                    <th style="width: 20%">@Html.Translate("Số lượng kiểm kê")</th>
+                                    <th style="width: 20%">@Html.Translate("Tài khoản phân phát")</th>
+                                    <th style="width: 20%">@Html.Translate("Vị trí")</th>
+                                    <th style="width: 20%">@Html.Translate("Model đính kèm")</th>
+                                    <th style="width: 20%">@Html.Translate("Xem chi tiết")</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="ErrorInvestigationDocument-Button">
+                    <button class="btn-ErrorInvestigationDocument">@Html.Translate("Điều tra")</button>
+                </div>
+            </div>
+           
+
+        </div>
+    </div>
+</div>
+

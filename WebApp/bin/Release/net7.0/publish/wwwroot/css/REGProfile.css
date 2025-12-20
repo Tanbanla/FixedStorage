@@ -1,0 +1,1015 @@
+﻿
+.titleUploadFileTalentTest {
+    text-align: center;
+    width: 310px;
+}
+.hidePassPort{
+    display:none;
+}
+input.checkStatus {
+    border-radius: 50% !important;
+}
+input.checkStatus_HB {
+    border-radius: 50% !important;
+}
+input.checkStatus2 {
+    border-radius: 50% !important;
+}
+input.checkStatus_HB2 {
+    border-radius: 50% !important;
+}
+input#cb-tab-1_Eroll2 {
+    font-size: 22px;
+}
+
+input#cb-tab-2_Eroll2 {
+    font-size: 22px;
+}
+
+input.checkStatus_HBCT2 {
+    font-size: 22px !important;
+    margin-left: 10px;
+    border-radius: 50% !important;
+}
+input.checkStatus_HBT2 {
+    font-size: 22px !important;
+    margin-left: 10px;
+    border-radius: 50% !important;
+}
+
+input.checkStatus3 {
+    border-radius: 50% !important;
+}
+
+input.checkStatus_HB3 {
+    border-radius: 50% !important;
+}
+
+input#cb-tab-1_Eroll3 {
+    font-size: 22px;
+}
+
+input#cb-tab-2_Eroll3 {
+    font-size: 22px;
+}
+
+input.checkStatus_HBCT3 {
+    font-size: 22px !important;
+    margin-left: 10px;
+    border-radius: 50% !important;
+}
+
+input.checkStatus_HBT3 {
+    font-size: 22px !important;
+    margin-left: 10px;
+    border-radius: 50% !important;
+}
+
+input.checkStatus_HBCT {
+    border-radius: 50% !important;
+}
+input.checkStatus_HBT {
+    border-radius: 50% !important;
+}
+p.ErrorMessagePassPort {
+    color: red;
+}
+.InlineBlockMaDinhDanh {
+    width: 77%;
+    display: inline-flex;
+}
+input.rdoPassportNational {
+    font-size: 22px;
+    background-size: 30px;
+}
+label.titlePassPort {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+input#rdoTalentTest {
+    font-size: 22px;
+}
+
+input#rdoTalentTest2 {
+    font-size: 22px;
+}
+input#rdoTalentTest3 {
+    font-size: 22px;
+}
+label.LabelTalentTest {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+    .titleUploadFileTalentTest p {
+        margin-top: 10px;
+    }
+.frontSize16{
+    font-size:16px;
+}
+input#TopIndexAdmission {
+    width: 384px;
+}
+.margintop32 {
+    margin-top: 32px;
+}
+.widthScoreTHPT {
+    width: 288px;
+}
+.option-list-Eroll {
+    color: #111111;
+    text-align: center !important;
+    cursor: pointer;
+    background: #fff;
+    font-weight: bold;
+    height: 56px;
+    padding: 15px 3px;
+}
+
+    .option-list-Eroll:hover {
+        border: 1px #0D2EA0 solid;
+        background-color: #0D2EA0;
+        color: #fff;
+    }
+.option-Eroll-selected {
+    border: 1px #0D2EA0 solid;
+    background-color: #0D2EA0;
+    color: #fff;
+}
+
+    .option-Eroll-selected:hover {
+        border: 1px #5067d4 solid;
+        background-color: #5067d4;
+    }
+
+.ImageFrontCCCD {
+    position: relative;
+}
+.tab-direct-enroll {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.TabEroll {
+    width: 295px;
+}
+
+#option-enroll1 {
+    width: 100px;
+    border-radius: 8px 0 0 8px;
+}
+
+div#option-enroll2 {
+    width: 100px;
+}
+
+div#option-enroll3 {
+    width: 103px;
+    border-radius: 0 8px 8px 0;
+}
+
+.ImageGraduateUniversity {
+    text-align: center;
+}
+
+    .ImageGraduateUniversity img {
+        width: 252px;
+        height: 180px;
+    }
+button#btnFrontCCCD,button#btnFrontCCCD_NE {
+    position: absolute;
+    bottom: 10px !important;
+    right: 40px !important;
+}
+select#CCCDType,select#CCCDType_NE {
+    width: 400px;
+    height: auto;
+}
+
+.ImageNotCCCD {
+    text-align: center;
+}
+
+    .ImageNotCCCD img {
+        width: 252px;
+        height: 190px;
+    }
+
+.ImageBackCCCD {
+    position: relative;
+}
+
+button#btnBackCCCD,button#btnBackCCCD_NE {
+    position: absolute;
+    bottom: 10px !important;
+    right: 40px !important;
+}
+.inlineBlock label {
+    display: inline-block;
+    width: 150px;
+}
+
+input.inputInlineBlock {
+    width: 77%;
+    display: inline-block;
+}
+.inlineBlock {
+    margin-bottom: 10px;
+}
+.CardImageAdmission {
+    width: 200px;
+    height: 210px;
+    margin-top:90px;
+}
+
+    .CardImageAdmission img {
+        width: 165px;
+        height: 210px;
+    }
+
+.btnUploadFile {
+    width: 165px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.btnUploadFile_NE {
+    width: 165px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.CardImage {
+    margin-left: 60px;
+}
+
+select#SchoolRankType_REG {
+    width: 352px;
+}
+
+.GetSchoolRank.mt-4 {
+    text-align:center;
+}
+
+input#ProvinceSC_REG {
+    width: 384px;
+}
+
+input#TopSchoolRank_REG {
+    width: 384px;
+}
+
+input#TopSC_REG {
+    width: 384px;
+}
+
+button#btnUpdateForm {
+    width: 124px;
+    height: auto;
+}
+
+button#btnCancelForm {
+    width: 124px;
+    height: auto;
+}
+
+.btn.ActionForm {
+    width: 100%;
+    text-align: right;
+}
+
+.inlineBlockCheckRadio p {
+    display: inline-block;
+}
+
+.checkRadio {
+    display: inline-block;
+    font-size: 22px;
+    margin-left: 15px;
+}
+img.OtherPicture_Admission {
+    width: 165px;
+    height: 170px;
+}
+
+.hideOtherFile2_Admission {
+    padding-bottom: 30px;
+}
+.Images-Fee {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.buttonFeeAdmission {
+    text-align: center;
+}
+.Images-Register {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.buttonRegister{
+    text-align:center;
+}
+input#cb-tab-1 {
+    font-size: 22px;
+}
+
+.TitleScholarshipStraight label {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+input#rdoScholarship_Straight {
+    font-size: 23px;
+    margin-left: 20px;
+}
+
+input#cb-tab-2 {
+    font-size: 23px;
+}
+
+.TitleScholarshipExam label {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+input#rdoScholarship_Exam {
+    font-size: 23px;
+    margin-left: 20px;
+}
+.prizeScholarshipImage {
+    margin: 25px 0;
+    width: 50%;
+    text-align: center;
+}
+
+img#prizeScholarshipImage {
+    width: 165px;
+    height: 170px;
+}
+
+select#ExamScholarship {
+    width: 352px;
+}
+#imageFrontCCCD, #imageFrontCCCD_NE {
+    width: 351px;
+    height: 207px;
+}
+#imageBackCCCD, #imageBackCCCD_NE {
+    width: 351px;
+    height: 207px;
+}
+p.ErrorMessageCCCD {
+    font-size: 14px;
+    margin-top: 25px;
+    color: red;
+}
+
+p.hideCCCD {
+    display: none;
+}
+
+.TitleCertificate {
+    display: inline-block;
+    width: 186px;
+}
+
+.titleUploadFile {
+    margin-top: 95px;
+}
+.titleUploadFile-GPA {
+    text-align: center;
+    margin-top: 10px;
+}
+.Images-Fee img {
+    width: 165px;
+    height: 150px;
+}
+
+
+.Images-Register img {
+    width: 165px;
+    height: 150px;
+}
+.Fee_Scholarship {
+    text-align: center;
+}
+
+.RegisterScholarship {
+    text-align: center;
+}
+img.OtherPictureScholarship {
+    width: 165px;
+    height: 170px;
+}
+img.NationalImage {
+    width: 250px;
+    height: 170px;
+}
+img.ScoreGPAImage {
+    width: 250px;
+    height: 170px;
+}
+.hideOtherFileScholarship {
+    padding-bottom: 30px;
+}
+input.error {
+    color: black;
+}
+label {
+    font-size: 16px;
+    color: #333333;
+}
+p.titleCCCD {
+    font-size: 16px;
+    color: #333333;
+}
+.mr25 {
+    margin-right: -35px;
+}
+
+input.widthSchoolRank120 {
+    width: 120px;
+}
+
+button#btnGetSchoolRank {
+    width: 185px;
+}
+#InfoStudent_REG label.error {
+    width: 120px;
+    height: auto;
+}
+
+#InfoSchool_REG label.error {
+    width: 120px;
+    height: auto;
+}
+
+#InfoCallStudent_REG label.error {
+    width: 200px;
+    height: auto;
+}
+
+#Identification_REG label.error {
+    height: auto;
+}
+
+input#SubmissionDate_Scholarship {
+    display: block;
+    width: 100%;
+}
+
+input#ReceptDate_Scholarship {
+    display: block;
+    width: 100%;
+}
+
+input#ApproveDate_Scholarship {
+    display: block;
+    width: 100%;
+}
+
+input#PaymentDate_Scholarship {
+    display: block;
+    width: 100%;
+}
+
+input#PaymentDate_REG {
+    display: block;
+    width: 100%;
+}
+
+input#SubmissionDate_REG {
+    display: block;
+    width: 100%;
+}
+
+input#ReceivedDate_REG {
+    display: block;
+    width: 100%;
+}
+
+input#ApproveDate_REG {
+    display: block;
+    width: 100%;
+}
+
+.InputSchoolRank {
+    width: 260px;
+    height: auto;
+}
+
+.clickSchoolRank {
+    margin-top: 30px;
+    text-align: center;
+}
+
+input#SchoolRankCode {
+    width: 352px;
+    height: 44px;
+}
+
+select.widthInfoAdmission400 {
+    width: 376px;
+    height: auto;
+}
+
+input.widthSchoolRank400 {
+    width: 400px;
+    height: auto;
+}
+.hide_error_schoolrank{
+    display:none !important;
+}
+.error_schoolrank1, .error_schoolrank2, .error_schoolrank3 {
+    font-size: 14px;
+    color: red;
+    width: 390px;
+    display:block;
+}
+.error_HocBa_Generation_Enroll1, .error_HocBa_Generation_Enroll2, .error_HocBa_Generation_Enroll3 {
+    font-size: 14px;
+    color: red;
+    width: 390px;
+    display: block;
+}
+.error_ThiTHPT_Generation_Enroll1, .error_ThiTHPT_Generation_Enroll2, .error_ThiTHPT_Generation_Enroll3 {
+    font-size: 14px;
+    color: red;
+    width: 390px;
+    display: block;
+}
+.error_schoolrank_THPT1, .error_schoolrank_THPT2, .error_schoolrank_THPT3 {
+    font-size: 14px;
+    color: red;
+    width: 390px;
+    display: block;
+}
+.error_schoolrank_HB1, .error_schoolrank_HB2, .error_schoolrank_HB3 {
+    font-size: 14px;
+    color: red;
+    width: 390px;
+    display: block;
+}
+/*CSS cho phần Flickity:*/
+#SchoolProfileAdmission img {
+    cursor: pointer;
+}
+/*CSS cho phần so sánh ảnh hoc bạ:*/
+.clickImage img {
+    cursor: pointer;
+}
+
+div#CompareSchoolRank {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #333333c9;
+    z-index: 99999;
+}
+
+div#ContentCompareSchoolRank {
+    width: 90%;
+    margin: auto;
+    height: 95%;
+    position: relative;
+    top: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.ExitCompareSchoolRank {
+    text-align: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+label.titleBold {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+label.titleSmall {
+    font-size: 14px;
+}
+
+.padingleftright {
+    padding: 0 20px;
+}
+
+/* CSS Flexkity: */
+
+.carousel {
+    background: #FAFAFA;
+    margin-bottom: 20px;
+}
+
+.carousel-cell {
+    width: 66%;
+    max-height: 350px;
+    margin-right: 10px;
+    border-radius: 5px;
+    counter-increment: carousel-cell;
+}
+
+    /* cell number */
+    .carousel-cell img:before {
+        display: block;
+        text-align: center;
+        content: counter(carousel-cell);
+        line-height: 200px;
+        font-size: 80px;
+        color: white;
+    }
+
+.button {
+    display: inline-block;
+    padding: 10px 22px;
+    font-size: 18px;
+    border: 1px solid #DDD;
+    border-radius: 6px;
+    background-color: #FAFAFA;
+    background-image: linear-gradient(hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.1))
+}
+
+    .button:hover {
+        background-color: white;
+        border-color: #BBB;
+        cursor: pointer;
+    }
+
+    .button:focus {
+        outline: thin dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+        background-color: white;
+    }
+
+    .button:active {
+        background-color: #EEE;
+        box-shadow: inset 0 2px 10px hsla(0, 0%, 0%, 0.3);
+    }
+
+    .button.is-selected {
+        background-color: #09F;
+        color: white;
+    }
+/* ---- button-group ---- */
+
+.button-group {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+    .button-group:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    .button-group .button {
+        float: left;
+        border-radius: 0;
+        border-right-width: 0;
+    }
+
+        .button-group .button:first-child {
+            border-radius: 6px 0 0 6px;
+        }
+
+        .button-group .button:last-child {
+            border-radius: 0 6px 6px 0;
+            border-right-width: 1px;
+        }
+
+/* ---- button-row ---- */
+
+.button-row {
+    text-align: center;
+}
+
+.carousel img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.flickity-viewport {
+    overflow: scroll !important;
+    overflow-x: hidden !important;
+    position: relative;
+    touch-action: pan-y;
+}
+
+/*Đợt 2*/
+/*Đợt 2*/
+
+#SchoolProfileAdmission_Enroll2 img {
+    cursor: pointer;
+}
+
+div#CompareSchoolRank_Enroll2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #333333c9;
+    z-index: 99999;
+}
+
+div#ContentCompareSchoolRank_Enroll2 {
+    width: 90%;
+    margin: auto;
+    height: 95%;
+    position: relative;
+    top: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.ExitCompareSchoolRank_Enroll2 {
+    text-align: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+
+/*Đợt 3:*/
+/*Đợt 3:*/
+#SchoolProfileAdmission_Enroll3 img {
+    cursor: pointer;
+}
+
+div#CompareSchoolRank_Enroll3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #333333c9;
+    z-index: 99999;
+}
+
+div#ContentCompareSchoolRank_Enroll3 {
+    width: 90%;
+    margin: auto;
+    height: 95%;
+    position: relative;
+    top: 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.ExitCompareSchoolRank_Enroll3 {
+    text-align: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+
+/*End Flickity:*/
+
+/*Ưu tiên thế hệ 1:*/
+.col-md-3.ml30 {
+    margin-left: -100px;
+    margin-top: 32px;
+}
+
+@media only screen and (max-width: 1700px) {
+    
+
+    input.widthSchoolRank400 {
+        width: 300px;
+        height: auto;
+    }
+    select.widthInfoAdmission400 {
+        width: 300px;
+        height: auto;
+    }
+    button#btnBackCCCD,  button#btnBackCCCD_NE {
+        right: 10px !important;
+    }
+
+    button#btnFrontCCCD,button#btnFrontCCCD_NE {
+        right: 10px !important;
+    }
+
+    img#imageFrontCCCD {
+        width: 325px;
+        height: 175px;
+    }
+
+    img#imageBackCCCD {
+        width: 325px;
+        height: 175px;
+    }
+
+    input.widthSchoolRank120 {
+        width: 70px;
+        height: 33px;
+    }
+
+    input.inputInlineBlock {
+        width: 77%;
+        display: inline-block;
+        height: 33px;
+    }
+
+    .inlineBlock {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .processingFile-Area {
+        padding: 0;
+        transform: scale(0.9);
+        margin-left: -110px !important;
+    }
+
+    select.widthInfoAdmission400 {
+        width: 300px;
+        height: auto;
+    }
+    input.widthSchoolRank400 {
+        width: 300px;
+        height: auto;
+    }
+    textarea#InfoNotCCCD , textarea#InfoNotCCCD_NE {
+        width: 530px;
+        margin-top: 10px;
+    }
+    button#btnBackCCCD {
+        right: 15px !important;
+    }
+
+    button#btnFrontCCCD {
+        right: 15px !important;
+    }
+
+    img#imageFrontCCCD {
+        width: 300px;
+        height: 175px;
+    }
+
+    img#imageBackCCCD {
+        width: 300px;
+        height: 175px;
+    }
+
+    input.widthSchoolRank120 {
+        width: 70px;
+        height: 33px;
+    }
+
+    input.inputInlineBlock {
+        width: 77%;
+        display: inline-block;
+        height: 33px;
+    }
+
+    .inlineBlock {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    select.widthInfoAdmission400 {
+        width: 260px;
+        height: auto;
+    }
+
+    .widthScoreTHPT {
+        width: 250px;
+    }
+
+    #DHQGTPHCM, #DHQGHN {
+        width: 250px !important;
+    }
+
+    input.widthSchoolRank400 {
+        width: 300px;
+        height: auto;
+    }
+    textarea#InfoNotCCCD {
+        width: 530px;
+        margin-top: 10px;
+    }
+    button#btnBackCCCD {
+        right: 15px !important;
+    }
+
+    button#btnFrontCCCD {
+        right: 15px !important;
+    }
+
+    img#imageFrontCCCD {
+        width: 270px;
+        height: 175px;
+    }
+
+    img#imageBackCCCD {
+        width: 270px;
+        height: 175px;
+    }
+
+    input.widthSchoolRank120 {
+        width: 70px;
+        height: 33px;
+    }
+
+    input.inputInlineBlock {
+        width: 77%;
+        display: inline-block;
+        height: 33px;
+    }
+
+    .inlineBlock {
+        margin: 0;
+        padding: 0;
+    }
+    img#FileDOImage{
+        width:160px !important;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    select.widthInfoAdmission400 {
+        width: 240px;
+        height: auto;
+    }
+    .widthScoreTHPT{
+        width:200px;
+    }
+    #DHQGTPHCM, #DHQGHN{
+        width:200px !important;
+    }
+    select#ExamScholarship{
+        width:300px;
+    }
+
+    .Width352{
+        width:300px !important;
+    }
+
+    input.widthSchoolRank400 {
+        width: 300px;
+        height: auto;
+    }
+    textarea#InfoNotCCCD {
+        width: 530px;
+        margin-top:10px;
+    }
+    img#imageFrontCCCD {
+        width: 240px;
+        height: 175px;
+    }
+
+    img#imageBackCCCD {
+        width: 240px;
+        height: 175px;
+    }
+
+    button#btnFrontCCCD {
+        right: 20px !important;
+    }
+    button#btnBackCCCD {
+        right: 20px !important;
+    }
+    input.inputInlineBlock {
+        width: 77%;
+        display: inline-block;
+        height: 33px;
+    }
+    .inlineBlock {
+        margin: 0;
+        padding: 0;
+    }
+
+    input#ProvinceSC_REG {
+        width: 290px;
+        height:33px;
+    }
+    input#TopSchoolRank_REG {
+        width: 290px;
+        height: 33px;
+    }
+    input#TopSC_REG {
+        width: 290px;
+        height: 33px;
+    }
+    input.widthSchoolRank120 {
+        width: 65px;
+        height: 33px;
+    }
+    
+}
+

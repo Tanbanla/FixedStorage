@@ -1,0 +1,57 @@
+
+<!-- Modal -->
+<div class="modal fade" id="edit-component-by-area" 
+    tabindex="-1" 
+    role="dialog" 
+    aria-labelledby="EditComponentByArea" 
+    aria-hidden="true" 
+    data-bs-backdrop="static"
+>
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="custom_modal_header">
+                    <h4 class="InventoryModal_Title">@Html.Translate("Chỉnh sửa linh kiện giám sát")</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="EditComponentByArea_Form" method="post" class="form-horizontal" asp-controller="Users" asp-action="CreateAsync">
+                    <div class="row mb-4">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <h5 class="label">@Html.Translate("Plant") <span class="label_required" style="color:red;">*</span></h5>
+                            <input id="Plant" name="Plant" type="text" class="form-control form-control-lg background-color-grey" placeholder="@Html.Translate("Nhập plant")..." />
+                        </div>
+                        
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <h5 class="label">@Html.Translate("WH Loc.") <span class="label_required" style="color:red;">*</span></h5>
+                            <input id="WHLOC" name="WHLOC" type="text" class="form-control form-control-lg background-color-grey" placeholder="@Html.Translate("Nhập WH Loc")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <h5 class="label">@Html.Translate("Khu vực") <span class="label_required" style="color:red;">*</span></h5>
+                            <input id="Area" name="Area" type="text" class="form-control form-control-lg background-color-grey" placeholder="@Html.Translate("Nhập khu vực")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <h5 class="label">@Html.Translate("Mã linh kiện") <span class="label_required" style="color:red;">*</span></h5>
+                            <input id="ComponentCode" name="ComponentCode" type="text" class="form-control form-control-lg background-color-grey" placeholder="@Html.Translate("Nhập mã linh kiện")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <h5 class="label">@Html.Translate("S/O No.")</h5>
+                            <input id="SaleOrderNo" name="SaleOrderNo" type="text" class="form-control form-control-lg background-color-grey" placeholder="@Html.Translate("Nhập S/O No")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <h5 class="label">@Html.Translate("Vị trí") <span class="label_required" style="color:red;">*</span></h5>
+                            <input id="PositionCode" name="PositionCode" type="text" class="form-control form-control-lg background-color-grey" placeholder="@Html.Translate("Nhập vị trí")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <h5 class="label">@Html.Translate("Tài khoản phân phát") <span class="label_required" style="color:red;">*</span></h5>
+                            <input id="AssigneeAccount" name="AssigneeAccount" type="text" class="form-control form-control-lg background-color-grey" placeholder="@Html.Translate("Nhập tài khoản phân phát")..." />
+                        </div>
+                    </div>
+                </form>
+                <div class="custom_bottom_modal">
+                    <button type="button" id="btn_Cancel_EditComponentMonitoring" class="btn btn_custom_danger w-50" data-bs-dismiss="modal">@Html.Translate("Hủy bỏ")</button>
+                    <button type="button" id="btn_Apply_EditComponentMonitoring" class="btn btn_custom_primary w-50">@Html.Translate("Đồng ý")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

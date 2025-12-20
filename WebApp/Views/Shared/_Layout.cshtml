@@ -1,0 +1,178 @@
+﻿@using bivnConstant = BIVN.FixedStorage.Services.Common.API.Constants;
+@{
+    Layout = null;
+
+    var UserInfo = (ValidateTokenResultDto)Context.Items[commonAPIConstant.HttpContextModel.UserKey];
+    var jsonUserObj = JsonSerializer.Serialize(UserInfo);
+    var token = Context.Request.Cookies[bivnConstant.UserClaims.Token];
+    var APIGateway = _configuration.GetSection(commonAPIConstant.AppSettings.APIGateWayAddress).Value;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/assets/css/spinner.css" rel="stylesheet" asp-append-version="true" />
+@*     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.umd.min.js"></script> *@
+    @await Html.PartialAsync("~/Views/Shared/_title_meta.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_head_css.cshtml")
+    @RenderSection("styles", false)
+    @await Html.PartialAsync("~/Views/Shared/_bottom_css.cshtml")
+</head>
+
+<body data-sidebar="light">
+    <input id="APIGateway" value="@APIGateway" hidden />
+
+     @*User info*@
+    <input hidden id="App_UserId" value="@UserInfo?.UserId" />
+    <input hidden id="App_DepartmentId" value="@UserInfo?.DepartmentId" />
+
+    <div id="layout-wrapper">
+
+        @{
+            var isAuditMobileAccountType = Context.UserFromContext()?.AccountType == nameof(AccountType.TaiKhoanGiamSat);
+        }
+
+        @if (!isAuditMobileAccountType)
+        {
+            @await Html.PartialAsync("~/Views/Shared/_topbar.cshtml")
+            @await Html.PartialAsync("~/Views/Shared/_sidebar.cshtml")
+        }
+
+        <div class="main-content background-color-grey">
+            <div class="page-content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+            @await Html.PartialAsync("~/Views/Shared/_footer.cshtml")
+        </div>
+    </div>
+
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+
+    <script>
+        var App = {
+            User: {},
+            Token: "",
+            ApiGateWayUrl: ""
+        };
+        App.User = JSON.parse(`@Html.Raw(jsonUserObj)`);
+        App.Token = `@Html.Raw(token)`;
+        App.ApiGateWayUrl = `@Html.Raw(APIGateway)`;
+    </script>
+
+    <script>
+        var AppUser = (function(){
+            let User = {};
+            let Token = "";
+            let ApiGateWayUrl = "";
+
+            Object.assign(User, toCamel(JSON.parse(`@Html.Raw(jsonUserObj)`)));
+
+            Token = `@Html.Raw(token)`;
+            ApiGateWayUrl = `@Html.Raw(APIGateway)`;
+
+            function RefreshUser(){
+                $.get("/user/refresh-info", function(res){
+                    Object.assign(User, res);
+                })
+            }  
+
+            async function PrefetchUser(){
+                return new Promise((res, reject) => {
+                    $.ajax({
+                        type: "GET",
+                        url: "/user/refresh-info",
+                        success: function (data) {
+                            res(data);
+                        },
+                        error: function (err) {
+                            reject(err);
+                        }
+                    })
+                })
+            }
+
+            function CurrUser(){
+                let cloneObj = {};
+                Object.assign(cloneObj, User);
+
+                //Loại bỏ các dữ liệu nhạy cảm
+                delete cloneObj.roleClaims;
+                delete cloneObj.roleId;
+                delete cloneObj.userId;
+                delete cloneObj.inventoryLoggedInfo;
+
+                cloneObj.isGrant = async function (permission) {
+                    let user = await PrefetchUser();
+                    return user?.roleClaims?.some(p => p.claimType === permission);
+                }
+                cloneObj.isInRole = async function (roleName) {
+                    let user = await PrefetchUser();
+                    return user?.roleName == roleName;
+                }
+                cloneObj.inventoryLoggedInfo = async function () {
+                    let res = await PrefetchUser();
+                    return res?.inventoryLoggedInfo;
+                }
+                cloneObj.roleId = function () {
+                    return User.roleId;
+                }
+                cloneObj.userId = function () {
+                    return User.userId;
+                }
+
+                return cloneObj;
+            }
+
+            function CurrToken(){
+                return Token;
+            }
+
+            return {
+                getUser: CurrUser,
+                getToken: CurrToken,
+                getApiGateway: ApiGateWayUrl,
+                refreshUserInfo: RefreshUser
+            }
+        })();
+
+        function toCamel(o) {
+            var newO, origKey, newKey, value
+            if (o instanceof Array) {
+                return o.map(function (value) {
+                    if (typeof value === "object") {
+                        value = toCamel(value)
+                    }
+                    return value
+                })
+            } else {
+                newO = {}
+                for (origKey in o) {
+                    if (o.hasOwnProperty(origKey)) {
+                        newKey = (origKey.charAt(0).toLowerCase() + origKey.slice(1) || origKey).toString()
+                        value = o[origKey]
+                        if (value instanceof Array || (value !== null && value.constructor === Object)) {
+                            value = toCamel(value)
+                        }
+                        newO[newKey] = value
+                    }
+                }
+            }
+            return newO
+        }
+
+    </script>
+
+    
+
+    @await Html.PartialAsync("~/Views/Shared/_bottom_scripts.cshtml")
+</body>
+</html>

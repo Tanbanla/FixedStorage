@@ -1,0 +1,162 @@
+﻿<div class="Reporting_Layout_Top">
+    <div class="d-flex position-relative justify-content-center">
+        <h3>@Html.Translate("Tiến độ giám sát")</h3>
+        <button class="position-absolute end-0 hidden_while_export" id="filterReporting2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.49893 22C10.8796 22 11.9988 20.8808 11.9988 19.5001C11.9988 18.1194 10.8796 17.0002 9.49893 17.0002C8.11827 17.0002 6.99902 18.1194 6.99902 19.5001C6.99902 20.8808 8.11827 22 9.49893 22Z"
+                      stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M2.00195 19.5L7.00176 19.5" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                <path d="M12 19.5L21.9996 19.5" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                <path d="M16.9989 14.5C18.3796 14.5 19.4988 13.3808 19.4988 12.0001C19.4988 10.6194 18.3796 9.50019 16.9989 9.50019C15.6183 9.50019 14.499 10.6194 14.499 12.0001C14.499 13.3808 15.6183 14.5 16.9989 14.5Z"
+                      stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M2 12L14.4995 12" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                <path d="M19.5 12L21.9999 12" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                <path d="M5.75088 7C7.13154 7 8.25079 5.88075 8.25079 4.50009C8.25079 3.11943 7.13154 2.00019 5.75088 2.00019C4.37022 2.00019 3.25098 3.11944 3.25098 4.50009C3.25098 5.88075 4.37022 7 5.75088 7Z"
+                      stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M2.00195 4.5L3.25191 4.5" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                <path d="M8.25 4.5L21.9995 4.5" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+            </svg>
+        </button>
+        <div class="filterPanel d-none" id="panelReporting2">
+            <div>
+                <div class="audit_setting_header d-flex justify-content-between">
+                    <div class="DepartmentAuditReportingContainer">
+                        <h3>@Html.Translate("Phòng ban")</h3>
+                        <input type="checkbox" id="DepartmentAuditReportingToggleAll" checked />
+                    </div>
+                    
+                    <button class="btnCloseSetting btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M13.5 4.5L4.5 13.5" stroke="#87868C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.5 13.5L4.5 4.5" stroke="#87868C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div id="pbList" class="mt-4">
+                  
+                </div>
+            </div>
+            <div>
+                <div class="LocationAuditReportingContainer">
+                    <h3>@Html.Translate("Khu vực")</h3>
+                    <input type="checkbox" id="LocationAuditReportingToggleAll" />
+                </div>
+                
+                <div id="kvList" class="mt-4">
+                   
+                </div>
+            </div>
+            <div>
+                <div class="AuditorAuditReportingContainer">
+                    <h3>@Html.Translate("Người giám sát")</h3>
+                    <input type="checkbox" id="AuditorAuditReportingToggleAll" />
+                </div>
+                
+                <div id="gsList" class="mt-4">
+                </div>
+            </div>
+            <div>
+                <button id="btnApplyFilterAuditReport" class="btn btn-primary w-100">@Html.Translate("Áp dụng")</button>
+            </div>
+        </div>
+    </div>
+    <div id="FixedAuditReporting" class="FixedAuditReporting mt-5">
+        <h3>@Html.Translate("Báo cáo giám sát theo chỉ định")</h3>
+        <div class="chart_data_container">
+            <div class="chartCol mt-5">
+                <p>@Html.Translate("Số phiếu")</p>
+                <p>@Html.Translate("% hoàn thành")</p>
+            </div>
+            <div class="chartArea mt-2 audit_chart_container">
+                <canvas id="FixedAuditChart"></canvas>
+            </div>
+            <div class="glossary_audit_report" style="display: none;">
+                <h4>@Html.Translate("Chú thích"):</h4>
+                <div class="descriptionArea">
+                    <div>
+                        <span class="pre">@Html.Translate("Chưa giám sát")</span>
+                        <span class="preLine mt-2">@Html.Translate("Tỉ lệ chưa giám sát")</span>
+                    </div>
+                    <div>
+                        <span class="pending">@Html.Translate("Không đạt giám sát")</span>
+                        <span class="pendingLine mt-2">@Html.Translate("Tỉ lệ không đạt giám sát")</span>
+                    </div>
+                    <div>
+                        <span class="confirmed">@Html.Translate("Đạt giám sát")</span>
+                        <span class="confirmedLine mt-2">@Html.Translate("Tỉ lệ đạt giám sát")</span>
+                    </div>
+                </div>
+            </div>
+            <div class="headerDetailTable ">
+                <span>@Html.Translate("Bảng dữ liệu tiến độ giám sát")</span>
+                <span class="hideDetailTable" class="hidden_while_export">@Html.Translate("Ẩn chi tiết bảng")</span>
+            </div>
+            <div class="table-responsive mt-4">
+                <table id="Fixed_InventoryReporting2_DataTable" class="table table-striped table-bordered table-responsive">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        <div class="chart_data_empty text-center py-5" style="display: none;">@Html.Translate("Không có dữ liệu").</div>
+    </div>
+    <div id="FreeAuditReporting" class="FreeAuditReporting mt-5">
+        <h3>@Html.Translate("Báo cáo giám sát tự do")</h3>
+        <div class="chart_data_container">
+            <div class="chartCol mt-5">
+                <p>@Html.Translate("Số phiếu")</p>
+                <p>@Html.Translate("% hoàn thành")</p>
+            </div>
+            <div class="chartArea mt-2 audit_chart_container">
+                <canvas id="FreeAuditChart"></canvas>
+            </div>
+            <div class="glossary_audit_report" style="display: none;">
+                <h4>@Html.Translate("Chú thích"):</h4>
+                <div class="descriptionArea">
+                   @*  <div>
+                        <span class="pre">@Html.Translate("Chưa giám sát")</span>
+                        <span class="preLine mt-2">@Html.Translate("Tỉ lệ chưa giám sát")</span>
+                    </div> *@
+                    <div>
+                        <span class="pending">@Html.Translate("Không đạt giám sát")</span>
+                        <span class="pendingLine mt-2">@Html.Translate("Tỉ lệ không đạt giám sát")</span>
+                    </div>
+                    <div>
+                        <span class="confirmed">@Html.Translate("Đạt giám sát")</span>
+                        <span class="confirmedLine mt-2">@Html.Translate("Tỉ lệ đạt giám sát")</span>
+                    </div>
+                </div>
+            </div>
+            <div class="headerDetailTable ">
+                <span>@Html.Translate("Bảng dữ liệu tiến độ giám sát")</span>
+                <span class="hideDetailTable" class="hidden_while_export">@Html.Translate("Ẩn chi tiết bảng")</span>
+            </div>
+            <div class="table-responsive mt-4">
+                <table id="Free_InventoryReporting2_DataTable" class="table table-striped table-bordered table-responsive">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+        <div class="chart_data_empty text-center py-5" style="display: none;">@Html.Translate("Không có dữ liệu").</div>
+    </div>
+    <div class="all_report_chart_data_empty text-center py-5" style="display: none;">@Html.Translate("Không có dữ liệu").</div>
+</div>
+
+<script asp-append-version="true" src="./lib/chartjs_ver4.1.1/jspdf.min.js"></script>
+<script asp-append-version="true" src="./lib/chartjs_ver4.1.1/chart.js"></script>
+<script asp-append-version="true" src="./lib/chartjs_ver4.1.1/chartloader_ver4.js"></script>
+<script asp-append-version="true" defer src="./assets/js/InventoryReportingTab2.js"></script>
+

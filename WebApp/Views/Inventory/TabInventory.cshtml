@@ -1,0 +1,33 @@
+<div id="inventory-wrapper" style="display: none;">
+    <div id="inventory-tab">
+        <div class="inventory_tab">
+            <div class="custom_col">
+                <button id="inventory-info" class="btn-tab action" type="button">@Html.Translate("Thông tin chung")</button>
+            </div>
+            <div class="custom_col">
+                <button id="inventory-create" class="btn-tab" type="button">@Html.Translate("Tạo phiếu kiểm kê")</button>
+            </div>
+            <div class="custom_col">
+                <button id="monitoring-create" class="btn-tab" type="button">@Html.Translate("Tạo danh sách giám sát")</button>
+            </div>
+            <div class="custom_col">
+                <button id="synthetic-result" class="btn-tab" type="button">@Html.Translate("Tổng hợp kết quả")</button>
+            </div>
+        </div>
+    </div>
+    <div id="tab-inventory-info" class="tab-content">
+        @await Html.PartialAsync("~/Views/Inventory/GeneralInfo.cshtml")
+    </div>
+    <div id="tab-inventory-create" class="tab-content">
+        @await Html.PartialAsync("~/Views/Inventory/CreateInventory.cshtml")
+    </div>
+
+    <div id="tab-monitoring-create" class="tab-content">
+        @await Html.PartialAsync("~/Views/Inventory/CreateMonitoringList.cshtml")
+    </div>
+
+    <div id="tab-synthetic-result" class="tab-content">
+        @await Html.PartialAsync("~/Views/Inventory/ResultInventory.cshtml")
+    </div>
+
+</div>

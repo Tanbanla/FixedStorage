@@ -1,0 +1,156 @@
+﻿@{
+    ViewBag.Title = Html.Translate("Danh sách người dùng");
+
+    var ListDepartments = ViewBag.Departments as IEnumerable<DepartmentDto>;
+    var ListRoles = ViewBag.Roles as IEnumerable<RoleInfoModel>;
+    var ListStatus = ViewBag.Status as IList<string>;
+
+    //Convert ra Json:
+    var ListDepartmentsJSON = System.Text.Json.JsonSerializer.Serialize(ListDepartments);
+    var ListRolesJSON = System.Text.Json.JsonSerializer.Serialize(ListRoles);
+    var ListStatusJSON = System.Text.Json.JsonSerializer.Serialize(ListStatus);
+
+
+}
+
+
+
+<link href="./assets/css/ListUsers.css" asp-append-version="true" rel="stylesheet" />
+
+    <div id="ListUsers">
+    <div class="ListUsers_Search_Option">
+        <div class="row justify-content-between mb-4">
+            <div class="custom_col_7 box-container">
+                <label class="text_label">@Html.Translate("Tài khoản đăng nhập")</label>
+                <input id="Users_UserName" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập tài khoản đăng nhập")..." />
+            </div>
+            <div class="custom_col_7 box-container">
+                <label class="text_label">@Html.Translate("Họ và tên")</label>
+                <input id="Users_FullName" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập họ và tên")..." />
+            </div>
+            <div class="custom_col_7 box-container">
+                <label class="text_label">@Html.Translate("Mã nhân viên")</label>
+                <input id="Users_Code" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập mã nhân viên")..." />
+            </div>
+            <div class="custom_col_7 box-container">
+                <label class="text_label">@Html.Translate("Phòng ban")</label>
+                <select class="custom_select" id="Users_Department" hidden multiple name="native-select" placeholder="Chọn phòng ban" data-search="false" data-silent-initial-value-set="true">
+                    @if(ListDepartments.Any() == true)
+                    {
+                        @foreach (var department in ListDepartments)
+                        {
+                            <option value="@(department.Id)">@department.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="custom_col_7 box-container">
+                <label class="text_label">@Html.Translate("Nhóm quyền")</label>
+                <select class="custom_select" hidden id="Users_Role" multiple name="native-select" placeholder="Chọn nhóm quyền" data-search="false" data-silent-initial-value-set="true">
+                    @if(ListRoles.Any() == true)
+                    {
+                        @foreach (var role in ListRoles)
+                        {
+                            <option value="@(role.RoleId)">@role.Name</option>
+                        }
+                    }
+                </select>
+
+            </div>
+            <div class="custom_col_7 box-container">
+                <label class="text_label">@Html.Translate("Trạng thái")</label>
+                <select class="custom_select" hidden id="Users_Status" multiple name="native-select" placeholder="Chọn trạng thái" data-search="false" data-silent-initial-value-set="true">
+                    @if (ListStatus.Any() == true)
+                    {
+                        var index = 0;
+                        @foreach (var status in ListStatus)
+                        {
+                            <option value="@(index++)">@Html.Translate(status)</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="custom_col_7 box-container">
+                <label class="text_label">@Html.Translate("Loại tài khoản")</label>
+                <select class="custom_select" hidden id="Users_AccountType" multiple name="native-select" placeholder="Chọn loại tài khoản" data-search="false" data-silent-initial-value-set="true">
+                    <option value="0">@Html.Translate("Tài khoản riêng")</option>
+                    <option value="1">@Html.Translate("Tài khoản chung")</option>
+                    <option value="2">@Html.Translate("Tài khoản giám sát")</option>
+                </select>
+            </div>
+
+        </div>
+            <div class="d-flex justify-content-between mb-3">
+                @await Html.PartialAsync("~/Views/Shared/_commonSearch.cshtml")
+
+                <div class="container_modal_add">
+                    <button class="btn_add" type="button" id="btnCreate_User" data-toggle="modal" data-bs-target="#AddNewUserModal">
+                        <img src="./assets/images/icons/icon-plus.svg" />
+                        @Html.Translate("Thêm người dùng")
+                    </button>
+                </div>
+            </div>
+    </div>
+    <div class="ListUsers_Container mt-3">
+        <div class="ListUsers_ExportExcel">
+            <button class="btnExportExcel_ListUser" disabled>
+                <div class="ListUsers_ExportExcel_Images">
+                    <img src="./assets/images/icons/export_excel.png" />
+                </div>
+                @Html.Translate("Xuất file")
+            </button>
+        </div>
+        <table id="ListUsers_DataTable" class="table table-responsive align-middle custom_table custom_table_listUser" style="width:100%">
+            <thead>
+                <tr class="title_table">
+                    <th class="th-sm">
+                        STT
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Tài khoản")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Họ và tên")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Mã nhân viên")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Phòng ban")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Loại tài khoản")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Nhóm quyền")
+                    </th>
+                    <th class="th-sm">
+                        @Html.Translate("Trạng thái")
+                    </th>
+                    <th class="th-sm">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+@*AddNewUserModal*@
+@await Html.PartialAsync("~/Views/Shared/Common/_ListUsersViewDetailModal.cshtml")
+@await Html.PartialAsync("~/Views/Users/_AddNewUserModal.cshtml")
+@await Html.PartialAsync("~/Views/Users/_EditUserModal.cshtml")
+
+<script asp-append-version="true" defer src="./assets/js/ListUser.js"></script>
+
+<script>
+    
+    let departments_List = JSON.parse(`@Html.Raw(@ListDepartmentsJSON)`);
+        let roles_List = JSON.parse(`@Html.Raw(ListRolesJSON)`);
+        let status_List = JSON.parse(`@Html.Raw(ListStatusJSON)`);
+
+</script>
+
+

@@ -1,0 +1,115 @@
+﻿@using BIVN.FixedStorage.Services.Common.API.User;
+@model BIVN.FixedStorage.Services.Common.API.User.CreateUserDto
+@{       
+    var a = string.Empty;
+}
+<!-- Modal -->
+<div class="modal fade" id="AddNewUserModal" tabindex="-1" role="dialog" aria-labelledby="AddNewUserModalLabel" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @*<div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>*@
+            <div class="modal-body pb-0">
+                <h4 class="modal_title">@Html.Translate("Thêm người dùng")</h4>                
+                <form id="AddNewUser_Form" method="post" class="form-horizontal" asp-controller="Users" asp-action="CreateAsync">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Tài khoản đăng nhập") <span style="color:red;">*</span></label>
+                            <input id="Add_Users_UserName" name="Add_Users_UserName" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập tài khoản đăng nhập")..." />
+                            <span id="Username_span" class="text-danger font-size-12 fw-medium error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <div class="AddUser_Password_Container">
+                                <label class="text_label">@Html.Translate("Mật khẩu") <span style="color:red;">*</span></label>
+                                <input id="Add_Users_Password" name="Add_Users_Password" type="password" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập mật khẩu")..." />
+                                <div class="btn_Password_AddNew_Image">
+                                    <img id="Show_AddNew_ChangePassword" src="./assets/images/icons/eye.png" />
+                                    <img id="Hide_AddNew_ChangePassword" style="display:none;" src="./assets/images/icons/hidePass.png" />
+                                </div>
+                            </div>
+                            <span id="Password_span" class="text-danger error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Họ và tên") <span style="color:red;">*</span></label>
+                            <input id="Add_Users_FullName" name="Add_Users_FullName" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập họ và tên")..." />
+                            <span id="FullName_span" class="text-danger error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Mã nhân viên") <span style="color:red;">*</span></label>
+                            <input id="Add_Users_Code" name="Add_Users_Code" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Mã nhân viên")..." />
+                            <span id="Code_span" class="text-danger font-size-12 fw-medium error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Phòng ban")</label>
+                            <select id="Add_Users_Department" class="form-select background-color-grey select-tag-custom">
+                            </select>
+                            <span id="Department_span" class="text-danger error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Nhóm quyền")</label>
+                            <select id="Add_Users_Role" class="form-select background-color-grey select-tag-custom">
+                            </select>
+                            <span id="Role_span" class="text-danger"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Loại tài khoản")</label>
+                            <select id="Add_Users_AccountType" class="form-select background-color-grey select-tag-custom">
+                            </select>
+                            <span id="AccountType_span" class="text-danger"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <div class="TitleAndSlideOn_Container">
+                                <label class="text_label">@Html.Translate("Khóa tài khoản nếu không đổi mật khẩu")</label>
+                                <div class="SlideonContainer">
+                                    <label class="slideon">
+                                        <input id="Add_Users_NoChangePassword" type="checkbox" class="slideon slideon-auto slideon-success">
+                                        <span class="slideon-slider"></span>
+                                    </label>
+                                    <span id="NoChangePassword_span" class="text-danger error-notification"></span>
+                                </div>
+                            </div>
+                            <div class="DatetimeUnit_Container">
+                                <input id="Add_Users_DateTimeNoChangePassword" name="Add_Users_DateTimeNoChangePassword" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập thời gian hiệu lực của tài khoản")..." />
+                                <h5 class="Add_Users_Unit">@Html.Translate("Ngày")</h5>
+                                <span id="DateTimeNoChangePassword_span" class="text-danger error-notification"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <div class="TitleAndSlideOn_Container">
+                                <label class="text_label">@Html.Translate("Khóa tài khoản nếu không tương tác")</label>
+                                <div class="SlideonContainer">
+                                    <label class="slideon">
+                                        <input id="Add_Users_NoInteration" type="checkbox" class="slideon slideon-auto slideon-success">
+                                        <span class="slideon-slider"></span>
+                                    </label>
+                                    <span id="NoInteration_span" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="DatetimeUnit_Container">
+                                <input id="Add_Users_DateTimeNoInteration" name="Add_Users_DateTimeNoInteration" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập thời gian hiệu lực của tài khoản")..." />
+                                <h5 class="Add_Users_Unit">@Html.Translate("Ngày")</h5>
+                                <span id="DateTimeNoInteration_span" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Trạng thái")</label>
+                            <select id="Add_Users_Status" class="form-select background-color-grey select-tag-custom">
+                            </select>
+                            <span id="Status_span" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="container-fluid d-flex justify-content-between px-0">
+                    <button type="button" id="button_Delete_AddNewUser" class="btn btn-light text-danger w-50 mx-2" data-bs-dismiss="modal">@Html.Translate("Hủy bỏ")</button>
+                    <button type="submit" id="button_Apply_AddNewUser" class="btn btn-primary w-50 mx-2">@Html.Translate("Đồng ý")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

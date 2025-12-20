@@ -1,0 +1,131 @@
+﻿@using BIVN.FixedStorage.Services.Common.API.Dto.Inventory
+@{
+    var currentUser = Context.UserFromContext();
+    var canViewErrorInvestigation = Context.IsPromoter() || Context.IsInventory();
+    var inventoryNames = ViewBag.InventoryNames as IEnumerable<ListInventoryModel>;
+}
+
+
+<!--ViewDetailUser Modal -->
+<div class="modal fade" id="ErrorInvestigationInventoryHistoryModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="ErrorInvestigationInventoryHistoryModalLabel"
+     aria-hidden="true"
+     data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl modal-lg modal-md modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="ErrorInvestigationInventoryHistory_title">
+                    <h4>@Html.Translate("Lịch sử các đợt kiểm kê")</h4>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ErrorInvestigationDocumentInventoryHistoryTop row">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 ErrorInvestigationDocumentInventoryHistoryTopContainer">
+                        <div class="ErrorInvestigationDocumentInventoryHistoryTop_Title">
+                            <label class="label-bold">@Html.Translate("Đợt kiểm kê"): </label>
+                        </div>
+                        <div class="ErrorInvestigationDocumentInventoryHistoryTop_Content">
+                            <select id="ErrorInvestigationDocumentInventoryHistory_Inventory" class="ErrorInvestigationBackground" multiple name="native-select" placeholder="@Html.Translate("Chọn đợt kiểm kê")" data-search="true" data-silent-initial-value-set="true" hidden>
+                                @if (inventoryNames != null || inventoryNames.Any())
+                                {
+                                    @foreach (var item in inventoryNames)
+                                    {
+                                        <option value="@item.InventoryName">@item.InventoryName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 ErrorInvestigationDocumentInventoryHistoryTopContainer">
+                        <div class="ErrorInvestigationDocumentInventoryHistoryTop_Title">
+                            <label class="label-bold">@Html.Translate("Mã linh kiện"): </label>
+                        </div>
+                        <div class="ErrorInvestigationDocumentInventoryHistoryTop_Content">
+                            <h5 id="ErrorInvestigationDocumentInventoryHistory_ComponentCode">20250101</h5>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 ErrorInvestigationDocumentInventoryHistoryTopContainer">
+                        <div class="ErrorInvestigationDocumentInventoryHistoryTop_Title">
+                            <label class="label-bold">@Html.Translate("Tên linh kiện"): </label>
+                        </div>
+                        <div class="ErrorInvestigationDocumentInventoryHistoryTop_Content">
+                            <h5 id="ErrorInvestigationDocumentInventoryHistory_ComponentName">20250101</h5>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <div class="container_search">
+                            <button type="button" id="ErrorInvestigationDocumentInventoryHistory_Search" class="btn_search">
+                                <div class="icon_search">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.66667 14.0002C11.1645 14.0002 14 11.1646 14 7.66683C14 4.16903 11.1645 1.3335 7.66667 1.3335C4.16886 1.3335 1.33333 4.16903 1.33333 7.66683C1.33333 11.1646 4.16886 14.0002 7.66667 14.0002Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M14.6667 14.6668L13.3333 13.3335" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </div>
+                                @Html.Translate("Tìm kiếm")
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ErrorInvestigationDocumentInventoryHistoryCenter">
+                    <div class="ErrorInvestigationDocumentInventoryHistoryCenter_Item">
+                        <h5>
+                            @Html.Translate("Đợt kiểm kê"):
+                            <label class="ErrorInvestigationDocumentInventoryHistoryCenterDate">31/08/2024</label>
+                        </h5>
+                        <p>
+                            @Html.Translate("Điều chỉnh lần")<label class="ErrorInvestigationDocumentInventoryHistory_Index"> 2:</label> @Html.Translate("Từ")
+                            <label class="ErrorInvestigationDocumentInventoryHistory_OldValue">-118</label> => <label class="ErrorInvestigationDocumentInventoryHistory_NewValue">200</label>
+                        </p>
+                        <p>Phân loại: <label class="ErrorInvestigationDocumentInventoryHistory_ErrorCategory">Kiểm kê sai</label></p>
+                        <p>Chi tiết điều tra: <label class="ErrorInvestigationDocumentInventoryHistory_Error_detail">Linh kiện có tình trạng gẫy nẫy</label></p>
+                        <p>Người điều tra: <label class="ErrorInvestigationDocumentInventoryHistory_Invesgator">F0012345</label></p>
+                        <p>Thời điểm điều tra: <label class="ErrorInvestigationDocumentInventoryHistory_InvesgationDate">11:05 10/01/2025</label></p>
+                        <p>Thời điểm xác nhận: <label class="ErrorInvestigationDocumentInventoryHistory_InvesgatorConfirmDate">15:12 12/01/2025</label></p>
+                        <p>Hình ảnh:</p>
+                        <div class="ErrorInvestigationDocumentInventoryHistory_Images">
+                            <div class="ErrorInvestigationDocumentInventoryHistoryItem_Images">
+                                <img src="~/assets/images/icons/default-image.png" alt="Ảnh mặc định" style="width: 100%; max-width: 300px;">
+                            </div>
+                            <div class="ErrorInvestigationDocumentInventoryHistoryItem_Images">
+                                <img src="~/assets/images/icons/default-image.png" alt="Ảnh mặc định" style="width: 100%; max-width: 300px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ErrorInvestigationDocumentInventoryHistoryCenter_Item">
+                        <h5>
+                            @Html.Translate("Đợt kiểm kê"):
+                            <label class="ErrorInvestigationDocumentInventoryHistoryCenterDate">31/08/2024</label>
+                        </h5>
+                        <p>
+                            @Html.Translate("Điều chỉnh lần")<label class="ErrorInvestigationDocumentInventoryHistory_Index"> 2:</label> @Html.Translate("Từ")
+                            <label class="ErrorInvestigationDocumentInventoryHistory_OldValue">-118</label> => <label class="ErrorInvestigationDocumentInventoryHistory_NewValue">200</label>
+                        </p>
+                        <p>Phân loại: <label class="ErrorInvestigationDocumentInventoryHistory_ErrorCategory">Kiểm kê sai</label></p>
+                        <p>Chi tiết điều tra: <label class="ErrorInvestigationDocumentInventoryHistory_Error_detail">Linh kiện có tình trạng gẫy nẫy</label></p>
+                        <p>Người điều tra: <label class="ErrorInvestigationDocumentInventoryHistory_Invesgator">F0012345</label></p>
+                        <p>Thời điểm điều tra: <label class="ErrorInvestigationDocumentInventoryHistory_InvesgationDate">11:05 10/01/2025</label></p>
+                        <p>Thời điểm xác nhận: <label class="ErrorInvestigationDocumentInventoryHistory_InvesgatorConfirmDate">15:12 12/01/2025</label></p>
+                        <p>Hình ảnh:</p>
+                        <div class="ErrorInvestigationDocumentInventoryHistory_Images">
+                            <div class="ErrorInvestigationDocumentInventoryHistoryItem_Images">
+                                <img src="~/assets/images/icons/default-image.png" alt="Ảnh mặc định" style="width: 100%; max-width: 300px;">
+                            </div>
+                            <div class="ErrorInvestigationDocumentInventoryHistoryItem_Images">
+                                <img src="~/assets/images/icons/default-image.png" alt="Ảnh mặc định" style="width: 100%; max-width: 300px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,81 @@
+﻿@{
+    var userInfo = ViewBag.UserInfo;
+}
+
+<p>@userInfo</p>
+
+<!--ViewDetailUser Modal -->
+<div class="modal fade" id="ViewDetailUserModal" tabindex="-1" role="dialog" aria-labelledby="ViewDetailUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<h5 class="modal-title" id="ViewDetailUserModalLabel">Thêm mới người dùng</h5>*@
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pb-2">
+                <div class="Top_ViewDetailUser">
+                    <div class="Image_Top_ViewDetalUser">
+                        <img src="./assets/images/logo/brotherLogo_txt_blue.svg" width="176" />
+                    </div>
+                    <h4 class="modal_header_title py-3 mb-0">@Html.Translate("Thông tin cá nhân")</h4>
+                </div>
+                <div class="row p-1">
+                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 Left_Content_ViewDetalUser">
+                        <div class="Image_Left_Content_ViewDetalUser">
+                            <img src="" alt="user info" />
+                        </div>
+                        <button type="button" id="btnUploadAvatar_ViewDetailUser" class="UploadAvatar_ViewDetailUser_Container mt-3">
+                            <div class="class="UploadAvatar_ViewDetailUser_Icon">
+                                <img src="./assets/images/icons/upload_image_ViewDetailUser.png" />
+                            </div>
+                            <div class="UploadAvatar_ViewDetailUser_Title">
+                                @Html.Translate("Chọn ảnh đại diện")
+                            </div>
+                        </button>
+                        <input type="file" id="UploadAvatar_ViewDetailUser" style="display:none;"/>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 Right_Content_ViewDetalUser">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ip-form-update box-container mb-3">
+                            <label class="lbl-small lbl-color-disabled lbl-light">@Html.Translate("Tài khoản đăng nhập")</label>
+                            <span id="ViewDetailUser_UserName" name="ViewDetailUser_UserName" type="text" class="form-control background-color-grey lbl-color-disabled custom_info_user text_ellipsis"  ></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ip-form-update box-container mb-3">
+                            <label class="lbl-small lbl-color-disabled lbl-light">@Html.Translate("Họ và tên")</label>
+                            <span id="ViewDetailUser_FullName" name="ViewDetailUser_FullName" type="text" class="form-control background-color-grey lbl-color-disabled custom_info_user text_ellipsis"  ></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ip-form-update box-container mb-3">
+                            <label class="lbl-small lbl-color-disabled lbl-light">@Html.Translate("Mã nhân viên")</label>
+                            <span id="ViewDetailUser_Code" name="ViewDetailUser_Code" type="text" class="form-control background-color-grey lbl-color-disabled custom_info_user text_ellipsis"  ></span>
+                        </div>
+                        @*<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ip-form-update box-container mb-3">
+                            <label class="lbl-color-disabled lbl-light">Mật khẩu</label>
+                            <div class="Password_Login_Container">
+                                <input id="ViewDetailUser_Password" name="ViewDetailUser_Password" type="password" class="form-control background-color-white text-grey"value="Tinhvan@2024" disabled />
+                                <div class="btn_Password_Login_Image">
+                                    <img id="ViewDetailUser_ShowPassword" src="./assets/images/icons/eye.png" />
+                                    <img id="ViewDetailUser_HidePassword" style="display:none;" src="./assets/images/icons/hidePass.png" />
+                                </div>
+                            </div>
+                        </div>*@
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ip-form-update box-container mb-3">
+                            <label class="lbl-small lbl-color-disabled lbl-light">@Html.Translate("Phòng ban")</label>
+                            <span id="ViewDetailUser_Department" name="ViewDetailUser_Department" type="text" class="form-control background-color-grey lbl-color-disabled custom_info_user text_ellipsis" ></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ip-form-update box-container mb-3">
+                            <label class="lbl-small lbl-color-disabled lbl-light">@Html.Translate("Nhóm quyền")</label>
+                            <span id="ViewDetailUser_Role" name="ViewDetailUser_Role" type="text" class="form-control background-color-grey lbl-color-disabled custom_info_user text_ellipsis"></span>
+                        </div>
+                        
+                    </div>
+
+                    
+                </div>
+            </div>      
+            <div class="modal-bottom text-center fw-medium">
+                <span type="button" class="ChangePassword_Modal" id="ClickToChangePassword_ViewDetailUser" >@Html.Translate("Thay đổi mật khẩu?")</span>
+               
+            </div>
+        </div>
+    </div>
+</div>
+

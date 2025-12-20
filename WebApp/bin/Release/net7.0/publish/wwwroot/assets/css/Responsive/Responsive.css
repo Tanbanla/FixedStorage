@@ -1,0 +1,22 @@
+﻿
+/*#region Laptop screen  */
+
+@media only screen and (min-width: 1000px) and (max-width: 1430px)
+{
+    /*#region Role Item  */
+    .department_list {
+        grid-template-columns: repeat(3, 32%);
+    }
+    /*#endregion */
+   
+
+    /*#region Role Item  */
+    .roles_list {
+        grid-template-columns: repeat(3, 32%);
+    }
+    /*#endregion */
+}
+
+/*#endregion */
+
+

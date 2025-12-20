@@ -1,0 +1,207 @@
+﻿
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 4px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #ddddddf2;
+    border-radius: 4px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+div#divNotification {
+    position: relative !important;
+}
+
+.overview-messagebox-container {
+    display: none;
+    max-width: 330px;
+    position: absolute;
+    background: #ddddddf2;
+    z-index: 9999;
+    margin-top: -6px;
+    box-shadow: 0px 4px 7px 1px rgb(48 48 48 / 18%);
+    border-radius: 8px;
+    left: -30px;
+    width: max-content;
+}
+
+.messagebox-area {
+    padding: 10px;
+    max-height: 480px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.messagebox-child {
+    background: #fffffff2;
+    margin-bottom: 6px;
+    padding: 4px 0px 0px 20px;
+    border-radius: 4px;
+    transition: height 2s;
+}
+
+/*.row.messagebox-content {
+    padding: 4px 0px;
+}*/
+.row.messagebox-body {
+    padding: 10px 0px;
+}
+.messagebox-child * {
+    font-size: 14px;
+}
+
+.messagebox-header * {
+    font-weight: bold;
+}
+
+.messagebox-title {
+    font-size: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+p.messagebox-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 30px;
+    white-space: pre;
+}
+
+.seen {
+    opacity: 0.8;
+}
+
+.seen * {
+    font-weight: 400;
+    color: #c3c3c3;
+}
+
+.checkmark-area {
+    text-align: right;
+    min-height: 30px;
+    padding-right: 40px;
+}
+.messagebox-heading {
+    position: relative;
+    left: 19px;
+    top: 6px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.checked {
+    color: #525252 !important;
+    cursor: pointer;
+}
+.checkmark-icon {
+    color: #cacaca;
+    padding-right: 20px;
+    transform: scale(0.7);
+    filter: opacity(0.2);
+    right: 10px;
+    cursor: pointer;
+}
+.checkmark-icon:hover {
+    filter: opacity(0.7);
+}
+
+
+#btnSeen {
+    position: absolute;
+}
+
+#btnRecovery {
+    display: none;
+    position: absolute;
+    top: 2px;
+    right: 2em;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+    color: #33333382;
+}
+#btnRecovery:hover{
+    color: #333333c4;
+}
+
+.messagebox-child {
+    transition: box-shadow ease .2s;
+}
+
+.messagebox-child:hover {
+    cursor: pointer;
+    background: aliceblue;
+    /*border: solid #cfcfcf 1px;*/
+}
+/* .messagebox-child:hover .messagebox-content{
+        white-space: normal;
+    } */
+.messagebox-content {
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: white-space linear 1.5s;
+}
+
+.messagebox-anchor {
+    border: solid transparent;
+    border-bottom: solid #dfdfdf 4px;
+    width: 0;
+    transform: scale(2);
+    position: absolute;
+    top: -10px;
+    left: 4em;
+}
+
+#btnLoadMore {
+    margin: auto;
+    display: block;
+}
+
+.messagebox-loading {
+    animation: loading 1.5s linear infinite;
+}
+
+@keyframes loading {
+    0% {opacity: 0.7}, 
+    100% {opacity: 1}
+}
+
+.messagebox-area .row {
+    max-height: 30px;
+}
+.messagebox-area a, .messagebox-area a * {
+    text-decoration: none;
+    color: #505050;
+}
+
+.messagebox-child .empty {
+    text-align: center;
+}
+.expand-message {
+    white-space: pre-line;
+    transition: white-space 3s;
+}
+
+
+@media only screen and (max-width: 1300px) {
+    .overview-messagebox-container{
+        right: 0;
+        left: unset;
+    }
+    .messagebox-anchor {
+        right: 20px;
+        left: unset;
+    }
+}

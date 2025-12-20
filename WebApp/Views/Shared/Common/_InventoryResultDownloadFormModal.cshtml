@@ -1,0 +1,42 @@
+
+<!-- Modal -->
+<div class="modal fade" id="InventoryResultDownloadFormModal" tabindex="-1" role="dialog" aria-labelledby="InventoryResultDownloadFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="d-flex justify-content-end">
+                    <button class="btn_close" id="ResultInventory_Btn_Close">
+                        <img src="./assets/images/icons/icon-close.svg" />
+                    </button>
+                </div>
+                <h4 class="modal_title">@Html.Translate("Chọn biểu mẫu cần tải")</h4>
+                <div>
+                    <div class="container_item_download_form document_result_fileTemplate" fileName="@nameof(FileTemplate.BieumauBwins)">
+                        <img src="./assets/images/icons/icon-form-excel.svg">
+                        <span class="diagonal_line"></span>
+                        <div class="content_form " >
+                            <h5>@Html.Translate("Tải biểu mẫu")</h5>
+                            <h5>@Html.Translate("Upload kết quả từ Bwins")</h5>
+                        </div>
+                    </div>
+                    <div class="mt-3 container_item_download_form document_result_fileTemplate" fileName="@nameof(FileTemplate.BieumauSAP)">
+                        <img src="./assets/images/icons/icon-form-excel.svg">
+                        <span class="diagonal_line"></span>
+                        <div class="content_form " >
+                            <h5>@Html.Translate("Tải biểu mẫu")</h5>
+                            <h5>@Html.Translate("Thêm dữ liệu từ SAP")</h5>
+                        </div>
+                    </div>
+                    <div class="mt-3 container_item_download_form document_result_fileTemplate" fileName="@nameof(FileTemplate.BieumaucapnhatdulieuMSL)">
+                        <img src="./assets/images/icons/icon-form-excel.svg">
+                        <span class="diagonal_line"></span>
+                        <div class="content_form ">
+                            <h5>@Html.Translate("Tải biểu mẫu")</h5>
+                            <h5>@Html.Translate("Cập nhật dữ liệu MSL")</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

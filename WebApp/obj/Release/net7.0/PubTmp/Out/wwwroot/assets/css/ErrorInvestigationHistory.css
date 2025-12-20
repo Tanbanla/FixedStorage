@@ -1,0 +1,149 @@
+﻿.ErrorInvestigationHistoryBackground .vscomp-toggle-button {
+    border-radius: 4px !important;
+    background: #f1f0f4;
+    color: #303030;
+    font-size: 1em;
+}
+table.ErrorInvestigationHistory_DataTable thead th {
+    white-space: nowrap;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+#Error_Investigation_History_DataTable_length select {
+    background-image: url(/assets/images/icons/arrow-down.svg);
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+    border: 1px solid #E4E4E4;
+    padding-right: 20px;
+    border-radius: 4px;
+    font-size: 12px !important;
+    font-weight: 400;
+    color: #333333;
+}
+table.ErrorInvestigationHistory_DataTable tbody td {
+    white-space: nowrap;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+/* Ô hiển thị rút gọn (…) */
+.error-detail-cell {
+    display: inline-block;
+    max-width: 150px; /* giới hạn chiều rộng ô */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+/* Tooltip rộng & xuống dòng thoải mái */
+.tooltip-inner {
+    max-width: 600px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background-color: #0d2ea0 !important;
+}
+
+a.ErrorInvestigationInventoryHistoryControls_ViewDetail, a.ErrorInvestigationHistory_ViewDetail {
+    cursor: pointer;
+}
+
+.ErrorInvestigationInventoryHistory_title, .ErrorInvestigationHistory_title {
+    width: 100%;
+    text-align: center;
+}
+
+    .ErrorInvestigationInventoryHistory_title h4, .ErrorInvestigationHistory_title h4 {
+        color: #0d2ea0;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+.ErrorInvestigationDocumentInventoryHistoryTop h5 {
+    font-size: 13px;
+}
+
+.ErrorInvestigationDocumentInventoryHistoryCenter_Item, .ErrorInvestigationHistoryCenter_Item {
+    border-radius: 5px;
+    background: #80808038;
+    padding-left: 15px;
+    padding-top: 10px;
+    margin-bottom: 15px;
+}
+
+    .ErrorInvestigationDocumentInventoryHistoryCenter_Item h5, .ErrorInvestigationHistoryCenter_Item h5 {
+        margin: 0;
+        font-size: 15px;
+    }
+
+    .ErrorInvestigationDocumentInventoryHistoryCenter_Item p, .ErrorInvestigationHistoryCenter_Item p {
+        margin: 0;
+        font-size: 15px;
+    }
+
+.ErrorInvestigationDocumentInventoryHistoryCenter, .ErrorInvestigationHistoryCenter {
+    margin-top: 30px;
+}
+
+.ErrorInvestigationDocumentInventoryHistoryTopContainer {
+    display: flex;
+    align-items: center;
+}
+
+.ErrorInvestigationDocumentInventoryHistoryTop_Title {
+    font-size: 13px;
+    padding-right: 10px;
+}
+
+.ErrorInvestigationDocumentInventoryHistoryTop_Content h5 {
+    font-size: 13px;
+}
+
+.ErrorInvestigationHistoryCenter_Images, .ErrorInvestigationDocumentInventoryHistory_Images {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 0 15px 0;
+}
+
+.ErrorInvestigationHistoryCenterItem_Images img, .ErrorInvestigationDocumentInventoryHistoryItem_Images img {
+    width: 300px; /* Chiều rộng cố định */
+    height: 300px; /* Chiều cao cố định */
+    object-fit: cover; /* Cắt ảnh cho vừa khung mà không làm méo */
+}
+
+.ErrorInvestigationInventoryHistoryTop h5 {
+    font-size: 13px;
+}
+
+#ErrorInvestigationDocumentInventoryHistory_Inventory {
+    min-width: 150px;
+}
+
+.ErrorInvestigationDocumentInventoryHistoryCenter p.no-data-message, .ErrorInvestigationHistoryCenter p.no-data-message {
+    text-align: center;
+    font-size: 13px;
+}
+
+.modal_header_inventory .btn-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.ErrorInvestigationConfirm_Investigating_Top_Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ErrorInvestigationConfirm_Status_Container {
+    min-width: 240px;
+}
+
+#ErrorInvestigationHistory_ErrorCategory .vscomp-dropbox-container {
+    min-width: 235px;
+}

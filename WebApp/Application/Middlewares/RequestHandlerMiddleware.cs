@@ -1,0 +1,48 @@
+﻿namespace WebApp.Application.Middlewares
+{
+    /// <summary>
+    /// Central error/exception handler Middleware
+    /// </summary>
+    public class RequestHandlerMiddleware
+    {
+        private readonly RequestDelegate _request;
+        private readonly ILogger<RequestHandlerMiddleware> _logger;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RequestHandlerMiddleware"/> class.
+        /// </summary>
+        /// <param name="next">The next.</param>
+        public RequestHandlerMiddleware(RequestDelegate next, ILogger<RequestHandlerMiddleware> logger)
+        {
+            _request = next;
+            _logger = logger;
+        }
+
+        /// <summary>
+        /// Invokes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns></returns>
+        public Task Invoke(HttpContext context) => InvokeAsync(context);
+
+        private async Task InvokeAsync(HttpContext context)
+        {
+            try
+            {
+                await _request(context);
+            }
+            catch (Exception exception)
+            {
+                var exMess = $"Exception - {exception.Message}";
+                var innerExMess = exception.InnerException != null ? $"InnerException - {exception.InnerException.Message}" : string.Empty;
+                _logger.LogError($"Request error at {context.Request.Path} : {exMess}; {innerExMess}");
+                Log.Error(exception, "Request error: {0} ; {1}", exMess, innerExMess);
+                var response = new ResponseModel
+                {
+                    Code = context.Response.StatusCode
+                };
+                await context.Response.WriteAsync(JsonConvert.SerializeObject(response));
+                return;
+            }
+        }
+    }
+}

@@ -1,0 +1,136 @@
+﻿
+
+<!--ViewDetailUser Modal -->
+<div class="modal fade" id="ListUsers_ViewDetailUserModal" tabindex="-1" role="dialog" aria-labelledby="ListUsers_ViewDetailUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="custom_modal_header pb-0">
+                @*<h5 class="modal-title" id="ViewDetailUserModalLabel">Thêm mới người dùng</h5>*@
+                <h4>@Html.Translate("Chi tiết thông tin người dùng")</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="Content_ListUsersViewDetail">
+                    <div class="Content_Top_ListUsersViewDetail">
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                                <h5 class="modal_title_top">@Html.Translate("Tài khoản"): </h5>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10">
+                                <h5 class="modal_content_top UserName_Content_Top_ListUsersViewDetail">Administrator</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                                <h5 class="modal_title_top">@Html.Translate("Họ và tên"): </h5>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10">
+                                <h5 class="modal_content_top FullName_Content_Top_ListUsersViewDetail">Nguyễn Công Thành</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                                <h5 class="modal_title_top">@Html.Translate("Mã nhân viên"): </h5>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10">
+                                <h5 class="modal_content_top Code_Content_Top_ListUsersViewDetail">MH370</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                                <h5 class="modal_title_top">@Html.Translate("Phòng ban"): </h5>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10">
+                                <h5 class="modal_content_top Department_Content_Top_ListUsersViewDetail">IT</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Content_Bottom_ListUsersViewDetail">
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Loại tài khoản"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 class="text_label AccountType_Content_Bottom_ListUsersViewDetail">Tài khoản riêng</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Nhóm quyền"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 class="text_label Role_Content_Bottom_ListUsersViewDetail" style="color:#5092FC">Quyền trưởng phòng</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Trạng thái"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 class="text_label Status_Content_Bottom_ListUsersViewDetail">Đang sử dụng</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Thời gian đổi mật khẩu"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 class="text_label DatetimeChangePassword_Content_Bottom_ListUsersViewDetail">90 ngày</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Thời gian không tương tác"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 class="text_label DatetimeNoInteraction_Content_Bottom_ListUsersViewDetail">90 ngày</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Thời gian tạo"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 class="text_label CreatedDate_Content_Bottom_ListUsersViewDetail">25/09/2023 15:00</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Người tạo"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 class="text_label CreatedBy_Content_Bottom_ListUsersViewDetail">Administrator</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Thời gian sửa"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 class="text_label UpdatedDate_Content_Bottom_ListUsersViewDetail">25/09/2023 15:00</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Người sửa"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 class="text_label UpdatedBy_Content_Bottom_ListUsersViewDetail">Nguyễn Công Thành</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Đăng nhập lần cuối"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 class="text_label LastActiveTime_Content_Bottom_ListUsersViewDetail color-red">11/08/2023 13:50</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+

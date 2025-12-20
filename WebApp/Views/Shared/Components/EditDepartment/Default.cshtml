@@ -1,0 +1,52 @@
+﻿
+@model CreateNewDepartmentDto
+
+@{
+    var state = ViewData["ModelState"] as ModelStateDictionary;
+}
+
+
+<div class="h-100 d-flex justify-content-center">
+    <form id="editItemForm" class="w-50" method="post" asp-action="ConfirmEdit" asp-controller="Departments">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3 class="modal-title text-center txt-bolder">@Html.Translate("Chỉnh sửa phòng ban")</h3>
+                    <input hidden asp-for="DepartmentId" />
+                    <input hidden asp-for="UserId" />
+                    <div class="form-group">
+                        <label class="control-label">@Html.Translate("Tên phòng ban")</label>
+                        <span class="required_directive">*</span>
+                        <input asp-for="Name" value="@Model?.Name" class="form-control" placeholder="@Html.Translate("Nhập tên phòng ban")..." />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    @{
+                        var users = ViewBag.SelectUsers as IEnumerable<SelectUserDepartmentViewModel>;
+                    }
+                    <div class="form-group mt-3">
+                        <label class="control-label">@Html.Translate("Trưởng phòng")</label>
+                        <div class="edit_department_select_container">
+                            @if (users?.Any() == true)
+                            {
+                                <select asp-for="ManagerId" class="form-control">
+                                    <option value="">@Html.Translate("Chọn trưởng phòng")</option>
+                                    @foreach (var user in users)
+                                    {
+                                        <option value="@user.Id">@user.Name</option>
+                                    }
+                                </select>
+                            }
+                        </div>
+                        <span asp-validation-for="ManagerId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="container-fluid d-flex justify-content-between">
+                        <button type="button" class="btn btn_custom_danger w-50 mx-2" data-bs-dismiss="modal">@Html.Translate("Hủy bỏ")</button>
+                        <button type="button" id="btnEdit" class="btn btn_custom_primary w-50 mx-2">@Html.Translate("Đồng ý")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

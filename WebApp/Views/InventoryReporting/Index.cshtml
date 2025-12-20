@@ -1,0 +1,55 @@
+﻿@using BIVN.FixedStorage.Services.Common.API.Dto.Inventory
+@using Microsoft.AspNetCore.Localization
+<link href="./assets/css/InventoryReporting.css" asp-append-version="true" rel="stylesheet" />
+
+@{
+    ViewBag.Title = Html.Translate("Báo cáo kiểm kê");
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var inventoryNames = ViewBag.InventoryNames as IEnumerable<ListInventoryModel>;
+}
+
+<div id="Reporting_Layout">
+    <div class="row Reporting_Header mb-3">
+        <div>
+            <button class="changeTab active" id="inventory">@Html.Translate("Báo cáo tiến độ")</button>
+            <button class="changeTab" id="supervision">@Html.Translate("Báo cáo giám sát")</button>
+        </div>
+        <div class="exportArea">
+            <select id="ReportingAudit_InventoryName" class="ReportingAudit_InventoryName">
+                @if (inventoryNames != null || inventoryNames.Any())
+                {
+                    @foreach (var item in inventoryNames)
+                    {
+                        <option value="@item.InventoryId">@item.InventoryName</option>
+                    }
+                }
+            </select>
+            <select name="reportType" id="reportType">
+                <option value="0">@Html.Translate("Báo cáo hiện tại")</option>
+                <option value="10">@Html.Translate("Báo cáo lúc 10 giờ")</option>
+                <option value="11">@Html.Translate("Báo cáo lúc 11 giờ")</option>
+                <option value="12">@Html.Translate("Báo cáo lúc 12 giờ")</option>
+            </select>
+
+            <select id="ReportingAudit_Type" class="ReportingAudit_Type" multiple name="native-select" placeholder="Chọn loại báo cáo giám sát" data-search="true" data-silent-initial-value-set="true">
+                <option value="0">@Html.Translate("Báo cáo giám sát theo chỉ định")</option>
+                <option value="1">@Html.Translate("Báo cáo giám sát tự do")</option>
+            </select>
+
+            <button id="exportFile">
+                <img src="./assets/images/icons/pdf.png"/>
+                @Html.Translate("Xuất file")
+            </button>
+            
+        </div>
+    </div>
+</div>
+
+<div id="inventory-report-tab" class="tab-content">
+    @await Html.PartialAsync("~/Views/Shared/Common/_InventoryReporting.cshtml")
+</div>
+<div id="supervision-report-tab" class="tab-content">
+    @await Html.PartialAsync("~/Views/Shared/Common/_InventoryReportingSupervision.cshtml")
+</div>
+
+<script asp-append-version="true" src="./assets/js/InventoryReporting.js"></script>

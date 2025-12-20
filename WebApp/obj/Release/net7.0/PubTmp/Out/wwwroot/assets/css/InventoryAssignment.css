@@ -1,0 +1,296 @@
+﻿#Assignment_Layout {
+    padding: 0 1rem;
+}
+
+.Assignment_Layout_Content {
+    margin-left: 0.5rem;
+}
+
+.Assignment_Layout_Top {
+    margin-top: 110px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Assignment_Layout_Top h3 {
+    font-size: 24px;
+    color: #0066B3;
+    font-weight: 700;
+    margin: 0;
+}
+
+.Assignment_Layout_Top p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #6A707E;
+    margin-bottom: 0;
+}
+
+.Assignment_Layout_Top button,
+#addAreaModal,
+#editAreaModal {
+    border: 1px dashed #0D2EA0;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: #0D2EA0;
+    max-height: 52px;
+}
+
+.Assignment_Layout_Content_Container {
+    background: white;
+    border-radius: 8px;
+    width: 24%;
+    border: 1px solid #E4E4E4;
+    margin: 0 4px;
+}
+
+.Assignment_Layout_Content_Container .Title {
+    padding: 20px 0;
+    word-break: break-all;
+}
+
+.Assignment_Layout_Content_Container .Title h4 {
+    color: #0D2EA0;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: pre-wrap;
+}
+
+.Assignment_Layout_Content_Container .Content h5 {
+    font-size: 12px;
+    color: #333333;
+}
+
+.Assignment_Layout_Content_Container .Content p {
+    color: #5092FC;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.Assignment_Layout_Content .Image {
+    display: flex;
+    gap: .3rem;
+    margin-top: -6px;
+}
+
+.Assignment_Layout_Content .Image svg {
+    cursor: pointer;
+}
+
+.Assignment_Header {
+    background-color: #FFFFFF;
+    z-index: 1;
+    display: flex;
+    position: absolute;
+    width: calc(100% - 250px);
+    /* 250px is the width of the left side bar */
+    padding: 1.5rem;
+    gap: 1rem;
+    top: 70px;
+    right: 12px;
+    border-top: 2px solid #eee;
+}
+
+.Assignment_Header>button {
+    background-color: #DCDCDC;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+    border: none;
+    padding: 1rem;
+    max-height: 53px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.Assignment_Header>button.active {
+    background-color: #0D2EA0;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 992px) {
+    .Assignment_Header {
+        width: 100%;
+    }
+}
+
+#page-topbar>.navbar-header {
+    box-shadow: none !important;
+}
+
+#employee-tab {
+    display: none;
+}
+
+.modal_area .modal.show .modal-dialog {
+    max-width: 700px;
+}
+
+.modal_area .modal-header {
+    text-align: center;
+    display: block;
+}
+
+.modal_area .modal-header h4 {
+    font-weight: bold;
+    font-size: 22px;
+    color: #333333;
+}
+
+.modal_area .modal-body {
+    padding: 0rem 1rem 0.5rem 1rem;
+}
+
+.modal_area .bold_component_label {
+    font-weight: 400;
+    font-size: 12px;
+    color: #333333;
+    margin-bottom: 0;
+}
+
+.modal_area .bold_component_label span {
+    color: #E60000;
+}
+
+#button_Cancel_AddNewArea,
+#button_Cancel_EditNewArea {
+    background-color: #F1F0F4;
+    border-color: #DCDCDC;
+    color: #E60000;
+    font-weight: 500;
+    font-size: 16px !important;
+}
+
+#button_Apply_AddNewArea {
+    background-color: #0D2EA0;
+    border-color: #0D2EA0;
+    color: white;
+    font-weight: 500;
+    font-size: 16px !important;
+}
+
+#addAreaModal,
+#editAreaModal {
+    width: 100%;
+    height: 40px;
+}
+
+#addAreaModal img,
+#editAreaModal img {
+    margin-bottom: 2px;
+}
+
+/*.modal_area .factory2 {
+    display: flex;
+    align-items: center;
+}*/
+
+/*.modal_area .factory2 div {
+    margin: 0 1rem;
+}*/
+
+/*.factory_item {
+    display: flex;
+    align-items: baseline;
+}*/
+.factory_item {
+    /*display: inline-flex;*/
+    grid-gap: 1em;
+    align-items: baseline;
+}
+.factory_item_control {
+    display: flex;
+    grid-gap: 1em;
+    align-items: baseline;
+}
+
+.factory_input_container {
+    width: -webkit-fill-available !important;
+}
+
+.create_modal_btn_delete_factory, .edit_modal_btn_delete_factory {
+    cursor: pointer;
+}
+
+
+.factory_list {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 4px;
+}
+.modal_area .modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal_area .modal-footer button {
+    width: auto;
+    flex: 1;
+}
+
+.InventoryAssignment_Employee {
+    margin-top: 110px;
+    background-color: #FFFFFF;
+    padding: 10px;
+}
+
+.InventoryAssignment_Employee .table-striped>tbody>tr:nth-of-type(odd) {
+    --bs-table-accent-bg: #FFFFFF;
+}
+
+#InventoryAssignment_DataTable {
+    border: none;
+    border-color: transparent;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#InventoryAssignment_DataTable td,
+#InventoryAssignment_DataTable th {
+    border: none;
+    border-bottom: 1.5px solid #eee;
+}
+
+#InventoryAssignment_DataTable td p {
+    margin-bottom: 0;
+}
+
+#employee_table select {
+    border: none;
+    font-size: 12px !important;
+    color: #333333;
+    cursor: pointer;
+}
+
+#employee_table select:focus {
+    outline: none;
+}
+.select_location .vscomp-wrapper{
+    font-size: 12px !important;
+}
+
+.InventoryAssignment_feature_container {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    padding: 15px;
+}
+
+h5.InventoryAssignment_ExportExcel_Title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.InventoryAssignment_ExportExcel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+}

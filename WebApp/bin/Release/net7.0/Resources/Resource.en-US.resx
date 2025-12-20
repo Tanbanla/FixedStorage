@@ -1,0 +1,2154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Trang chủ" xml:space="preserve">
+    <value>Homepage</value>
+  </data>
+  <data name="Đăng nhập" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Tài khoản đăng nhập" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+  <data name="Ngôn ngữ" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Nhập tài khoản đăng nhập" xml:space="preserve">
+    <value>Input UserName</value>
+  </data>
+  <data name="Mật khẩu" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Nhập mật khẩu" xml:space="preserve">
+    <value>Input Password</value>
+  </data>
+  <data name="Khu vực" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="Báo cáo kiểm kê" xml:space="preserve">
+    <value>Inventory Report</value>
+  </data>
+  <data name="Quản lý người dùng" xml:space="preserve">
+    <value>Users Management</value>
+  </data>
+  <data name="Quản lý phòng ban" xml:space="preserve">
+    <value>Departments Management</value>
+  </data>
+  <data name="Danh sách người dùng" xml:space="preserve">
+    <value>User List</value>
+  </data>
+  <data name="Quản lý nhóm quyền" xml:space="preserve">
+    <value>Roles Management</value>
+  </data>
+  <data name="Quản lý khu vực" xml:space="preserve">
+    <value>Areas Management</value>
+  </data>
+  <data name="Quản lý linh kiện" xml:space="preserve">
+    <value>Components Management</value>
+  </data>
+  <data name="Quản lý xuất nhập kho" xml:space="preserve">
+    <value>Input/Output WareHouse Management</value>
+  </data>
+  <data name="Nhập kho" xml:space="preserve">
+    <value>Input WareHouse</value>
+  </data>
+  <data name="Lịch sử xuất nhập kho" xml:space="preserve">
+    <value>Input/Output WareHourse History</value>
+  </data>
+  <data name="Danh sách đợt kiểm kê" xml:space="preserve">
+    <value>Inventory List</value>
+  </data>
+  <data name="Lịch sử kiểm kê" xml:space="preserve">
+    <value>Inventory History</value>
+  </data>
+  <data name="Danh sách phiếu kiểm kê" xml:space="preserve">
+    <value>Inventory Documents List</value>
+  </data>
+  <data name="Phân quyền thao tác kiểm kê" xml:space="preserve">
+    <value>Inventory Roles</value>
+  </data>
+  <data name="Đăng xuất" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Thu gọn" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="Phóng to" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="Báo cáo tiến độ" xml:space="preserve">
+    <value>Progress Report</value>
+  </data>
+  <data name="Báo cáo giám sát" xml:space="preserve">
+    <value>Audit Report</value>
+  </data>
+  <data name="Báo cáo hiện tại" xml:space="preserve">
+    <value>Current time report</value>
+  </data>
+  <data name="Báo cáo lúc 10 giờ" xml:space="preserve">
+    <value>Report at 10 o'clock</value>
+  </data>
+  <data name="Báo cáo lúc 11 giờ" xml:space="preserve">
+    <value>Report at 11 o'clock</value>
+  </data>
+  <data name="Báo cáo lúc 12 giờ" xml:space="preserve">
+    <value>Report at 12 o'clock</value>
+  </data>
+  <data name="Xuất file" xml:space="preserve">
+    <value>Export File</value>
+  </data>
+  <data name="Tiến độ kiểm kê theo loại phiếu" xml:space="preserve">
+    <value>Inventory progress by document type</value>
+  </data>
+  <data name="Xem danh sách phiếu kiểm kê" xml:space="preserve">
+    <value>View inventory document list</value>
+  </data>
+  <data name="Phiếu A" xml:space="preserve">
+    <value>Document Type A</value>
+  </data>
+  <data name="Phiếu B" xml:space="preserve">
+    <value>Document Type B</value>
+  </data>
+  <data name="Phiếu C" xml:space="preserve">
+    <value>Document Type C</value>
+  </data>
+  <data name="Phiếu E" xml:space="preserve">
+    <value>Document Type E</value>
+  </data>
+  <data name="Chú thích" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="Chưa kiểm kê" xml:space="preserve">
+    <value>Not yet Inventory</value>
+  </data>
+  <data name="Đã kiểm kê" xml:space="preserve">
+    <value>Inventoried</value>
+  </data>
+  <data name="Đã xác nhận" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+  <data name="Bảng tiến độ kiểm kê theo loại phiếu" xml:space="preserve">
+    <value>Inventory progress table by document type</value>
+  </data>
+  <data name="Ẩn chi tiết bảng" xml:space="preserve">
+    <value>Hide table details</value>
+  </data>
+  <data name="Không có dữ liệu" xml:space="preserve">
+    <value>No data</value>
+  </data>
+  <data name="Tiến độ kiểm kê theo phòng ban, khu vực" xml:space="preserve">
+    <value>Inventory progress by department, area</value>
+  </data>
+  <data name="Phòng ban" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="Áp dụng" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="Số phiếu" xml:space="preserve">
+    <value>Document Count</value>
+  </data>
+  <data name="% hoàn thành" xml:space="preserve">
+    <value>% Completed</value>
+  </data>
+  <data name="Tỉ lệ chưa kiểm kê" xml:space="preserve">
+    <value>Not yet inventoried percent</value>
+  </data>
+  <data name="Tỉ lệ đã kiểm kê" xml:space="preserve">
+    <value>Inventoried percent</value>
+  </data>
+  <data name="Tỉ lệ đã xác nhận" xml:space="preserve">
+    <value>Confirmed percent</value>
+  </data>
+  <data name="Bảng dữ liệu tiến độ kiểm kê theo phòng ban/ khu vực" xml:space="preserve">
+    <value>Inventory progress data table by department/area</value>
+  </data>
+  <data name="Tiến độ giám sát" xml:space="preserve">
+    <value>Audit Progress</value>
+  </data>
+  <data name="Chưa giám sát" xml:space="preserve">
+    <value>Not yet Audit</value>
+  </data>
+  <data name="Tỉ lệ chưa giám sát" xml:space="preserve">
+    <value>Not yet audit percent</value>
+  </data>
+  <data name="Không đạt giám sát" xml:space="preserve">
+    <value>Not Audit</value>
+  </data>
+  <data name="Tỉ lệ không đạt giám sát" xml:space="preserve">
+    <value>Not audit percent</value>
+  </data>
+  <data name="Đạt giám sát" xml:space="preserve">
+    <value>Audited</value>
+  </data>
+  <data name="Tỉ lệ đạt giám sát" xml:space="preserve">
+    <value>Audited percent</value>
+  </data>
+  <data name="Bảng dữ liệu tiến độ giám sát" xml:space="preserve">
+    <value>Audit progress data table</value>
+  </data>
+  <data name="Hiển thị chi tiết bảng" xml:space="preserve">
+    <value>Show table details</value>
+  </data>
+  <data name="Không tìm thấy dữ liệu phòng ban" xml:space="preserve">
+    <value>No department data </value>
+  </data>
+  <data name="Không tìm thấy dữ liệu khu vực" xml:space="preserve">
+    <value>No area data</value>
+  </data>
+  <data name="Không tìm thấy dữ liệu phù hợp" xml:space="preserve">
+    <value>No matching data found</value>
+  </data>
+  <data name="Tỉ lệ giám sát" xml:space="preserve">
+    <value>Audit percent</value>
+  </data>
+  <data name="Tỉ lệ" xml:space="preserve">
+    <value>Percent</value>
+  </data>
+  <data name="Hạng mục" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Tổng phiếu cần giám sát" xml:space="preserve">
+    <value>Audit Document Total</value>
+  </data>
+  <data name="Số phiếu chưa giám sát" xml:space="preserve">
+    <value>Number Of Not Yet Audit Document</value>
+  </data>
+  <data name="Số phiếu giám sát không đạt" xml:space="preserve">
+    <value>Number Of Fail Audited Document</value>
+  </data>
+  <data name="Số phiếu giám sát đạt" xml:space="preserve">
+    <value>Number Of Audited Document</value>
+  </data>
+  <data name="Tất cả" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Tổng phiếu" xml:space="preserve">
+    <value>Document Total</value>
+  </data>
+  <data name="Số phiếu chưa kiểm kê" xml:space="preserve">
+    <value>Number of not yet Inventory</value>
+  </data>
+  <data name="Số phiếu đã kiểm kê" xml:space="preserve">
+    <value>Number Of Inventoried Document</value>
+  </data>
+  <data name="Số phiếu đã xác nhận" xml:space="preserve">
+    <value>Number Of Confirmed Inventory Document</value>
+  </data>
+  <data name="Thêm phòng ban" xml:space="preserve">
+    <value>Add new department</value>
+  </data>
+  <data name="Tìm kiếm" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Bạn có chắc chắn muốn xóa phòng ban này?" xml:space="preserve">
+    <value>Are you sure you want to delete this department?</value>
+  </data>
+  <data name="Xác nhận xóa" xml:space="preserve">
+    <value>Delete Confirm</value>
+  </data>
+  <data name="Đồng ý" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Hủy bỏ" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Không thể xóa" xml:space="preserve">
+    <value>Cannot delete</value>
+  </data>
+  <data name="Đã hiểu" xml:space="preserve">
+    <value>Understand</value>
+  </data>
+  <data name="Số lượng nhân viên" xml:space="preserve">
+    <value>Number of employees</value>
+  </data>
+  <data name="Trưởng phòng" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="Phòng ban này đã tồn tại, vui lòng nhập lại." xml:space="preserve">
+    <value>This department already exists, please try again.</value>
+  </data>
+  <data name="Vui lòng nhập tên phòng ban." xml:space="preserve">
+    <value>Input department name, Please.</value>
+  </data>
+  <data name="Hệ thống chỉ cho phép nhập tối đa 50 kí tự" xml:space="preserve">
+    <value>The system only allows a maximum of 50 characters.</value>
+  </data>
+  <data name="Nhập tên phòng ban" xml:space="preserve">
+    <value>Input department name</value>
+  </data>
+  <data name="Chọn trưởng phòng" xml:space="preserve">
+    <value>Choose management</value>
+  </data>
+  <data name="Phòng" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="Tên phòng ban" xml:space="preserve">
+    <value>Department Name</value>
+  </data>
+  <data name="Thêm mới phòng ban thành công." xml:space="preserve">
+    <value>Add new department successful.</value>
+  </data>
+  <data name="Vui lòng kiểm tra lại dữ liệu" xml:space="preserve">
+    <value>Check the data again, please</value>
+  </data>
+  <data name="Hệ thống chỉ chấp nhận tối đa 50 kí tự" xml:space="preserve">
+    <value>The system only accepts a maximum of 50 characters</value>
+  </data>
+  <data name="Không để trống dữ liệu" xml:space="preserve">
+    <value>Do not empty data</value>
+  </data>
+  <data name="Chỉnh sửa phòng ban" xml:space="preserve">
+    <value>Edit Department</value>
+  </data>
+  <data name="Chỉnh sửa phòng ban thành công." xml:space="preserve">
+    <value>Udpate department successfully</value>
+  </data>
+  <data name="Xóa phòng ban thành công." xml:space="preserve">
+    <value>Delete department successfully</value>
+  </data>
+  <data name="Họ và tên" xml:space="preserve">
+    <value>FullName</value>
+  </data>
+  <data name="Nhập họ và tên" xml:space="preserve">
+    <value>Input FullName</value>
+  </data>
+  <data name="Mã nhân viên" xml:space="preserve">
+    <value>UserCode</value>
+  </data>
+  <data name="Nhập mã nhân viên" xml:space="preserve">
+    <value>Input UserCode</value>
+  </data>
+  <data name="Nhóm quyền" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="Trạng thái" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Loại tài khoản" xml:space="preserve">
+    <value>Account type</value>
+  </data>
+  <data name="Thêm người dùng" xml:space="preserve">
+    <value>Add new user</value>
+  </data>
+  <data name="Tài khoản" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Tài khoản riêng" xml:space="preserve">
+    <value>Private Account</value>
+  </data>
+  <data name="Tài khoản chung" xml:space="preserve">
+    <value>Public Account</value>
+  </data>
+  <data name="Tài khoản giám sát" xml:space="preserve">
+    <value>Audit Account</value>
+  </data>
+  <data name="Không có kết quả" xml:space="preserve">
+    <value>No result</value>
+  </data>
+  <data name="điều kiện đã được chọn" xml:space="preserve">
+    <value>Condition has been selected</value>
+  </data>
+  <data name="Tổng" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Chọn nhóm quyền" xml:space="preserve">
+    <value>Choose role</value>
+  </data>
+  <data name="Xem chi tiết" xml:space="preserve">
+    <value>View Detail</value>
+  </data>
+  <data name="Khóa tài khoản nếu không đổi mật khẩu" xml:space="preserve">
+    <value>Lock your account if you don't change your password</value>
+  </data>
+  <data name="Nhập thời gian hiệu lực của tài khoản" xml:space="preserve">
+    <value>Input the account validity period</value>
+  </data>
+  <data name="Ngày" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="Khóa tài khoản nếu không tương tác" xml:space="preserve">
+    <value>Lock your account if you don't interact</value>
+  </data>
+  <data name="Đang sử dụng" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Khóa do mật khẩu hết hạn" xml:space="preserve">
+    <value>Locked due to expired password</value>
+  </data>
+  <data name="Khóa do không tương tác" xml:space="preserve">
+    <value>Locked due to lack of interaction</value>
+  </data>
+  <data name="Khóa bởi admin" xml:space="preserve">
+    <value>Lock by admin</value>
+  </data>
+  <data name="Đã xóa" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="Chi tiết thông tin người dùng" xml:space="preserve">
+    <value>Detail user info</value>
+  </data>
+  <data name="Thời gian đổi mật khẩu" xml:space="preserve">
+    <value>Password change time</value>
+  </data>
+  <data name="Thời gian không tương tác" xml:space="preserve">
+    <value>Time does not interact</value>
+  </data>
+  <data name="Thời gian tạo" xml:space="preserve">
+    <value>Created At</value>
+  </data>
+  <data name="Người tạo" xml:space="preserve">
+    <value>Created By</value>
+  </data>
+  <data name="Thời gian sửa" xml:space="preserve">
+    <value>Updated At</value>
+  </data>
+  <data name="Người sửa" xml:space="preserve">
+    <value>Updated By</value>
+  </data>
+  <data name="Đăng nhập lần cuối" xml:space="preserve">
+    <value>Last login time</value>
+  </data>
+  <data name="Không" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Chỉnh sửa người dùng" xml:space="preserve">
+    <value>Update user</value>
+  </data>
+  <data name="Thay đổi mật khẩu?" xml:space="preserve">
+    <value>Change password?</value>
+  </data>
+  <data name="Thay đổi mật khẩu" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="Mật khẩu mới" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="Nhập mật khẩu mới" xml:space="preserve">
+    <value>Input new password</value>
+  </data>
+  <data name="Xác nhận" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Vui lòng nhập mật khẩu mới." xml:space="preserve">
+    <value>Input new password, please</value>
+  </data>
+  <data name="Mật khẩu phải có độ dài từ 8 - 15 ký tự, bao gồm cả ký tự chữ và số, không chứa ký tự khoảng trắng." xml:space="preserve">
+    <value>Password must be 8 - 15 characters long, include both letters and numbers, and do not contain spaces.</value>
+  </data>
+  <data name="Vui lòng nhập tài khoản đăng nhập." xml:space="preserve">
+    <value>Input your username, please</value>
+  </data>
+  <data name="Ít nhất 1 ký tự." xml:space="preserve">
+    <value>At least 1 character.</value>
+  </data>
+  <data name="Tối đa 15 ký tự." xml:space="preserve">
+    <value>Maximum 15 characters.</value>
+  </data>
+  <data name="Tài khoản đăng nhập không đúng định dạng. Vui lòng thử lại." xml:space="preserve">
+    <value>UserName is not in the correct format. Please try again.</value>
+  </data>
+  <data name="Vui lòng nhập mật khẩu." xml:space="preserve">
+    <value>Input password, please</value>
+  </data>
+  <data name="Vui lòng nhập họ và tên." xml:space="preserve">
+    <value>Input fullname, please</value>
+  </data>
+  <data name="Họ và tên không đúng định dạng. Vui lòng thử lại." xml:space="preserve">
+    <value>FullName is not in correct format. Please try again.</value>
+  </data>
+  <data name="Vui lòng nhập mã nhân viên." xml:space="preserve">
+    <value>Input UserCode, please</value>
+  </data>
+  <data name="Mã nhân viên không đúng định dạng. Vui lòng thử lại." xml:space="preserve">
+    <value>UserCode is not in the correct format. Please try again.</value>
+  </data>
+  <data name="Tối đa 100 ký tự." xml:space="preserve">
+    <value>Maximum 100 characters.</value>
+  </data>
+  <data name="Tối đa 8 ký tự." xml:space="preserve">
+    <value>Maximum 8 characters.</value>
+  </data>
+  <data name="Vui lòng nhập thời gian hiệu lực." xml:space="preserve">
+    <value>Input validity period, please</value>
+  </data>
+  <data name="Thời gian hiệu lực không đúng định dạng. Vui lòng thử lại." xml:space="preserve">
+    <value>The validity period is not in the correct format. Please try again.</value>
+  </data>
+  <data name="Vui lòng nhập không quá 90 ngày." xml:space="preserve">
+    <value>Input no more than 90 days, please</value>
+  </data>
+  <data name="Hiển thị" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="Thêm nhóm quyền" xml:space="preserve">
+    <value>Add role</value>
+  </data>
+  <data name="Phân quyền xem dữ liệu" xml:space="preserve">
+    <value>View data role</value>
+  </data>
+  <data name="Xem dữ liệu theo phòng ban" xml:space="preserve">
+    <value>View Department Data</value>
+  </data>
+  <data name="Tạo phiếu theo phòng ban" xml:space="preserve">
+    <value>Create Document By Department</value>
+  </data>
+  <data name="Xem dữ liệu theo nhà máy" xml:space="preserve">
+    <value>View Factory Data</value>
+  </data>
+  <data name="Chỉnh sửa nhóm quyền" xml:space="preserve">
+    <value>Edit role management</value>
+  </data>
+  <data name="Tên nhóm quyền" xml:space="preserve">
+    <value>RoleName</value>
+  </data>
+  <data name="Nhập tên nhóm quyền" xml:space="preserve">
+    <value>Input RoleName</value>
+  </data>
+  <data name="Phân quyền website" xml:space="preserve">
+    <value>Website Role Management</value>
+  </data>
+  <data name="Cho phép truy cập" xml:space="preserve">
+    <value>Allow access</value>
+  </data>
+  <data name="Phân quyền app mobile" xml:space="preserve">
+    <value>App mobile role management</value>
+  </data>
+  <data name="Vui lòng nhập tên nhóm quyền." xml:space="preserve">
+    <value>Input RoleName, please</value>
+  </data>
+  <data name="Chỉnh sửa nhóm quyền thành công." xml:space="preserve">
+    <value>Update role management successfully</value>
+  </data>
+  <data name="Vui lòng lựa chọn quyền truy cập." xml:space="preserve">
+    <value>Choose role to access</value>
+  </data>
+  <data name="Vui lòng lựa chọn quyền truy cập trên website và mobile." xml:space="preserve">
+    <value>Choose website or mobile role, please</value>
+  </data>
+  <data name="Vui lòng lựa chọn quyền truy cập trên website." xml:space="preserve">
+    <value>Choose access website role, please</value>
+  </data>
+  <data name="Vui lòng lựa chọn quyền truy cập trên mobile." xml:space="preserve">
+    <value>Choose access mobile role, please</value>
+  </data>
+  <data name="Bạn có chắc chắn muốn xóa nhóm quyền này?" xml:space="preserve">
+    <value>Are you sure you want to remove this role?</value>
+  </data>
+  <data name="Xóa nhóm quyền thành công." xml:space="preserve">
+    <value>Delete role successfully</value>
+  </data>
+  <data name="Tên nhóm quyền đã tồn tại. Vui lòng thử lại." xml:space="preserve">
+    <value>Rolename is existed. Try again.</value>
+  </data>
+  <data name="Thêm nhóm quyền thành công." xml:space="preserve">
+    <value>Add role successfully</value>
+  </data>
+  <data name="Nhà máy" xml:space="preserve">
+    <value>Factory</value>
+  </data>
+  <data name="Tầng" xml:space="preserve">
+    <value>Floor</value>
+  </data>
+  <data name="Giá" xml:space="preserve">
+    <value>Self</value>
+  </data>
+  <data name="Tổng số lượng vị trí linh kiện" xml:space="preserve">
+    <value>Position component Total</value>
+  </data>
+  <data name="Số lượng vị trí gần hết linh kiện" xml:space="preserve">
+    <value>Almost out of position component Total</value>
+  </data>
+  <data name="Nếu xóa khu vực này thì tất cả dữ liệu linh kiện có vị trí cố định thuộc khu vực sẽ bị xóa theo. Bạn có chắc chắn muốn xóa ?" xml:space="preserve">
+    <value>If this area is deleted, all data events with fixed locations belonging to this area will be deleted. Are you sure you want to delete?</value>
+  </data>
+  <data name="Xóa khu vực thành công." xml:space="preserve">
+    <value>Delete area successfully</value>
+  </data>
+  <data name="Mã linh kiện" xml:space="preserve">
+    <value>Component</value>
+  </data>
+  <data name="Nhập mã linh kiện" xml:space="preserve">
+    <value>Input Component</value>
+  </data>
+  <data name="Tên linh kiện" xml:space="preserve">
+    <value>Component Name</value>
+  </data>
+  <data name="Nhập tên linh kiện" xml:space="preserve">
+    <value>Input Component Name</value>
+  </data>
+  <data name="Nhà cung cấp" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="Nhập tên NCC" xml:space="preserve">
+    <value>Input Supplier Name</value>
+  </data>
+  <data name="Điều kiện khác" xml:space="preserve">
+    <value>Other condition</value>
+  </data>
+  <data name="Vị trí cố định" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="Nhập vị trí cố định" xml:space="preserve">
+    <value>Input Position</value>
+  </data>
+  <data name="Khoảng số lượng tồn kho" xml:space="preserve">
+    <value>About inventory quantity</value>
+  </data>
+  <data name="Nhập SL" xml:space="preserve">
+    <value>Input quantity</value>
+  </data>
+  <data name="Xóa" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Nhập file" xml:space="preserve">
+    <value>Import file</value>
+  </data>
+  <data name="Tải biểu mẫu" xml:space="preserve">
+    <value>Download file</value>
+  </data>
+  <data name="Tên nhà cung cấp" xml:space="preserve">
+    <value>Suppiler Name</value>
+  </data>
+  <data name="Tồn kho thực tế" xml:space="preserve">
+    <value>Actual Inventory</value>
+  </data>
+  <data name="Tồn kho (lớn nhất)" xml:space="preserve">
+    <value>Max Inventory</value>
+  </data>
+  <data name="Thêm linh kiện" xml:space="preserve">
+    <value>Add Component</value>
+  </data>
+  <data name="Mã nhà cung cấp" xml:space="preserve">
+    <value>Supplier Code</value>
+  </data>
+  <data name="Nhập mã nhà cung cấp" xml:space="preserve">
+    <value>Input Supplier Code</value>
+  </data>
+  <data name="Nhập tên nhà cung cấp" xml:space="preserve">
+    <value>Input Supplier Name</value>
+  </data>
+  <data name="Tên nhà cung cấp rút gọn" xml:space="preserve">
+    <value>Short Supplier Name</value>
+  </data>
+  <data name="Nhập tên nhà cung cấp rút gọn" xml:space="preserve">
+    <value>Input Short Supplier Name</value>
+  </data>
+  <data name="Số lượng tồn kho (nhỏ nhất)" xml:space="preserve">
+    <value>Min Inventory Quantity</value>
+  </data>
+  <data name="Nhập số lượng tồn kho nhỏ nhất" xml:space="preserve">
+    <value>Input Min Inventory Quantity</value>
+  </data>
+  <data name="Nhập số lượng tồn kho thực tế" xml:space="preserve">
+    <value>Input Actual Inventory Quantity</value>
+  </data>
+  <data name="Số lượng tồn kho (lớn nhất)" xml:space="preserve">
+    <value>Max Inventory Quantity</value>
+  </data>
+  <data name="Nhập số lượng tồn kho lớn nhất" xml:space="preserve">
+    <value>Input Max Inventory Quantity</value>
+  </data>
+  <data name="Thông tin linh kiện" xml:space="preserve">
+    <value>Component Info</value>
+  </data>
+  <data name="Nhập thông tin linh kiện" xml:space="preserve">
+    <value>Input Component Info</value>
+  </data>
+  <data name="Nhập ghi chú" xml:space="preserve">
+    <value>Input note</value>
+  </data>
+  <data name="Ghi chú" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="Vui lòng nhập mã linh kiện." xml:space="preserve">
+    <value>Input component, please</value>
+  </data>
+  <data name="Vui lòng nhập đầy đủ 9 ký tự." xml:space="preserve">
+    <value>Input 9 characters, please</value>
+  </data>
+  <data name="Vui lòng nhập tên linh kiện." xml:space="preserve">
+    <value>Input component name, please</value>
+  </data>
+  <data name="Tối đa 150 ký tự." xml:space="preserve">
+    <value>Max 150 characters.</value>
+  </data>
+  <data name="Vui lòng nhập mã nhà cung cấp." xml:space="preserve">
+    <value>Input Supplier Code, please</value>
+  </data>
+  <data name="Tối đa 50 ký tự." xml:space="preserve">
+    <value>Max 50 characters.</value>
+  </data>
+  <data name="Vui lòng nhập tên nhà cung cấp." xml:space="preserve">
+    <value>Input Supplier Name, Please</value>
+  </data>
+  <data name="Tối đa 250 ký tự." xml:space="preserve">
+    <value>Max 250 characters.</value>
+  </data>
+  <data name="Vui lòng nhập tên nhà cung cấp rút gọn." xml:space="preserve">
+    <value>Input Short Supplier Name, Please</value>
+  </data>
+  <data name="Vui lòng nhập vị trí cố định." xml:space="preserve">
+    <value>Input Position, Please</value>
+  </data>
+  <data name="Tối đa 20 ký tự." xml:space="preserve">
+    <value>Max 20 characters.</value>
+  </data>
+  <data name="Vui lòng nhập số lượng tồn kho nhỏ nhất." xml:space="preserve">
+    <value>Input Min Inventory, Please</value>
+  </data>
+  <data name="Vui lòng nhập số lượng tồn kho lớn nhất." xml:space="preserve">
+    <value>Input Max Inventory, Please</value>
+  </data>
+  <data name="Vui lòng nhập số lượng tồn kho thực tế." xml:space="preserve">
+    <value>Input Actual Inventory, Please</value>
+  </data>
+  <data name="Chỉnh sửa linh kiện" xml:space="preserve">
+    <value>Edit Component</value>
+  </data>
+  <data name="Xuất excel thành công." xml:space="preserve">
+    <value>Export file successfully</value>
+  </data>
+  <data name="Xảy ra lỗi khi xuất Excel." xml:space="preserve">
+    <value>Export Excel Fail</value>
+  </data>
+  <data name="Xóa linh kiện" xml:space="preserve">
+    <value>Delete Component</value>
+  </data>
+  <data name="Bạn có chắc chắn muốn xóa dữ liệu?" xml:space="preserve">
+    <value>Are you sure delete data?</value>
+  </data>
+  <data name="Người nhập kho" xml:space="preserve">
+    <value>Input WareHourse User</value>
+  </data>
+  <data name="Thời gian nhập kho" xml:space="preserve">
+    <value>Input Inventory Time</value>
+  </data>
+  <data name="Tạm thời" xml:space="preserve">
+    <value>Temporary</value>
+  </data>
+  <data name="Người nhập" xml:space="preserve">
+    <value>Input User</value>
+  </data>
+  <data name="Ngày nhập kho" xml:space="preserve">
+    <value>Input Inventory Date</value>
+  </data>
+  <data name="Tổng số mã LK" xml:space="preserve">
+    <value>Component Total</value>
+  </data>
+  <data name="Lưu tạm thời" xml:space="preserve">
+    <value>Save temporarily</value>
+  </data>
+  <data name="Trả về Bwin" xml:space="preserve">
+    <value>Return Bwin</value>
+  </data>
+  <data name="Thời gian" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="Tổng số linh kiện" xml:space="preserve">
+    <value>Component Total</value>
+  </data>
+  <data name="Số linh kiện còn dư" xml:space="preserve">
+    <value>Number of spare parts remaining</value>
+  </data>
+  <data name="Mã chỉ thị xuất kho" xml:space="preserve">
+    <value>Warehouse release instruction code</value>
+  </data>
+  <data name="Vị trí" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="Số lượng" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Người thao tác" xml:space="preserve">
+    <value>Operator</value>
+  </data>
+  <data name="Nhập người thao tác" xml:space="preserve">
+    <value>Input Operator</value>
+  </data>
+  <data name="Loại nghiệp vụ" xml:space="preserve">
+    <value>Warehourse Type</value>
+  </data>
+  <data name="Xuất kho" xml:space="preserve">
+    <value>Output Warehourse</value>
+  </data>
+  <data name="Khoảng số lượng" xml:space="preserve">
+    <value>About Inventory</value>
+  </data>
+  <data name="Thời gian thao tác" xml:space="preserve">
+    <value>Operation time</value>
+  </data>
+  <data name="Chi tiết lịch sử xuất nhập kho" xml:space="preserve">
+    <value>Input/Output Storage Detail</value>
+  </data>
+  <data name="Thêm khu vực" xml:space="preserve">
+    <value>Add area</value>
+  </data>
+  <data name="Bạn có chắc chắn muốn xóa khu vực này ?" xml:space="preserve">
+    <value>Are you sure delete area?</value>
+  </data>
+  <data name="Thông báo" xml:space="preserve">
+    <value>Notification</value>
+  </data>
+  <data name="Bạn không thể thay đổi tên khu vực vì khu vực đã được gán cho phiếu.Sau ngày kiểm kê 30 ngày mới có thể thực hiện chỉnh sửa." xml:space="preserve">
+    <value>You cannot change the area name because the area has been designated for voting. Edits can be made 30 days after the check date.</value>
+  </data>
+  <data name="Nhập tên nhà máy" xml:space="preserve">
+    <value>Input factory name</value>
+  </data>
+  <data name="Chỉnh sửa khu vực kiểm kê" xml:space="preserve">
+    <value>Edit area inventory</value>
+  </data>
+  <data name="Tên khu vực" xml:space="preserve">
+    <value>Area Name</value>
+  </data>
+  <data name="Nhập tên khu vực" xml:space="preserve">
+    <value>Input area name</value>
+  </data>
+  <data name="Thêm nhà máy" xml:space="preserve">
+    <value>Add factory</value>
+  </data>
+  <data name="Vui lòng nhập tên nhà máy." xml:space="preserve">
+    <value>Input factory, please</value>
+  </data>
+  <data name="Vui lòng nhập tên khu vực." xml:space="preserve">
+    <value>Input area name, please</value>
+  </data>
+  <data name="Vai trò" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Kiểm kê" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="Giám sát" xml:space="preserve">
+    <value>Audit</value>
+  </data>
+  <data name="Xúc tiến" xml:space="preserve">
+    <value>Promotion</value>
+  </data>
+  <data name="Thêm khu vực kiểm kê" xml:space="preserve">
+    <value>Add area inventory</value>
+  </data>
+  <data name="Đợt kiểm kê" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="Loại phiếu" xml:space="preserve">
+    <value>Document Type</value>
+  </data>
+  <data name="Nhập số" xml:space="preserve">
+    <value>Input quantity</value>
+  </data>
+  <data name="Plant" xml:space="preserve">
+    <value>Plant</value>
+  </data>
+  <data name="WH Loc." xml:space="preserve">
+    <value>WH Loc.</value>
+  </data>
+  <data name="Nhập plant" xml:space="preserve">
+    <value>Input plant</value>
+  </data>
+  <data name="Nhập WH Loc" xml:space="preserve">
+    <value>Input WH Loc</value>
+  </data>
+  <data name="Nhập mã LK" xml:space="preserve">
+    <value>Input Component</value>
+  </data>
+  <data name="Model code" xml:space="preserve">
+    <value>Model code</value>
+  </data>
+  <data name="Nhập model code" xml:space="preserve">
+    <value>Input Model code</value>
+  </data>
+  <data name="Chưa tiếp nhận" xml:space="preserve">
+    <value>Not yet received</value>
+  </data>
+  <data name="Không kiểm kê" xml:space="preserve">
+    <value>No inventory</value>
+  </data>
+  <data name="Chờ xác nhận" xml:space="preserve">
+    <value>Wait confirm</value>
+  </data>
+  <data name="Cần chỉnh sửa" xml:space="preserve">
+    <value>Need Edit</value>
+  </data>
+  <data name="Đã đạt giám sát" xml:space="preserve">
+    <value>Audited</value>
+  </data>
+  <data name="Tài khoản phân phát" xml:space="preserve">
+    <value>Distribution account</value>
+  </data>
+  <data name="Nhập tài khoản phân phát" xml:space="preserve">
+    <value>Input distribution account</value>
+  </data>
+  <data name="Chọn toàn bộ phiếu" xml:space="preserve">
+    <value>Choose all document</value>
+  </data>
+  <data name="Tiếp nhận" xml:space="preserve">
+    <value>Received</value>
+  </data>
+  <data name="Tải biểu mẫu cập nhật số lượng" xml:space="preserve">
+    <value>Download update quantity file</value>
+  </data>
+  <data name="Cập nhật số lượng phiếu" xml:space="preserve">
+    <value>Update quantity document</value>
+  </data>
+  <data name="Tải biểu mẫu trạng thái" xml:space="preserve">
+    <value>Download status file</value>
+  </data>
+  <data name="Upload chuyển trạng thái" xml:space="preserve">
+    <value>Upload change status</value>
+  </data>
+  <data name="W.H.Loc" xml:space="preserve">
+    <value>W.H.Loc</value>
+  </data>
+  <data name="Stock types" xml:space="preserve">
+    <value>Stock types</value>
+  </data>
+  <data name="Special stock" xml:space="preserve">
+    <value>Special stock</value>
+  </data>
+  <data name="S/O No." xml:space="preserve">
+    <value>S/O No.</value>
+  </data>
+  <data name="S/O List" xml:space="preserve">
+    <value>S/O List</value>
+  </data>
+  <data name="Tài khoản tiếp nhận" xml:space="preserve">
+    <value>Receive Account</value>
+  </data>
+  <data name="Thời gian tiếp nhận" xml:space="preserve">
+    <value>Receive Datetime</value>
+  </data>
+  <data name="Tài khoản kiểm kê" xml:space="preserve">
+    <value>Inventory Account</value>
+  </data>
+  <data name="Thời gian kiểm kê" xml:space="preserve">
+    <value>Inventory Datetime</value>
+  </data>
+  <data name="Thời gian xác nhận" xml:space="preserve">
+    <value>Receive Datetime</value>
+  </data>
+  <data name="Thời gian giám sát" xml:space="preserve">
+    <value>Audit Datetime</value>
+  </data>
+  <data name="SAP Inventory No." xml:space="preserve">
+    <value>SAP Inventory No.</value>
+  </data>
+  <data name="Assembly Loc." xml:space="preserve">
+    <value>Assembly Loc.</value>
+  </data>
+  <data name="Vendor code" xml:space="preserve">
+    <value>Vendor code</value>
+  </data>
+  <data name="Phys.Inv" xml:space="preserve">
+    <value>Phys.Inv</value>
+  </data>
+  <data name="Fisscal year" xml:space="preserve">
+    <value>Fisscal year</value>
+  </data>
+  <data name="ITEM" xml:space="preserve">
+    <value>ITEM</value>
+  </data>
+  <data name="Planned count" xml:space="preserve">
+    <value>Planned count</value>
+  </data>
+  <data name="Cột C" xml:space="preserve">
+    <value>C Column</value>
+  </data>
+  <data name="Cột N" xml:space="preserve">
+    <value>N Column</value>
+  </data>
+  <data name="Cột O" xml:space="preserve">
+    <value>O Column</value>
+  </data>
+  <data name="Cột P" xml:space="preserve">
+    <value>P Column</value>
+  </data>
+  <data name="Cột Q" xml:space="preserve">
+    <value>Q Column</value>
+  </data>
+  <data name="Cột R" xml:space="preserve">
+    <value>R Column</value>
+  </data>
+  <data name="Cột S" xml:space="preserve">
+    <value>S Column</value>
+  </data>
+  <data name="Không tìm thấy file." xml:space="preserve">
+    <value>Not Found File</value>
+  </data>
+  <data name="Export danh sách phiếu kiểm kê các đợt thành công." xml:space="preserve">
+    <value>Export inventory document list file</value>
+  </data>
+  <data name="Cập nhật số lượng" xml:space="preserve">
+    <value>Update quantity</value>
+  </data>
+  <data name="phiếu thành công và có" xml:space="preserve">
+    <value>document sucessfully and has</value>
+  </data>
+  <data name="dòng dữ liệu lỗi không thể thực hiện import." xml:space="preserve">
+    <value>Error data line cannot be imported.</value>
+  </data>
+  <data name="Vui lòng ấn “Đồng ý” để xem dữ liệu lỗi." xml:space="preserve">
+    <value>Please click “Agree” to view error data.</value>
+  </data>
+  <data name="Cập nhật số lượng các phiếu thành công thành công." xml:space="preserve">
+    <value>Update document quantity successfully</value>
+  </data>
+  <data name="File sai định dạng" xml:space="preserve">
+    <value>File Fail Format</value>
+  </data>
+  <data name="Vui lòng tải biểu mẫu và điền đầy đủ thông tin cần thiết để tiến hành cập nhật số lượng các phiếu." xml:space="preserve">
+    <value>Please download the form and fill in all necessary information to update the number of votes.</value>
+  </data>
+  <data name="Vui lòng nhập số phiếu." xml:space="preserve">
+    <value>Input document quantity, please</value>
+  </data>
+  <data name="Số phiếu vừa nhập không hợp lệ." xml:space="preserve">
+    <value>Document quantity invalid</value>
+  </data>
+  <data name="File upload không đúng định dạng. Vui lòng thử lại." xml:space="preserve">
+    <value>File upload fail format. Try agian.</value>
+  </data>
+  <data name="Upload chuyển trạng thái thành công" xml:space="preserve">
+    <value>Upload change status successfully</value>
+  </data>
+  <data name="dòng dữ liệu." xml:space="preserve">
+    <value>records</value>
+  </data>
+  <data name="dòng dữ liệu và có" xml:space="preserve">
+    <value>records and has</value>
+  </data>
+  <data name="dòng dữ liệu lỗi không thể chuyển trạng thái." xml:space="preserve">
+    <value>records not change status</value>
+  </data>
+  <data name="Vui lòng ấn “Đồng ý” để tải file dữ liệu lỗi." xml:space="preserve">
+    <value>Please click "Agree" to download the error data file.</value>
+  </data>
+  <data name="Bạn có chắc chắn muốn tiếp nhận" xml:space="preserve">
+    <value>Are you sure receive</value>
+  </data>
+  <data name="phiếu này ?" xml:space="preserve">
+    <value>this document ?</value>
+  </data>
+  <data name="Xác nhận tiếp nhận phiếu" xml:space="preserve">
+    <value>Receive document</value>
+  </data>
+  <data name="Chi tiết phiếu kiểm kê" xml:space="preserve">
+    <value>Document Detail</value>
+  </data>
+  <data name="In phiếu" xml:space="preserve">
+    <value>Print Document</value>
+  </data>
+  <data name="Mã phiếu" xml:space="preserve">
+    <value>Document Code</value>
+  </data>
+  <data name="Số lượng/ thùng" xml:space="preserve">
+    <value>Quantity/bin</value>
+  </data>
+  <data name="Số thùng" xml:space="preserve">
+    <value>Bin quantity</value>
+  </data>
+  <data name="Chi tiết" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="BOM" xml:space="preserve">
+    <value>BOM</value>
+  </data>
+  <data name="Ảnh kiểm kê" xml:space="preserve">
+    <value>Inventory Image</value>
+  </data>
+  <data name="Lịch sử" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="Người kiểm kê" xml:space="preserve">
+    <value>Inventory User</value>
+  </data>
+  <data name="Người xác nhận" xml:space="preserve">
+    <value>Confirm User</value>
+  </data>
+  <data name="Người điều tra" xml:space="preserve">
+    <value>Investigator</value>
+  </data>
+  <data name="Lý do điều tra" xml:space="preserve">
+    <value>Reason for investigation</value>
+  </data>
+  <data name="Thời gian điều tra" xml:space="preserve">
+    <value>Investigation time</value>
+  </data>
+  <data name="Cập nhật trạng thái" xml:space="preserve">
+    <value>Update status</value>
+  </data>
+  <data name="Nhập tổng SL" xml:space="preserve">
+    <value>Input quantity sum</value>
+  </data>
+  <data name="Cập nhật tổng SL" xml:space="preserve">
+    <value>Update sum quantity</value>
+  </data>
+  <data name="Cập nhật" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Số lượng trong bảng chi tiết" xml:space="preserve">
+    <value>Quantity detail table</value>
+  </data>
+  <data name="Cập nhật dữ liệu chi tiết phiếu" xml:space="preserve">
+    <value>Update Document Detail</value>
+  </data>
+  <data name="CHÀO MỪNG BẠN TRỞ LẠI!" xml:space="preserve">
+    <value>WELCOME BACK!</value>
+  </data>
+  <data name="Nhập mã phiếu" xml:space="preserve">
+    <value>Input Document Code</value>
+  </data>
+  <data name="Change log" xml:space="preserve">
+    <value>Change log</value>
+  </data>
+  <data name="Loại thao tác" xml:space="preserve">
+    <value>Operation type</value>
+  </data>
+  <data name="Chi tiết phiếu" xml:space="preserve">
+    <value>Document Detail</value>
+  </data>
+  <data name="Ngày kiểm kê" xml:space="preserve">
+    <value>Inventory date</value>
+  </data>
+  <data name="Tỉ lệ kiểm kê lại (%)" xml:space="preserve">
+    <value>Re-inventory rate (%)</value>
+  </data>
+  <data name="Ngày tạo" xml:space="preserve">
+    <value>Created At</value>
+  </data>
+  <data name="Đang kiểm kê" xml:space="preserve">
+    <value>Taking inventory</value>
+  </data>
+  <data name="Đang giám sát" xml:space="preserve">
+    <value>Taking Audit</value>
+  </data>
+  <data name="Hoàn thành" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="Thêm đợt kiểm kê" xml:space="preserve">
+    <value>Add Inventory</value>
+  </data>
+  <data name="Thêm mới đợt kiểm kê thành công." xml:space="preserve">
+    <value>Add inventory successfully.</value>
+  </data>
+  <data name="Nhập tỉ lệ kiểm kê lại" xml:space="preserve">
+    <value>Input inventory ratio</value>
+  </data>
+  <data name="Vui lòng nhập tỉ lệ kiểm kê lại." xml:space="preserve">
+    <value>Input inventory ratio</value>
+  </data>
+  <data name="Vui lòng chọn ngày kiểm kê." xml:space="preserve">
+    <value>Input inventory date</value>
+  </data>
+  <data name="Không thể thêm mới đợt kiểm kê." xml:space="preserve">
+    <value>Add Inventory fail</value>
+  </data>
+  <data name="Hiện đang có đợt kiểm kê chưa hoàn thành.Vui lòng không thêm đợt kiểm kê mới." xml:space="preserve">
+    <value>There is currently an unfinished inspection schedule. Please do not add new test schedules.</value>
+  </data>
+  <data name="Thông tin chung" xml:space="preserve">
+    <value>General info</value>
+  </data>
+  <data name="Tạo phiếu kiểm kê" xml:space="preserve">
+    <value>Create inventory document</value>
+  </data>
+  <data name="Tạo danh sách giám sát" xml:space="preserve">
+    <value>Create audit list</value>
+  </data>
+  <data name="Tổng hợp kết quả" xml:space="preserve">
+    <value>Summary of result</value>
+  </data>
+  <data name="Lưu" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Khóa đợt kiểm kê" xml:space="preserve">
+    <value>Inventory Look</value>
+  </data>
+  <data name="Không thể thay đổi trạng thái" xml:space="preserve">
+    <value>Status cannot be changed</value>
+  </data>
+  <data name="Bạn không thể thay đổi trạng thái của đợt kiểm kê đã hoàn thành." xml:space="preserve">
+    <value>You cannot change the status of a completed inventory.</value>
+  </data>
+  <data name="Xác nhận lưu" xml:space="preserve">
+    <value>Confirm save</value>
+  </data>
+  <data name="Bạn có chắc chắn muốn cập nhật trạng thái của đợt kiểm kê." xml:space="preserve">
+    <value>Are you sure you want to update the inventory status?</value>
+  </data>
+  <data name="Export danh sách đợt kiểm kê thành công." xml:space="preserve">
+    <value>Export file inventory sucessfully</value>
+  </data>
+  <data name="Tạo phiếu A" xml:space="preserve">
+    <value>Create document type A</value>
+  </data>
+  <data name="Tạo phiếu B" xml:space="preserve">
+    <value>Create document type B</value>
+  </data>
+  <data name="Tạo phiếu E" xml:space="preserve">
+    <value>Create document type E</value>
+  </data>
+  <data name="Tạo phiếu C" xml:space="preserve">
+    <value>Create document type C</value>
+  </data>
+  <data name="Tất cả các phiếu" xml:space="preserve">
+    <value>All Document</value>
+  </data>
+  <data name="QR Cụm" xml:space="preserve">
+    <value>QR cluster</value>
+  </data>
+  <data name="Xuất cụm cây" xml:space="preserve">
+    <value>Export the tree cluster</value>
+  </data>
+  <data name="Tên công đoạn" xml:space="preserve">
+    <value>Step name</value>
+  </data>
+  <data name="Nhập tên tài khoản phân phát" xml:space="preserve">
+    <value>Input distribution account</value>
+  </data>
+  <data name="Chi tiết phiếu kiểm kê A" xml:space="preserve">
+    <value>Inventory Document Type A Detail</value>
+  </data>
+  <data name="Chi tiết phiếu kiểm kê B/E" xml:space="preserve">
+    <value>Inventory Document B/E Detail</value>
+  </data>
+  <data name="Chi tiết phiếu kiểm kê C" xml:space="preserve">
+    <value>Inventory Document Type C Detail</value>
+  </data>
+  <data name="Chọn biểu mẫu cần tải" xml:space="preserve">
+    <value>Choose the form to download</value>
+  </data>
+  <data name="Tải biểu mẫu phiếu A" xml:space="preserve">
+    <value>Download file document type A</value>
+  </data>
+  <data name="Tải biểu mẫu phiếu B" xml:space="preserve">
+    <value>Download file document type B</value>
+  </data>
+  <data name="Tải biểu mẫu phiếu E" xml:space="preserve">
+    <value>Download file document type E</value>
+  </data>
+  <data name="Tải biểu mẫu phiếu C" xml:space="preserve">
+    <value>Download file document type C</value>
+  </data>
+  <data name="Export phiếu kiểm kê thành công." xml:space="preserve">
+    <value>Export file inventory document successfully</value>
+  </data>
+  <data name="Chọn model" xml:space="preserve">
+    <value>Choose Model</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="Dòng máy" xml:space="preserve">
+    <value>Machine</value>
+  </data>
+  <data name="Chọn dòng máy" xml:space="preserve">
+    <value>Choose Machine</value>
+  </data>
+  <data name="Xuất QR" xml:space="preserve">
+    <value>Export QR</value>
+  </data>
+  <data name="Bạn có chắc chắn muốn xóa" xml:space="preserve">
+    <value>Are you sure delete</value>
+  </data>
+  <data name="phiếu kiểm kê này ?" xml:space="preserve">
+    <value>this inventory document?</value>
+  </data>
+  <data name="Chọn dữ liệu in QRCode cụm" xml:space="preserve">
+    <value>Choose data QR code print</value>
+  </data>
+  <data name="Chuyền" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="Vui lòng lựa chọn model code." xml:space="preserve">
+    <value>Input model code, please</value>
+  </data>
+  <data name="Vui lòng lựa chọn dòng máy." xml:space="preserve">
+    <value>Input Machine, please</value>
+  </data>
+  <data name="Chọn chuyền" xml:space="preserve">
+    <value>Choose Line</value>
+  </data>
+  <data name="Nhập S/O No" xml:space="preserve">
+    <value>Input S/O No</value>
+  </data>
+  <data name="Nhập vị trí" xml:space="preserve">
+    <value>Input Position</value>
+  </data>
+  <data name="Giám sát đạt" xml:space="preserve">
+    <value>Audited</value>
+  </data>
+  <data name="Giám sát không đạt" xml:space="preserve">
+    <value>Fail Audited</value>
+  </data>
+  <data name="Tất cả linh kiện" xml:space="preserve">
+    <value>All Component</value>
+  </data>
+  <data name="Export danh sách giám sát thành công." xml:space="preserve">
+    <value>Export list audit successfully.</value>
+  </data>
+  <data name="Vui lòng tạo phiếu A trước khi thực hiện tạo danh sách giám sát." xml:space="preserve">
+    <value>Create document type A before import list audit </value>
+  </data>
+  <data name="Lỗi dữ liệu danh sách giám sát." xml:space="preserve">
+    <value>List audit data Fail</value>
+  </data>
+  <data name="File import có dữ liệu lỗi. Vui lòng kiểm tra lại dữ liệu." xml:space="preserve">
+    <value>File import has data fail. Check data, please.</value>
+  </data>
+  <data name="Import thành công" xml:space="preserve">
+    <value>Import success</value>
+  </data>
+  <data name="Không thể import" xml:space="preserve">
+    <value>Can not import </value>
+  </data>
+  <data name="linh kiện giám sát này ?" xml:space="preserve">
+    <value>this component audit?</value>
+  </data>
+  <data name="Chỉnh sửa linh kiện giám sát" xml:space="preserve">
+    <value>Update component audit</value>
+  </data>
+  <data name="Chi tiết linh kiện giám sát" xml:space="preserve">
+    <value>Component Audit Detail</value>
+  </data>
+  <data name="Vui lòng nhập plant." xml:space="preserve">
+    <value>Input Plant, please</value>
+  </data>
+  <data name="Vui lòng nhập WH Loc." xml:space="preserve">
+    <value>Please, Input WH Loc.</value>
+  </data>
+  <data name="Vui lòng nhập khu vực." xml:space="preserve">
+    <value>Input area, please</value>
+  </data>
+  <data name="Nhập khu vực" xml:space="preserve">
+    <value>Input area</value>
+  </data>
+  <data name="Vui lòng nhập vị trí." xml:space="preserve">
+    <value>Input Position, please</value>
+  </data>
+  <data name="Vui lòng nhập tài khoản phân phát." xml:space="preserve">
+    <value>Input distribution account, please</value>
+  </data>
+  <data name="Plant không đúng." xml:space="preserve">
+    <value>Plant not correct</value>
+  </data>
+  <data name="WH Loc. không đúng." xml:space="preserve">
+    <value>WH Loc. not correct</value>
+  </data>
+  <data name="Mã linh kiện không đúng." xml:space="preserve">
+    <value>Component Code not correct</value>
+  </data>
+  <data name="Upload kết quả từ Bwins" xml:space="preserve">
+    <value>Upload result from Bwins</value>
+  </data>
+  <data name="Thêm dữ liệu từ SAP" xml:space="preserve">
+    <value>Add data from SAP</value>
+  </data>
+  <data name="Xuất sai số" xml:space="preserve">
+    <value>Export wrong number</value>
+  </data>
+  <data name="Tổng hợp" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="Xuất txt" xml:space="preserve">
+    <value>Export txt file</value>
+  </data>
+  <data name="Đợi" xml:space="preserve">
+    <value>Watting</value>
+  </data>
+  <data name="phút" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="Vui lòng tạo phiếu A trước khi thực hiện thêm dữ liệu từ SAP." xml:space="preserve">
+    <value>Create docement type A before import data from SAP</value>
+  </data>
+  <data name="Không thể tạo phiếu" xml:space="preserve">
+    <value>Can not create document</value>
+  </data>
+  <data name="Xuất txt thành công." xml:space="preserve">
+    <value>Export txt file successfully</value>
+  </data>
+  <data name="Xuất file sai số thành công." xml:space="preserve">
+    <value>Export file wrong number successfully</value>
+  </data>
+  <data name="Thêm thành công" xml:space="preserve">
+    <value>Import success</value>
+  </data>
+  <data name="dòng dữ liệu từ SAP và có" xml:space="preserve">
+    <value>records from SAP and has</value>
+  </data>
+  <data name="Thêm dữ liệu từ SAP thành công." xml:space="preserve">
+    <value>Import data from SAP successfully</value>
+  </data>
+  <data name="Vui lòng tải biểu mẫu và điền đầy đủ thông tin cần thiết để tiến hành thêm dữ liệu từ SAP." xml:space="preserve">
+    <value>Please download the form and fill in all necessary information to proceed with adding data from SAP.</value>
+  </data>
+  <data name="Vui lòng tạo phiếu A trước khi thực hiện tạo các phiếu khác." xml:space="preserve">
+    <value>Create document type A before create other document.</value>
+  </data>
+  <data name="Vui lòng tạo phiếu A trước khi thực hiện upload kết quả từ Bwin." xml:space="preserve">
+    <value>Create document type A before upload result from Bwin.</value>
+  </data>
+  <data name="Upload kết quả từ Bwins thành công." xml:space="preserve">
+    <value>Upload result from Bwin successfully.</value>
+  </data>
+  <data name="Upload kết quả từ Bwins thành công" xml:space="preserve">
+    <value>Upload result from Bwin success</value>
+  </data>
+  <data name="Có lỗi khi thực hiện import." xml:space="preserve">
+    <value>Import fail</value>
+  </data>
+  <data name="Không tìm thấy phiếu A trên hệ thống." xml:space="preserve">
+    <value>Not found document type A on the system.</value>
+  </data>
+  <data name="File không đúng định dạng. Vui lòng thử lại." xml:space="preserve">
+    <value>File is not correct format. Please try again.</value>
+  </data>
+  <data name="Vui lòng tải biểu mẫu và điền đầy đủ thông tin cần thiết để tiến hành upload kết quả từ Bwins." xml:space="preserve">
+    <value>Please download the form and fill in all necessary information to upload results from Bwins.</value>
+  </data>
+  <data name="Xác nhận tổng hợp phiếu" xml:space="preserve">
+    <value>Confirm document aggregate</value>
+  </data>
+  <data name="Xuất dữ liệu chi tiết phiếu" xml:space="preserve">
+    <value>Export data document detail</value>
+  </data>
+  <data name="Mã LK" xml:space="preserve">
+    <value>Component Code</value>
+  </data>
+  <data name="Giá trị" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Nhập giá trị" xml:space="preserve">
+    <value>Input value</value>
+  </data>
+  <data name="Số" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="Chọn plant" xml:space="preserve">
+    <value>Choose Plant</value>
+  </data>
+  <data name="Chọn tài khoản" xml:space="preserve">
+    <value>Choose account</value>
+  </data>
+  <data name="Vui lòng lựa chọn Plant." xml:space="preserve">
+    <value>Choose Plant, Please</value>
+  </data>
+  <data name="Vui lòng lựa chọn tài khoản." xml:space="preserve">
+    <value>Choose account, Please</value>
+  </data>
+  <data name="Vui lòng nhập giá trị." xml:space="preserve">
+    <value>Input value, please.</value>
+  </data>
+  <data name="Lỗi đăng nhập" xml:space="preserve">
+    <value>Error Login</value>
+  </data>
+  <data name="Tài khoản không có quyền truy cập hệ thống." xml:space="preserve">
+    <value>The account does not have system access rights.</value>
+  </data>
+  <data name="Lỗi" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Tài khoản không tồn tại trên hệ thống.Vui lòng thử lại." xml:space="preserve">
+    <value>The account does not exist on the system. Please try again.</value>
+  </data>
+  <data name="Thông tin đăng nhập không đúng. Vui lòng liên hệ với quản lý để được trợ giúp." xml:space="preserve">
+    <value>Login information is incorrect. Please contact your manager for assistance.</value>
+  </data>
+  <data name="Cảnh báo đăng nhập" xml:space="preserve">
+    <value>Login warning</value>
+  </data>
+  <data name="Tài khoản đăng nhập của bạn đang được đăng nhập trên thiết bị khác. Bạn có muốn tiếp tục đăng nhập không?" xml:space="preserve">
+    <value>Your login account is being logged in on another device. Do you want to continue logging in?</value>
+  </data>
+  <data name="Không thể đăng nhập" xml:space="preserve">
+    <value>Can not Login</value>
+  </data>
+  <data name="Đóng" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Phiên đã hết hạn" xml:space="preserve">
+    <value>Session has expired</value>
+  </data>
+  <data name="Vui lòng đăng nhập lại." xml:space="preserve">
+    <value>Please login again.</value>
+  </data>
+  <data name="Tài khoản không tồn tại quyền." xml:space="preserve">
+    <value>Account permissions do not exist.</value>
+  </data>
+  <data name="Tài khoản không tồn tại quyền chi tiết." xml:space="preserve">
+    <value>The account does not have detailed permissions.</value>
+  </data>
+  <data name="Tạo Token không thành công." xml:space="preserve">
+    <value>Token creation failed.</value>
+  </data>
+  <data name="Client Id không hợp lệ." xml:space="preserve">
+    <value>Invalid ClientId.</value>
+  </data>
+  <data name="Client Secret không hợp lệ." xml:space="preserve">
+    <value>Invalid Client Secret.</value>
+  </data>
+  <data name="Security Stamp không hợp lệ sau khi thay đổi mật khẩu thành công. Cần Logout để lấy ra Security Stamp mới nhất." xml:space="preserve">
+    <value>Security Stamp is invalid after successful password change. Need to Logout to get the latest Security Stamp.</value>
+  </data>
+  <data name="Tài khoản đăng nhập chưa được gán vai trò thao tác. Vui lòng liên hệ quản lý để gán vai trò cho tài khoản này." xml:space="preserve">
+    <value>The login account has not been assigned an operational role. Please contact your administrator to assign a role to this account.</value>
+  </data>
+  <data name="Tài khoản đăng nhập chưa được gán khu vực giám sát. Vui lòng liên hệ quản lý để gán khu vực giám sát cho tài khoản này.Tài khoản đăng nhập chưa được gán khu vực giám sát. Vui lòng liên hệ quản lý để gán khu vực giám sát cho tài khoản này." xml:space="preserve">
+    <value>The login account has not been assigned a monitoring area. Please contact the administrator to assign a monitoring area to this account.</value>
+  </data>
+  <data name="Quay lại" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Tài khoản đăng nhập phải có độ dài từ 1 đến 15 ký tự, không được chứa ký tự đặc biệt." xml:space="preserve">
+    <value>Login account must be from 1 to 15 characters long, cannot contain special characters.</value>
+  </data>
+  <data name="Hôm nay" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="Nhập người nhập kho" xml:space="preserve">
+    <value>Enter input warehourse user</value>
+  </data>
+  <data name="Điều tra sai số" xml:space="preserve">
+    <value>Error Investigation</value>
+  </data>
+  <data name="Tài khoản của bạn đã được đăng nhập ở một thiết bị khác. Vui lòng đăng nhập lại." xml:space="preserve">
+    <value>Your account is already logged in on another device. Please log in again.</value>
+  </data>
+  <data name="Xóa linh kiện thành công." xml:space="preserve">
+    <value>Delete component successfully.</value>
+  </data>
+  <data name="dòng dữ liệu lỗi không thể thực hiện import. Vui lòng ấn Đồng ý để xem dữ liệu lỗi." xml:space="preserve">
+    <value>Error data line cannot be imported. Please click Agree to view error data.</value>
+  </data>
+  <data name="Lỗi Import linh kiện" xml:space="preserve">
+    <value>Import Component Fail</value>
+  </data>
+  <data name="File sai định dạng, vui lòng chọn lại file." xml:space="preserve">
+    <value>The file is in the wrong format, please select the file again.</value>
+  </data>
+  <data name="Export QRCode thành công." xml:space="preserve">
+    <value>Export QRCode successfully.</value>
+  </data>
+  <data name="Tạo mới thành công" xml:space="preserve">
+    <value>Create success</value>
+  </data>
+  <data name="phiếu kiểm kê và có" xml:space="preserve">
+    <value>inventory document and has</value>
+  </data>
+  <data name="Vui lòng ấn Đồng ý để xem dữ liệu lỗi." xml:space="preserve">
+    <value>Please click Agree to view error data.</value>
+  </data>
+  <data name="phiếu kiểm kê." xml:space="preserve">
+    <value>inventory document</value>
+  </data>
+  <data name="Vui lòng tải biểu mẫu và điền đầy đủ thông tin cần thiết để tiến hành tạo phiếu kiểm kê." xml:space="preserve">
+    <value>Please download the form and fill in all necessary information to proceed with creating the inventory document.</value>
+  </data>
+  <data name="File không tồn tại" xml:space="preserve">
+    <value>File does not exist</value>
+  </data>
+  <data name="Tiếp tục" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="Kiểm tra" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="Bạn không có quyền nhập phiếu." xml:space="preserve">
+    <value>You do not have the right to enter votes.</value>
+  </data>
+  <data name="Xem" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Export danh sách sai số thành công." xml:space="preserve">
+    <value>Export Error Investigation Successfully.</value>
+  </data>
+  <data name="Vui lòng nhập số lượng điều chỉnh." xml:space="preserve">
+    <value>Input ErrorQuantity, please</value>
+  </data>
+  <data name="Đã thực hiện điều chỉnh dữ liệu điều tra sai số." xml:space="preserve">
+    <value>Confirm error investigation successfully.</value>
+  </data>
+  <data name="Đã thực hiện cập nhật dữ liệu điều tra sai số." xml:space="preserve">
+    <value>Update error investigation successfully.</value>
+  </data>
+  <data name="Bạn có chắc chắn muốn thoát? Dữ liệu đã nhập sẽ không được lưu lại." xml:space="preserve">
+    <value>Are you sure you want to exit? The entered data will not be saved.</value>
+  </data>
+  <data name="Điều chỉnh dữ liệu điều tra" xml:space="preserve">
+    <value>Adjust investigation data</value>
+  </data>
+  <data name="Vui lòng chọn phân loại." xml:space="preserve">
+    <value>Input Error Category, please.</value>
+  </data>
+  <data name="Vui lòng nhập chi tiết điều tra." xml:space="preserve">
+    <value>Input Error Detail, Please.</value>
+  </data>
+  <data name="Lịch sử các đợt kiểm kê" xml:space="preserve">
+    <value>Error Investigation Inventory History</value>
+  </data>
+  <data name="Linh kiện đang được điều tra sai số." xml:space="preserve">
+    <value>Component is error investigating</value>
+  </data>
+  <data name="Từ" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="Đến" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Upload dữ liệu điều chỉnh" xml:space="preserve">
+    <value>Upload Investigating Data</value>
+  </data>
+  <data name="Lịch sử điều tra sai số" xml:space="preserve">
+    <value>Error Investigation History</value>
+  </data>
+  <data name="Danh sách sai số" xml:space="preserve">
+    <value>Error Investigation</value>
+  </data>
+  <data name="Linh kiện chưa có lịch sử điều tra. Vui lòng tiến hành điều tra sai số." xml:space="preserve">
+    <value>Error Investigation History Not Found</value>
+  </data>
+  <data name="Chi tiết điều tra" xml:space="preserve">
+    <value>Investigation Detail</value>
+  </data>
+  <data name="Loại sai số" xml:space="preserve">
+    <value>Error InvestigationType</value>
+  </data>
+  <data name="Người giám sát" xml:space="preserve">
+    <value>Auditor</value>
+  </data>
+  <data name="Không tìm thấy dữ liệu người giám sát" xml:space="preserve">
+    <value>Not found auditor data</value>
+  </data>
+  <data name="Xác nhận điều tra" xml:space="preserve">
+    <value>Confirm Investigation</value>
+  </data>
+  <data name="Vui lòng chọn linh kiện để điều chỉnh." xml:space="preserve">
+    <value>Choose ComponentCode To Investigation</value>
+  </data>
+  <data name="Điều chỉnh loại sai số thành công." xml:space="preserve">
+    <value>Update Investigation Succesfully.</value>
+  </data>
+  <data name="Tỷ lệ sai số" xml:space="preserve">
+    <value>ErrorPercent</value>
+  </data>
+  <data name="Cập nhật dữ liệu" xml:space="preserve">
+    <value>Update Data</value>
+  </data>
+  <data name="Xác nhận điều chỉnh" xml:space="preserve">
+    <value>Confirm Investigation</value>
+  </data>
+  <data name="Vui lòng chọn linh kiện để xác nhận điều chỉnh." xml:space="preserve">
+    <value>Choose ComponentCode To Adjust Confirrm</value>
+  </data>
+  <data name="Xác nhận điều chỉnh loại sai số thành công." xml:space="preserve">
+    <value>Adjust Confirm Is Successfully.</value>
+  </data>
+  <data name="Lỗi dữ liệu phiếu C" xml:space="preserve">
+    <value>Import Document Type C Error</value>
+  </data>
+  <data name="Tỷ lệ điều tra" xml:space="preserve">
+    <value>Investigation Percent</value>
+  </data>
+  <data name="Cảnh báo dữ liệu phiếu C" xml:space="preserve">
+    <value>Document Type C data is warning</value>
+  </data>
+  <data name="File import có một số dữ liệu cần bạn kiểm tra. Bạn có muốn tiếp tục thực hiện việc import dữ liệu?" xml:space="preserve">
+    <value>The import file has some data that you need to check. Do you want to continue importing data?</value>
+  </data>
+  <data name="Chọn vai trò" xml:space="preserve">
+    <value>Choose Role Type</value>
+  </data>
+  <data name="Xúc tiến - Người phụ trách" xml:space="preserve">
+    <value>Promotion - Person In Charge</value>
+  </data>
+  <data name="Xúc tiến - Người quản lý" xml:space="preserve">
+    <value>Promotion - Person In Management</value>
+  </data>
+  <data name="Export danh sách chi tiết điều tra thành công." xml:space="preserve">
+    <value>Export List Investigation Detail Successfully.</value>
+  </data>
+  <data name="Báo cáo giám sát theo chỉ định" xml:space="preserve">
+    <value>Fixed Reporting Audit Type</value>
+  </data>
+  <data name="Báo cáo giám sát tự do" xml:space="preserve">
+    <value>Free monitoring report</value>
+  </data>
+  <data name="Tải biểu mẫu phiếu SHIP" xml:space="preserve">
+    <value>Download file document type SHIP</value>
+  </data>
+  <data name="Document Type A" xml:space="preserve">
+    <value>Document Type A</value>
+  </data>
+  <data name="Document Type B" xml:space="preserve">
+    <value>Document Type B</value>
+  </data>
+  <data name="Document Type E" xml:space="preserve">
+    <value>Document Type E</value>
+  </data>
+  <data name="Document Type C" xml:space="preserve">
+    <value>Document Type C</value>
+  </data>
+  <data name="Bạn có chắc chắn muốn xác nhận điều chỉnh. Khi điều chỉnh xong dữ liệu sẽ ẩn khỏi danh sách sai số?" xml:space="preserve">
+    <value>Are you sure you want to confirm the adjustment. Once adjusted, will the data be hidden from the error list?</value>
+  </data>
+  <data name="Từ chối" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="Từ chối điều chỉnh loại sai số thành công." xml:space="preserve">
+    <value>Reject to adjust error type successfully.</value>
+  </data>
+  <data name="Tỷ lệ sai số chỉ được xem trong 1 đợt kiểm kê." xml:space="preserve">
+    <value>The error rate can only be viewed in 1 inventory period.</value>
+  </data>
+  <data name="Tải biểu mẫu cập nhật dữ liệu" xml:space="preserve">
+    <value>Download data update form</value>
+  </data>
+  <data name="Tài khoản xác nhận" xml:space="preserve">
+    <value>Confirmed Account</value>
+  </data>
+  <data name="Cập nhật số lượng điều chỉnh thành công." xml:space="preserve">
+    <value>Update the number of successful adjustments.</value>
+  </data>
+  <data name="Vui lòng tải biểu mẫu và điền đầy đủ thông tin cần thiết để tiến hành cập nhật dữ liệu điều chỉnh." xml:space="preserve">
+    <value>Please download the form and fill in all necessary information to update the adjusted data.</value>
+  </data>
+  <data name="Cập nhật thành công" xml:space="preserve">
+    <value>Updated successfully</value>
+  </data>
+  <data name="dòng dữ liệu lỗi không thể thực hiện import. Vui lòng ấn &quot;Đồng ý&quot; để xem dữ liệu lỗi." xml:space="preserve">
+    <value>Error data line cannot be imported. Please click "Agree" to view error data.</value>
+  </data>
+  <data name="Bạn có chắc chắn muốn xóa lần nhập kho này ?" xml:space="preserve">
+    <value>Are you sure you want to delete this import?</value>
+  </data>
+  <data name="Xóa lần nhập kho thành công." xml:space="preserve">
+    <value>Delete warehouse import successfully.</value>
+  </data>
+  <data name="Thời gian không đúng. Vui lòng chọn lại." xml:space="preserve">
+    <value>The time is not right. Please select again.</value>
+  </data>
+  <data name="Danh sách phiếu cần điều tra" xml:space="preserve">
+    <value>List of votes to be investigated</value>
+  </data>
+  <data name="Số lượng kiểm kê" xml:space="preserve">
+    <value>Inventory quantity</value>
+  </data>
+  <data name="Số lượng hệ thống" xml:space="preserve">
+    <value>Number of systems</value>
+  </data>
+  <data name="Sai số" xml:space="preserve">
+    <value>Error number</value>
+  </data>
+  <data name="Module đính kèm" xml:space="preserve">
+    <value>Attached module</value>
+  </data>
+  <data name="Điều tra" xml:space="preserve">
+    <value>Investigation</value>
+  </data>
+  <data name="Điều chỉnh" xml:space="preserve">
+    <value>Adjust</value>
+  </data>
+  <data name="Phân loại" xml:space="preserve">
+    <value>Error Category</value>
+  </data>
+  <data name="Nhập số lượng" xml:space="preserve">
+    <value>Input quantity</value>
+  </data>
+  <data name="Chọn phân loại" xml:space="preserve">
+    <value>Choose Error Category</value>
+  </data>
+  <data name="Kiểm kê sai" xml:space="preserve">
+    <value>Wrong inventory</value>
+  </data>
+  <data name="Quy cách đóng gói" xml:space="preserve">
+    <value>Packaging specifications</value>
+  </data>
+  <data name="Linh kiện lỗi" xml:space="preserve">
+    <value>Defective components</value>
+  </data>
+  <data name="Điều chỉnh nhầm" xml:space="preserve">
+    <value>Wrong adjustment</value>
+  </data>
+  <data name="Wrong BOM" xml:space="preserve">
+    <value>Wrong BOM</value>
+  </data>
+  <data name="Dùng nhầm" xml:space="preserve">
+    <value>Misuse</value>
+  </data>
+  <data name="Khác" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Tải ảnh" xml:space="preserve">
+    <value>Upload image</value>
+  </data>
+  <data name="Nhập chi tiết điều tra" xml:space="preserve">
+    <value>Input Error Detail</value>
+  </data>
+  <data name="Chọn đợt kiểm kê" xml:space="preserve">
+    <value>Select inventory period</value>
+  </data>
+  <data name="Nhập WH.Loc" xml:space="preserve">
+    <value>Input WH.Loc</value>
+  </data>
+  <data name="Phân loại lỗi" xml:space="preserve">
+    <value>Error Category</value>
+  </data>
+  <data name="BOM sai" xml:space="preserve">
+    <value>Wrong BOM</value>
+  </data>
+  <data name="Trạng thái điều tra" xml:space="preserve">
+    <value>Investigation Status</value>
+  </data>
+  <data name="Chọn trạng thái điều tra" xml:space="preserve">
+    <value>Choose investigation status</value>
+  </data>
+  <data name="Chưa điều tra" xml:space="preserve">
+    <value>Not yet investigated</value>
+  </data>
+  <data name="Đang điều tra" xml:space="preserve">
+    <value>Investigating</value>
+  </data>
+  <data name="Đã điều tra" xml:space="preserve">
+    <value>Investigated</value>
+  </data>
+  <data name="Số lượng sai số" xml:space="preserve">
+    <value>Number of errors</value>
+  </data>
+  <data name="Giá trị sai số" xml:space="preserve">
+    <value>Error value</value>
+  </data>
+  <data name="Từ $" xml:space="preserve">
+    <value>From $</value>
+  </data>
+  <data name="Đến $" xml:space="preserve">
+    <value>To $</value>
+  </data>
+  <data name="Điều chỉnh dữ liệu" xml:space="preserve">
+    <value>Adjust data</value>
+  </data>
+  <data name="Chênh lệch" xml:space="preserve">
+    <value>ErrorQuantity</value>
+  </data>
+  <data name="Số lượng điều chỉnh" xml:space="preserve">
+    <value>Adjustable quantity</value>
+  </data>
+  <data name="Nguyên nhân sai số" xml:space="preserve">
+    <value>Error Detail</value>
+  </data>
+  <data name="Tổng số lượng điều tra" xml:space="preserve">
+    <value>Total number of investigation</value>
+  </data>
+  <data name="Lịch sử điều tra" xml:space="preserve">
+    <value>Investigation History</value>
+  </data>
+  <data name="Lịch sử điều chỉnh" xml:space="preserve">
+    <value>Adjustment history</value>
+  </data>
+  <data name="Không có quyền truy cập." xml:space="preserve">
+    <value>No access.</value>
+  </data>
+  <data name="Lần điều tra" xml:space="preserve">
+    <value>Investigation times</value>
+  </data>
+  <data name="Điều chỉnh lần" xml:space="preserve">
+    <value>Investigation Count</value>
+  </data>
+  <data name="Thời điểm điều tra" xml:space="preserve">
+    <value>Investigation Datetime</value>
+  </data>
+  <data name="Thời điểm xác nhận" xml:space="preserve">
+    <value>Confirm investigation Datetime</value>
+  </data>
+  <data name="Hình ảnh" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="Giữ lại" xml:space="preserve">
+    <value>Keep</value>
+  </data>
+  <data name="Không tồn tại cụm" xml:space="preserve">
+    <value>Not existed</value>
+  </data>
+  <data name="Copy mã" xml:space="preserve">
+    <value>Copy Codes</value>
+  </data>
+  <data name="Đã copy mã vào clipboard" xml:space="preserve">
+    <value>Codes copied to clipboard</value>
+  </data>
+  <data name="Có lỗi xảy ra" xml:space="preserve">
+    <value>Error occured</value>
+  </data>
+  <data name="Cập nhật dữ liệu MSL thành công." xml:space="preserve">
+    <value>Update MSL data successfully.</value>
+  </data>
+  <data name="Vui lòng tải biểu mẫu và điền đầy đủ thông tin cần thiết để tiến hành cập nhật dữ liệu từ MSL." xml:space="preserve">
+    <value>Please download the form and fill in all necessary information to update data from MSL.</value>
+  </data>
+  <data name="Bạn không có quyền thực hiện điều tra!" xml:space="preserve">
+    <value>You do not have permission to conduct an investigation!</value>
+  </data>
+  <data name="Chỉ được cập nhật số lượng trong 1 đợt kiểm kê." xml:space="preserve">
+    <value>Only update quantity in 1 inventory round.</value>
+  </data>
+  <data name="Cập nhật dữ liệu Pivot" xml:space="preserve">
+    <value>Update Data Pivot</value>
+  </data>
+  <data name="Vui lòng tải biểu mẫu và điền đầy đủ thông tin cần thiết để tiến hành cập nhật dữ liệu Pivot." xml:space="preserve">
+    <value>Please download the form and fill in all the required information to proceed with updating Pivot data.</value>
+  </data>
+  <data name="Cập nhật dữ liệu pivot thành công." xml:space="preserve">
+    <value>Pivot data updated successfully.</value>
+  </data>
+  <data name="Quản lý phân loại lỗi" xml:space="preserve">
+    <value>Error Category Management</value>
+  </data>
+  <data name="Thêm phân loại lỗi" xml:space="preserve">
+    <value>Add new error category</value>
+  </data>
+  <data name="Thêm phân loại sai số" xml:space="preserve">
+    <value>Add error category</value>
+  </data>
+  <data name="Tên phân loại" xml:space="preserve">
+    <value>Error category name</value>
+  </data>
+  <data name="Nhập tên phân loại" xml:space="preserve">
+    <value>Input error category name</value>
+  </data>
+  <data name="Vui lòng nhập tên phân loại." xml:space="preserve">
+    <value>Input error category name</value>
+  </data>
+  <data name="Thêm mới phân loại lỗi thành công." xml:space="preserve">
+    <value>Add new error category successfully.</value>
+  </data>
+  <data name="Cập nhật phân loại lỗi thành công." xml:space="preserve">
+    <value>Update error category successfully.</value>
+  </data>
+  <data name="Xóa phân loại lỗi thành công." xml:space="preserve">
+    <value>Delete error category successfully.</value>
+  </data>
+  <data name="Đã tồn tại tên phân loại trên hệ thống." xml:space="preserve">
+    <value>Existed error category in the system.</value>
+  </data>
+  <data name="Sửa phân loại sai số" xml:space="preserve">
+    <value>Edit error category</value>
+  </data>
+  <data name="Chỉnh sửa phân loại lỗi" xml:space="preserve">
+    <value>Edit error category</value>
+  </data>
+  <data name="Chỉnh sửa phân loại lỗi thành công." xml:space="preserve">
+    <value>Update error category successfully.</value>
+  </data>
+  <data name="Phân loại lỗi không tồn tại trên hệ thống." xml:space="preserve">
+    <value>Error category not found.</value>
+  </data>
+  <data name="Chỉ được phép tải lên file ảnh!" xml:space="preserve">
+    <value>Only image file uploads are allowed!</value>
+  </data>
+  <data name="Bạn có chắc chắn muốn xóa phân loại lỗi này?" xml:space="preserve">
+    <value>Are you sure you want to delete this error category?</value>
+  </data>
+  <data name="Không được thay đổi trạng thái phiếu khi quá ngày kiểm kê." xml:space="preserve">
+    <value>Do not change the status of the voucher after the inventory date.</value>
+  </data>
+  <data name="Không có quyền thực hiện." xml:space="preserve">
+    <value>No permission to execute.</value>
+  </data>
+  <data name="Không thực hiện được do không có đợt kiểm kê nào. Vui lòng thử lại sau." xml:space="preserve">
+    <value>Failed to perform because there is no inventory. Please try again later.</value>
+  </data>
+  <data name="Tài khoản của bạn chưa được phân phát khu vực nào. Vui lòng thử lại sau." xml:space="preserve">
+    <value>Your account has not been assigned a region yet. Please try again later.</value>
+  </data>
+  <data name="Không thực hiện được do tài khoản của bạn chưa được phân phát phiếu trong đợt kiểm kê. Vui lòng thử lại sau." xml:space="preserve">
+    <value>Unable to execute because your account has not been allocated a voucher during the inventory round. Please try again later.</value>
+  </data>
+  <data name="Không tìm thấy đợt kiểm kê hiện tại." xml:space="preserve">
+    <value>No current inventory found.</value>
+  </data>
+  <data name="Không thực hiện được do chưa có phiếu nào được tạo trong đợt kiểm kê hiện tại. Vui lòng thử lại sau." xml:space="preserve">
+    <value>Unable to execute because no vouchers have been created in the current inventory. Please try again later.</value>
+  </data>
+  <data name="Không tìm thấy phiếu có trạng thái chưa kiểm kê trong đợt kiểm kê hiện tại. Vui lòng thử lại sau." xml:space="preserve">
+    <value>No vouchers with status not counted found in the current count. Please try again later.</value>
+  </data>
+  <data name="Không thực hiện được do tài khoản của bạn chưa được phân phát phiếu trong đợt kiểm kê hiện tại. Vui lòng thử lại sau." xml:space="preserve">
+    <value>Unable to do so because your account has not been allocated a voucher for the current inventory. Please try again later.</value>
+  </data>
+  <data name="Tải biểu mẫu không thành công do chưa có phiếu nào được tạo trong đợt kiểm kê hiện tại. Vui lòng thử lại sau." xml:space="preserve">
+    <value>Form load failed because no vouchers have been created for the current count. Please try again later.</value>
+  </data>
+  <data name="Tải biểu mẫu không thành công do không tìm thấy phiếu có trạng thái chưa kiểm kê trong đợt kiểm kê hiện tại. Vui lòng thử lại sau." xml:space="preserve">
+    <value>Form load failed because no vouchers with status uncounted were found in the current count. Please try again later.</value>
+  </data>
+  <data name="Tải biểu mẫu không thành công do tài khoản của bạn chưa được phân phát phiếu trong đợt kiểm kê hiện tại. Vui lòng thử lại sau." xml:space="preserve">
+    <value>Form load failed because your account has not been issued a voucher for the current inventory. Please try again later.</value>
+  </data>
+  <data name="Đang tiến hành tổng hợp kết quả." xml:space="preserve">
+    <value>Results are being compiled.</value>
+  </data>
+  <data name="Số lượng điều chỉnh không đúng định dạng." xml:space="preserve">
+    <value>The quantity adjustment format is incorrect.</value>
+  </data>
+  <data name="Chỉ xác nhận điều chỉnh lịch sử điều tra với trạng thái Chờ xác nhận và Từ chối." xml:space="preserve">
+    <value>Only confirm investigation history adjustments with Pending Confirmation and Reject status.</value>
+  </data>
+  <data name="Thông tin cá nhân" xml:space="preserve">
+    <value>User info</value>
+  </data>
+  <data name="Chọn ảnh đại diện" xml:space="preserve">
+    <value>Choose avatar</value>
+  </data>
+  <data name="Xem thông tin cá nhân" xml:space="preserve">
+    <value>View user info</value>
+  </data>
+  <data name="Không tồn tại cụm: " xml:space="preserve">
+    <value>Cluster does not exist: </value>
+  </data>
+  <data name="Cập nhật dữ liệu MSL" xml:space="preserve">
+    <value>MSL Data Update</value>
+  </data>
+  <data name="Vui lòng tải biểu mẫu và điền đầy đủ thông tin cần thiết để tiến hành cập nhật dữ liệu MSL." xml:space="preserve">
+    <value>Please download the form and fill in all necessary information to proceed with updating the data MSL.</value>
+  </data>
+  <data name="Tải biểu mẫu cập nhật dữ liệu Pivot" xml:space="preserve">
+    <value>Download Pivot Data Update Template</value>
+  </data>
+  <data name="Chọn phân loại lỗi" xml:space="preserve">
+    <value>Choose error type</value>
+  </data>
+  <data name="Vị trí gần hết linh kiện" xml:space="preserve">
+    <value>Location near end of component</value>
+  </data>
+  <data name="Linh kiện mới được cập nhật" xml:space="preserve">
+    <value>New components updated</value>
+  </data>
+  <data name="Nhập tên người tạo" xml:space="preserve">
+    <value>Input create by</value>
+  </data>
+  <data name="Tạo phiếu Ship" xml:space="preserve">
+    <value>Create ship document</value>
+  </data>
+  <data name="Ảnh quá dung lượng cho phép. Vui lòng chọn lại." xml:space="preserve">
+    <value>Photo exceeds allowed size. Please select again.</value>
+  </data>
+  <data name="Không đúng định dạng hình ảnh." xml:space="preserve">
+    <value>Incorrect image format.</value>
+  </data>
+</root>

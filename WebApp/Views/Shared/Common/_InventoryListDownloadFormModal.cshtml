@@ -1,0 +1,45 @@
+
+<!-- Modal -->
+<div class="modal fade" id="InventoryListDownloadFormModal" tabindex="-1" role="dialog" aria-labelledby="InventoryListDownloadFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="d-flex justify-content-end">
+                    <button class="btn_close" id="btn-close">
+                        <img src="./assets/images/icons/icon-close.svg" />
+                    </button>
+                </div>
+                <h4 class="modal_title">@Html.Translate("Chọn biểu mẫu cần tải")</h4>
+                <div>
+                    <div class="container_item_download_form" filename="@nameof(FileTemplate.BieumauphieuA)">
+                        <img src="./assets/images/icons/icon-form-excel.svg">
+                        <span class="diagonal_line"></span>
+                        <h5>@Html.Translate("Tải biểu mẫu phiếu A")</h5>
+                    </div>
+                    <div class="my-3 container_item_download_form" filename="@nameof(FileTemplate.BieumauphieuB)">
+                        <img src="./assets/images/icons/icon-form-excel.svg">
+                        <span class="diagonal_line"></span>
+                        <h5>@Html.Translate("Tải biểu mẫu phiếu B")</h5>
+                    </div>
+                    <div class="my-3 container_item_download_form" filename="@nameof(FileTemplate.BieumauphieuE)">
+                        <img src="./assets/images/icons/icon-form-excel.svg">
+                        <span class="diagonal_line"></span>
+                        <h5>@Html.Translate("Tải biểu mẫu phiếu E")</h5>
+                    </div>
+                    <div class="my-3 container_item_download_form" filename="@nameof(FileTemplate.BieumauphieuC)">
+                        <img src="./assets/images/icons/icon-form-excel.svg">
+                        <span class="diagonal_line"></span>
+                        <h5>@Html.Translate("Tải biểu mẫu phiếu C")</h5>
+                    </div>
+                    <div class="container_item_download_form" filename="@nameof(FileTemplate.BieumauphieuShip)">
+                        <img src="./assets/images/icons/icon-form-excel.svg">
+                        <span class="diagonal_line"></span>
+                        <h5>@Html.Translate("Tải biểu mẫu phiếu SHIP")</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script asp-append-version="true" src="./assets/js/inventory/ListInventoryDownloadForm.js"></script>

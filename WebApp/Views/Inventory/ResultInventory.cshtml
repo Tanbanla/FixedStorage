@@ -1,0 +1,176 @@
+<div class="container_monitoring">
+    <form class="search_inventory_form" id="documentResultForm">
+        <div class="row mb-4">
+            <div class="col ip-form-update box-container">
+                <label class="text_label">@Html.Translate("Plant")</label>
+                <input id="result_inventory-plant" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập plant")..." />
+            </div>
+            <div class="col ip-form-update box-container">
+                <label class="text_label">@Html.Translate("WH.Loc")</label>
+                <input id="result_inventory-WHLoc" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập WH.Loc")..." />
+            </div>
+            <div class="col ip-form-update box-container" style="width:10%;">
+                <label class="text_label">@Html.Translate("Loại phiếu")</label>
+                <select hidden id="result_inventory-type_form" multiple name="native-select" placeholder="Chọn loại phiếu" data-search="false" data-silent-initial-value-set="true">
+                    <option value="0">A</option>
+                    <option value="1">B</option>
+                    <option value="2">E</option>
+                    <option value="3">C</option>
+                </select>
+            </div>
+            <div class="col-2 ip-form-update box-container" style="min-width:200px;">
+                <label class="text_label">@Html.Translate("Số phiếu")</label>
+                <div class="row">
+                    <div class="col pe-0">
+                        <input id="input_docCode_from" name="QuantityRangeFrom" placeholder="@Html.Translate("Nhập số")..." type="text" class="form-control background-color-grey text_ellipsis">
+                    </div>
+                    <div class="custom_arrow_right">
+                        <div><img src="./assets/images/icons/Muitensangphai.png"></div>
+                    </div>
+                    <div class="col ps-0">
+                        <input id="input_docCode_to" name="QuantityRangeTo" placeholder="@Html.Translate("Nhập số")..." type="text" class="form-control background-color-grey text_ellipsis">
+                    </div>
+                </div>
+            </div>
+            <div class="col ip-form-update box-container">
+                <label class="text_label">@Html.Translate("Mã linh kiện")</label>
+                <input id="result_inventory-component_code" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập mã linh kiện")..." />
+            </div>
+            <div class="col ip-form-update box-container">
+                <label class="text_label">@Html.Translate("Model code")</label>
+                <input id="result_inventory-model_code" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập model code")..." />
+            </div>
+        </div>
+        <div class="d-flex justify-content-between mb-3">
+            <div class="container_search">
+                <button type="button" id="btnResetDocumentResultForm" class="background-color-grey btn_reset btn_reset_document_result">
+                    <div class="icon_reset">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.07333 3.38676C6.65333 3.21343 7.29333 3.1001 8 3.1001C11.1933 3.1001 13.78 5.68676 13.78 8.8801C13.78 12.0734 11.1933 14.6601 8 14.6601C4.80667 14.6601 2.22 12.0734 2.22 8.8801C2.22 7.69343 2.58 6.58676 3.19333 5.66676" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5.24667 3.54683L7.17333 1.3335" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5.24667 3.54688L7.49333 5.18688" stroke="#333333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    Reset
+                </button>
+                <button type="button" id="btn_search_result" class="btn_search">
+                    <div class="icon_search">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.66667 14.0002C11.1645 14.0002 14 11.1646 14 7.66683C14 4.16903 11.1645 1.3335 7.66667 1.3335C4.16886 1.3335 1.33333 4.16903 1.33333 7.66683C1.33333 11.1646 4.16886 14.0002 7.66667 14.0002Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.6667 14.6668L13.3333 13.3335" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    @Html.Translate("Tìm kiếm")
+                </button>
+            </div>
+            <div class="container_modal_add d-flex">
+                <button class="btn_add btnImportMSLUpdate" type="button" id="btnCreate_Inventory" data-toggle="modal" data-bs-target="#AddNewInventoryModal">
+                    <img class="px-1" src="./assets/images/icons/icon-upload.svg" />
+                    @Html.Translate("Cập nhật dữ liệu MSL")
+                </button>
+                <input type="file" id="inputMSLUpdate" hidden />
+
+                <button class="btn_add mx-3 btnImportDocResultFromBwins" type="button" id="btnCreate_Inventory" data-toggle="modal" data-bs-target="#AddNewInventoryModal">
+                    <img class="px-1" src="./assets/images/icons/icon-upload.svg" />
+                    @Html.Translate("Upload kết quả từ Bwins")
+                </button>
+                <input type="file" id="inputDocResultFromBwins" hidden />
+
+                <button class="btn_add btnImportFileSAP" type="button" id="btnCreate_Inventory" data-toggle="modal" data-bs-target="#AddNewInventoryModal">
+                    <img class="px-1" src="./assets/images/icons/icon-upload.svg" />
+                    @Html.Translate("Thêm dữ liệu từ SAP")
+                </button>
+                <input type="file" id="inputImportFileSAP" hidden />
+
+            </div>
+        </div>
+    </form>
+    <div id="inventory-form">
+        <section class="bg-white pb-2 rounded container-list-view">
+            <div class="container_top_table">
+                <button class="export_file inventory_error_export_file" id="export_file_inventory_error">
+                    <div class="">
+                        <img src="./assets/images/icons/export_excel.png">
+                    </div>
+                    <h5>@Html.Translate("Xuất sai số")</h5>
+                </button>
+                <button class="export_file btnAggregateQuantity" id="export-tree">
+                    <div class="px-1">
+                        <i id="sync-icon" class="fas fa-sync" style="font-size: 17px; color: #0D2EA0;"></i>
+                        <span id="spin-icon" class="spinner-border spinner-border-sm" hidden></span>
+                    </div>
+                    <h5 id="countDown" >@Html.Translate("Tổng hợp")</h5>
+                   
+                </button>
+                <button class="export_file result_inventory_export_file_txt" id="export-tree">
+                    <div class="px-1">
+                        <img src="./assets/images/icons/icon-file-txt.svg">
+                    </div>
+                    <h5>@Html.Translate("Xuất txt")</h5>
+                </button>
+                <button class="export_file result_inventory_export_file" id="export_file">
+                    <div class="">
+                        <img src="./assets/images/icons/export_excel.png">
+                    </div>
+                    <h5>@Html.Translate("Xuất file")</h5>
+                </button>
+                <button class="export_file" id="ResultInventory_Download_Form">
+                    <div >
+                        <img class="px-1" src="./assets/images/icons/icon-download.svg">
+                    </div>
+                    <h5>@Html.Translate("Tải biểu mẫu")</h5>
+                </button>
+            </div>
+            <div class="container_table">
+                <table id="monitoring-table" class="table table-responsive custom_table" width="100%">
+                    <thead>
+                        <tr class="title_table">
+                            <th>STT</th>
+                            <th auto-filter-key="ResultDoc_ComponentCode">@Html.Translate("Mã linh kiện")</th>
+                            <th auto-filter-key="ResultDoc_ModelCode">@Html.Translate("Model code")</th>
+                            <th auto-filter-key="ResultDoc_Plant">@Html.Translate("Plant")</th>
+                            <th auto-filter-key="ResultDoc_WHLoc">@Html.Translate("WH Loc.")</th>
+                            <th>@Html.Translate("Quantity")</th>
+                            <th>@Html.Translate("Total Qty")</th>
+                            <th>@Html.Translate("Account Qty")</th>
+                            <th>@Html.Translate("Error Qty")</th>
+                            <th>@Html.Translate("Error Qty(abs)")</th>
+                            <th>@Html.Translate("Error money")</th>
+                            <th>@Html.Translate("Error money(abs)")</th>
+                            <th>@Html.Translate("Unit price")</th>
+                            <th>@Html.Translate("Mã phiếu")</th>
+                            <th>@Html.Translate("No.")</th>
+                            <th>@Html.Translate("Stock types")</th>
+                            <th>@Html.Translate("Special stock")</th>
+                            <th>@Html.Translate("S/O No.")</th>
+                            <th>@Html.Translate("Phys.Inv")</th>
+                            <th>@Html.Translate("Pro. Order No")</th>
+                            <th>@Html.Translate("Người kiểm kê")</th>
+                            <th>@Html.Translate("Thời gian kiểm kê")</th>
+                            <th>@Html.Translate("Người xác nhận")</th>
+                            <th>@Html.Translate("Thời gian xác nhận")</th>
+                            <th>@Html.Translate("Người giám sát")</th>
+                            <th>@Html.Translate("Thời gian giam sát")</th>
+                            <th>@Html.Translate("Tên linh kiện")</th>
+                            <th>@Html.Translate("Vị trí")</th>
+                            <th>@Html.Translate("Assembly Loc.")</th>
+                            <th>@Html.Translate("Vendor code")</th>
+                            <th>@Html.Translate("S/O List.")</th>
+                            <th>@Html.Translate("C SAP")</th>
+                            <th>@Html.Translate("K SAP")</th>
+                            <th>@Html.Translate("M SAP")</th>
+                            <th>@Html.Translate("O SAP")</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Views/Shared/Common/_InventoryResultDownloadFormModal.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Common/_InventoryExportFileInventoryErrorModal.cshtml")
+
+<script asp-append-version="true" src="./assets/js/inventory/ResultInventory.js"></script>

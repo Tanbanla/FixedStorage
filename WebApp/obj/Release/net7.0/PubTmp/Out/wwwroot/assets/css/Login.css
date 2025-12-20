@@ -1,0 +1,236 @@
+﻿@media only screen and (max-width: 768px) {
+    .NetworkOptionContainer{
+        display: block !important;
+    }
+    .NetworkOption {
+        display: flex;
+        justify-content: space-around;
+        padding: 25px 0;
+    }
+
+    .content-login-pages-right img {
+        display: none;
+    }
+
+    #LoginBody .top-login-pages{
+        display: none;
+    }
+
+    .content-login-pages-container {
+        box-shadow: unset !important;
+        padding: unset !important;
+    }
+    h4.Title_Login{
+        display: none;
+    }
+
+    .swal2-popup.swal2-modal.swal2-show {
+        width: 95% !important;
+    }
+
+}
+
+.NetworkOptionContainer {
+    display: none;
+}
+
+#LoginBody {
+    height: 100vh;
+}
+
+.content-login-pages {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-fluid.login-pages {
+    height: 100vh;
+}
+
+.top-login-pages-image {
+    background: #0D2EA0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.top-login-pages {
+    height: 90px;
+}
+
+.top-login-pages-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+}
+
+    .top-login-pages-title label {
+        padding-left: 50px;
+        color: #0D2EA0;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+.Logo_Login_Small {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .Logo_Login_Small img {
+        /* width: 100%; */
+        /* height: 100%; */
+        object-fit: contain;
+    }
+
+    .Logo_Login_Small img {
+        object-fit: contain;
+    }
+
+h4.Title_Login {
+    font-size: 32px;
+    text-align: center;
+    padding: 20px 0 5px 0;
+    color: #0D2EA0;
+    font-weight: bold;
+}
+
+#UserName_Login, #Password_Login {
+    background-color: #F1F0F4;
+}
+
+.Password_Login_Container {
+    position: relative;
+}
+
+.btn_Password_Login_Image {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+    .btn_Password_Login_Image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+#btnLogin_Form, #btn_Apply_BIVN_ChangePassword_Form {
+    width: 100%;
+    height: 45px;
+    font-size: 18px;
+    background: #0D2EA0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.ChangePassword_Login a {
+    color: #5092FC;
+    font-size: 15px;
+}
+
+.ChangePassword_Login {
+    text-align: center;
+}
+
+.content-login-pages-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.content-login-pages-container {
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.25);
+    border-radius:8px !important;
+/*    padding: 10px;*/
+}
+
+.content-login-pages-right {
+    padding: inherit;
+    background-image: url('../../../assets/images/logo/back_ground.svg');
+    border-radius: 0 8px 8px 0;
+}
+
+.btn_Password_Login_Image img {
+    cursor: pointer;
+}
+
+#UserName_Login-error, #Password_Login-error, #UserName_ChangePassword-error, #OldPassword_ChangePassword-error, #NewPassword_ChangePassword-error, #ConfirmNewPassword_ChangePassword-error {
+    color: #E60000 !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 16px !important;
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity)) !important;
+}
+
+form.MultiLanguages {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 30px;
+}
+
+    form.MultiLanguages select {
+        width: 200px;
+        font-size: 14px !important;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: url('../images/icons/menu/arrow-down.svg') no-repeat right 10px center;
+        background-size: 12px 12px;
+        padding-right: 30px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        height: 40px;
+        line-height: 1.5;
+    }
+label.language {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+    margin: 0;
+}
+
+label.TopLoginTitle {
+    width: 200px;
+}
+
+.content-login-pages-left{
+    padding: 32px 30px ;
+}
+.login-right {
+    display: flex;
+    align-items: center;
+    margin: 0 44px;
+}
+.login-right-logo {
+    width: 200px;
+    margin-right: 30px;
+}
+.login-right-logo img {
+    width:210px;
+}
+.login-right-content {
+}
+.login-right-content img{
+    width:92px;
+
+}
+.content-login-pages-right {
+    display: flex;
+    align-items:center;
+}
+.login-right-content .sub-text {
+    font-size: 24px;
+    color: #FFFFFF;
+    font-weight: 700;
+    margin-top: 10px;
+}

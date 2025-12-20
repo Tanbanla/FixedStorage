@@ -1,0 +1,216 @@
+﻿h5.ListComponent_Title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0D2EA0;
+}
+p.ListComponent_Description {
+    font-size: 14px;
+    color: #6A707E;
+}
+
+.background-color-grey {
+    background-color: #F1F0F4;
+}
+#btnReset_Component {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 65px;
+    border: none;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-right:20px;
+}
+
+#btnSearch_Component {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 65px;
+    border: none;
+    background: #0D2EA0;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.btnSearch_User_image, .btnReset_User_image {
+    width: 30px;
+    height: 30px;
+    padding-right: 5px;
+}
+    .btnSearch_User_image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+    }
+    .btnReset_User_image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: grayscale(100%);
+    }
+
+.Component_Inventory_Qty_container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.ListComponent_feature_container {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    margin-bottom:15px;
+}
+
+.ListComponent_ExportExcel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+}
+
+
+.ListComponent_feature_container {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+
+
+.ListComponent_ExportExcel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.ListComponent_Search_Option {
+    background-color: white;
+    padding: 10px;
+}
+
+.ListComponent_Container.mt-3 {
+    background: white;
+    padding: 10px;
+}
+.ListComponent_ImportExcel {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 2px;
+}
+
+h5.ListComponent_ImportExcel_Title {
+    margin: 0;
+    padding-left: 5px;
+    color: #5092FC;
+}
+.ListComponet_Button_Container {
+    display: flex;
+    margin-bottom: 25px;
+}
+a.ListComponent_ViewDetail_Controls {
+    cursor: pointer;
+    text-decoration:underline !important;
+    color: #5092FC !important;
+    font-size: 14px;
+}
+.Top_ListComponentViewDetail h4 {
+    text-align: center;
+    padding: 0 0 20px 0;
+    font-weight: bold;
+    color: #0D2EA0;
+}
+.label-bold{
+    font-weight:bold;
+}
+
+.title-input-add-component label, .title-input-edit-component label {
+    font-weight: 400;
+}
+#Add_Components_ComponentCode, #Add_Components_ComponentName, #Add_Components_SupplierCode, #Add_Components_SupplierName, #Add_Components_ShortSupplierName, #Add_Components_PositionCode,
+#Add_Components_InventoryMinQty, #Add_Components_InventoryMaxQty, #Add_Components_InventoryQty, #Add_Components_ComponentInfo, #Add_Components_Note,
+#Edit_Components_ComponentCode, #Edit_Components_ComponentName, #Edit_Components_SupplierCode, #Edit_Components_SupplierName, #Edit_Components_ShortSupplierName, #Edit_Components_PositionCode,
+#Edit_Components_InventoryMinQty, #Edit_Components_InventoryMaxQty, #Edit_Components_InventoryQty, #Edit_Components_ComponentInfo, #Edit_Components_Note,
+#Component_Inventory_Qty_Start, #Component_Inventory_Qty_End {
+    color: black;
+}
+#Add_Components_ComponentCode-error, #Add_Components_ComponentName-error, #Add_Components_SupplierCode-error, #Add_Components_SupplierName-error, #Add_Components_ShortSupplierName-error,
+#Add_Components_PositionCode-error, #Add_Components_InventoryMinQty-error, #Add_Components_InventoryMaxQty-error, #Add_Components_InventoryQty-error,
+#Add_Components_ComponentInfo-error, #Add_Components_Note-error, #Edit_Components_ComponentCode-error, #Edit_Components_ComponentName-error, #Edit_Components_ShortSupplierName-error, #Edit_Components_SupplierCode-error, #Edit_Components_SupplierName-error,
+#Edit_Components_PositionCode-error, #Edit_Components_InventoryMinQty-error, #Edit_Components_InventoryMaxQty-error, #Edit_Components_InventoryQty-error,
+#Edit_Components_ComponentInfo-error, #Edit_Components_Note-error, #Component_Inventory_Qty_Start-error, #Component_Inventory_Qty_End-error {
+    color: red;
+}
+.Controls_Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+}
+.EditListComponent_Controls {
+    cursor: pointer;
+}
+#ListComponent_DataTable_filter {
+    display: none;
+}
+
+#Component_Layout .vscomp-wrapper.has-clear-button .vscomp-toggle-button,
+#InventoryStatus .vscomp-wrapper.has-clear-button .vscomp-toggle-button 
+{
+    height: 41.5px;
+    background: #F1F0F4;
+    border-radius: 5px;
+}
+#Component_Layout.vscomp-ele,
+#InventoryStatus.vscomp-ele
+{
+    max-width: 100% !important;
+}
+
+.color-red{
+    color: red;
+}
+.btn-primary {
+    background: #0D2EA0 !important;
+}
+
+.colorE60000 {
+    color: #E60000 !important;
+}
+#button_Delete_AddNewComponent:hover{
+    color: #E60000 !important;
+}
+#button_Delete_EditComponent:hover {
+    color: #E60000 !important;
+}
+.new_component {
+    background-color: #DCEEFE !important;
+    --bs-table-accent-bg: #DCEEFE !important;
+}
+
+/*#ListComponent_DataTable tbody tr td {
+    max-width: 100px;
+    word-wrap: break-word;
+}
+*/
+.Name_Content_Top_ListComponentViewDetail {
+    word-wrap: break-word;
+}
+
+.break-word-100{
+    width: 100%;
+    word-break: break-word;
+}
+
+#btnDownloadImportComopnentTemplate {
+    border: none;
+    background: none;
+}

@@ -1,0 +1,3492 @@
+[
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationController",
+    "Method": "ListErrorInvestigation",
+    "RelativePath": "api/error-investigation/inventory/{inventoryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "System.Nullable\u00601[[BIVN.FixedStorage.Services.Common.API.Enum.ErrorInvestigation.ErrorInvestigationStatusType, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNum",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.ErrorInvestigation.ErrorInvestigationListDto, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 102
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationController",
+    "Method": "ErrorInvestigationDocumentList",
+    "RelativePath": "api/error-investigation/inventory/{inventoryId}/componentCode/{componentCode}/documents",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[Inventory.API.Service.Dto.ErrorInvestigation.ErrorInvestigationDocumentListDto, Inventory.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 102
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationController",
+    "Method": "ErrorInvestigationHistories",
+    "RelativePath": "api/error-investigation/inventory/{inventoryId}/componentCode/{componentCode}/histories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[Inventory.API.Service.Dto.ErrorInvestigation.ErrorInvestigationHistoriesDto, Inventory.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 102
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationController",
+    "Method": "UpdateStatusErrorInvestigation",
+    "RelativePath": "api/error-investigation/inventory/{inventoryId}/componentCode/{componentCode}/status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationController",
+    "Method": "ConfirmErrorInvestigation",
+    "RelativePath": "api/error-investigation/inventory/{inventoryId}/componentCode/{componentCode}/type/{type}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "type",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Enum.ErrorInvestigation.ErrorInvestigationConfirmType",
+        "IsRequired": true
+      },
+      {
+        "Name": "Quantity",
+        "Type": "System.Double",
+        "IsRequired": false
+      },
+      {
+        "Name": "ErrorCategory",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ErrorDetails",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ConfirmationImage1",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "ConfirmationImage2",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsDeleteImage1",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsDeleteImage2",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserCode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationController",
+    "Method": "ErrorInvestigationConfirmedViewDetail",
+    "RelativePath": "api/error-investigation/inventory/{inventoryId}/componentCode/{componentCode}/view-detail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[Inventory.API.Service.Dto.ErrorInvestigation.ErrorInvestigationConfirmedViewDetailDto, Inventory.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 102
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ListErrorInvestigationInventoryDocsHistory",
+    "RelativePath": "api/error-investigation/web/history/componentCode/{componentCode}/inventory-docs",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "inventories",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.ErrorInvestigation.ErrorInvestigationInventoryDocsHistoryModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ListErrorInvestigaiton",
+    "RelativePath": "api/error-investigation/web/inventory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ListErrorInvestigationDocuments",
+    "RelativePath": "api/error-investigation/web/inventory/{inventoryId}/componentCode/{componentCode}/documents",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ListErrorInvestigationDocumentsCheck",
+    "RelativePath": "api/error-investigation/web/inventory/{inventoryId}/componentCode/{componentCode}/documents-check",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ImportErrorInvestigationUpdatePivot",
+    "RelativePath": "api/error-investigation/web/inventory/{inventoryId}/error-investigation/update-pivot/import",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ErrorPercent",
+    "RelativePath": "api/error-investigation/web/inventory/{inventoryId}/error-percent",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ExportDataAdjustment",
+    "RelativePath": "api/error-investigation/web/inventory/{inventoryId}/export-data-adjustment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "InvestigationPercent",
+    "RelativePath": "api/error-investigation/web/inventory/{inventoryId}/investigation-percent",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ListInvestigaitonDetail",
+    "RelativePath": "api/error-investigation/web/inventory/detail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ListInvestigaitonDetailExport",
+    "RelativePath": "api/error-investigation/web/inventory/detail/export",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listErrorInvestigationHistoryWebModel",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.ErrorInvestigation.ListErrorInvestigationHistoryWebModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ImportErrorInvestigationUpdate",
+    "RelativePath": "api/error-investigation/web/inventory/error-investigation/update",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "UpdateErrorTypesForInvestigationHistory",
+    "RelativePath": "api/error-investigation/web/inventory/error-types",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "errorHistoryIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      },
+      {
+        "Name": "type",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Enum.ErrorInvestigation.AdjustmentType",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ListErrorInvestigaitonExport",
+    "RelativePath": "api/error-investigation/web/inventory/export-file",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listErrorInvestigationWeb",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.ErrorInvestigation.ListErrorInvestigationWebModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ListErrorInvestigaitonHistory",
+    "RelativePath": "api/error-investigation/web/inventory/history",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ListErrorInvestigationHistoryExport",
+    "RelativePath": "api/error-investigation/web/inventory/history/export-file",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listErrorInvestigationHistoryWeb",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.ErrorInvestigation.ListErrorInvestigationHistoryWebModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ErrorCategoryManagement",
+    "RelativePath": "api/error-investigation/web/management/error-category",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "ErrorCategoryManagementById",
+    "RelativePath": "api/error-investigation/web/management/error-category/{errorCategoryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "errorCategoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "UpdateErrorCategoryManagement",
+    "RelativePath": "api/error-investigation/web/management/error-category/{errorCategoryId}/edit",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "errorCategoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "errorCategoryModel",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.ErrorInvestigation.ErrorCategoryModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "RemoveErrorCategoryManagement",
+    "RelativePath": "api/error-investigation/web/management/error-category/{errorCategoryId}/remove",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "errorCategoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ErrorInvestigationWebController",
+    "Method": "AddNewErrorCategoryManagement",
+    "RelativePath": "api/error-investigation/web/management/error-category/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "errorCategoryModel",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.ErrorInvestigation.ErrorCategoryModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "IsHightLightCheck",
+    "RelativePath": "api/inventory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "checkIsHightLightDocTypeCDto",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.CheckIsHightLightDocTypeCDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "Import",
+    "RelativePath": "api/inventory/{inventoryId}/{docType}/import",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "docType",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "AuditScanQR",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/audit/scan/{componentCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.Inventory.AuditInfoModel, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 80
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 74
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 75
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DropDownMachinesDocB",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/doc-b/dropdown/{machineModel}/machines",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "machineModel",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DropDownModelCodesDocB",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/doc-b/dropdown/{machineModel}/machines/{machineType}/modelcodes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "machineModel",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "machineType",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DropDownLinesDocB",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/doc-b/dropdown/{machineModel}/machines/{machineType}/modelcodes/{modelCode}/lines",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "machineModel",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "machineType",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "modelCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DropDownModelsDocB",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/doc-b/dropdown/models",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DropDownModelsDocC",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/doc-c/dropdown/{machineModel}/machines",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "machineModel",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DropDownModelsDocC",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/doc-c/dropdown/{machineModel}/machines/{machineType}/lines",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "machineModel",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "machineType",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DropDownModelsDocC",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/doc-c/dropdown/models",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "SubmitAudit",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/document/{docId}/action/{actionType}/submit-audit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "docId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "actionType",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Enum.SubmitInventoryAction",
+        "IsRequired": true
+      },
+      {
+        "Name": "UserCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Comment",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "DocOutputs",
+        "Type": "System.Collections.Generic.List\u00601[[Inventory.API.Service.Dto.DocOutputDto, Inventory.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "DocTypeCDetails",
+        "Type": "System.Collections.Generic.List\u00601[[Inventory.API.Service.Dto.DocTypeCDetailDto, Inventory.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdsDeleteDocOutPut",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsAuditWebsite",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "SubmitConfirm",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/document/{docId}/action/{actionType}/submit-confirm",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "docId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "actionType",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Enum.SubmitInventoryAction",
+        "IsRequired": true
+      },
+      {
+        "Name": "UserCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Comment",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "DocOutputs",
+        "Type": "System.Collections.Generic.List\u00601[[Inventory.API.Service.Dto.DocOutputDto, Inventory.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "DocTypeCDetails",
+        "Type": "System.Collections.Generic.List\u00601[[Inventory.API.Service.Dto.DocTypeCDetailDto, Inventory.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdsDeleteDocOutPut",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsAuditWebsite",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "SubmitInventory",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/document/{docId}/submit-inventory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "docId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "UserCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Comment",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "DocOutputs",
+        "Type": "System.Collections.Generic.List\u00601[[Inventory.API.Service.Dto.DocOutputDto, Inventory.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "DocTypeCDetails",
+        "Type": "System.Collections.Generic.List\u00601[[Inventory.API.Service.Dto.DocTypeCDetailDto, Inventory.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdsDeleteDocOutPut",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsAuditWebsite",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DocumentDetail",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/document/{documentId}/action/{actionType}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "documentId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "actionType",
+        "Type": "System.Nullable\u00601[[BIVN.FixedStorage.Services.Common.API.Enum.InventoryActionType, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      },
+      {
+        "Name": "searchTerm",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "isErrorInvestigation",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.Inventory.DocumentDetailModel, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DropDownDepartment",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/dropdown/department",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DropDownLocation",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/dropdown/department/{departmentName}/location",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "departmentName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DropDownComponentCode",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/dropdown/department/{departmentName}/location/{locationName}/component",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "departmentName",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "locationName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "HistoryDetail",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/history/{historyId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "historyId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "searchTerm",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.Inventory.HistoryDetailViewModel, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "CheckInventory",
+    "RelativePath": "api/inventory/{inventoryId}/account/{accountId}/inventory-check",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.AuditTargetController",
+    "Method": "ListAuditTarget",
+    "RelativePath": "api/inventory/{inventoryId}/audit-target",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.AuditTargetController",
+    "Method": "DeleteAuditTargets",
+    "RelativePath": "api/inventory/{inventoryId}/audit-target",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "IDs",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      },
+      {
+        "Name": "deleteAll",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.AuditTargetController",
+    "Method": "AuditTargetDetail",
+    "RelativePath": "api/inventory/{inventoryId}/audit-target/{auditTargetId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "auditTargetId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.AuditTargetController",
+    "Method": "UpdateAuditTarget",
+    "RelativePath": "api/inventory/{inventoryId}/audit-target/{auditTargetId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "auditTargetId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateAuditTargetDto",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.UpdateAuditTargetDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.AuditTargetController",
+    "Method": "ListAuditTargetToExport",
+    "RelativePath": "api/inventory/{inventoryId}/audit-target/export",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listAuditTargetDto",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.ListAuditTargetDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.AuditTargetController",
+    "Method": "ImportCreateAuditTarget",
+    "RelativePath": "api/inventory/{inventoryId}/audit-target/import",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "ScanDocsAE",
+    "RelativePath": "api/inventory/{inventoryId}/doc-ae/account/{accountId}/code/{componentCode}/action/{actionType}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "accountId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "positionCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "docCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "actionType",
+        "Type": "System.Nullable\u00601[[BIVN.FixedStorage.Services.Common.API.Enum.InventoryActionType, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      },
+      {
+        "Name": "isErrorInvestigation",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[Inventory.API.Service.Dto.SwaggerDocABEListResponseModel, Inventory.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "ValidateDocTypeC",
+    "RelativePath": "api/inventory/{inventoryId}/doc-c/validate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "isBypassWarning",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "ImportInventoryDocTypeC",
+    "RelativePath": "api/inventory/{inventoryId}/import-doc-c",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "isBypassWarning",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "ImportDocShip",
+    "RelativePath": "api/inventory/{inventoryId}/import-doc-ship",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DocListAE",
+    "RelativePath": "api/inventory/doc-ae",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listDocAEFilterModel",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.ListDocAEFilterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.Inventory.DocAEListViewModel, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DocListB",
+    "RelativePath": "api/inventory/doc-b",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listDocBFilterModel",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.ListDocBFilterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.Inventory.DocBListViewModel, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "DocListC",
+    "RelativePath": "api/inventory/doc-c",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listDocCFilterModel",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.ListDocCFilterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.Inventory.DocCListViewModel, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryHistoryController",
+    "Method": "HistoryDetail",
+    "RelativePath": "api/inventory/history/detail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "IsHightLightCheck",
+    "RelativePath": "api/inventory/ishightlight-check",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "checkIsHightLightDocTypeCDto",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.CheckIsHightLightDocTypeCDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "ListAudit",
+    "RelativePath": "api/inventory/list-audit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listAuditFilterDto",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.ListAuditFilterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "ListDocC",
+    "RelativePath": "api/inventory/list/doc-c",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listDocCFilterModel",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.ListDocCFilterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.Inventory.DocCListViewModel, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "Locations",
+    "RelativePath": "api/inventory/location",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "departmentName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "CreateLocation",
+    "RelativePath": "api/inventory/location",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createLocationDto",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Location.CreateLocationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "UpdateLocation",
+    "RelativePath": "api/inventory/location",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateLocationDto",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Location.UpdateLocationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "DeleteLocation",
+    "RelativePath": "api/inventory/location/{locationId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "locationId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "LocationDetail",
+    "RelativePath": "api/inventory/location/{locationId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "locationId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "CheckLocationAssignedToDocument",
+    "RelativePath": "api/inventory/location/{locationId}/assigned-document",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "locationId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "ChangeAccountLocation",
+    "RelativePath": "api/inventory/location/account/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "locationIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "ChangeAccountRole",
+    "RelativePath": "api/inventory/location/account/{userId}/role/{roleType}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "roleType",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "InventoryAssignedList",
+    "RelativePath": "api/inventory/location/actors",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "ExportActors",
+    "RelativePath": "api/inventory/location/assignment/export",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "GetAuditorByLocations",
+    "RelativePath": "api/inventory/location/auditor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "locations",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.AuditorByLocationModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "GetLocationByDepartments",
+    "RelativePath": "api/inventory/location/departmentname",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "departments",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.LocationByDepartmentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.LocationController",
+    "Method": "Deparments",
+    "RelativePath": "api/inventory/location/departments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ReportController",
+    "Method": "AuditReport",
+    "RelativePath": "api/inventory/report/audit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "progressReport",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Report.ProgressReportDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ReportController",
+    "Method": "AuditReports",
+    "RelativePath": "api/inventory/report/audits",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "auditReportModel",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Report.AuditReportModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.ReportController",
+    "Method": "ProgressReport",
+    "RelativePath": "api/inventory/report/progress",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "progressReport",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Report.ProgressReportDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryController",
+    "Method": "ScanDocB",
+    "RelativePath": "api/inventory/scan/doc-b",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.ScanDocBFilterModel",
+        "IsRequired": true
+      },
+      {
+        "Name": "isErrorInvestigation",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[Inventory.API.Service.Dto.SwaggerDocABEListResponseModel, Inventory.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 64
+      }
+    ]
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ListInventory",
+    "RelativePath": "api/inventory/web",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "InventoryDetail",
+    "RelativePath": "api/inventory/web/{inventoryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "UpdateInventoryDetail",
+    "RelativePath": "api/inventory/web/{inventoryId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateInventoryDetail",
+        "Type": "Inventory.API.Service.Dto.UpdateInventoryDetail",
+        "IsRequired": true
+      },
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "AggregateDocResults",
+    "RelativePath": "api/inventory/web/{inventoryId}/doc-result/aggregate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ListInventoryDocument",
+    "RelativePath": "api/inventory/web/{inventoryId}/document",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "DeleteInventorys",
+    "RelativePath": "api/inventory/web/{inventoryId}/document",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "docIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "GetDetailInventory",
+    "RelativePath": "api/inventory/web/{inventoryId}/document/{docId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "docId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ListInventoryDocumentToExport",
+    "RelativePath": "api/inventory/web/{inventoryId}/document/export",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listInventoryDocument",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.ListInventoryDocumentDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ExportTreeGroups",
+    "RelativePath": "api/inventory/web/{inventoryId}/groups/export",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "machineModel",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "machineType",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ImportResultFromBwins",
+    "RelativePath": "api/inventory/web/{inventoryId}/import-result-bwins",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "DocumentResultsImportSAP",
+    "RelativePath": "api/inventory/web/{inventoryId}/import-sap",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ImportMSLDataUpdate",
+    "RelativePath": "api/inventory/web/{inventoryId}/import/msl-data",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "DeleteInventoryDocs",
+    "RelativePath": "api/inventory/web/{inventoryId}/inventory-docs",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "listInventoryDocumentDeleteDto",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.ListInventoryDocumentDeleteDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "deleteAll",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ImportUpdateQuantity",
+    "RelativePath": "api/inventory/web/{inventoryName}/import/update-quantity",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "inventoryName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "CreateInventory",
+    "RelativePath": "api/inventory/web/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createInventoryDto",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.CreateInventoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "DocDetailComponentsC",
+    "RelativePath": "api/inventory/web/doc-detail/components-c",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ListDocTypeCToExportQRCode",
+    "RelativePath": "api/inventory/web/doc-type-c/export/qrcode",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.QRCode.ListDocTypeCToExportQRCodeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "CheckExistDocTypeA",
+    "RelativePath": "api/inventory/web/doctype-a/check/{inventoryId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ListInventoryDocumentFull",
+    "RelativePath": "api/inventory/web/document",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "DocumentResults",
+    "RelativePath": "api/inventory/web/document-results",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "DocumentResultsToExport",
+    "RelativePath": "api/inventory/web/document-results/export",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filterModel",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.DocumentResultListFilterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ExportDocumentResultExcel",
+    "RelativePath": "api/inventory/web/document-results/export-excel",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filterModel",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.DocumentResultListFilterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "InventoryDocDetail",
+    "RelativePath": "api/inventory/web/document/{docId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "docId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "searchTerm",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ListInventoryDocumentFullToExport",
+    "RelativePath": "api/inventory/web/document/export",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listInventoryDocumentFull",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.ListInventoryDocumentFullDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "GetDocumentTypeC",
+    "RelativePath": "api/inventory/web/document/typec",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "InventoryNames",
+    "RelativePath": "api/inventory/web/dropdown/inventory-name",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ListInventoryToExport",
+    "RelativePath": "api/inventory/web/export",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listInventory",
+        "Type": "Inventory.API.Service.Dto.InventoryWeb.ListInventoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ListDocumentToInventoryError",
+    "RelativePath": "api/inventory/web/export/inventory/error",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.ListDocToExportInventoryErrorDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "GetTreeGroupFilters",
+    "RelativePath": "api/inventory/web/groups/filters",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "GetTreeGroupInventoryErrorFilters",
+    "RelativePath": "api/inventory/web/groups/inventory/error/filters",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "GetTreeGroupQRCodeFilters",
+    "RelativePath": "api/inventory/web/groups/qrcode/filters",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ListDocumentHistories",
+    "RelativePath": "api/inventory/web/history",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ListDocumentHistoriesToExport",
+    "RelativePath": "api/inventory/web/history/export",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "listDocumentHistory",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Inventory.ListDocumentHistoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ReceiveAllDocs",
+    "RelativePath": "api/inventory/web/receive-all",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "excludeIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "UpdateStatusInventory",
+    "RelativePath": "api/inventory/web/status/{inventoryId}/{status}/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inventoryId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "Inventory.API.Infrastructure.Entity.Enums.InventoryStatus",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "DownloadUpdateStatusFileTemplate",
+    "RelativePath": "api/inventory/web/template/download/upload-status",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "CheckAssignedDocs",
+    "RelativePath": "api/inventory/web/update-doc/check",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "CheckDownloadDocTemplate",
+    "RelativePath": "api/inventory/web/update-doc/template/check",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "ReceivedDocStatus",
+    "RelativePath": "api/inventory/web/update-status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "docIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.Guid, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Inventory.API.Controllers.InventoryWebController",
+    "Method": "UploadChangeDocStatus",
+    "RelativePath": "api/inventory/web/upload/change-status",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

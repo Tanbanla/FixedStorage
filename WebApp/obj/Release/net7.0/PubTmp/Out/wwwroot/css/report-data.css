@@ -1,0 +1,74 @@
+﻿#ulReportList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    #ulReportList .menu-item {
+        width: 100%;
+        padding: 1rem;
+        border-bottom: 1px solid #D5DCE6;
+    }
+
+    #ulReportList .li-mylist a {
+        color: #111111;
+        margin-left: 5px;
+    }
+
+    #ulReportList .li-active a {
+        color: #0066B2;
+        margin-left: 5px !important;
+    }
+
+#btnCreateReportFolder.fa-plus {
+    font-size: 26px;
+    color: black;
+}
+
+.dropbtn {
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    right: 0;
+    list-style: none;
+    display: none;
+    position: absolute;
+    min-width: 65px;
+    z-index: 1;
+    padding: 1px;
+    margin-top: -10px
+}
+
+    .dropdown-content li {
+        float: left;
+        color: black;
+        padding: 2px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .dropdown-content li:hover {
+            background-color: #f1f1f1
+        }
+
+.folder-item-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.btn.ActionForm {
+    width: 100%;
+    text-align: right;
+}

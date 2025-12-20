@@ -1,0 +1,287 @@
+.box-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.box-container .vscomp-ele {
+    max-width: 100%;
+}
+
+.box-container .vscomp-toggle-button {
+    height: 41.5px;
+    background: #F1F0F4;
+    border-radius: 5px;
+    border: 1px solid #E4E4E4;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+}
+
+.box-container label {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    color: #333333;
+}
+
+.background-color-grey {
+    background-color: #F1F0F4;
+}
+
+#btnReset_Inventory {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 15px;
+    border: none;
+    font-weight: 500;
+    border-radius: 5px;
+    font-size: 18px;
+    max-height: 48px;
+}
+
+#btnSearch_Inventory {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 15px;
+    border: none;
+    background: #0066B3;
+    color: white;
+    font-weight: 500;
+    border-radius: 5px;
+    font-size: 18px;
+    max-height: 48px;
+}
+
+.btnSearch_User_image,
+.btnReset_User_image {
+    width: 30px;
+    height: 30px;
+    padding-right: 5px;
+}
+
+.btnSearch_User_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.btnReset_User_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+}
+
+#btnCreate_Inventory {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0;
+    border: 1px #17AE5C dashed;
+    border-radius: 5px;
+    background: #E0FFE2;
+    color: #17AE5C;
+    font-size: 18px;
+}
+
+.InventoryHistory_feature_container {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    margin: 15px;
+    margin-bottom: 0;
+}
+
+h5.InventoryHistory_ExportExcel_Title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.InventoryHistory_ExportExcel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+}
+
+.InventoryHistory_Search_Option {
+    background-color: white;
+    padding: 10px;
+}
+
+.InventoryHistory_Container.mt-3 {
+    background: white;
+    display: grid;
+}
+
+.InventoryHistory_Button_Container {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+a.InventoryHistory_ViewDetail_Controls {
+    cursor: pointer;
+    text-decoration: underline !important;
+    color: #5092FC !important;
+}
+
+.Controls_Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.EditInventoryHistory_Controls {
+    cursor: pointer;
+}
+
+.InventoryHistory_Container .table-striped>tbody>tr:nth-of-type(odd) {
+    --bs-table-accent-bg: #FFFFFF;
+}
+
+#InventoryHistory_DataTable {
+    border: none;
+    border-color: transparent;
+    vertical-align: middle;
+    /*text-align: center;*/
+}
+
+#InventoryHistory_DataTable td,
+#InventoryHistory_DataTable th {
+    border: none;
+    border-bottom: 1.5px solid #eee;
+}
+
+#InventoryHistory_DataTable td p {
+    margin-bottom: 0;
+}
+
+#InventoryHistory_DataTable .th-sm {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#Inventory_ViewDetailModal .modal-content {
+    padding: 1.25rem 1.25rem 2rem 1.25rem;
+}
+
+#Inventory_ViewDetailModal .modal.show .modal-dialog {
+    max-width: 700px;
+}
+
+#Inventory_ViewDetailModal .modal-header {
+    text-align: center;
+    display: block;
+    position: relative;
+    padding-top: 10px;
+}
+
+#Inventory_ViewDetailModal .modal-header h4 {
+    font-size: 22px;
+    color: #0d2ea0;
+}
+
+#Inventory_ViewDetailModal .modal-header .btn-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 50%;
+    border: solid white 1px;
+    cursor: pointer;
+}
+
+#Inventory_ViewDetailModal .modal-body {
+    padding: 0;
+}
+
+#Inventory_ViewDetailModal .modal-body h5, #Change_Log_Detail {
+    font-weight: 400;
+    font-size: 12px;
+    color: #333333;
+    white-space: pre-line;
+}
+
+#Inventory_ViewDetailModal .modal-body .label-bold {
+    font-weight: 500;
+}
+
+#Inventory_ViewDetailModal .modal-body .foot span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333333;
+}
+
+#Inventory_ViewDetailModal .modal-body .foot .text-bold {
+    font-weight: 500;
+}
+
+#Inventory_ViewDetailModal .modal-body .foot #totalAmount {
+    color: #0066B3;
+}
+
+#InventoryDetail_DataTable .th-sm {
+    background-color: #F1F0F4;
+    border: 1px solid #E4E4E4;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333333;
+}
+
+#InventoryDetail_DataTable tfoot #totalLabel {
+    border-right: none;
+}
+
+#InventoryDetail_DataTable tfoot #totalValue {
+    text-align: end;
+    border-left: none;
+}
+
+#InventoryDetail_DataTable tfoot tr,
+#InventoryDetail_DataTable tfoot tr td {
+    font-weight: 500;
+    font-size: 16px;
+    color: #0D2EA0;
+}
+
+#InventoryDetail_DataTable td,
+#InventoryDetail_DataTable th {
+    padding: .5rem .75rem;
+}
+
+.wrapper_image_inventory .item_image img {
+    width: 120px;
+    cursor: pointer;
+}
+
+#InventoryHistoryViewImage {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#InventoryHistoryViewImage .modal-body {
+    padding: 0;
+}
+
+#InventoryHistoryViewImage .icon_close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+#InventoryHistoryViewImage .img_inventory_zoom img {
+    width: 100%;
+}
+
+.history_in_doc_detail {
+    color: #5092FC;
+    text-decoration: underline !important;
+}

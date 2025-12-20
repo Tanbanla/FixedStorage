@@ -1,0 +1,53 @@
+﻿@{
+    string GlobalBasePath = Constants.GlobalRoutePrefix;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title | BIVN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="TSO Admin & Dashboard Template" name="description" />
+    <meta content="TSO" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="./assets/images/logo/brotherLogo_ver2.png">
+    <!-- Bootstrap Css -->
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+    <!-- Icons Css -->
+    <link href="./assets/css/icons.min.css" rel="stylesheet" asp-append-version="true" />
+    <!-- App Css-->
+    <link href="./assets/css/app.min.css" rel="stylesheet" asp-append-version="true" />    
+    @RenderSection("styles", required: false)    
+    <link href="./assets/css/loginStyle.css" rel="stylesheet" asp-append-version="true" />
+</head>
+<body id="loginBody">
+    @RenderBody()
+
+    <!-- JAVASCRIPT -->
+    <script src="./assets/libs/jquery/jquery.min.js"  asp-append-version="true"></script>
+    <script src="./assets/libs/bootstrap/js/bootstrap.bundle.min.js"  asp-append-version="true"></script>
+    <script src="./assets/libs/metismenu/metisMenu.min.js"  asp-append-version="true"></script>
+    <script src="./assets/libs/simplebar/simplebar.min.js"  asp-append-version="true"></script>
+    <script src="./assets/libs/node-waves/waves.min.js"  asp-append-version="true"></script>
+
+    <!-- owl.carousel js -->
+    <script src="./assets/libs/owl.carousel/owl.carousel.min.js" asp-append-version="true"></script>
+    <!-- auth-2-carousel init -->
+    <script src="./assets/js/pages/auth-2-carousel.init.js" asp-append-version="true"></script>
+    <!-- two-step-verification js -->
+    <script src="./assets/js/pages/two-step-verification.init.js" asp-append-version="true"></script>
+      
+    <script src="./assets/libs/jquery-validation/jquery.validate.min.js" asp-append-version="true"></script>
+    <script src="./assets/libs/jquery-validation/additional-methods.min.js" asp-append-version="true"></script>
+    <script src="./assets/libs/jquery-validation/localization/messages_vi.min.js" asp-append-version="true"></script>
+    
+    @RenderSection("scripts", required: false)
+    <!-- App js -->
+    <script src="./assets/js/app.js" asp-append-version="true"></script>
+    <script>
+        const GlobalBasePath = JSON.parse(`@Html.Raw(GlobalBasePath)`);
+    </script>
+</body>
+</html>

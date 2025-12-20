@@ -1,0 +1,24 @@
+
+<!-- Modal -->
+<div class="modal fade" id="InventoryHistoryViewImage" tabindex="-1" role="dialog" 
+aria-labelledby="InventoryHistoryViewImageLabel" 
+aria-hidden="true"
+data-bs-backdrop="static"
+>
+    <div class="modal-dialog modal-lg modal-dialog-centered view_image_container" role="document">
+      <div class="modal-content">
+            <button id="btnCloseViewImage" type="button" class="" data-bs-dismiss="modal" aria-label="Close">
+                <img src="./assets/images/icons/icon-circle-close.svg" />
+            </button>
+       @* <div class="icon_close" data-bs-dismiss="modal" aria-label="Close">
+          <img id="btnCloseViewImage" src="./assets/images/icons/icon-circle-close.svg" />
+        </div>*@
+        <div class="img_inventory_zoom">
+                <div id="img-inventory" class="history_detail_image" data-zoomist-src="https://cdn.vietnambiz.vn/2019/10/24/tieu-chuan-chat-luong-min-15718907409811664827358.jpg" />
+        </div>   
+        <span id="image_title"></span>
+      </div>
+    </div>
+</div>
+
+<script asp-append-version="true" src="./assets/js/inventory/ListInventoryModal.js"></script>

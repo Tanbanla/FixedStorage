@@ -1,0 +1,60 @@
+﻿
+<div class="modal modal-bottom-top"
+     id="modal_filter_audittargetlist" 
+    tabindex="-1" 
+    role="dialog" 
+    aria-labelledby="" 
+    data-bs-backdrop="static" 
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-lg" role="document">
+        <form id="filter_audit_form">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="custom_modal_header">
+                        <h4>Bộ lọc</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" >
+                        </button>
+                    </div>
+                </div>
+                <hr />
+                <div class="container pb-4">
+                    <div class="form-group py-1">
+                        <label for="" class="txt-12">Phòng ban</label>
+                        <div class="">
+                            <select class="form-control" id="select_department" name="Department">
+                                @*<option value="">Chọn phòng ban</option>*@
+                                <option value="-1">Tất cả</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group py-1">
+                        <label for="" class="txt-12">Khu vực</label>
+                        <div class="">
+                            <select class="form-control" id="select_location" name="Location">
+                                @*<option value="">Chọn khu vực</option>*@
+                                <option value="-1">Tất cả</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group py-1">
+                        <label for="" class="txt-12">Mã linh kiện</label>
+                        <div class="">
+                            <select class="form-control" id="select_componentCode" name="ComponentCode">
+                                @*<option value="">Chọn mã linh kiện</option>*@
+                                <option value="-1">Tất cả</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-1"></div>
+                <div class="shadow-lg p-1 pb-5 bg-white rounded">
+                    <div class="d-flex justify-content-between py-1 px-2 grid gap-2">
+                        <button id="btnResetFilter" class="btn w-50 btn_custom_danger py-2">Cài đặt lại</button>
+                        <button id="btnConfirmFilter" class="btn btn-success w-50 py-2">Xác nhận</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

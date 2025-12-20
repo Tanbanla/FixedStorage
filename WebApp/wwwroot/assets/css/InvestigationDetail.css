@@ -1,0 +1,83 @@
+﻿.container_modal_add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .container_modal_add .btn_add {
+        margin-left: 10px;
+    }
+
+
+.InvestigationDetailBackground .vscomp-toggle-button {
+    border-radius: 4px !important;
+    background: #f1f0f4;
+    color: #303030;
+    font-size: 1em;
+}
+
+table.InvestigationDetail_DataTable thead th {
+    white-space: nowrap;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+#InvestigationDetail_DataTable_length select {
+    background-image: url(/assets/images/icons/arrow-down.svg);
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+    border: 1px solid #E4E4E4;
+    padding-right: 20px;
+    border-radius: 4px;
+    font-size: 12px !important;
+    font-weight: 400;
+    color: #333333;
+}
+
+table.InvestigationDetail_DataTable tbody td {
+    white-space: nowrap;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+p#btn_InvestigationDetail_UpdateDataInvestigating {
+    margin-bottom: 0;
+}
+
+    p#btn_InvestigationDetail_UpdateDataInvestigating label.Percent {
+        margin-bottom: 0;
+    }
+
+.color-red{
+    color: red;
+}
+.color-orange{
+    color: orange;
+}
+.color-green{
+    color: green;
+}
+.color-blue{
+    color: blue;
+}
+
+/* Ẩn bớt bằng … trong cell */
+.error-detail-cell {
+    display: inline-block;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+/* Tooltip rộng, có xuống dòng */
+.tooltip-inner {
+    max-width: 600px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background-color: #0d2ea0 !important;
+}

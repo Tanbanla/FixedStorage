@@ -1,0 +1,183 @@
+﻿<!--ViewDetailUser Modal -->
+<div class="modal fade" id="Inventory_ViewDetailModal" 
+    tabindex="-1" 
+    role="dialog"
+    aria-labelledby="Inventory_ViewDetailModalLabel" 
+    aria-hidden="true"
+     data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg modal-md modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header mb-4">
+                <h4>@Html.Translate("Chi tiết phiếu")</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="Content_History_Inventory row">
+                    <div class="col">
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Đợt kiểm kê"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="Inventory_Round_Detail" class=""></h5>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Phòng ban"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="Department_Detail"></h5>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Khu vực"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="Area_Detail"></h5>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Mã phiếu"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="Form_Code_Detail"></h5>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Mã linh kiện"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="Component_Code_Detail"></h5>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Model code"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="Model_Code_Detail"></h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Tên linh kiện"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="Component_Name_Detail"></h5>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Loại thao tác"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="Type_Operation_Detail"></h5>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Ghi chú"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="Note_Detail"></h5>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Change log"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="Change_Log_Detail"></h5>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Người thao tác"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="User_Operation_Detail"></h5>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Thời gian thao tác"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 class="Time_Operation_Detail"></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper_table_result">
+                        <table id="InventoryDetail_DataTable" class="table table-bordered mt-3 custom_table"
+                            style="width:100%">
+                            <thead>
+                                <tr class="title_table">
+                                    <th class="th-sm">
+                                        @Html.Translate("Số lượng/ thùng")
+                                    </th>
+                                    <th class="th-sm">
+                                        @Html.Translate("Số thùng")
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th id="totalLabel" colspan="1">@Html.Translate("Tổng"):</th>
+                                    <td id="totalValue">0</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+            </div>
+            
+            <div class="wrapper_table_detail">
+                <div>
+                    <h4 class="">@Html.Translate("Chi tiết")</h4>
+                </div>
+                <div class="wrapper_search">
+                    <input class="form-control background-color-grey input_search" placeholder="@Html.Translate("Nhập mã linh kiện")..."/>
+                    <img id="btn_history_detail_search" src="./assets/images/icons/icon-search.svg" />
+                </div>
+                <div>
+                    <table id="inventory-detail-table" class="table table-bordered custom_table inventory_history_detailC_table" style="width:100%">
+                        <thead>
+                            <tr class="title_table">
+                                <th style="width: 5%">STT</th>
+                                <th>@Html.Translate("Mã linh kiện")</th>
+                                <th style="width: 10%">@Html.Translate("BOM")</th>
+                                <th style="width: 20%">@Html.Translate("Số lượng")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>                        
+                </div>
+            </div>
+
+            <div class="wrapper_image_inventory mt-4">
+                <div>
+                    <h4 class="">@Html.Translate("Ảnh kiểm kê")</h4>
+                </div>
+                <div class="wrapper_image">
+                    <div class="item_image">
+                        <img id="img-inventory" src="null" alt="Ảnh lịch sử kiểm kê" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Views/Shared/Common/_InventoryHistoryViewImage.cshtml")

@@ -1,0 +1,33 @@
+
+<!-- Modal -->
+<div class="modal fade" id="InventoryListExportClusterTreeModal" tabindex="-1" role="dialog" aria-labelledby="InventoryListExportClusterTreeModalLabel" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="modal_title">@Html.Translate("Xuất cụm cây")</h4>
+                <form id="Exportclustertree_Form" method="post" class="form-horizontal" asp-controller="Users" asp-action="CreateAsync">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Model") <span style="color: red;">*</span></label>
+                            <select id="ClusterTreeModel_Model_Code" name="ClusterTreeModel_Model_Code" class="form-select background-color-grey select-tag-custom color-grey" placeholder="@Html.Translate("Chọn model")...">
+                                <option disabled selected>@Html.Translate("Chọn model")...</option>
+                            </select>
+                            <span id="model_code_span" class="text-danger error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Dòng máy")</label>
+                            <select id="ClusterTreeModel_Machine_Type" name="ClusterTreeModel_Machine_Type" class="form-select background-color-grey select-tag-custom" placeholder="Chọn dòng máy...">
+                                <option disabled selected value="">@Html.Translate("Chọn dòng máy")...</option>
+                            </select>
+                            <span id="machine_type_span" class="text-danger"></span>
+                        </div>
+                    </div>
+                </form>
+                <div class="custom_bottom_modal">
+                    <button type="button" id="btn_cancel_export_cluster_tree" class="btn btn-light btn_cancel w-50" data-bs-dismiss="modal">@Html.Translate("Hủy bỏ")</button>
+                    <button type="submit" id="btn_export_cluster_tree" class="btn btn-primary w-50">@Html.Translate("Xuất cụm cây")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

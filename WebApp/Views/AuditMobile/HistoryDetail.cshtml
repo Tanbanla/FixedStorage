@@ -1,0 +1,82 @@
+﻿@using BIVN.FixedStorage.Services.Common.API.Dto.Inventory;
+
+@{
+    var historyDetail = ViewBag.HistoryDetail as HistoryDetailViewModel;
+    double quantity = 0;
+
+    var headerViewModel = new AuditMobileTopBarViewModelBuilder()
+                           .CreateTitle(historyDetail?.DocName ?? string.Empty)
+                           .DisplayGoBackButton(true)
+                           .Build();
+}
+
+<link href="~/assets/css/audittargetdetail.css" rel="stylesheet" />
+
+@Html.Partial("~/Views/Shared/_mobile_topbar.cshtml", headerViewModel)
+
+<div class="container">
+    <div class="w-100 mt-3">
+        <div class="d-flex align-items-center">
+            <div class="font-size-14 label-color-hex333333" style="min-width: 90px">Mã linh kiện:</div>
+            <div class="font-size-24 fw-bold main_color text-break">@historyDetail?.ComponentCode</div>
+        </div>
+        <div class="d-flex align-items-center">
+            <div class="font-size-14 label-color-hex333333" style="min-width: 90px">Tên linh kiện:</div>
+            <div class="font-size-14 label-color-hex333333 text-break">@historyDetail?.ComponentName</div>
+        </div>
+    </div>
+
+    <div class="mt-3 wrapper_table_detail">
+        <table class="table table-bordered custom_table" style="width:100%">
+            <thead>
+                <tr class="title_table">
+                    <th class="custom_title_col font-size-14 fw-bold label-color-hex333333 w-75">Số lượng/ thùng</th>
+                    <th class="custom_title_col font-size-14 fw-bold label-color-hex333333">Số thùng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var docOutput in historyDetail?.HistoryOutputs)
+                {
+                    <tr>
+                        <td class="font-size-24 fw-bold label-color-hex333333">@docOutput?.QuantityPerBom</td>
+                        <td class="font-size-24 fw-bold label-color-hex333333">@docOutput?.QuantityOfBom</td>
+                    </tr>
+
+                    quantity += docOutput.QuantityPerBom * docOutput.QuantityOfBom;
+
+                }
+                
+            </tbody>
+            <tfoot>
+                <td colspan="2">
+                    <div class="d-flex justify-content-between">
+                        <div class="font-size-24 fw-bold main_color">
+                            Tổng:
+                        </div>
+                        <div class="font-size-24 fw-bold main_color">
+                            @quantity
+                        </div>
+                    </div>
+                </td>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="mt-3">
+        <div class="font-size-14 label-color-hex333333">
+            Ghi chú
+        </div>
+        <div class="font-size-12 label-color-hex333333 border_text text-break">@historyDetail?.Comment</div>
+    </div>
+
+    <div class="my-3">
+        @{
+            var changeLog = @BIVN.FixedStorage.Services.Common.API.Utilities.DisplayChangeLogHistory(historyDetail.ChangeLogModel.OldQuantity, historyDetail.ChangeLogModel.NewQuantity, historyDetail.ChangeLogModel.OldStatus, historyDetail.ChangeLogModel.NewStatus, historyDetail.ChangeLogModel.IsChangeCDetail);
+        }
+        <div class="font-size-14 label-color-hex333333">Thời gian cập nhật: <span class="fw-bold">@historyDetail?.CreatedAt?.ToString(commonAPIConstant.DefaultDateFormat)</span></div>
+        <div class="font-size-14 label-color-hex333333">Người xác nhận: <span class="fw-bold">@historyDetail?.CreatedBy</span></div>
+        <div class="font-size-14 label-color-hex333333">@Html.Raw(changeLog)</div>
+    </div>
+
+
+</div>

@@ -1,0 +1,74 @@
+﻿
+<!-- Modal -->
+<div class="modal fade" id="EditComponentModal" tabindex="-1" role="dialog" aria-labelledby="EditComponentModalLabel" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @*<div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>*@
+            <div class="modal-body pb-0">
+                <h4 class="modal_title">@Html.Translate("Chỉnh sửa linh kiện")</h4>                
+                <form id="EditComponent_Form" class="form-horizontal">
+                    <div class="row">
+                        <input id="Edit_Components_ComponentId" type="hidden" />
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-edit-component ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Mã linh kiện") <span style="color:red;">*</span></label>
+                            <input id="Edit_Components_ComponentCode" name="Edit_Components_ComponentCode" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập mã linh kiện")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-edit-component ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Tên linh kiện") <span style="color:red;">*</span></label>
+                            <input id="Edit_Components_ComponentName" name="Edit_Components_ComponentName" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập tên linh kiện")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-edit-component ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Mã nhà cung cấp") <span style="color:red;">*</span></label>
+                            <input id="Edit_Components_SupplierCode" name="Edit_Components_SupplierCode" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập mã nhà cung cấp")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-edit-component ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Tên nhà cung cấp") <span style="color:red;">*</span></label>
+                            <input id="Edit_Components_SupplierName" name="Edit_Components_SupplierName" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập tên nhà cung cấp")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-edit-component ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Tên nhà cung cấp rút gọn")<span style="color:red;">*</span></label>
+                            <input id="Edit_Components_ShortSupplierName" name="Edit_Components_ShortSupplierName" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập tên nhà cung cấp rút gọn")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-edit-component ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Vị trí cố định") <span style="color:red;">*</span></label>
+                            <input id="Edit_Components_PositionCode" name="Edit_Components_PositionCode" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập vị trí cố định")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-edit-component ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Số lượng tồn kho (nhỏ nhất)") <span style="color:red;">*</span></label>
+                            <input id="Edit_Components_InventoryMinQty" name="Edit_Components_InventoryMinQty" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập số lượng tồn kho nhỏ nhất")..." />
+                            <span id="Edit_Components_InventoryMinQty-error" class="error-notification" />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-edit-component ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Tồn kho thực tế") <span style="color:red;">*</span></label>
+                            <input id="Edit_Components_InventoryQty" name="Edit_Components_InventoryQty" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập số lượng tồn kho thực tế")..." />
+                            <span id="Edit_Components_InventoryQty-error" class="error-notification" />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-edit-component ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Số lượng tồn kho (lớn nhất)") <span style="color:red;">*</span></label>
+                            <input id="Edit_Components_InventoryMaxQty" name="Edit_Components_InventoryMaxQty" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập số lượng tồn kho lớn nhất")..." />
+                        </div>
+                        
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-edit-component ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Thông tin linh kiện")</label>
+                            <input id="Edit_Components_ComponentInfo" name="Edit_Components_ComponentInfo" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập thông tin linh kiện")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-edit-component ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Ghi chú")</label>
+                            <input id="Edit_Components_Note" name="Edit_Components_Note" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập ghi chú")..." />
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="container-fluid d-flex justify-content-between px-0">
+                    <button type="button" id="button_Delete_EditComponent" class="btn btn-light colorE60000 w-50 mx-2" data-bs-dismiss="modal">@Html.Translate("Hủy bỏ")</button>
+                    <button type="submit" id="button_Apply_EditComponent" class="btn btn-primary w-50 mx-2">@Html.Translate("Đồng ý")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,358 @@
+.container_inventory_document label {
+  margin-bottom: 0.25em;
+}
+
+.container_inventory_document input {
+  color: #333333;
+}
+
+.container_inventory_document .wrapper_select {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4px;
+}
+
+.container_inventory_document .vscomp-wrapper {
+  height: 38px;
+}
+
+.container_inventory_document .custom_select {
+  max-width: 100%;
+  color: #333333;
+}
+
+.container_inventory_document .vscomp-toggle-button {
+  border-radius: 4px !important;
+  background: #f1f0f4;
+  color: #303030;
+  font-size: 1em;
+}
+
+.container_inventory_document .container_table {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.hidden-input {
+  border: none;
+  outline: none;
+  caret-color: transparent;
+}
+
+.InventoryModal_Title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+#AddNewInventoryModal h5 {
+  font-size: 12px;
+  font-weight: 500;
+  color: #333333;
+}
+
+#AddNewInventoryModal .custom_calendar_icon {
+  top: 29px;
+}
+
+/************Create inventory***************/
+.wrapper_form {
+  background-color: white;
+  padding: 0px 40px 20px;
+}
+
+.wrapper_form_btn {
+  padding-top: 20px;
+  border-top: 2px solid #f8f8fb;
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-upload-form,
+.icon-download-form {
+  position: relative;
+  bottom: 2px;
+}
+
+.search_inventory_form {
+  background-color: white;
+  margin: 30px 40px;
+  padding: 10px 16px;
+}
+
+.search_inventory_form label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 4px;
+}
+
+.container_table {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.search_inventory_form .wrapper_search {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.search_inventory_form #btn-reset-inventory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 12px;
+  border: none;
+  font-weight: 600;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.search_inventory_form .icon_reset,
+.search_inventory_form .icon_search {
+  width: 30px;
+  height: 30px;
+  padding-right: 5px;
+}
+
+.search_inventory_form .icon_reset img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+}
+
+.search_inventory_form #btn-search-inventory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 12px;
+  border: none;
+  background: #0066b3;
+  color: white;
+  font-weight: 600;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.search_inventory_form .icon_search img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.search_inventory_form .vscomp-ele {
+  max-width: none;
+}
+
+.search_inventory_form .vscomp-toggle-button {
+  background-color: #f1f0f4;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  padding: 0.47rem 0.75rem;
+  height: 38px;
+}
+
+#inventory-document-detail-modal .modal-body {
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.modal_header_inventory {
+  text-align: center;
+  display: block;
+  position: relative;
+  margin-top: 10px;
+}
+
+.modal_header_inventory .modal_title {
+  color: #0d2ea0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.modal_header_inventory .btn-close {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+#inventory-document-detail-modal .content_top_inventory {
+  border-bottom: 1px dashed #0000004d;
+  padding: 10px 0;
+}
+
+#inventory-document-detail-modal .wrapper_content_inventory h4 {
+  color: #333333;
+}
+
+#inventory-document-detail-modal #inventory-detail-table .custom_title_col {
+  background-color: rgb(241, 240, 244);
+  border: 1px solid rgb(228, 228, 228);
+  font-weight: 500;
+  font-size: 14px;
+  color: rgb(51, 51, 51);
+}
+
+/* #inventory-document-detail-modal
+  #inventory-detail-table
+  .custom_title_col:first-child {
+  width: 5%;
+} */
+
+#inventory-upload-form .content_upload_form {
+  align-items: center;
+  margin: 20px 0;
+  border-bottom: 2px solid #f8f8fb;
+  padding-bottom: 10px;
+}
+
+#inventory-upload-form .file_name {
+  font-size: 14px;
+  color: #333333;
+  font-weight: 500;
+}
+
+#inventory-upload-form .file_capacity {
+  font-size: 12px;
+  color: #87868c;
+  font-weight: 500;
+}
+
+#inventory-upload-form .content_file {
+  border-bottom: 4px solid #0066b3;
+  padding: 0;
+}
+
+.container_monitoring .wrapper_form button {
+  min-height: 48px;
+  margin-top: 0;
+}
+
+.monitor_fail {
+  color: #e60000;
+}
+
+.monitor_pass {
+  color: #5092fc;
+}
+
+#edit-component-by-area #EditComponentByArea_Form h5.label {
+  color: #333333;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+#edit-component-by-area #EditComponentByArea_Form input {
+  font-weight: 500;
+  color: #333333;
+}
+
+#edit-component-by-area #EditComponentByArea_Form select {
+  background-color: #f1f0f4;
+  font-size: 14px !important;
+  font-weight: 500;
+  color: #333333;
+}
+
+#EditComponentByArea_Form input[disabled="disabled"] {
+    background-color: #FFFFFF;
+}
+
+#btn_cancel_edit {
+  background-color: #f1f0f4;
+  color: #e60000 !important;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+#btn_submit_edit {
+  background-color: #0d2ea0;
+  color: white;
+  font-size: 18px !important;
+  font-weight: 500;
+  border: none;
+}
+
+#edit-component-by-area .modal_bottom {
+  margin: 10px 0 20px 0;
+}
+
+.horizontal_border {
+  padding-top: 20px;
+  border-top: 2px solid #f8f8fb;
+  margin: 0;
+}
+
+#detail-inventory {
+  cursor: pointer;
+  text-decoration: underline !important;
+  color: #5092fc !important;
+}
+
+#input_date_inventory {
+  caret-color: transparent;
+  color: #333333 !important;
+}
+
+#AddNewInventoryModal label.error {
+  color: #e60000 !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+}
+
+.container_history h5 {
+  font-size: 16px;
+  color:#0D2EA0;
+  font-weight: 700;
+}
+
+.container_top_table {
+  align-items: center;
+}
+
+.container_inventory_document .container_top_table {
+    justify-content: space-between;
+}
+
+#download-file-list-inventory h5, #download-file-update-quantity h5 {
+    color: #0D2EA0;
+}
+
+#upload-status-list-inventory h5, #import-file-update-quantity h5 {
+    color: #17AE5C;
+}
+
+.container_history .item_history {
+  box-shadow: 2px 2px 8px 0px #00000014;
+  padding: 10px;
+  color: #333333;
+}
+
+label#input_quantity_inventory_document_from-error,
+label#input_quantity_inventory_document_to-error {
+    position: absolute;
+}
+
+#inventory_list_table td:nth-child(3), #inventory_list_table td:nth-child(4), #inventory_list_table td:nth-child(5), #inventory_list_table td:nth-child(7), #inventory_list_table td:nth-child(8),
+#inventory_list_table td:nth-child(12), #inventory_list_table td:nth-child(15), #inventory_list_table td:nth-child(16), #inventory_list_table td:nth-child(17), #inventory_list_table td:nth-child(18),
+#inventory_list_table td:nth-child(27), #inventory_list_table td:nth-child(28), #inventory_list_table td:nth-child(29), #inventory_list_table td:nth-child(30), #inventory_list_table td:nth-child(31),
+#inventory_list_table td:nth-child(32), #inventory_list_table td:nth-child(33), #inventory_list_table td:nth-child(34), #inventory_list_table td:nth-child(35), #inventory_list_table td:nth-child(36),
+#inventory_list_table td:nth-child(37), #inventory_list_table td:nth-child(38), #inventory_list_table td:nth-child(39), #inventory_list_table td:nth-child(40) {
+    text-align: center;
+}
+
+#inventory_list_checked_count{
+    font-size: 12px;
+}
+.componentcode_container {
+    margin-top: -15px !important;
+}
+
+#input_componentcode_inventory {
+    /*width: 122px;*/
+}

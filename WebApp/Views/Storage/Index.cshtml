@@ -1,0 +1,148 @@
+@using bivnConstant = BIVN.FixedStorage.Services.Common.API.Constants;
+@{
+    ViewBag.Title = Html.Translate("Nhập kho");
+}
+
+@{
+    var factories = ViewBag.Factories as IEnumerable<FactoryInfoModel>;
+}
+
+<section class="@nameof(Views_Storage_Index)">
+    @*Điều kiện tìm kiếm *@
+    <section class="bg-white rounded container_field_search">
+        <form id="input_storage_search_form">
+            <div class="row d-flex mb-4">
+                <div class="col">
+                    <div class="">
+                        <label class="text_label">@Html.Translate("Người nhập kho")</label>
+                        <input id="input_userName" name="UserName" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập người nhập kho")...">
+                    </div>
+                </div>
+                <div class="col">
+                    <label class="text_label">@Html.Translate("Nhà máy")</label>
+                    @{
+                        var userViewFactoryIds = User?.Claims?.Where(x => x.Type == bivnConstant.Permissions.FACTORY_DATA_INQUIRY).Select(x => x.Value.ToString().ToLower());
+                        var filteredFactories = factories?.Where(x => userViewFactoryIds?.Contains(x.Id.ToString().ToLowerInvariant()) == true);
+                    }
+                    <select hidden id="select_factory" multiple name="Factories" placeholder="Chọn nhà máy" data-search="true" data-silent-initial-value-set="true">
+                        @if(filteredFactories?.Any() == true)
+                        {
+                            @foreach (var factory in filteredFactories)
+                            {
+                                <option value="@factory?.Id">@factory?.Name</option>
+                            }
+                        }
+                    </select>
+                </div> 
+                <div class="col">
+                    <label class="text_label">@Html.Translate("Trạng thái")</label>
+                    <select hidden id="select_status" multiple name="Statuses" placeholder="Chọn trạng thái" data-search="true" data-silent-initial-value-set="true">
+                        @*<option value="-1">Tất cả</option>*@
+                        <option value="0">@Html.Translate("Xác nhận")</option>
+                        <option value="1">@Html.Translate("Tạm thời")</option>
+                    </select>
+                </div>
+                <div class="col-4"> 
+                    <div class="row date_range_container">
+                        <div class="">
+                            <div class="">
+                                <label class="text_label">@Html.Translate("Thời gian nhập kho")</label>
+                                <input id="input_date_from" name="FromDate" type="text" class="form-control background-color-grey" placeholder="DD/MM/YYYY">
+                                <svg class="calendar_icon" width="20" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.20044 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.2004 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.70044 9.08984H20.7004" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M21.2004 8.5V17C21.2004 20 19.7004 22 16.2004 22H8.20044C4.70044 22 3.20044 20 3.20044 17V8.5C3.20044 5.5 4.70044 3.5 8.20044 3.5H16.2004C19.7004 3.5 21.2004 5.5 21.2004 8.5Z" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.8951 13.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.8951 16.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12.1959 13.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12.1959 16.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.49475 13.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.49475 16.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="arrow_date_range">
+                            <div><img src="./assets/images/icons/Muitensangphai.png"></div>
+                        </div>
+                        <div class="">
+                            <div class="">
+                                <label class="text_label">@Html.Translate("Thời gian nhập kho")</label>
+                                <input id="input_date_to" name="ToDate" type="text" class="form-control background-color-grey" placeholder="DD/MM/YYYY">
+                                <svg class="calendar_icon" width="20" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.20044 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.2004 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.70044 9.08984H20.7004" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M21.2004 8.5V17C21.2004 20 19.7004 22 16.2004 22H8.20044C4.70044 22 3.20044 20 3.20044 17V8.5C3.20044 5.5 4.70044 3.5 8.20044 3.5H16.2004C19.7004 3.5 21.2004 5.5 21.2004 8.5Z" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.8951 13.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.8951 16.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12.1959 13.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12.1959 16.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.49475 13.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.49475 16.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            
+            <div class="mb-3">
+                @await Html.PartialAsync("~/Views/Shared/_commonSearch.cshtml")
+            </div>
+
+        </form>
+    </section>
+
+    @*List*@
+    <section class="bg-white py-2 px-3 mt-3 rounded">
+        <div class="container_top_table">
+            <div class="mx-3">
+                <div class="export_file" id="export_file">
+                    <div class="icon_excel">
+                        <img src="./assets/images/icons/export_excel.png">
+                    </div>
+                    <h5>@Html.Translate("Xuất file")</h5>
+                </div>
+            </div> 
+            <div class="">
+                <div class="import_file" id="btn_import_input_storage">
+                    <div class="icon_excel">
+                        <img src="./assets/images/icons/export_excel.png">
+                    </div>
+                    <h5>@Html.Translate("Nhập file")</h5>
+                </div>
+                <input type="file" id="file_import_input_storage" hidden />
+            </div>
+            <div class="">
+                <div id="btnDownloadInputStorageTemplate">
+                    <div class="ListUsers_ExportExcel_Images">
+                        <img src="./assets/images/icons/export_excel.png">
+                    </div>
+                    @Html.Translate("Tải biểu mẫu")
+                </div>
+            </div>
+        </div>
+        <table id="input_bwin_table" class="table table-responsive custom_table align-middle" width="100%">
+            <thead>
+                <tr class="title_table">
+                    <th>STT</th>
+                    <th>@Html.Translate("Mã nhân viên")</th>
+                    <th>@Html.Translate("Người nhập")</th>
+                    <th>@Html.Translate("Ngày nhập kho")</th>
+                    <th>@Html.Translate("Tổng số mã LK")</th>
+                    <th>@Html.Translate("Trạng thái")</th>
+                    <th>@*Xem chi tiết*@</th>
+                    <th>@*Controls*@</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    @*InputStorageDetailModal*@
+    @await Html.PartialAsync("~/Views/Shared/Common/_InputStorageDetail.cshtml")
+</section>
+
+<script asp-append-version="true" src="./assets/js/InputStorage.js"></script>
+<script asp-append-version="true" src="./assets/js/InputStorageDetail.js"></script>

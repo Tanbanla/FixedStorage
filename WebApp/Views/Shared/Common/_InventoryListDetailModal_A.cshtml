@@ -1,0 +1,269 @@
+
+<!-- Modal -->
+<div class="modal fade inventory_list_detail_modal" id="inventory-list-detail-modal-A" tabindex="-1" role="dialog" aria-labelledby="inventoryDetailModal" data-bs-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal_header_inventory">
+                    <h4 class="modal_title">@Html.Translate("Chi tiết phiếu kiểm kê A")</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="wrapper_content_inventory">
+
+                    <div class="content_inventory row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Mã phiếu"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_doccode">A230200001</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Plant"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_plant">L401</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("WH Loc."):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_whloc">S001</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Mã linh kiện"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_componentcode">D0000V001</h4>
+                                </div>
+                            </div>
+                            @*<div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">Model code:</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_modelcode"></h4>
+                                </div>
+                            </div>*@
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Tên linh kiện"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_componentname">HVPS PCB ASSY DL</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Quantity"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_quantity">3ST23-12-01</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Vị trí"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_position">3ST23-12-01</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("S/O No."):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_sono"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Phòng ban"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_department"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Khu vực"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_location"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Tài khoản phân phát"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_assigneeaccount">Userkiemke1</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Stock types"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_stocktypes">1</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Special stock"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_specialstock">N</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("S/O List."):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_solist">000000</h4>
+                                </div>
+                            </div>
+                            
+                            @*<div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label">SAP Inventory No.:</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_sapinventoryno">0100140396</h4>
+                                </div>
+                            </div>*@
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Phys.Inv"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_physinv">0100146532</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Fiscal year"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_fisscalyear">2023</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("ITEM"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_item">001</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Planned count"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_plannedcount">20230831</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Cột C"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_columnc">Userkiemke1</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Cột N"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_columnN">0000000000</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Cột O"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_columnO">0000000000</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Cột P"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_columnP">12</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Cột Q"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_columnQ">20200</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Cột R"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_columnR">00040</h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Cột S"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_columnS">00000000</h4>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Ghi chú"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_note"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Người tạo"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_createdBy"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="text_label font-weight-bold">@Html.Translate("Thời gian tạo"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="text_label doctypea_detail_createdAt"></h4>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

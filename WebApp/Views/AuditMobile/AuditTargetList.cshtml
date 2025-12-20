@@ -1,0 +1,36 @@
+﻿@{
+    var headerViewModel = new AuditMobileTopBarViewModelBuilder()
+                              .CreateTitle("Danh sách phiếu cần giám sát")
+                              .DisplayGoBackButton(true)
+                              .EnableDropDownSettings(true)
+                              .Build();
+}
+
+@await Html.PartialAsync("~/Views/Shared/_mobile_topbar.cshtml", headerViewModel)
+
+<div id="@nameof(Views_AuditMobile_AuditTargetList)" class="container">
+    @*Đã đạt giám sát: 30 phiếu*@
+    <div class="pt-2">
+        <div class="audit_list_status" style="display: none;">
+            <div class="d-flex mt-2">
+                <text>Đã giám sát: </text><text class="px-1 txt-bolder"> 
+                    <h5 id="auditList_statusCount" class="txt-green"></h5>
+                </text>
+            </div>
+            <hr />
+        </div>
+    </div>
+
+    <div class="container audit_target_list">
+        
+    </div>
+
+    @Html.Partial("~/Views/Shared/Common/_DropdownFilterModal.cshtml")
+</div>
+
+<script asp-append-version="true" src="~/assets/js/audit-mobile/audittargetlist.js" async></script>
+
+<script>
+
+</script>
+

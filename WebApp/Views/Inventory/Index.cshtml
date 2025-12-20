@@ -1,0 +1,148 @@
+﻿@using bivnConstant = BIVN.FixedStorage.Services.Common.API.Constants;
+@using webapConstants = BIVN.FixedStorage.Services.Common.API.Constants;
+@{
+    ViewBag.Title = Html.Translate("Kiểm kê");
+}
+
+@{
+    var factories = ViewBag.Factories as IEnumerable<FactoryInfoModel>;
+}
+
+<link href="./assets/css/ListInventory.css" asp-append-version="true" rel="stylesheet" />
+
+<section class="@nameof(Views_Inventory_Index)">
+    @*Điều kiện tìm kiếm *@
+    <section class="bg-white py-2 px-3 rounded">
+        <form id="input_inventory_search_form">
+            <div class="row d-flex mb-4">
+                <div class="col-3">
+                    <div class="">
+                        <label class="text_label">@Html.Translate("Người tạo")</label>
+                        <input id="List_Inventory_User_Create" name="List_Inventory_User_Create" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập tên người tạo")...">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row date_range_container">
+                        <div class="">
+                            <div class="">
+                                <label class="text_label">@Html.Translate("Ngày kiểm kê")</label>
+                                <input id="input_date_from" name="FromDate" type="text" class="form-control background-color-grey" placeholder="DD/MM/YYYY">
+                                <svg class="calendar_icon" width="20" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.20044 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.2004 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.70044 9.08984H20.7004" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M21.2004 8.5V17C21.2004 20 19.7004 22 16.2004 22H8.20044C4.70044 22 3.20044 20 3.20044 17V8.5C3.20044 5.5 4.70044 3.5 8.20044 3.5H16.2004C19.7004 3.5 21.2004 5.5 21.2004 8.5Z" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.8951 13.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.8951 16.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12.1959 13.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12.1959 16.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.49475 13.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.49475 16.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="arrow_date_range">
+                            <div><img src="./assets/images/icons/Muitensangphai.png"></div>
+                        </div>
+                        <div class="">
+                            <div class="">
+                                <label class="text_label">&nbsp;</label>
+                                <input id="input_date_to" name="ToDate" type="text" class="form-control background-color-grey" placeholder="DD/MM/YYYY">
+                                <svg class="calendar_icon" width="20" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.20044 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.2004 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.70044 9.08984H20.7004" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M21.2004 8.5V17C21.2004 20 19.7004 22 16.2004 22H8.20044C4.70044 22 3.20044 20 3.20044 17V8.5C3.20044 5.5 4.70044 3.5 8.20044 3.5H16.2004C19.7004 3.5 21.2004 5.5 21.2004 8.5Z" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.8951 13.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.8951 16.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12.1959 13.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12.1959 16.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.49475 13.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.49475 16.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="select_status_area">
+                        <label class="text_label">@Html.Translate("Trạng thái")</label>
+                        <select hidden id="select_status" multiple name="Statuses" placeholder="Chọn trạng thái" data-search="true" data-silent-initial-value-set="true">
+                            @*<option value="-1">Tất cả</option>*@
+                            <option value="0">@Html.Translate("Chưa kiểm kê")</option>
+                            <option value="1">@Html.Translate("Đang kiểm kê")</option>
+                            <option value="2">@Html.Translate("Đang giám sát")</option>
+                            <option value="3">@Html.Translate("Hoàn thành")</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="d-flex justify-content-between mb-3">
+            @await Html.PartialAsync("~/Views/Shared/_commonSearch.cshtml")
+
+            @{
+                var checkAccountTypeAndRole = Context.UserFromContext().AccountType == nameof(AccountType.TaiKhoanChung) && Context.UserFromContext().InventoryLoggedInfo.InventoryRoleType == 2;
+            }
+
+            @if (checkAccountTypeAndRole)
+            {
+                <div class="container_modal_add">
+                    <button class="btn_add" type="button" id="btnCreate_Inventory" class="btnImportAuditTargetList" data-toggle="modal" data-bs-target="#AddNewInventoryModal">
+                        <img src="./assets/images/icons/icon-plus.svg" />
+                        @Html.Translate("Thêm đợt kiểm kê")
+                    </button>
+                </div>
+            }
+            else
+            {
+                if (User.IsGrant(webapConstants.Permissions.EDIT_INVENTORY))
+                {
+                    <div class="container_modal_add">
+                        <button class="btn_add" type="button" id="btnCreate_Inventory" class="btnImportAuditTargetList" data-toggle="modal" data-bs-target="#AddNewInventoryModal">
+                            <img src="./assets/images/icons/icon-plus.svg" />
+                            @Html.Translate("Thêm đợt kiểm kê")
+                        </button>
+                    </div>
+                }
+            }
+                    
+        </div>
+    </section>
+
+    @*List*@
+    <section class="bg-white py-2 px-3 mt-4 rounded container-list-view">
+        <div class="container_top_table">
+            <button class="export_file disable-button" id="export-file-listInventory" disabled>
+                <div class="ListUsers_ExportExcel_Images">
+                    <img src="./assets/images/icons/export_excel.png">
+                </div>
+                <h5>@Html.Translate("Xuất file")</h5>
+            </button>
+        </div>
+        <table id="list-inventory_table" class="table table-responsive custom_table align-middle" width="100%">
+            <thead>
+                <tr class="title_table">
+                    <th>STT</th>
+                    <th>@Html.Translate("Đợt kiểm kê")</th>
+                    <th>@Html.Translate("Ngày kiểm kê")</th>
+                    <th>@Html.Translate("Tỉ lệ kiểm kê lại (%)")</th>
+                    <th>@Html.Translate("Trạng thái")</th>
+                    <th>@Html.Translate("Người tạo")</th>
+                    <th>@Html.Translate("Ngày tạo")</th>
+                    <th>@*Xem chi tiết*@</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </section>
+
+</section>
+
+@await Html.PartialAsync("~/Views/Inventory/TabInventory.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Common/_InventoryListAddModal.cshtml")
+
+<script asp-append-version="true" src="./assets/js/inventory/ListInventory.js"></script>
+<script asp-append-version="true" src="./assets/js/inventory/ListInventoryDetail.js"></script>

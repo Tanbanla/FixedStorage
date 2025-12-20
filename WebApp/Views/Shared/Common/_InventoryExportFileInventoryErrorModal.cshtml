@@ -1,0 +1,45 @@
+
+<!-- Modal -->
+<div class="modal fade" id="InventoryErrorModal" tabindex="-1" role="dialog" aria-labelledby="InventoryErrorModalLabel" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="modal_title">@Html.Translate("Xuất dữ liệu chi tiết phiếu")</h4>
+                <form id="ExportInventoryError_Form" method="post" class="form-horizontal">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Plant") <span style="color: red;">*</span></label>
+                            <select id="InventoryError_Plant" name="InventoryError_Plant" class="form-select background-color-grey select-tag-custom color-grey" placeholder="@Html.Translate("Chọn plant")...">
+                                <option disabled selected>@Html.Translate("Chọn plant")...</option>
+                            </select>
+                            <span id="InventoryError_Plant_span" class="text-danger error-notification"></span>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Tài khoản") <span style="color: red;">*</span></label>
+                            <select id="InventoryError_AccountAssignee" name="InventoryError_AccountAssignee" class="form-select background-color-grey select-tag-custom color-grey" placeholder="@Html.Translate("Chọn tài khoản")...">
+                                <option disabled selected>@Html.Translate("Chọn tài khoản")...</option>
+                            </select>
+                            <span id="InventoryError_AccountAssignee_span" class="text-danger error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Mã LK")</label>
+                            <input type="text" id="InventoryError_ComponentCode" name="InventoryError_ComponentCode" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập mã LK")..." />
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Giá trị") <span style="color: red;">*</span></label>
+                            <input type="text" id="InventoryError_Value" name="InventoryError_Value" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập giá trị")..." />
+                        </div>
+                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Số")</label>
+                            <input type="text" id="InventoryError_Number" name="InventoryError_Number" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập số")..." />
+                        </div>
+                    </div>
+                </form>
+                <div class="custom_bottom_modal">
+                    <button type="button" id="btn_cancel_export_inventory_error" class="btn btn-light btn_cancel w-50" data-bs-dismiss="modal">@Html.Translate("Hủy bỏ")</button>
+                    <button type="submit" id="btn_export_inventory_error" class="btn btn-primary w-50">@Html.Translate("Xuất file")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

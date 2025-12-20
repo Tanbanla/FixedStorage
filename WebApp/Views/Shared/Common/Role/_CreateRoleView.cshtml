@@ -1,0 +1,161 @@
+﻿@using BIVN.FixedStorage.Services.Common.API.Dto.Factory;
+@using bivnConstant = BIVN.FixedStorage.Services.Common.API.Constants;
+@model CreateRoleModel
+
+<div id="@nameof(Views_Shared_Common_Role__CreateRoleView)" 
+    class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true">
+
+    <div class="h-100 d-flex justify-content-center">
+        <form id="createRoleForm" class="w-50">
+            <div class="modal-dialog modal-dialog-centered custom_modal_md" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h3 class="modal-title text-center txt-bolder">@Html.Translate("Thêm nhóm quyền")</h3>
+                        <div asp-validation-summary="ModelOnly"></div>
+                        @*<div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                        </div>*@
+
+                        <div id="summary_create_role_errors"></div>
+
+                        <div class="form-group mt-4">
+                            <label class="control-label h5 txt-bolder name_role">@Html.Translate("Tên nhóm quyền")</label>
+                            <span class="required_directive">*</span>
+                            <input asp-for="Name" class="form-control" placeholder="@Html.Translate("Nhập tên nhóm quyền")..." />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="py-1 mt-2" id="WebAccess">
+                            <div class="h5 txt-bolder website_role">@Html.Translate("Phân quyền website")</div>
+                            <div class="d-flex justify-content-between">
+                                <div class="h5 txt-green txt-bolder website_title">@Html.Translate("Cho phép truy cập")</div>
+                                <div class="permission_item">
+                                    <div class="form-check">
+                                        <label class="slideon">
+                                            <input class="form-check-input WebAccessToggle slideon slideon-auto slideon-success" name="permission[]" type="checkbox" value="@nameof(bivnConstant.Permissions.WEBSITE_ACCESS)" checked>
+                                            <span class="slideon-slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="permission_list px-3 ">
+                                @foreach (var permission in bivnConstant.Permissions.WebSitePermissionList)
+                                {
+                                    bivnConstant.Permissions.PermissionTitle.TryGetValue(permission, out string title);
+                                    <div class="permission_item">
+                                        <div class="form-check">
+                                            <label class="form-check-label label" for="permission[@permission]">@title</label>
+                                            <input type="checkbox" class="form-check-input" data-category="@nameof(bivnConstant.Permissions.WEBSITE_ACCESS)" id="permission[@permission]" name="permission[]" value="@permission">
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="py-1 mt-2" id="MobileAccess">
+                            <div class="h5 txt-bolder mobile_role">@Html.Translate("Phân quyền app mobile")</div>
+                            <div class="d-flex justify-content-between">
+                                <div class="h5 txt-bolder txt-green mobile_title">@Html.Translate("Cho phép truy cập")</div>
+                                <div class="permission_item">
+                                    <div class="form-check">
+                                        <label class="slideon">
+                                            <input class="form-check-input MobileAccessToggle slideon slideon-auto slideon-success" name="permission[]" type="checkbox" value="@nameof(bivnConstant.Permissions.MOBILE_ACCESS)">
+                                            <span class="slideon-slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="permission_list px-3 ">
+                                @{
+                                    var departmentList = ViewBag.DepartmentList as IEnumerable<DepartmentDto>;
+                                }
+                                @foreach (var permission in bivnConstant.Permissions.MobilePermissionList)
+                                {
+                                    bivnConstant.Permissions.PermissionTitle.TryGetValue(permission, out string title);
+                                    <div class="permission_item">
+                                        <div class="form-check">
+                                            <label class="form-check-label label" for="permission[@permission]">@title</label>
+                                            <input data-category="@nameof(bivnConstant.Permissions.MOBILE_ACCESS)" id="permission[@permission]" class="form-check-input" name="permission[]" type="checkbox" value="@permission">
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="py-1 mt-2" id="ViewByDepartment">
+                            <div class="h5 txt-bolder role_view">@Html.Translate("Phân quyền xem dữ liệu")</div>
+                            <div class="" >
+                                <div class="h5 txt-bolder txt-green">@Html.Translate("Xem dữ liệu theo phòng ban")</div>
+                                <div class="px-3 role_department_list">
+                                    @if (departmentList?.Any() == true)
+                                    {
+                                        foreach (var department in departmentList)
+                                        {
+                                            <div class="permission_item pr-1">
+                                                <div class="form-check">
+                                                    <label class="form-check-label label" for="permission[@department?.Id]">@department?.Name</label>
+                                                    <input data-category="@nameof(bivnConstant.Permissions.DEPARTMENT_DATA_INQUIRY)" id="permission[@department?.Id]" class="form-check-input" data-id="@department?.Id" name="permission[]" type="checkbox" value="@department.Id">
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <div class="h5 txt-bolder txt-green">@Html.Translate("Tạo phiếu theo phòng ban")</div>
+                                <div class="px-3 role_department_list role_create_doc_by_department_list">
+                                    @if (departmentList?.Any() == true)
+                                    {
+                                        foreach (var department in departmentList)
+                                        {
+                                            <div class="permission_item pr-1">
+                                                <div class="form-check">
+                                                    <label class="form-check-label label" for="permission[@department?.Id]">@department?.Name</label>
+                                                    <input data-category="@nameof(bivnConstant.Permissions.CREATE_DOCUMENT_BY_DEPARTMENT)" id="permission[@department?.Id]" class="form-check-input" data-id="@department?.Id" name="permission[]" type="checkbox" value="@department.Id">
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="mt-2" id="ViewByFactory">
+                                <div class="h5 txt-bolder txt-green">@Html.Translate("Xem dữ liệu theo nhà máy")</div>
+                                <div class="d-flex px-3 grid-g-2">
+                                    @{
+                                        var factoryList = ViewBag.FactoryList as IEnumerable<FactoryInfoModel>;
+                                    }
+                                    @if (factoryList?.Any() == true)
+                                    {
+                                        foreach (var factory in factoryList)
+                                        {
+                                            <div class="permission_item pr-1">
+                                                <div class="form-check">
+                                                    <label class="form-check-label label" for="permission[@factory?.Id]">@factory?.Name</label>
+                                                    <input data-category="@nameof(bivnConstant.Permissions.FACTORY_DATA_INQUIRY)" id="permission[@factory?.Id]" class="form-check-input" data-id="@factory.Id.ToString()" name="permission[]" type="checkbox" value="@factory.Id.ToString()">
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="container-fluid d-flex justify-content-between">
+                            <button type="button" class="btn btn_custom_danger w-50 mx-2" data-bs-dismiss="modal">@Html.Translate("Hủy bỏ")</button>
+                            <button id="btn_modal_create_role" type="button" class="btn btn_custom_primary w-50 mx-2">@Html.Translate("Đồng ý")</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="./assets/js/role/AddRole.js" asp-append-version="true"></script>

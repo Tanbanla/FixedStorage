@@ -1,0 +1,120 @@
+﻿<!--ViewDetailUser Modal -->
+<div class="modal fade" id="ErrorInvestigationHistoryModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="ErrorInvestigationHistoryModalLabel"
+     aria-hidden="true"
+     data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl modal-lg modal-md modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="ErrorInvestigationHistory_title">
+                    <h4>@Html.Translate("Lịch sử điều tra")</h4>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ErrorInvestigationInventoryHistoryTop row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Đợt kiểm kê"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="ErrorInvestigationHistory_Inventory">20250101</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Mã linh kiện"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="ErrorInvestigationHistory_Component">20250101</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Tên linh kiện"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="ErrorInvestigationHistory_ComponentName">20250101</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Loại thao tác"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="ErrorInvestigationHistory_ActionType">Điều tra sai số</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Lần điều tra"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="ErrorInvestigationHistory_InvestigationCount">2</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h5 class="label-bold">@Html.Translate("Vị trí"): </h5>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h5 id="ErrorInvestigationHistory_Position">20250101</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ErrorInvestigationHistoryCenter">
+                    <div class="ErrorInvestigationHistoryCenter_Item">
+                        <h5>
+                            @Html.Translate("Điều chỉnh lần")<label class="ErrorInvestigationHistoryCenter_Index"> 2:</label> @Html.Translate("Từ")
+                            <label class="ErrorInvestigationHistoryCenter_OldValue">-118</label> => <label class="ErrorInvestigationHistoryCenter_NewValue">200</label>
+                        </h5>
+                        <p>Phân loại: <label class="ErrorInvestigationHistoryCenter_ErrorCategory">Kiểm kê sai</label></p>
+                        <p>Chi tiết điều tra: <label class="ErrorInvestigationHistoryCenter_Error_detail">Linh kiện có tình trạng gẫy nẫy</label></p>
+                        <p>Người điều tra: <label class="ErrorInvestigationHistoryCenter_Invesgator">F0012345</label></p>
+                        <p>Thời điểm điều tra: <label class="ErrorInvestigationHistoryCenter_InvesgationDate">11:05 10/01/2025</label></p>
+                        <p>Thời điểm xác nhận: <label class="ErrorInvestigationHistoryCenter_InvesgatorConfirmDate">15:12 12/01/2025</label></p>
+                        <p>Hình ảnh:</p>
+                        <div class="ErrorInvestigationHistoryCenter_Images">
+                            <div class="ErrorInvestigationHistoryCenterItem_Images">
+                                <img src="~/assets/images/icons/default-image.png" alt="Ảnh mặc định" style="width: 100%; max-width: 300px;">
+                            </div>
+                            <div class="ErrorInvestigationHistoryCenterItem_Images">
+                                <img src="~/assets/images/icons/default-image.png" alt="Ảnh mặc định" style="width: 100%; max-width: 300px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ErrorInvestigationHistoryCenter_Item">
+                        <h5>
+                            @Html.Translate("Điều chỉnh lần")<label class="ErrorInvestigationHistoryCenter_Index"> 2:</label> @Html.Translate("Từ")
+                            <label class="ErrorInvestigationHistoryCenter_OldValue">-118</label> => <label class="ErrorInvestigationHistoryCenter_NewValue">200</label>
+                        </h5>
+                        <p>Phân loại: <label class="ErrorInvestigationHistoryCenter_ErrorCategory">Kiểm kê sai</label></p>
+                        <p>Chi tiết điều tra: <label class="ErrorInvestigationHistoryCenter_Error_detail">Linh kiện có tình trạng gẫy nẫy</label></p>
+                        <p>Người điều tra: <label class="ErrorInvestigationHistoryCenter_Invesgator">F0012345</label></p>
+                        <p>Thời điểm điều tra: <label class="ErrorInvestigationHistoryCenter_InvesgationDate">11:05 10/01/2025</label></p>
+                        <p>Thời điểm xác nhận: <label class="ErrorInvestigationHistoryCenter_InvesgatorConfirmDate">15:12 12/01/2025</label></p>
+                        <p>Hình ảnh:</p>
+                        <div class="ErrorInvestigationHistoryCenter_Images">
+                            <div class="ErrorInvestigationHistoryCenterItem_Images">
+                                <img src="~/assets/images/icons/default-image.png" alt="Ảnh mặc định" style="width: 100%; max-width: 300px;">
+                            </div>
+                            <div class="ErrorInvestigationHistoryCenterItem_Images">
+                                <img src="~/assets/images/icons/default-image.png" alt="Ảnh mặc định" style="width: 100%; max-width: 300px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

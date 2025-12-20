@@ -1,0 +1,45 @@
+﻿@using WebApp.Application.Services.AuditMobileWeb;
+@using WebApp.Application.Services.AuditMobileWeb.Abstractions;
+
+@model BaseViewModel
+
+<div class="container pt-3 py-2 shadow-sm top_bar">
+    <div class="d-flex justify-content-between">
+        <div class="left_section">
+            @if(Model is AuditMobileTopBarViewModel targetModel)
+            {
+                if (targetModel?.SideBarViewModel?.IsShow == true)
+                {
+                    await Html.RenderPartialAsync(targetModel?.SideBarViewModel?.ViewPath ?? string.Empty);
+                }
+            }
+
+            @if (Model?.GoBackViewModel?.IsShow == true)
+            {
+                await Html.RenderPartialAsync(Model?.GoBackViewModel?.ViewPath ?? string.Empty);
+            }
+        </div>
+        <div class="middle_section">
+            <h5 class="text-center txt-bolder">@(Model?.Title ?? string.Empty)</h5>
+        </div>
+        <div class="right_section"></div>
+    </div>
+    
+    @if (Model is AuditMobileTopBarViewModel model)
+    {
+        if (model?.FilterViewModel?.IsShow == true)
+        {
+            await Html.RenderPartialAsync(model?.FilterViewModel?.ViewPath ?? string.Empty);
+        }
+    }
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+    $(function(){
+        $(".mobile_nav_back").click(function(){
+            window.history.back();
+        })
+    })
+</script>

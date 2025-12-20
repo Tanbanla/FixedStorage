@@ -1,0 +1,113 @@
+﻿@using BIVN.FixedStorage.Services.Common.API
+@{
+    var getRoleName = Context.User.Claims.FirstOrDefault(x => x.Type.Contains("role_name")).Value;
+}
+
+<!-- Modal -->
+<div class="modal fade" id="EditUserModal" tabindex="-1" role="dialog" aria-labelledby="EditUserModalLabel" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">          
+            <div class="modal-body">
+                <h4 class="modal_title">@Html.Translate("Chỉnh sửa người dùng")</h4>
+                <form id="EditUser_Form">
+                    <div class="row">
+                        <input id="Edit_Users_UserId" type="hidden" />
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-add-user ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Tài khoản đăng nhập") <span style="color:red;">*</span></label>
+                            <input id="Edit_Users_UserName" name="Edit_Users_UserName" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập tài khoản đăng nhập")..." />
+                            <span id="Edit_Username_span" class="error-notification"></span>
+                        </div>
+                        @*<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-add-user ip-form-update box-container mb-3">
+                        <label class="text_label">Mật khẩu <span style="color:red;">*</span></label>
+                        <input id="Edit_Users_Password" type="text" class="form-control background-color-grey" placeholder="Nhập mật khẩu..." value=""/>
+                        </div>*@
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-add-user ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Họ và tên") <span style="color:red;">*</span></label>
+                            <input id="Edit_Users_FullName" name="Edit_Users_FullName" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập họ và tên")..." />
+                            <span id="Edit_FullName_span" class="error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-add-user ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Mã nhân viên") <span style="color:red;">*</span></label>
+                            <input id="Edit_Users_Code" name="Edit_Users_Code" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập mã nhân viên")..." />
+                            <span id="Edit_Code_span" class="error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-add-user ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Phòng ban")</label>
+                            <select id="Edit_Users_Department" class="form-control background-color-grey select-tag-custom">                             
+                            </select>
+                            <span id="Edit_Department_span" class="error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-add-user ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Nhóm quyền")</label>
+                            <select id="Edit_Users_Role" class="form-control background-color-grey select-tag-custom">                                
+                            </select>
+                            <span id="Edit_Role_span" class="error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-add-user ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Loại tài khoản")</label>
+                            <select id="Edit_Users_AccountType" class="form-control background-color-grey select-tag-custom">                                
+                            </select>
+                            <span id="Edit_AccountType_span" class="error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-add-user ip-form-update box-container mb-3">
+                            <div class="TitleAndSlideOn_Container">
+                                <label class="bottom2">@Html.Translate("Khóa tài khoản nếu không đổi mật khẩu")</label>
+                                <div class="SlideonContainer">
+                                    <label class="slideon">
+                                        <input id="Edit_Users_NoChangePassword" type="checkbox" class="slideon slideon-auto slideon-success">
+                                        <span class="slideon-slider"></span>
+                                    </label>
+                                    <span id="Edit_NoChangePassword_span" class="error-notification"></span>
+                                </div>
+                            </div>
+                            <div class="DatetimeUnit_Container">
+                                <input id="Edit_Users_DateTimeNoChangePassword" name="Edit_Users_DateTimeNoChangePassword" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập thời gian hiệu lực của tài khoản")..." value="90" disabled />
+                                <h5 class="Edit_Users_Unit">@Html.Translate("Ngày")</h5>
+                                <span id="Edit_DateTimeNoChangePassword_span" class="error-notification"></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-add-user ip-form-update box-container mb-3">
+                            <div class="TitleAndSlideOn_Container">
+                                <label class="bottom2">@Html.Translate("Khóa tài khoản nếu không tương tác")</label>
+                                <div class="SlideonContainer">
+                                    <label class="slideon">
+                                        <input id="Edit_Users_NoInteration" type="checkbox" class="slideon slideon-auto slideon-success">
+                                        <span class="slideon-slider"></span>
+                                    </label>
+                                    <span id="Edit_NoInteration_span" class="error-notification"></span>
+                                </div>
+                            </div>
+                            <div class="DatetimeUnit_Container">
+                                <input id="Edit_Users_DateTimeNoInteration" name="Edit_Users_DateTimeNoInteration" type="text" class="form-control background-color-grey" placeholder="@Html.Translate("Nhập thời gian hiệu lực của tài khoản")..." value="90" disabled />
+                                <h5 class="Edit_Users_Unit">@Html.Translate("Ngày")</h5>
+                                <span id="Edit_DateTimeNoInteration_span" class="error-notification"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-add-user ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Trạng thái")</label>
+                            <select id="Edit_Users_Status" class="form-control background-color-grey select-tag-custom">                                
+                            </select>
+                            <span id="Edit_Status_span" class="text-danger"></span>
+                        </div>
+
+                       
+                        @{
+                            var isShow = getRoleName == commonAPIConstant.Roles.Administrator ? "display: block;" : "display: none;";
+                        }
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 title-input-add-user ip-form-update box-container text-center mb-3 user_detail_changepass" style="@isShow">
+                            <a class="Edit_Users_ChangePassword">@Html.Translate("Thay đổi mật khẩu?")</a>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="container-fluid d-flex justify-content-between px-0">
+                    <button type="button" id="button_Delete_EditNewUser" class="btn w-50 mx-2" data-bs-dismiss="modal">@Html.Translate("Hủy bỏ")</button>
+                    <button type="submit" id="button_Apply_EditNewUser" class="btn btn-primary w-50 mx-2">@Html.Translate("Đồng ý")</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+

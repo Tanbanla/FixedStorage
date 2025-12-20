@@ -1,0 +1,38 @@
+﻿@using bivnConstant = BIVN.FixedStorage.Services.Common.API.Constants;
+<link href="./assets/css/ErrorCategoryManagement.css" asp-append-version="true" rel="stylesheet" />
+@{
+    ViewBag.Title = Html.Translate("Quản lý phân loại lỗi");
+
+    //var User = (ValidateTokenResultDto)Context.Items[commonAPIConstant.HttpContextModel.UserKey];
+}
+
+@{
+    //var hasDepartmentPermission = User?.RoleClaims?.Any(x => x.ClaimType == bivnConstant.Permissions.DEPARTMENT_MANAGEMENT);
+}
+
+
+
+<section class="page-heading d-flex justify-content-end">
+    <div class="container_modal_add mb-3">
+        <button class="btn_add" type="button" id="btnCreate_ErrorCategoryManagement">
+            <img src="./assets/images/icons/icon-plus.svg">
+            @Html.Translate("Thêm phân loại lỗi")
+        </button>
+    </div>
+</section>
+
+@{
+    //var Departments = ViewBag.Departments as IEnumerable<DepartmentDto>;
+}
+<section class="Views_ErrorCategoryManagement_Index">
+    <div class="ErrorCategoryManagement_List row">
+        
+    </div>
+</section>
+
+@await Html.PartialAsync("~/Views/Shared/Common/_AddNewErrorManagementModal.cshtml")
+@await Html.PartialAsync("~/Views/Shared/Common/_EditErrorManagementModal.cshtml")
+
+<script asp-append-version="true" src="./assets/js/ErrorCategoryManagement.js"></script>
+
+

@@ -1,0 +1,31 @@
+﻿
+<div class="Assignment_Layout_Top">
+    <div class="container_modal_add mb-3">
+        @{
+            var currUser = Context.UserFromContext();
+            var canEdit = (currUser.AccountType == nameof(AccountType.TaiKhoanRieng) &&
+                            User.IsGrant(commonAPIConstant.Permissions.EDIT_INVENTORY)) ||
+                            Context.IsPromoter();
+                        
+        }
+
+        @if (canEdit)
+        {
+            <button id="addArea" class="btn_add btnNewRole" type="button">
+                <img src="./assets/images/icons/icon-plus.svg">
+                @Html.Translate("Thêm khu vực")
+            </button>
+        }
+    </div>
+</div> 
+
+
+<div class="row Assignment_Layout_Content mt-4">
+</div>
+<div class="location_empty_data text-center" style="display: none;">
+    <p>Chưa có khu vực kiểm kê.</p>
+    <p>Vui lòng thêm mới khu vực để quản lý.</p>
+</div>
+
+@await Html.PartialAsync("_InventoryAssignmentAddModal.cshtml")
+@await Html.PartialAsync("_InventoryAssignmentEditModal.cshtml")

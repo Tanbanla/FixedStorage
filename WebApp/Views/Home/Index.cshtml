@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "BIVN";
+    var expirePasswordNotification = TempData["ExpirePasswordNotification"]?.ToString() ?? string.Empty;   
+}
+<input type="hidden" id="expirePasswordNotification" value="@expirePasswordNotification" />
+<script>
+    $(document).ready(function () {
+        let message = $("#expirePasswordNotification").val();        
+        if (message) {                              
+            Swal.fire({
+                title: 'Khóa tài khoản nếu không đổi mật khẩu',
+                text: message,
+                confirmButtonText: 'Đồng ý'
+            })
+        }        
+    })
+</script>

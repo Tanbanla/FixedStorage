@@ -1,0 +1,131 @@
+﻿<div id="@nameof(Views_Shared_Common__HistoryDetailModal)" class="modal fade"  
+    tabindex="-1" 
+    role="dialog" 
+    aria-labelledby="@nameof(Views_Shared_Common__HistoryDetailModal)" 
+    aria-hidden="true"
+     data-bs-backdrop="static">       
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="custom_modal_header pb-0">
+                <div class="d-flex justify-content-center py-2">
+                    <h4>@Html.Translate("Chi tiết lịch sử xuất nhập kho")</h4>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mt-2">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                                <h5 class="modal_title_top">@Html.Translate("Người thao tác"): </h5>
+                            </div>
+                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                                <h5 id="detail_actor" class="modal_content_top">Nguyễn Công Thành</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3"> 
+                                <h5 class="modal_title_top">@Html.Translate("Thời gian thao tác"): </h5>
+                            </div>
+                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                                <h5 id="detail_activity_date" class="modal_content_top">07/09/2023 16:39 </h5>
+                            </div>
+                        </div>
+                        <hr class="detail_hr" />
+                        
+                    </div>
+                    <div class="Content_Bottom_ListUsersViewDetail">
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Phòng ban"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 id="detail_department_name" class="text_label">PCB</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Loại nghiệp vụ"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 id="detail_business" class="text_label">Nhập kho</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Mã linh kiện"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 id="detail_component_code" class="text_label">094333020</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Tên linh kiện"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 id="detail_component_name" class="text_label">FIXED RESISTOR G-C1608J333</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Mã nhà cung cấp"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 id="detail_supplier_code" class="text_label">L4BROYXE</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Tên nhà cung cấp"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 id="detail_supplier_name" class="text_label">ROYAL ELECTRONIC FACTORY (THAILAND)CO., LTD.</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Tên nhà cung cấp rút gọn"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 id="detail_supplier_short_name" class="text_label">ROYAL ELECTRONIC</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Vị trí cố định"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 id="detail_position_code" class="text_label">5T3F3-14-1</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Số lượng"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 id="detail_quantity" class="text_label">100</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Tồn kho thực tế"): </h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 id="detail_inventory_number" class="text_label">420</h4>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                <h4 class="text_label">@Html.Translate("Ghi chú"):</h4>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                <h4 id="detail_note" class="text_label">Xuất kho</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

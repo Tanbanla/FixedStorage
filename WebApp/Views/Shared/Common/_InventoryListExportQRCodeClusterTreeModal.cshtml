@@ -1,0 +1,40 @@
+
+<!-- Modal -->
+<div class="modal fade" id="InventoryListExportQRCodeClusterTreeModal" tabindex="-1" role="dialog" aria-labelledby="InventoryListExportQRCodeClusterTreeModalLabel" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="modal_title">@Html.Translate("Chọn dữ liệu in QRCode cụm")</h4>
+                <form id="ExportQRCodeclustertree_Form" method="post" class="form-horizontal" asp-controller="Users" asp-action="CreateAsync">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Model") <span style="color: red;">*</span></label>
+                            <select id="QRCodeClusterTreeModel_Model_Code" name="QRCodeClusterTreeModel_Model_Code" class="form-select background-color-grey select-tag-custom color-grey" placeholder="@Html.Translate("Chọn model")...">
+                                <option disabled selected>@Html.Translate("Chọn model")...</option>
+                            </select>
+                            <span id="QRCode_model_code_span" class="text-danger error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Dòng máy") <span style="color: red;">*</span></label>
+                            <select id="QRCodeClusterTreeModel_Machine_Type" name="QRCodeClusterTreeModel_Machine_Type" class="form-select background-color-grey select-tag-custom color-grey" placeholder="@Html.Translate("Chọn dòng máy")...">
+                                <option disabled selected value="">@Html.Translate("Chọn dòng máy")...</option>
+                            </select>
+                            <span id="QRCode_machine_type_span" class="text-danger"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-3">
+                            <label class="text_label">@Html.Translate("Chuyền")</label>
+                            <select id="QRCodeClusterTreeModel_LineName" name="QRCodeClusterTreeModel_LineName" class="form-select background-color-grey select-tag-custom" placeholder="@Html.Translate("Chọn chuyền")...">
+                                <option disabled selected value="">@Html.Translate("Chọn chuyền")...</option>
+                            </select>
+                            <span id="QRCode_line_name_span" class="text-danger"></span>
+                        </div>
+                    </div>
+                </form>
+                <div class="custom_bottom_modal">
+                    <button type="button" id="btn_cancel_export_qrcode_cluster_tree" class="btn btn-light btn_cancel w-50" data-bs-dismiss="modal">@Html.Translate("Hủy bỏ")</button>
+                    <button type="submit" id="btn_export_qrcode_cluster_tree" class="btn btn-primary w-50">@Html.Translate("Xuất QR")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

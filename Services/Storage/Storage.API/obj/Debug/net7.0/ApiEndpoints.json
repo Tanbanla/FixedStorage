@@ -1,0 +1,1437 @@
+[
+  {
+    "ContainingType": "Storage.API.Controllers.InternalController",
+    "Method": "Factories",
+    "RelativePath": "api/internal/factories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Storage.API.Controllers.InternalController",
+    "Method": "Layouts",
+    "RelativePath": "api/internal/layouts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "GetListStorage",
+    "RelativePath": "api/storage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Storage.API.Service.Dto.ComponentDto, Storage.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "GetComponentInfoAndListPosition",
+    "RelativePath": "api/storage/{layout}/component/{componentCode}/info",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "layout",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Storage.API.Service.Dto.ComponentDto, Storage.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "GetComponentInfoAndListPosition",
+    "RelativePath": "api/storage/component/{componentCode}/info",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "componentCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Storage.API.Service.Dto.ComponentDto, Storage.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "GetDetailComponent",
+    "RelativePath": "api/storage/component/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "AddNewComponent",
+    "RelativePath": "api/storage/component/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ComponentCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ComponentName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierShortName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PositionCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "InventoryNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "MinInventoryNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "MaxInventoryNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ComponentInfo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Note",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "DeleteComponents",
+    "RelativePath": "api/storage/component/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ids",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "UpdateComponent",
+    "RelativePath": "api/storage/component/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ComponentCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ComponentName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierShortName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PositionCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "InventoryNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "MinInventoryNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "MaxInventoryNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ComponentInfo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Note",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "componentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.FactoryController",
+    "Method": "FactoryList",
+    "RelativePath": "api/storage/factory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.IEnumerable\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.Factory.FactoryInfoModel, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "GetAllComponentsPaging",
+    "RelativePath": "api/storage/get-component-list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Storage.API.Service.Dto.ComponentDto, Storage.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "GetAllComponentsToExport",
+    "RelativePath": "api/storage/get-component-list/export",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.Component.ComponentsFilterToExportDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Storage.API.Service.Dto.ComponentDto, Storage.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "GetInventoryStatusDropdownList",
+    "RelativePath": "api/storage/get-inventory-status-dropdownlist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Storage.API.Service.Dto.ComponentDto, Storage.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "GetLayoutDropdownList",
+    "RelativePath": "api/storage/get-layout-dropdownlist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Storage.API.Service.Dto.ComponentDto, Storage.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "GetLayoutList",
+    "RelativePath": "api/storage/get-layout-list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.List\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.Layout.LayoutDto, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.List\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.Layout.LayoutDto, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.List\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.Layout.LayoutDto, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Collections.Generic.List\u00601[[BIVN.FixedStorage.Services.Common.API.Dto.Layout.LayoutDto, Common.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      }
+    ]
+  },
+  {
+    "ContainingType": "Storage.API.Controllers.HistoryController",
+    "Method": "GetHistories",
+    "RelativePath": "api/storage/histories",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Storage.API.Controllers.HistoryController",
+    "Method": "Detail",
+    "RelativePath": "api/storage/histories/{historyId}/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "historyId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "Storage.API.Controllers.HistoryController",
+    "Method": "GetHistoriesToExportExcel",
+    "RelativePath": "api/storage/histories/export-excel",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "historyFilterModel",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Dto.HistoryInOutExportDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "ImportExcelComponentListAsync",
+    "RelativePath": "api/storage/import-component-list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[BIVN.FixedStorage.Services.Storage.API.Service.Dto.ComponentDto, Storage.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 403
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.StorageController",
+    "Method": "InputStorage",
+    "RelativePath": "api/storage/import/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.StorageController",
+    "Method": "InputStorage",
+    "RelativePath": "api/storage/input",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Storage.API.Service.Dto.InOutStorageParameterForMobile",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.StorageController",
+    "Method": "InputStorageList",
+    "RelativePath": "api/storage/input-storage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.StorageController",
+    "Method": "DeleteBwinImport",
+    "RelativePath": "api/storage/input-storage/{inputId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inputId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.StorageController",
+    "Method": "ConfirmImport",
+    "RelativePath": "api/storage/input-storage/confirm/{inputId}/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "inputId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.StorageController",
+    "Method": "InputStorageDetails",
+    "RelativePath": "api/storage/input-storage/details",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.StorageController",
+    "Method": "InputStorageDetails",
+    "RelativePath": "api/storage/input-storage/edit/{inputDetailId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inputDetailId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateInputDetailModel",
+        "Type": "Storage.API.Service.Dto.UpdateInputDetailDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.StorageController",
+    "Method": "Export",
+    "RelativePath": "api/storage/input-storage/export/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.StorageController",
+    "Method": "ChangeInputDetailStatus",
+    "RelativePath": "api/storage/input-storage/update-remaininghandle/{inputDetailId}/{status}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "inputDetailId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "BIVN.FixedStorage.Services.Common.API.Enum.Storage.RemainingHanle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel\u00601",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.PositionController",
+    "Method": "DeleteLayout",
+    "RelativePath": "api/storage/layout/delete",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "layout",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BIVN.FixedStorage.Services.Storage.API.Controllers.StorageController",
+    "Method": "OutputStorage",
+    "RelativePath": "api/storage/output",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Storage.API.Service.Dto.InOutStorageParameterForMobile",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "BIVN.FixedStorage.Services.Common.API.Response.ResponseModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 500
+      }
+    ]
+  }
+]

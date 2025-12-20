@@ -1,0 +1,31 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Services\\Storage\\Storage.API\\Storage.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Services\\Identity\\Identity.API\\Identity.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "ApiGateways\\WebGateway\\WebGateway.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Services\\Common.API\\Common.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "WebApp\\WebApp.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Services\\Inventory\\Inventory.API\\Inventory.API.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

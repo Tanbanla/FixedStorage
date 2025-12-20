@@ -1,0 +1,1954 @@
+﻿namespace BIVN.FixedStorage.Services.Storage.API.Service
+{
+    public class StorageService : IStorageService
+    {
+        private readonly StorageContext _storageContext;
+        private readonly ILogger<StorageService> _logger;
+        private readonly IRestClient _resClient;
+        private readonly HttpContext _httpContext;
+        private readonly IDatabaseFactoryService _databaseFactory;
+        private readonly IConfiguration _configuration;
+        private readonly ValidateTokenResultDto _CURRENTUSER;
+        private Regex _POSITIONCODE_REGEX = new Regex(@RegexPattern.PositionCodeRegex);
+
+        public StorageService(StorageContext storageContext,
+                              ILogger<StorageService> logger,
+                              IRestClient restClient,
+                              IHttpContextAccessor httpContextAccessor,
+                              IDatabaseFactoryService databaseFactory,
+                              IConfiguration configuration
+                            )
+        {
+            _storageContext = storageContext;
+            _logger = logger;
+            _resClient = restClient;
+            _httpContext = httpContextAccessor?.HttpContext;
+            _databaseFactory = databaseFactory;
+            _configuration = configuration;
+
+            _CURRENTUSER = (ValidateTokenResultDto)_httpContext.Items[Constants.HttpContextModel.UserKey];
+        }
+
+        public async Task<ResponseModel> InOutStorageActivityAsync(int typeOfActivity, int typeOfBusiness, string positionCode, string supplierCode, Guid userId, double quantity, string reason, string? employeeCode)
+        {
+            var position = await _storageContext.Positions.FirstOrDefaultAsync(x => x.PositionCode == positionCode && x.SupplierCode.ToLower().Contains(supplierCode.ToLower()));
+
+            //Check null
+            if (position == null)
+            {
+                return new ResponseModel
+                {
+                    Code = BusinessStatusCodes.PositionNotFound,
+                    Message = $"Không tìm thấy vị trí với mã nhà cung cấp này: {supplierCode}",
+                    Data = supplierCode,
+                };
+            }
+
+            var factoryOfPosition = await _storageContext.Factories.FirstOrDefaultAsync(x => x.Name == position.FactoryName);
+            //Check user can view factory of position
+            var userInFactoryOfPosition = _httpContext.UserPermissions()?.Any(x => Guid.TryParse(x.ClaimValue, out Guid convertedClaimValue) == false ? false 
+                                                                        : x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY && convertedClaimValue == factoryOfPosition?.Id);
+            if (userInFactoryOfPosition == false)
+            {
+                return new ResponseModel
+                {
+                    Code = StatusCodes.Status403Forbidden,
+                    Message = "Không có quyền truy cập nhà máy chứa linh kiện này !",
+                    Data = position.SupplierCode
+                };
+            }
+
+            if (typeOfActivity == (int)PositionHistoryType.Input)
+            {
+                var result = await CheckPositionCapacity(position, quantity);
+                if (result.Code == BusinessStatusCodes.NotEnoughToInPut)
+                {
+                    return result;
+                }
+            }
+            else if (typeOfActivity == (int)PositionHistoryType.Output)
+            {
+                var result = await CheckPositionInventory(position, quantity);
+                if (result.Code == BusinessStatusCodes.NotEnoughToOutPut)
+                {
+                    return result;
+                }
+            }
+
+            //Cập nhật số lượng tồn
+            if (typeOfActivity == (int)PositionHistoryType.Input)
+            {
+                position.InventoryNumber += quantity;
+            }
+            else if (typeOfActivity == (int)PositionHistoryType.Output)
+            {
+                position.InventoryNumber -= quantity;
+            }
+
+            var userInfo = (ValidateTokenResultDto)_httpContext.Items[Constants.HttpContextModel.UserKey];
+            if (userInfo == null)
+            {
+                return new ResponseModel
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Message = "Có lỗi khi lấy thông tin người dùng"
+                };
+            }
+
+            //validate departmentId
+            if (!Guid.TryParse(userInfo?.DepartmentId, out Guid departmentId))
+            {
+                return new ResponseModel
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Message = "ID phòng ban không hợp hệ"
+                };
+            }
+
+            var positionHistory = new PositionHistory
+            {
+                Id = Guid.NewGuid(),
+                PositionHistoryType = (PositionHistoryType)typeOfActivity,
+                TypeOfBusiness = (TypeOfBusiness)typeOfBusiness,
+                DepartmentId = departmentId,
+                Quantity = quantity,
+                InventoryNumber = position?.InventoryNumber,
+                Note = reason ?? string.Empty,
+                PositionCode = positionCode,
+                FactoryId = factoryOfPosition?.Id,
+                ComponentCode = position?.ComponentCode,
+                ComponentName = position?.ComponentName,
+                SupplierCode = position?.SupplierCode,
+                SupplierName = position?.SupplierName,
+                SupplierShortName = position?.SupplierShortName,
+                CreatedBy = userId.ToString(),
+                CreatedAt = DateTime.Now,
+                Layout = position.Layout,
+                EmployeeCode = employeeCode ?? string.Empty
+            };
+
+            //Save 
+            try
+            {
+                _storageContext.PositionHistories.Add(positionHistory);
+                await _storageContext.SaveChangesAsync();
+            }
+            catch (Exception err)
+            {
+                _logger.LogError("Lỗi khi thực hiện lưu xuất nhập kho !", err);
+
+                return new ResponseModel
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Message = "Lỗi khi thực hiện lưu xuất nhập kho !"
+                };
+            }
+
+            string message = typeOfActivity == (int)PositionHistoryType.Input ? "Nhập kho thành công" : "Xuất kho thành công";
+
+            return new ResponseModel
+            {
+                Code = StatusCodes.Status200OK,
+                Message = message
+            };
+        }
+
+        private async Task<ResponseModel> CheckPositionCapacity(Position position, double quantity)
+        {
+            if (quantity > (position.MaxInventoryNumber - position.InventoryNumber))
+            {
+                return await Task.FromResult(new ResponseModel
+                {
+                    Code = BusinessStatusCodes.NotEnoughToInPut,
+                    Message = $"Sức chứa tại vị trí thuộc nhà cung cấp {position.SupplierShortName ?? position.SupplierName} không đủ để nhập kho",
+                    Data = position.SupplierCode
+                });
+            }
+
+            return new ResponseModel
+            {
+                Code = StatusCodes.Status200OK,
+                Message = "Số lượng nhập hợp lệ"
+            };
+        }
+
+        private async Task<ResponseModel> CheckPositionInventory(Position position, double quantity)
+        {
+            if (quantity > position.InventoryNumber)
+            {
+                return await Task.FromResult(new ResponseModel
+                {
+                    Code = BusinessStatusCodes.NotEnoughToOutPut,
+                    Message = $"Số lượng tồn kho tại vị trí thuộc nhà cung cấp {position.SupplierShortName ?? position.SupplierName} không đủ để xuất kho",
+                    Data = position.SupplierCode
+                });
+            }
+
+            return new ResponseModel
+            {
+                Code = StatusCodes.Status200OK,
+                Message = "Số lượng nhập hợp lệ"
+            };
+        }
+
+        public async Task<ResponseModel<bool>> AllowImport()
+        {
+            var anyPendingImport = await _storageContext.InputFromBwins.AnyAsync(x => x.Status == BwinInputStatus.TODO);
+            if (anyPendingImport)
+            {
+                return new ResponseModel<bool>
+                {
+                    Data = false,
+                    Code = StatusCodes.Status400BadRequest,
+                    Message = "Hệ thống đang tồn tại lần nhập kho ở trạng thái Lưu tạm. Vui lòng thực hiện xác nhận trước khi tiến hành nhập kho."
+                };
+            }
+
+            return new ResponseModel<bool>
+            {
+                Data = true,
+                Code = StatusCodes.Status200OK,
+                Message = "Có thể thực hiện import"
+            };
+        }
+
+        /// <summary>
+        /// Khi validate danh sách import thì danh sách tập hợp vị trí cần lọc vị trí theo nhà máy 
+        /// Khi phân bổ dữ liệu cần lọc vị trí theo nhà máy
+        /// 
+        /// => Nhưng theo nghiệp vụ thì phần người thực hiện import sẽ có full quyền các nhà máy
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public async Task<ResponseModel<ImportStorageResultModel>> Import(string userId, IFormFile file)
+        {
+            //Quyền nhà máy của người dùng
+            var userPermissions = await UserPermissions(userId);
+            var factoriesId = userPermissions.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY).Select(x => x.ClaimValue.ToLower());
+            if (!factoriesId.Any())
+            {
+                return new ResponseModel<ImportStorageResultModel>
+                {
+                    Code = StatusCodes.Status403Forbidden,
+                    Message = "Bạn không có quyền truy cập nhà máy nào."
+                };
+            }
+
+            var importRecordsResult = await GetListFromFile(file);
+            if(importRecordsResult.Code != StatusCodes.Status200OK)
+            {
+                return new ResponseModel<ImportStorageResultModel>
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Message = importRecordsResult.Message
+                };
+            }
+
+            var convertedImportResultData = importRecordsResult.Data as IEnumerable<RawImportInputStorageDto>;
+            //Validate dữ liệu
+            var validatedImportListResults = await ValidateBasicFields(userId, convertedImportResultData);
+
+            List<ImportInputStorageDto> aggregatedList = new List<ImportInputStorageDto>();
+            //Tập hợp dữ liệu phân bổ từ danh sách import sau khi validate + danh sách lưu kho tạm
+            var temporaryRecords = GetTemporaryRecords();
+            if (validatedImportListResults != null && validatedImportListResults.Any())
+            {
+                aggregatedList.AddRange(validatedImportListResults);
+            }
+            if (temporaryRecords != null && temporaryRecords.Any())
+            {
+                aggregatedList.AddRange(temporaryRecords);
+            }
+
+            //Phân bổ và kiểm tra điều kiện
+            var positionAllocationResult = await AllocatePostions(userId, aggregatedList);
+            var excelResult = WriteToExcel(positionAllocationResult?.Data?.Where(x => x.Valid == false));
+            return new ResponseModel<ImportStorageResultModel>
+            {
+                Code = StatusCodes.Status200OK,
+                Message = positionAllocationResult.Message,
+                Data = new ImportStorageResultModel
+                {
+                    ExcelFile = excelResult,
+                    AllImportRecords = positionAllocationResult.Data,
+                }
+            };
+        }
+
+        private async Task<ResponseModel<List<ImportInputStorageDto>>> AllocatePostions(string userId, List<ImportInputStorageDto> records)
+        {
+            //Danh sách các bản ghi hợp lệ để phân bổ
+            var validRecords = records.Where(x => x.Valid).ToList();
+
+            if (validRecords.Any())
+            {
+                var _CREATEAT = DateTime.Now;
+                var _CREATEBY = userId;
+
+                var inputBwinId = Guid.NewGuid();
+                var inputBwinEntity = new InputFromBwin
+                {
+                    Id = inputBwinId,
+                    CreatedAt = _CREATEAT,
+                    CreatedBy = _CREATEBY,
+                    Status = BwinInputStatus.TODO
+                };
+
+                var savedInPutDetails = new List<InputDetail>();
+
+                //Quyền nhà máy của người dùng
+                var userPermissions = await UserPermissions(userId);
+                var factoriesId = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY).Select(x => x.ClaimValue.ToLower());
+
+                var recordsByComponentCode = await AllPositions(userId);
+                for (int i = 0; i < validRecords.Count(); i++)
+                {
+                    var item = validRecords.ElementAtOrDefault(i);
+
+                    //Trường hợp nhập kho số lượng âm
+                    if (item.Quantity < 0)
+                    {
+                        var positionMatchItem = recordsByComponentCode?.Where(x => (factoriesId?.Contains(x.FactoryId.ToString().ToLower()) == true)
+                                                                               && (x.PositionCode == item.PositionCode && x.ComponentCode == item.ComponentCode && x.SupplierCode == item.SupplierCode) || (x.ComponentCode == item.ComponentCode && x.SupplierCode == item.SupplierCode))
+                                                                             .OrderByDescending(x => x.InventoryNumber)
+                                                                             .ToList();
+                        //Tổng số lượng tồn các vị trí tìm được
+                        var positionNumberTotal = positionMatchItem.Sum(x => x.InventoryNumber);
+                        //Nếu tổng các vị trí có thể phân bổ hết
+                        List<InputDetail> inputDetailsEntity = new();
+                        var remain = item.Quantity;
+
+                        if ((positionNumberTotal + item.Quantity) >= 0)
+                        {
+                            int start = 0;
+                            var isAllocated = false;
+
+                            while (!isAllocated && start < positionMatchItem.Count)
+                            {
+                                var position = positionMatchItem[start];
+
+                                var allocateQuantity = (position.InventoryNumber + remain) >= 0 ? remain : (position.InventoryNumber + remain);
+
+                                var inputDetailEntity = new InputDetail
+                                {
+                                    Id = Guid.NewGuid(),
+                                    InputId = inputBwinId,
+                                    BwinOutputCode = item.BwinOutputCode,
+                                    ComponentCode = item.ComponentCode,
+                                    SuplierCode = item.SupplierCode,
+                                    PositionCode = position.PositionCode,
+                                    Quantity = allocateQuantity,
+                                    AllocatedQuantity = allocateQuantity,
+                                    OldQuantity = allocateQuantity,
+                                    Type = InputDetailType.NORMAL,
+                                    CreatedAt = _CREATEAT,
+                                    CreatedBy = _CREATEBY
+                                };
+                                inputDetailsEntity.Add(inputDetailEntity);
+
+                                //Nếu đã phân bổ đủ thì dừng
+                                if ((position.InventoryNumber + remain) >= 0)
+                                {
+                                    isAllocated = true;
+                                }
+
+                                remain += position.InventoryNumber;
+                                start++;
+                            }
+                        }
+                        else
+                        //Nếu không thì báo lỗi dòng dữ liệu này
+                        {
+                            item.Valid = false;
+                            item.Errors.TryAdd("Summary", "Không tìm thấy vị trí phù hợp để phân bổ hết số lượng này.");
+                        }
+
+                        savedInPutDetails.AddRange(inputDetailsEntity);
+                    }
+                    else
+                    //Trường hợp nhập kho số lượng dương
+                    {
+                        //Ưu tiên tìm vị trí như vị trí mong muốn trong file import
+                        //Nếu vị trí đó đầy hoặc không thấy thì sẽ tự động tìm các vị trí khác bằng Component Code và SupplierCode
+                        var positionsMatchItem = recordsByComponentCode?.Where(x =>
+                                                (factoriesId?.Contains(x.FactoryId.ToString().ToLower()) == true)
+                                                && (x.MaxInventoryNumber - x.InventoryNumber) >= 0)
+                                                ?.OrderBy(x =>
+                                                    (x.PositionCode == item.PositionCode && x.ComponentCode == item.ComponentCode && x.SupplierCode == item.SupplierCode) ? 0 :
+                                                    (x.ComponentCode == item.ComponentCode && x.SupplierCode == item.SupplierCode) ? 1 : 2)
+                                                ?.ThenByDescending(x => x.MaxInventoryNumber - x.InventoryNumber)
+                                                ?.Where(x => (x.PositionCode == item.PositionCode && x.ComponentCode == item.ComponentCode && x.SupplierCode == item.SupplierCode) || (x.ComponentCode == item.ComponentCode && x.SupplierCode == item.SupplierCode))
+                                                .ToList();
+
+                        int start = 0;
+                        int end = positionsMatchItem?.Count() ?? 0;
+                        var remain = item.Quantity;
+
+                        List<InputDetail> inputDetailsEntity = new();
+                        while (remain > 0 && start < end)
+                        {
+                            var position = positionsMatchItem.ElementAtOrDefault(start);
+                            var capacity = position.MaxInventoryNumber - position.InventoryNumber;
+
+                            //Trường hợp sức chứa lớn hơn số lượng nhập => cho hết số lượng import vào vị trí này
+                            //remain = 0 (chứa hết số lượng)
+                            //trạng thái = Normal (chứa hết số lượng)
+                            if (capacity >= remain)
+                            {
+                                position.InventoryNumber += remain;
+
+                                var inputDetailEntity = new InputDetail
+                                {
+                                    Id = Guid.NewGuid(),
+                                    InputId = inputBwinId,
+                                    BwinOutputCode = item.BwinOutputCode,
+                                    ComponentCode = item.ComponentCode,
+                                    SuplierCode = item.SupplierCode,
+                                    PositionCode = position.PositionCode,
+                                    Quantity = remain,
+                                    AllocatedQuantity = remain,
+                                    OldQuantity = remain,
+                                    Type = InputDetailType.NORMAL,
+                                    CreatedAt = _CREATEAT,
+                                    CreatedBy = _CREATEBY
+                                };
+
+                                inputDetailsEntity.Add(inputDetailEntity);
+
+                                remain = 0;
+                            }
+                            else if (capacity < remain && capacity > 0)
+                            {
+                                position.InventoryNumber = position.MaxInventoryNumber;
+                                remain -= capacity;
+
+                                var inputDetailEntity = new InputDetail
+                                {
+                                    Id = Guid.NewGuid(),
+                                    InputId = inputBwinId,
+                                    BwinOutputCode = item.BwinOutputCode,
+                                    ComponentCode = item.ComponentCode,
+                                    SuplierCode = position.SupplierCode,
+                                    PositionCode = position.PositionCode,
+                                    Quantity = capacity,
+                                    AllocatedQuantity = capacity,
+                                    OldQuantity = capacity,
+                                    Type = InputDetailType.NORMAL,
+                                    CreatedAt = _CREATEAT,
+                                    CreatedBy = _CREATEBY
+                                };
+
+                                inputDetailsEntity.Add(inputDetailEntity);
+                                //Cập nhật lại import item quantity sau khi còn dư
+                                //item.Quantity = quantity - remain;
+                            }
+                            start++;
+                        }
+
+                        if (remain > 0)
+                        {
+                            var inputDetailEntity = new InputDetail
+                            {
+                                Id = Guid.NewGuid(),
+                                InputId = inputBwinId,
+                                BwinOutputCode = item.BwinOutputCode,
+                                ComponentCode = item.ComponentCode,
+                                SuplierCode = item.SupplierCode,
+                                PositionCode = Constants.InputStorage.remainingPostionCode,
+                                Quantity = remain,
+                                Type = InputDetailType.REMAIN,
+                                Note = "Số dư",
+                                RemainingHandle = RemainingHanle.STORE,
+                                CreatedAt = _CREATEAT,
+                                CreatedBy = _CREATEBY
+                            };
+
+                            //Nếu còn dư thì các dòng được phân bổ sẽ cập nhật thành có thể sửa
+                            inputDetailsEntity.ForEach(x => x.Type = InputDetailType.EDITABLE);
+                            savedInPutDetails.AddRange(inputDetailsEntity);
+
+                            savedInPutDetails.Add(inputDetailEntity);
+                        }
+                        else if (remain <= 0)
+                        {
+                            savedInPutDetails.AddRange(inputDetailsEntity);
+                        }
+                    }
+                }
+
+                if (savedInPutDetails.Any())
+                {
+                    var saveChangeError = new ResponseModel<List<ImportInputStorageDto>>();
+
+                    var strategy = _storageContext.Database.CreateExecutionStrategy();
+                    strategy.Execute(() =>
+                    {
+                        using (var transaction = _storageContext.Database.BeginTransaction())
+                        {
+                            try
+                            {
+                                _storageContext.InputFromBwins.Add(inputBwinEntity);
+                                _storageContext.InputDetails.AddRange(savedInPutDetails);
+                                _storageContext.TemporaryStores.ExecuteDelete();
+
+                                _storageContext.SaveChanges();
+                                transaction.Commit();
+                            }
+                            catch (Exception ex)
+                            {
+                                _logger.LogError("Có lỗi khi thực hiện lưu danh sách import nhập kho", ex.Message);
+                                transaction.Rollback();
+
+                                saveChangeError.Code = StatusCodes.Status500InternalServerError;
+                                saveChangeError.Message = "Có lỗi khi thực hiện lưu phân bổ các vị trí.";
+                            }
+                             transaction.Dispose();
+                        }
+                    });
+
+                    if (saveChangeError.Code == StatusCodes.Status500InternalServerError)
+                    {
+                        return saveChangeError;
+                    }
+                }
+            }
+
+            return new ResponseModel<List<ImportInputStorageDto>>
+            {
+                Code = StatusCodes.Status200OK,
+                Data = records,
+                Message = "Đã hoàn thành phân bổ các vị trí."
+            };
+        }
+
+        private async Task<IEnumerable<RoleClaimDto>> UserPermissions(string userId)
+        {
+            var req = new RestRequest(Constants.Endpoint.Internal.absolute + $"/users/roles/{userId}");
+            req.AddHeader(Constants.HttpContextModel.ClientIdKey, _configuration.GetSection(Constants.AppSettings.ClientId).Value);
+            req.AddHeader(Constants.HttpContextModel.ClientSecretKey, _configuration.GetSection(Constants.AppSettings.ClientSecret).Value);
+
+            var result = await _resClient.ExecuteGetAsync(req);
+            var convertedResult = System.Text.Json.JsonSerializer.Deserialize<ResponseModel<IEnumerable<RoleClaimDto>>>(result.Content, JsonDefaults.CamelCaseOtions);
+            return convertedResult?.Data;
+        }
+
+        #region Tập hợp các vị trí 
+        private async Task<IEnumerable<PositionFromDBDto>> AllPositions(string userId)
+        {
+            IEnumerable<PositionFromDBDto> result;
+            using (var conn = _databaseFactory.CreateConnection())
+            {
+                var positionsQuery = "SELECT " +
+                            "    ComponentCode, " +
+                            "    PositionCode, " +
+                            "    SupplierCode, " +
+                            "    ComponentName, " +
+                            "    SupplierName, " +
+                            "    InventoryNumber, " +
+                            "    MaxInventoryNumber, " +
+                            "    FactoryId " +
+                            "FROM Positions";
+                result = await conn.QueryAsync<PositionFromDBDto>(positionsQuery);
+            }
+
+            return result;
+        }
+        #endregion
+
+        private bool TryValidateBwinOutputCode(HashSet<string> duplicateBwinCodeList, RawImportInputStorageDto item, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+
+            if (string.IsNullOrEmpty(item.BwinOutputCode))
+            {
+                errorMessage = "Thiếu mã chỉ thị xuất kho.";
+                return false;
+            }
+            
+            if (item.BwinOutputCode.Trim().Length > 50)
+            {
+                errorMessage = "Mã chỉ thị xuất kho tối đa 50 ký tự.";
+                return false;
+            }
+
+            var existBwinCode = duplicateBwinCodeList?.Contains(item.BwinOutputCode);
+            if (existBwinCode.HasValue && existBwinCode.Value)
+            {
+                errorMessage = "Mã chỉ thị đã được nhập kho hoặc bị trùng trong file";
+                return false;
+
+            }
+            return true;
+        }
+        private bool TryValidateComponentCode(IEnumerable<PositionFromDBDto> positions, RawImportInputStorageDto item, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+
+            if (string.IsNullOrEmpty(item.ComponentCode))
+            {
+                errorMessage = "Thiếu mã linh kiện.";
+                return false;
+            }
+
+            if (!StringHelper.HasOnlyNormalEnglishCharacters(item.ComponentCode))
+            {
+                errorMessage = "Mã linh kiện không đúng.";
+                return false;
+            }
+            else if (item.ComponentCode.Length > 9)
+            {
+                errorMessage = "Mã linh kiện tối đa 9 ký tự.";
+                return false;
+            }
+
+            var existComponentCode = positions.Any(x => x.ComponentCode == item.ComponentCode);
+            if (!existComponentCode)
+            {
+                errorMessage = "Không tìm thấy mã linh kiện trong hệ thống.";
+                return false;
+            }
+
+            return true;
+        }
+        
+        private bool TryValidateSupplierCode(IEnumerable<PositionFromDBDto> positions, RawImportInputStorageDto item, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+            if (string.IsNullOrEmpty(item.SupplierCode))
+            {
+                errorMessage = "Thiếu mã nhà cung cấp.";
+                return false;
+            }
+            if (item.SupplierCode.Trim().Length > 50)
+            {
+                errorMessage = "Mã nhà cung cấp tối đa 50 ký tự.";
+                return false;
+            }
+
+            var anySupplierCode = positions.Any(x => x.SupplierCode == item.SupplierCode);
+            if (!anySupplierCode)
+            {
+                errorMessage = "Không tìm thấy mã nhà cung cấp trong hệ thống.";
+                return false;
+            }
+
+            return true;
+        }
+        private bool TryValidateQuantity(IEnumerable<PositionFromDBDto> positions, RawImportInputStorageDto item, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+            if (string.IsNullOrEmpty(item.Quantity))
+            {
+                errorMessage = "Thiếu số lượng nhập kho.";
+                return false;
+            }
+            var quantityLength = item.Quantity.ToString().Length;
+            if (quantityLength > 8)
+            {
+                errorMessage = "Số lượng nhập tối đa 8 ký tự.";
+                return false;
+            }
+
+            if (!double.TryParse(item.Quantity, out var convertedValue))
+            {
+                errorMessage = "Số lượng nhập kho không đúng định dạng.";
+                return false;
+            }
+
+            if (convertedValue == 0)
+            {
+                errorMessage = "Thiếu số lượng nhập kho.";
+                return false;
+            }
+
+            return true;
+        }
+
+        private async Task<IEnumerable<ImportInputStorageDto>> ValidateBasicFields(string userId, IEnumerable<RawImportInputStorageDto> records)
+        {
+            //Quyền nhà máy của người dùng
+            var userPermissions = await UserPermissions(userId);
+            var factoriesId = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY)?.Select(x => x.ClaimValue.ToLower())
+                                        ?? Enumerable.Empty<string>();
+            var positions = await AllPositions(userId);
+
+            //List all bwinCode from system to check exist bwinCode
+            var bwinFromDetails = _storageContext.InputDetails.Select(x => x.BwinOutputCode).ToHashSet<string>() ?? new();
+            var aggregatedBwinCodeFromSystem = new HashSet<string>(bwinFromDetails);
+
+            //List all duplicate bwinCode from excel file to check exist bwinCode
+            var aggregateDuplicateBwinCodeFromFile = records.GroupBy(x => x.BwinOutputCode)
+                                                    .Where(x => x.Count() > 1)
+                                                    .Select(x => x.Key).ToHashSet<string>() ?? new();
+
+            var duplicateBwinCodeHashSet = new HashSet<string>(aggregatedBwinCodeFromSystem.Union(aggregateDuplicateBwinCodeFromFile));
+
+            List<ImportInputStorageDto> validatedResult = new();
+            for (int i = 0; i < records.Count(); i++)
+            {
+                var item = records.ElementAtOrDefault(i);
+                bool valid = true;
+
+                ImportInputStorageDto importInputModel = new();
+                var errors = importInputModel.Errors;
+
+                do
+                {
+                    var validateOutputCodeResult = TryValidateBwinOutputCode(duplicateBwinCodeHashSet, item, out string errBwinCode);
+                    var validateComponentCodeResult = TryValidateComponentCode(positions, item, out string errorComponentCode);
+                    var validateSupplierCodeResult = TryValidateSupplierCode(positions, item, out string errSupplierCode);
+                    var validateQuantityResult = TryValidateQuantity(positions, item, out string errQuantity);
+
+                    if (validateOutputCodeResult == false)
+                    {
+                        errors.Add(nameof(ImportInputStorageDto.BwinOutputCode), errBwinCode);
+                        valid = false;
+                        break;
+                    }
+
+                    if(validateComponentCodeResult && validateSupplierCodeResult)
+                    {
+                        //Tìm thấy ít nhất một vị trí theo componentcode và suppliercode
+                        var findPositions = positions.Where(x => x.ComponentCode == item.ComponentCode && x.SupplierCode == item.SupplierCode);
+                        if (!findPositions.Any())
+                        {
+                            errors.Add(nameof(ImportInputStorageDto.PositionCode), $"Không tìm thấy vị trí có mã linh kiện {item.ComponentCode} và mã nhà cung cấp {item.SupplierCode}");
+                            valid = false;
+                            break;
+                        }else if (findPositions.Any())
+                        {
+                            //Vị trí thuộc nhà máy được phân quyền 
+                            var positionInUserFactories = positions.Where(x => factoriesId.Contains(x.FactoryId.ToString().ToLower()));
+                            if (positionInUserFactories == null || !positionInUserFactories.Any())
+                            {
+                                errors.Add(nameof(ImportInputStorageDto.PositionCode), $"Vị trí không thuộc nhà máy được phân quyền.");
+                                valid = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    var allBasicValid = validateComponentCodeResult && validateSupplierCodeResult && validateQuantityResult;
+                    if (!allBasicValid)
+                    {
+                        if (!validateComponentCodeResult) errors.Add(nameof(ImportInputStorageDto.ComponentCode), errorComponentCode);
+                        if (!validateSupplierCodeResult) errors.Add(nameof(ImportInputStorageDto.SupplierCode), errSupplierCode);
+                        if (!validateQuantityResult) errors.Add(nameof(ImportInputStorageDto.Quantity), errQuantity);
+                        valid = false;
+                        break;
+                    }
+                    break;
+                } while (valid);
+
+                //Add summary errors
+                if (importInputModel.Errors?.Keys?.Count > 0)
+                {
+                    valid = false;
+                    importInputModel.Errors.TryAdd("Summary", string.Join("\n", importInputModel.Errors.Select(x => x.Value)));
+                }
+
+                importInputModel.Valid = valid;
+                importInputModel.BwinOutputCode = item.BwinOutputCode;
+                importInputModel.ComponentCode = item.ComponentCode;
+                importInputModel.SupplierCode = item.SupplierCode;
+                //Chuyển giá trị string từ raw model sang import model dạng double
+                importInputModel.Quantity = double.TryParse(item.Quantity, out var convertedQuantity) ? convertedQuantity : default;
+                validatedResult.Add(importInputModel);
+            }
+            return validatedResult;
+        }
+
+        private IEnumerable<ImportInputStorageDto> GetTemporaryRecords()
+        {
+            var temporaryNewList = new List<ImportInputStorageDto>();
+
+            var results = _storageContext.TemporaryStores.AsQueryable();
+            if (results?.Any() == true)
+            {
+                foreach (var item in results)
+                {
+                    var newItem = new ImportInputStorageDto
+                    {
+                        BwinOutputCode = item.BwinOutputCode,
+                        ComponentCode = item.ComponentCode,
+                        SupplierCode = item.SupplierCode,
+                        Quantity = item.Quantity,
+                        SourceType = SourceType.TEMPORARY,
+                        Valid = true
+                    };
+
+                    temporaryNewList.Add(newItem);
+                }
+            }
+
+            return temporaryNewList;
+        }
+
+
+        public async Task<ResponseModel> GetListFromFile(IFormFile file)
+        {
+            List<RawImportInputStorageDto> rawImportInputStorageDtos = new();
+            var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                Encoding = Encoding.UTF8,
+                Delimiter = ",",
+                TrimOptions = TrimOptions.Trim,
+                Escape = '"',
+                HasHeaderRecord = true,
+                PrepareHeaderForMatch = header => Regex.Replace(header.Header, @"[\s-]+", string.Empty),
+                ShouldSkipRecord = args => args.Row.Parser.Record.All(string.IsNullOrWhiteSpace)
+            };
+
+            try
+            {
+                using (var stream = new MemoryStream())
+                {
+                    file.CopyTo(stream);
+                    stream.Seek(0, SeekOrigin.Begin);
+
+                    using (var reader = new StreamReader(stream))
+                    {
+                        using (var csv = new CsvReader(reader, configuration))
+                        {
+                            csv.Read();
+                            csv.ReadHeader();
+
+                            csv.Context.RegisterClassMap<RawImportInputStorageDtoMap>();
+                            rawImportInputStorageDtos = csv.GetRecords<RawImportInputStorageDto>().ToList();
+                        }
+                    }
+                }
+            }
+            catch (CsvHelper.MissingFieldException ex)
+            {
+                _logger.LogError("Thiếu cột dữ liệu khi import nhập kho.", ex.Message);
+                return new ResponseModel
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Message = "File không đúng định dạng. Vui lòng thử lại."
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Có lỗi khi thực hiện đọc file import nhập kho.", ex.Message);
+                return new ResponseModel
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Message = "Có lỗi khi thực hiện đọc file import nhập kho."
+                };
+            }
+
+            return new ResponseModel
+            {
+                Code = StatusCodes.Status200OK,
+                Data = rawImportInputStorageDtos,
+            };
+        }
+        private byte[] WriteToExcel(IEnumerable<ImportInputStorageDto> records)
+        {
+            const string _SHEETNAME = "Kết quả nhập kho";
+            const string _ERROR_SUMMARY = "Nội dung lỗi";
+
+            var dataLength = records?.Count() ?? 0;
+
+            if (records != null && records.Any() == true)
+            {
+                using (var package = new ExcelPackage())
+                {
+                    var worksheet = package.Workbook.Worksheets.Add(_SHEETNAME);
+
+                    // Đặt tiêu đề cho cột
+                    worksheet.Cells[1, 1].Value = Utilities.InputStorageExcelHeaderNames[nameof(ImportInputStorageDto.BwinOutputCode)];
+                    worksheet.Cells[1, 2].Value = Utilities.InputStorageExcelHeaderNames[nameof(ImportInputStorageDto.ComponentCode)];
+                    worksheet.Cells[1, 3].Value = Utilities.InputStorageExcelHeaderNames[nameof(ImportInputStorageDto.Quantity)];
+                    worksheet.Cells[1, 4].Value = Utilities.InputStorageExcelHeaderNames[nameof(ImportInputStorageDto.SupplierCode)];
+                   
+                    worksheet.Cells[1, 5].Value = _ERROR_SUMMARY;
+
+                    // Đặt kiểu và màu cho tiêu đề
+                    using (var range = worksheet.Cells[1, 1, 1, 5])
+                    {
+                        range.Style.Font.Bold = true;
+                        range.Style.Fill.PatternType = ExcelFillStyle.None;
+                    }
+
+                    // Điền dữ liệu vào Excel
+                    for (int i = 0; i < dataLength; i++)
+                    {
+                        var item = records.ElementAtOrDefault(i);
+
+                        var errorContent = item.Errors.TryGetValue("Summary", out string errContent);
+
+                        worksheet.Cells[i + 2, 1].Value = item.BwinOutputCode;
+                        worksheet.Cells[i + 2, 2].Value = item.ComponentCode;
+                        worksheet.Cells[i + 2, 3].Value = item.Quantity;
+                        worksheet.Cells[i + 2, 4].Value = item.SupplierCode;
+                        worksheet.Cells[i + 2, 5].Value = errContent;
+
+                        if (item.Errors.Any() == true)
+                        {
+                            using (var errorRange = worksheet.Cells[i + 2, 5, i + 2, 5])
+                            {
+                                errorRange.Style.Font.Color.SetColor(Color.Red);
+                                errorRange.Style.Fill.PatternType = ExcelFillStyle.None;
+                            }
+                        }
+                    }
+
+                    // Lưu file Excel
+                    var stream = new MemoryStream();
+                    package.SaveAs(stream);
+                    return stream.ToArray();
+                }
+            }
+
+            return default;
+        }
+
+        private async Task<IEnumerable<InternalUserDto>> GetInternalUsers()
+        {
+            var req = new RestRequest(Constants.Endpoint.Internal.absolute + "/users");
+            req.AddHeader(Constants.HttpContextModel.ClientIdKey, _configuration.GetSection(Constants.AppSettings.ClientId).Value);
+            req.AddHeader(Constants.HttpContextModel.ClientSecretKey, _configuration.GetSection(Constants.AppSettings.ClientSecret).Value);
+
+            var result = await _resClient.ExecuteGetAsync(req);
+            var convertedResult = System.Text.Json.JsonSerializer.Deserialize<ResponseModel<IEnumerable<InternalUserDto>>>(result.Content, JsonDefaults.CamelCaseOtions);
+            return convertedResult.Data;
+        }
+        public async Task<ResponseModel<ResultSet<IEnumerable<InputStorageListModel>>>> GetInputStorageList_Old(InputStorageListQueryModel queryModel)
+        {
+            ResultSet<IEnumerable<InputStorageListModel>> resultSet = new();
+
+            //var users 
+            var users = await GetInternalUsers();
+            var usersDictionary = users.ToDictionary(x => x.Id.ToLower());
+            var userIds = users.Select(x => x.Id.ToLower());
+
+            var factoryIds = await _storageContext.Factories.AsNoTracking().Select(x => x.Id.ToString().ToLower()).ToListAsync();
+            var userPermissions = await UserPermissions(queryModel?.UserId);
+            var userViewFactoryIds = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY).Select(x => x.ClaimValue.ToLower())
+                                     ?? queryModel.Factories;
+
+            //Nếu không có quyền truy cập nhà máy nào thì không trả về dữ liệu gì
+            if (userViewFactoryIds?.Any() == false)
+            {
+                return new ResponseModel<ResultSet<IEnumerable<InputStorageListModel>>>
+                {
+                    Code = StatusCodes.Status404NotFound,
+                    Message = "Không tìm thấy dữ liệu phù hợp."
+                };
+            }
+
+            var result = from bw in _storageContext.InputFromBwins.AsNoTracking()
+                         join dt in (from dt in _storageContext.InputDetails.AsNoTracking()
+                                     join p in _storageContext.Positions.AsNoTracking() on dt.PositionCode equals p.PositionCode into t1Group
+                                     from t1 in t1Group.DefaultIfEmpty()
+                                     let convertFactoryId = t1 != null ? t1.FactoryId.ToString().ToLower() : string.Empty
+                                     where ((dt.SuplierCode == t1.SupplierCode && dt.ComponentCode == t1.ComponentCode && userViewFactoryIds.Contains(convertFactoryId)) || (dt.PositionCode == Constants.InputStorage.remainingPostionCode))
+                                     select new InputDetailPositionModel
+                                     {
+                                         DetailId = dt.Id,
+                                         InputId = dt.InputId,
+                                         PositionCode = dt.PositionCode,
+                                         ComponentCode = dt.ComponentCode,
+                                         SuplierCode = dt.SuplierCode,
+                                         Quantity = dt.Quantity,
+                                         FactoryId = t1 != null && t1.FactoryId.HasValue ? t1.FactoryId.ToString().ToLower() : string.Empty
+                                     })
+                        on bw.Id equals dt.InputId into dtGroup
+                         let convertedCreateBy = bw.CreatedBy.ToLower()
+                         let user = usersDictionary.ContainsKey(convertedCreateBy) == true ? usersDictionary[convertedCreateBy] : null
+                         where dtGroup.Any(x => userViewFactoryIds.Contains(x.FactoryId.ToLower()) || x.PositionCode == Constants.InputStorage.remainingPostionCode)
+                         select new BwinInputDetailModel
+                         {
+                             BwinId = bw.Id,
+                             CreatedAt = bw.CreatedAt,
+                             CreatedBy = bw.CreatedBy,
+                             Status = (int)bw.Status,
+                             UserCode = user != null ? user.Code : string.Empty,
+                             UserName = user != null ? user.Name : string.Empty,
+                             Total = dtGroup.Where(x => userViewFactoryIds.Contains(x.FactoryId) || x.PositionCode == Constants.InputStorage.remainingPostionCode).Sum(x => x.Quantity)
+                         };
+
+            Func<BwinInputDetailModel, bool> conditionClause = (x) =>
+            {
+                if (queryModel == null)
+                {
+                    return true;
+                }
+
+                bool isValidUserName = true;
+                bool isValidDateRange = true;
+                bool isValidStatus = true;
+
+                //Lọc điều kiện theo tên
+                if (!string.IsNullOrEmpty(queryModel.UserName))
+                {
+                    var convertedUserName = queryModel.UserName.ToLower();
+                    isValidUserName = string.IsNullOrEmpty(x.UserName) ? false : x.UserName.ToLower().Contains(convertedUserName);
+                }
+                //Lọc điều kiện theo 3 case: Có cả bắt đầu và kết thúc, chỉ có bắt đầu, chỉ có kết thúc
+                if (queryModel.DateFrom != null && queryModel.DateTo != null)
+                {
+                    isValidDateRange = x.CreatedAt.Date >= queryModel.DateFrom.Value.Date && x.CreatedAt.Date <= queryModel.DateTo.Value.Date;
+                }
+                else if (queryModel.DateFrom != null)
+                {
+                    isValidDateRange = x.CreatedAt.Date >= queryModel.DateFrom.Value.Date;
+                }
+                else if (queryModel.DateTo != null)
+                {
+                    isValidDateRange = x.CreatedAt.Date <= queryModel.DateTo.Value.Date;
+                }
+                //Lọc điều kiện theo trạng thái
+                if (queryModel.Statuses?.Any() == true)
+                {
+                    var convertedStatuses = queryModel.Statuses.Select(x => int.Parse(x));
+                    isValidStatus = convertedStatuses.Contains(x.Status);
+                }
+
+                var aggregateCondition = isValidUserName && isValidDateRange && isValidStatus;
+                return aggregateCondition;
+            };
+
+            resultSet.TotalRecords = result?.Where(conditionClause)?.Count() ?? 0;
+
+            if (resultSet.TotalRecords <= 0)
+            {
+                return new ResponseModel<ResultSet<IEnumerable<InputStorageListModel>>>
+                {
+                    Code = StatusCodes.Status404NotFound,
+                    Message = "Không tìm thấy dữ liệu phù hợp.",
+                };
+            }
+
+            result = result?.OrderByDescending(x => x.CreatedAt);
+            resultSet.Data = result?.Where(conditionClause)
+                            ?.Skip(queryModel.Skip)?.Take(queryModel.PageSize)
+                            ?.Select(x => new InputStorageListModel
+                            {
+                                InputId = x.BwinId.ToString().ToLower(),
+                                UserCode = x.UserCode,
+                                UserName = x.UserName,
+                                Status = x.Status,
+                                Total = x.Total,
+                                CreateDate = x.CreatedAt,
+                                CreateBy = x.CreatedBy
+                            });
+
+            return new ResponseModel<ResultSet<IEnumerable<InputStorageListModel>>>
+            {
+                Code = StatusCodes.Status200OK,
+                Data = resultSet,
+            };
+        }
+        public async Task<ResponseModel<ResultSet<IEnumerable<InputStorageListModel>>>> GetInputStorageList(InputStorageListQueryModel queryModel)
+        {
+            ResultSet<IEnumerable<InputStorageListModel>> resultSet = new();
+
+            // Users for mapping CreatedBy -> UserName/UserCode
+            var users = await GetInternalUsers();
+            var usersDictionary = users.ToDictionary(x => x.Id.ToLower());
+
+            // Permissions and selected factories (intersect when both present)
+            var userPermissions = await UserPermissions(queryModel?.UserId);
+            var permittedFactoryIds = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY)
+                                                      .Select(x => x.ClaimValue.ToUpper())
+                                                      .ToList() ?? new List<string>();
+            var selectedFactoryIds = queryModel?.Factories?.Select(x => x.ToUpper()).ToList() ?? new List<string>();
+
+            List<string> userViewFactoryIds;
+            if (selectedFactoryIds.Any())
+            {
+                userViewFactoryIds = permittedFactoryIds.Any()
+                    ? permittedFactoryIds.Intersect(selectedFactoryIds).ToList()
+                    : selectedFactoryIds;
+            }
+            else
+            {
+                userViewFactoryIds = permittedFactoryIds;
+            }
+
+            //Nếu không có quyền truy cập nhà máy nào thì không trả về dữ liệu gì
+            if (userViewFactoryIds?.Any() == false)
+            {
+                return new ResponseModel<ResultSet<IEnumerable<InputStorageListModel>>>
+                {
+                    Code = StatusCodes.Status404NotFound,
+                    Message = "Không tìm thấy dữ liệu phù hợp."
+                };
+            }
+
+            // Query aggregated input list via Dapper
+            var sql = @"SELECT bw.Id       AS BwinId,
+                               bw.CreatedAt AS CreatedAt,
+                               bw.CreatedBy AS CreatedBy,
+                               CAST(bw.Status AS int) AS Status,
+                               SUM(dt.Quantity) AS Total
+                        FROM InputFromBwins bw
+                        JOIN InputDetails dt ON dt.InputId = bw.Id
+                        LEFT JOIN Positions p ON dt.PositionCode = p.PositionCode
+                        WHERE (
+                            (dt.SuplierCode = p.SupplierCode AND dt.ComponentCode = p.ComponentCode AND p.FactoryId IN @FactoryIds)
+                            OR dt.PositionCode = @RemainCode
+                        )
+                        GROUP BY bw.Id, bw.CreatedAt, bw.CreatedBy, bw.Status
+                        ORDER BY bw.CreatedAt DESC";
+
+            var parameters = new Dapper.DynamicParameters();
+            parameters.Add("FactoryIds", userViewFactoryIds.Select(Guid.Parse).ToList());
+            parameters.Add("RemainCode", Constants.InputStorage.remainingPostionCode);
+
+            IEnumerable<BwinInputSummaryRow> rows;
+            using (var conn = _databaseFactory.CreateConnection())
+            {
+                rows = await conn.QueryAsync<BwinInputSummaryRow>(sql, parameters);
+            }
+
+            var list = rows.Select(r =>
+            {
+                var createdByLower = r.CreatedBy?.ToLower() ?? string.Empty;
+                var user = usersDictionary.ContainsKey(createdByLower) ? usersDictionary[createdByLower] : null;
+                return new InputStorageListModel
+                {
+                    InputId = r.BwinId.ToString().ToLower(),
+                    CreateDate = r.CreatedAt,
+                    CreateBy = r.CreatedBy,
+                    Status = r.Status,
+                    Total = r.Total,
+                    UserCode = user != null ? user.Code : string.Empty,
+                    UserName = user != null ? user.Name : string.Empty
+                };
+            }).ToList();
+
+            Func<InputStorageListModel, bool> conditionClause = (x) =>
+            {
+                if (queryModel == null)
+                {
+                    return true;
+                }
+
+                bool isValidUserName = true;
+                bool isValidDateRange = true;
+                bool isValidStatus = true;
+
+                // Filter by user name
+                if (!string.IsNullOrEmpty(queryModel.UserName))
+                {
+                    var convertedUserName = queryModel.UserName.ToLower();
+                    isValidUserName = string.IsNullOrEmpty(x.UserName) ? false : x.UserName.ToLower().Contains(convertedUserName);
+                }
+                // Date range filter
+                if (queryModel.DateFrom != null && queryModel.DateTo != null)
+                {
+                    isValidDateRange = x.CreateDate.Date >= queryModel.DateFrom.Value.Date && x.CreateDate.Date <= queryModel.DateTo.Value.Date;
+                }
+                else if (queryModel.DateFrom != null)
+                {
+                    isValidDateRange = x.CreateDate.Date >= queryModel.DateFrom.Value.Date;
+                }
+                else if (queryModel.DateTo != null)
+                {
+                    isValidDateRange = x.CreateDate.Date <= queryModel.DateTo.Value.Date;
+                }
+                // Status filter
+                if (queryModel.Statuses?.Any() == true)
+                {
+                    var convertedStatuses = queryModel.Statuses.Select(s => int.Parse(s));
+                    isValidStatus = convertedStatuses.Contains(x.Status);
+                }
+
+                return isValidUserName && isValidDateRange && isValidStatus;
+            };
+
+            var filtered = list.Where(conditionClause);
+            resultSet.TotalRecords = filtered.Count();
+
+            if (resultSet.TotalRecords <= 0)
+            {
+                return new ResponseModel<ResultSet<IEnumerable<InputStorageListModel>>>
+                {
+                    Code = StatusCodes.Status404NotFound,
+                    Message = "Không tìm thấy dữ liệu phù hợp.",
+                };
+            }
+
+            resultSet.Data = filtered
+                            .OrderByDescending(x => x.CreateDate)
+                            .Skip(queryModel.Skip)
+                            .Take(queryModel.PageSize)
+                            .ToList();
+
+            return new ResponseModel<ResultSet<IEnumerable<InputStorageListModel>>>
+            {
+                Code = StatusCodes.Status200OK,
+                Data = resultSet,
+            };
+        }
+        // Add this class definition near the top or bottom of StorageService.cs, outside the StorageService class.
+        private class BwinInputSummaryRow
+        {
+            public Guid BwinId { get; set; }
+            public DateTime CreatedAt { get; set; }
+            public string CreatedBy { get; set; }
+            public int Status { get; set; }
+            public double Total { get; set; }
+        }
+        // Hàm old  
+        public async Task<ResponseModel<IEnumerable<InputStorageDetailDto>>> GetInputDetails_Old(FilterInputDetailModel filterModel)
+        {
+            if (filterModel == null)
+            {
+                return new ResponseModel<IEnumerable<InputStorageDetailDto>>
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                };
+            }
+
+            //Quyền nhà máy của người dùng
+            var userPermissions = await UserPermissions(filterModel.UserId);
+            var factoriesId = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY).Select(x => x.ClaimValue.ToLower())
+                              ?? filterModel.Factories;
+            if (factoriesId == null || !factoriesId.Any())
+            {
+                return new ResponseModel<IEnumerable<InputStorageDetailDto>>
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Message = "Bạn không có quyền xem dữ liệu nhà máy nào."
+                };
+            }
+
+            IEnumerable<InputStorageDetailDto> aggregate;
+            using (var conn = _databaseFactory.CreateConnection())
+            {
+                string query = $"SELECT InputId, BwinOutputCode, dt.ComponentCode, " +
+                                $"SuplierCode, dt.PositionCode , Quantity , dt.Note, " +
+                                $"dt.Id as 'DetailId',Type, RemainingHandle, dt.CreatedAt, dt.CreatedBy, p.FactoryId " +
+                                $"FROM InputDetails as dt " +
+                                $"LEFT JOIN Positions as p on dt.PositionCode = p.PositionCode " +
+                                $"WHERE ((dt.SuplierCode = p.SupplierCode AND dt.ComponentCode = p.ComponentCode) OR (dt.PositionCode) = '{Constants.InputStorage.remainingPostionCode}') " +
+                                $" AND InputId = '{filterModel.InputId}' " +
+                                $"ORDER By dt.ComponentCode, dt.Quantity DESC, dt.SuplierCode; ";
+
+                aggregate = await conn.QueryAsync<InputStorageDetailDto>(query);
+            }
+
+            //Mặc định vào sẽ lọc theo nhà máy phân quyền
+            aggregate = aggregate.Where(x => (x.PositionCode == Constants.InputStorage.remainingPostionCode) || (factoriesId.Contains(x.FactoryId.ToString().ToLower()) == true));
+
+            return new ResponseModel<IEnumerable<InputStorageDetailDto>>
+            {
+                Code = StatusCodes.Status200OK,
+                Data = aggregate,
+                Message = "Danh sách chi tiết lần nhập xuất"
+            };
+        }
+        public async Task<ResponseModel<IEnumerable<InputStorageDetailDto>>> GetInputDetails(FilterInputDetailModel filterModel)
+        {
+            if (filterModel == null)
+            {
+                return new ResponseModel<IEnumerable<InputStorageDetailDto>>
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                };
+            }
+
+            //Quyền nhà máy của người dùng
+            var userPermissions = await UserPermissions(filterModel.UserId);
+            var permittedFactoryIds = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY)
+                                                      .Select(x => x.ClaimValue.ToUpper())
+                                                      .ToList() ?? new List<string>();
+            var selectedFactoryIds = filterModel.Factories?.Select(x => x.ToUpper()).ToList() ?? new List<string>();
+
+            List<string> factoryIds;
+            if (selectedFactoryIds.Any())
+            {
+                factoryIds = permittedFactoryIds.Any()
+                    ? permittedFactoryIds.Intersect(selectedFactoryIds).ToList()
+                    : selectedFactoryIds;
+            }
+            else
+            {
+                factoryIds = permittedFactoryIds;
+            }
+
+            if (factoryIds == null || !factoryIds.Any())
+            {
+                return new ResponseModel<IEnumerable<InputStorageDetailDto>>
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Message = "Bạn không có quyền xem dữ liệu nhà máy nào."
+                };
+            }
+
+            IEnumerable<InputStorageDetailDto> aggregate;
+            using (var conn = _databaseFactory.CreateConnection())
+            {
+                string query = @"SELECT InputId,
+                                         BwinOutputCode,
+                                         dt.ComponentCode,
+                                         SuplierCode,
+                                         dt.PositionCode,
+                                         Quantity,
+                                         dt.Note,
+                                         dt.Id as 'DetailId',
+                                         Type,
+                                         RemainingHandle,
+                                         dt.CreatedAt,
+                                         dt.CreatedBy,
+                                         p.FactoryId
+                                  FROM InputDetails as dt
+                                  LEFT JOIN Positions as p on dt.PositionCode = p.PositionCode
+                                  WHERE ((dt.SuplierCode = p.SupplierCode AND dt.ComponentCode = p.ComponentCode AND p.FactoryId IN @FactoryIds)
+                                         OR (dt.PositionCode = @RemainCode))
+                                    AND dt.InputId = @InputId
+                                  ORDER BY dt.ComponentCode, dt.Quantity DESC, dt.SuplierCode;";
+
+                var parameters = new Dapper.DynamicParameters();
+                parameters.Add("FactoryIds", factoryIds.Select(Guid.Parse).ToList());
+                parameters.Add("RemainCode", Constants.InputStorage.remainingPostionCode);
+                parameters.Add("InputId", Guid.Parse(filterModel.InputId));
+
+                aggregate = await conn.QueryAsync<InputStorageDetailDto>(query, parameters);
+            }
+
+            return new ResponseModel<IEnumerable<InputStorageDetailDto>>
+            {
+                Code = StatusCodes.Status200OK,
+                Data = aggregate,
+                Message = "Danh sách chi tiết lần nhập xuất"
+            };
+        }
+
+        public async Task<ResponseModel<bool>> UpdateInputDetail(Guid inputDetailId, UpdateInputDetailDto updateInputDetailDto)
+        {
+            string convertedInputDetailId = inputDetailId.ToString().ToLower();
+            var updateEntity = await _storageContext.InputDetails.FirstOrDefaultAsync(x => x.Id.ToString().ToLower().Contains(convertedInputDetailId));
+
+            //Validate quantity
+            if (updateInputDetailDto.Quantity <= 0)
+            {
+                return new ResponseModel<bool>
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Data = false,
+                    Message = "Vui lòng nhập số lượng từ 1 trở lên."
+                };
+            }
+
+            if (updateInputDetailDto.Quantity > updateEntity.AllocatedQuantity)
+            {
+                return new ResponseModel<bool>
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Data = false,
+                    Message = $"Sức chứa trong kho là {updateEntity.AllocatedQuantity} linh kiện. Vui lòng không nhập kho vượt quá số lượng này."
+                };
+            }
+
+            //Cập nhật lại số dư
+            var remainingEntity = await _storageContext.InputDetails.FirstOrDefaultAsync(x => x.InputId.Value == updateEntity.InputId.Value
+                                                                                          && x.BwinOutputCode == updateEntity.BwinOutputCode
+                                                                                          && x.ComponentCode == updateEntity.ComponentCode
+                                                                                          && x.SuplierCode == updateEntity.SuplierCode
+                                                                                          && x.Type == InputDetailType.REMAIN);
+            if (remainingEntity != null)
+            {
+                if (updateInputDetailDto.Quantity - updateEntity.OldQuantity < 0)
+                {
+                    remainingEntity.Quantity += (updateEntity.OldQuantity - updateInputDetailDto.Quantity);
+                }
+                else if (updateInputDetailDto.Quantity - updateEntity.OldQuantity > 0)
+                {
+                    remainingEntity.Quantity -= (updateInputDetailDto.Quantity - updateEntity.OldQuantity);
+                }
+                remainingEntity.Note = $"Số dư";
+
+                //Cập nhật số lượng phân bổ cho vị trí phân bổ hết
+                updateEntity.Quantity = updateInputDetailDto.Quantity;
+                updateEntity.OldQuantity = updateEntity.Quantity;
+                updateEntity.Note = updateInputDetailDto.Note;
+                updateEntity.UpdatedBy = updateInputDetailDto.UserId;
+                updateEntity.UpdatedAt = DateTime.Now;
+
+                try
+                {
+                    var saveChangeResult = await _storageContext.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError("Có lỗi khi lưu lần nhập này");
+                    _logger.LogError(ex.Message);
+
+                    return new ResponseModel<bool>
+                    {
+                        Code = StatusCodes.Status400BadRequest,
+                        Data = false,
+                        Message = "Có lỗi khi lưu lần nhập này."
+                    };
+                }
+            }
+
+            return new ResponseModel<bool>
+            {
+                Code = StatusCodes.Status200OK,
+                Data = true,
+                Message = "Cập nhật số lượng phân bổ thành công."
+            };
+        }
+
+        public async Task<ResponseModel<bool>> ChangeInputDetailStatus(Guid inputDetailId, RemainingHanle remainingHanle)
+        {
+            var updateEntity = await _storageContext.InputDetails.FirstOrDefaultAsync(x => x.Id == inputDetailId);
+
+            if (updateEntity == null)
+            {
+                return new ResponseModel<bool>
+                {
+                    Data = false,
+                    Code = StatusCodes.Status400BadRequest,
+                    Message = "Không tìm thấy dữ liệu để cập nhật."
+                };
+            }
+
+            //Update remaining handle
+            updateEntity.RemainingHandle = remainingHanle;
+
+            try
+            {
+                await _storageContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Cập nhật lần nhập thất bại", ex);
+
+                return new ResponseModel<bool>
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Data = false,
+                    Message = "Cập nhật lần nhập thất bại"
+                };
+            }
+
+            return new ResponseModel<bool>
+            {
+                Code = StatusCodes.Status200OK,
+                Data = true,
+                Message = "Cập nhật lần nhập thành công."
+            };
+        }
+
+        public async Task<ResponseModel<ImportStorageResultModel>> ConfirmImport(Guid userId, Guid inputId)
+        {
+            var users = await GetInternalUsers();
+            var userPermissions = await UserPermissions(userId.ToString());
+            var viewFactoryIds = userPermissions.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY).Select(x => x.ClaimValue.ToLower());
+
+            if (!viewFactoryIds.Any())
+            {
+                return new ResponseModel<ImportStorageResultModel>
+                {
+                    Code = StatusCodes.Status404NotFound,
+                    Message = "Bạn không có quyền nhà máy nào."
+                };
+            }
+
+            var inputDetails = _storageContext.InputDetails.Where(x => x.InputId == inputId);
+            var dbPositions = _storageContext.Positions.Where(x => viewFactoryIds.Contains(x.FactoryId.ToString().ToLower()));
+
+            //Danh sách lần nhập để phân bổ
+            var validDetails = inputDetails.Where(x => x.Type != InputDetailType.REMAIN);
+            //Danh sách lần nhập thuộc nhà máy
+            var detailsInFactory = validDetails.Where(x => dbPositions.Any(p => p.PositionCode == x.PositionCode 
+                                                                            && p.ComponentCode == x.ComponentCode 
+                                                                            && p.SupplierCode == x.SuplierCode) == true);
+            
+            //Thực hiện phân bổ cho các bản ghi hợp lệ
+            //Danh sách còn lại gồm lưu tạm và trả về bwin
+            var storeDetails = await inputDetails.Where(x => x.Type == InputDetailType.REMAIN && x.RemainingHandle == RemainingHanle.STORE)
+                                                .Select(x => new TemporaryStore
+                                                {
+                                                    CreatedAt = x.CreatedAt,
+                                                    CreatedBy = x.CreatedBy,
+                                                    Id = Guid.NewGuid(),
+                                                    BwinOutputCode = x.BwinOutputCode,
+                                                    ComponentCode = x.ComponentCode,
+                                                    Quantity = x.Quantity,
+                                                    SupplierCode = x.SuplierCode
+                                                }).ToListAsync();
+
+            List<PositionHistory> savedPositionHistories = new();
+            var currentUserInfo = users?.FirstOrDefault(x => x.Id.ToLower() == userId.ToString().ToLower());
+            var positionMatchInputDetails = dbPositions.Where(x => detailsInFactory.Any(d => d.ComponentCode == x.ComponentCode && d.SuplierCode == x.SupplierCode && d.PositionCode == x.PositionCode));
+
+            //Biến để lưu mỗi lần phân bổ vào vị trí thành công hoặc thất bại
+            List<ImportInputStorageDto> trackingImports = new();
+
+            foreach (var position in positionMatchInputDetails)
+            {
+                ImportInputStorageDto trackingModel = new ImportInputStorageDto
+                {
+                    Valid = true,
+                    ComponentCode = position.ComponentCode,
+                    SupplierCode = position.SupplierCode,
+                    PositionCode = position.PositionCode,
+                };
+
+                var details = detailsInFactory.Where(x => x.ComponentCode == position.ComponentCode
+                                                                        && x.SuplierCode == position.SupplierCode
+                                                                        && x.PositionCode == position.PositionCode).ToList();
+
+                foreach (var inputDetail in details)
+                {
+                    var capacity = position.MaxInventoryNumber - position.InventoryNumber;
+                    //Trường hợp sức chứa âm thì bỏ qua vì trong dữ liệu có sức chứa < 0
+                    if (capacity < 0)
+                    {
+                        trackingModel.Valid = false;
+                        trackingModel.Errors.TryAdd(nameof(position.InventoryNumber), "Vị trí có sức chứa âm");
+
+                        continue;
+                    }
+                    //Nếu số lượng phân bổ âm
+                    if (inputDetail.Quantity < 0)
+                    {
+                        //Số lượng nhập âm vượt quá số lượng tồn kho
+                        if (position.InventoryNumber + inputDetail.Quantity < 0)
+                        {
+                            trackingModel.Valid = false;
+                            trackingModel.Quantity = inputDetail.Quantity;
+                            trackingModel.Errors.TryAdd(nameof(inputDetail.Quantity), "Số lượng không phù hợp để phân bổ vào vị trí này.");
+                        }
+                        else
+                        {
+                            position.InventoryNumber += inputDetail.Quantity;
+
+                            savedPositionHistories.Add(new PositionHistory
+                            {
+                                Id = Guid.NewGuid(),
+                                CreatedAt = DateTime.Now,
+                                CreatedBy = userId.ToString(),
+                                ComponentCode = inputDetail.ComponentCode,
+                                SupplierCode = inputDetail.SuplierCode,
+                                PositionCode = inputDetail.PositionCode,
+                                ComponentName = position.ComponentName,
+                                DepartmentId = currentUserInfo != null ? Guid.Parse(currentUserInfo.DepartmentId) : default,
+                                FactoryId = position != null ? position.FactoryId : default,
+                                Note = !string.IsNullOrEmpty(inputDetail.Note) ? inputDetail.Note : string.Empty,
+                                Quantity = inputDetail.Quantity,
+                                InventoryNumber = position.InventoryNumber,
+                                PositionHistoryType = PositionHistoryType.Input,
+                                TypeOfBusiness = TypeOfBusiness.PCB,
+                                Layout = position.Layout,
+                                SupplierName = position.SupplierName,
+                                SupplierShortName = position.SupplierShortName
+                            });
+
+                            trackingModel.Valid = true;
+                        }
+                    }
+                    else
+                    {
+                        double remain = 0;
+
+                        if (inputDetail.Quantity <= capacity)
+                        {
+                            position.InventoryNumber += inputDetail.Quantity;
+                        }
+                        else if (inputDetail.Quantity > capacity)
+                        {
+                            position.InventoryNumber += capacity;
+                            remain = inputDetail.Quantity - capacity;
+                        }
+
+                        savedPositionHistories.Add(new PositionHistory
+                        {
+                            Id = Guid.NewGuid(),
+                            CreatedAt = DateTime.Now,
+                            CreatedBy = userId.ToString(),
+                            ComponentCode = inputDetail.ComponentCode,
+                            SupplierCode = inputDetail.SuplierCode,
+                            PositionCode = inputDetail.PositionCode,
+                            ComponentName = position.ComponentName,
+                            DepartmentId = currentUserInfo != null ? Guid.Parse(currentUserInfo.DepartmentId) : default,
+                            FactoryId = position != null ? position.FactoryId : default,
+                            Note = !string.IsNullOrEmpty(inputDetail.Note) ? inputDetail.Note : string.Empty,
+                            Quantity = inputDetail.Quantity,
+                            InventoryNumber = position.InventoryNumber,
+                            PositionHistoryType = PositionHistoryType.Input,
+                            TypeOfBusiness = TypeOfBusiness.PCB,
+                            Layout = position.Layout,
+                            SupplierName = position.SupplierName,
+                            SupplierShortName = position.SupplierShortName
+                        });
+
+                        if (remain > 0)
+                        {
+                            storeDetails.Add(new TemporaryStore
+                            {
+                                Id = Guid.NewGuid(),
+                                CreatedAt = inputDetail.CreatedAt,
+                                CreatedBy = inputDetail.CreatedBy,
+                                BwinOutputCode = inputDetail.BwinOutputCode,
+                                ComponentCode = inputDetail.ComponentCode,
+                                SupplierCode = inputDetail.SuplierCode,
+                                Quantity = remain,
+                            });
+                        }
+
+                        trackingModel.Valid = true;
+                    }
+
+                    trackingImports.Add(trackingModel);
+                }
+            }
+
+            var existNotValidItem = trackingImports.Any(x => !x.Valid);
+            //Nếu các bản ghi đều hợp lệ thì xác nhận nhập kho
+            if (!existNotValidItem)
+            {
+                var saveChangeErrorResponse = new ResponseModel<ImportStorageResultModel>();
+                var strategy = _storageContext.Database.CreateExecutionStrategy();
+                await strategy.ExecuteAsync(async () =>
+                {
+                    using (var transaction = _storageContext.Database.BeginTransaction())
+                    {
+                        try
+                        {
+                            //Xóa các lần nhập không thuộc nhà máy
+                            var detailsNotInFactory = await validDetails.Where(x => dbPositions.Any(p => p.PositionCode == x.PositionCode
+                                                                                            && p.ComponentCode == x.ComponentCode
+                                                                                            && p.SupplierCode == x.SuplierCode) == false).ToListAsync();
+                            _storageContext.InputDetails.RemoveRange(detailsNotInFactory);
+
+                            //Xóa lưu tạm và trả về Bwin
+                            var tempoAndReturnDetails = await _storageContext.InputDetails.Where(x => x.InputId == inputId
+                                                                                                                && x.Type == InputDetailType.REMAIN
+                                                                                                                && (x.RemainingHandle == RemainingHanle.RETURN || x.RemainingHandle == RemainingHanle.STORE)).ToListAsync();
+                            _storageContext.InputDetails.RemoveRange(tempoAndReturnDetails);
+
+                            //Lưu các bản dư vào lưu tạm cho lần nhập sau
+                            _storageContext.TemporaryStores.AddRange(storeDetails);
+
+                            //Lưu lịch sử các lần xác nhận nhập kho
+                            _storageContext.PositionHistories.AddRange(savedPositionHistories);
+
+                            //Chuyển trạng thái lần nhập => done
+                            var updateBwinEntity = await _storageContext.InputFromBwins.FirstOrDefaultAsync(x => x.Id == inputId);
+                            updateBwinEntity.Status = BwinInputStatus.DONE;
+
+                            //Lưu lại
+                            _storageContext.SaveChanges();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError("Lỗi hệ thống khi thực hiện lưu xác nhận nhập kho", ex.Message);
+                            transaction.Rollback();
+
+                            saveChangeErrorResponse.Code = StatusCodes.Status500InternalServerError;
+                            saveChangeErrorResponse.Message = "Lỗi hệ thống khi thực hiện lưu xác nhận nhập kho.";
+                        }
+                        transaction.Dispose();
+                    }
+                });
+
+                if(saveChangeErrorResponse.Code == StatusCodes.Status500InternalServerError)
+                {
+                    return saveChangeErrorResponse;
+                }
+            }
+                
+            //Excel file lỗi với các bản ghi không hợp lệ
+            var errorFile = ExportConfirmInput(trackingImports.Where(x => x.Valid == false));
+
+            return new ResponseModel<ImportStorageResultModel>
+            {
+                Code = StatusCodes.Status200OK,
+                Data = new ImportStorageResultModel
+                {
+                    ExcelFile = errorFile,
+                    AllImportRecords = trackingImports
+                },
+                Message = "Xác nhận nhập kho thành công."
+            };
+        }
+
+        private byte[] ExportConfirmInput(IEnumerable<ImportInputStorageDto> records)
+        {
+            const string _SHEETNAME = "Kết quả xác nhận nhập kho";
+            const string _ERROR_SUMMARY = "Nội dung lỗi";
+
+            var dataLength = records?.Count() ?? 0;
+
+            if (records != null && records.Any() == true)
+            {
+                using (var package = new ExcelPackage())
+                {
+                    var worksheet = package.Workbook.Worksheets.Add(_SHEETNAME);
+
+                    int ComponentCodeIndex = 1;
+                    int SupplierCodeIndex = 2;
+                    int PositionCodeIndex = 3;
+                    int QuantityIndex = 4;
+                    int ErrorIndex = 5;
+
+                    // Đặt tiêu đề cho cột
+                    worksheet.Cells[1, ComponentCodeIndex].Value = Utilities.InputStorageExcelHeaderNames[nameof(ImportInputStorageDto.ComponentCode)];
+                    worksheet.Cells[1, SupplierCodeIndex].Value = Utilities.InputStorageExcelHeaderNames[nameof(ImportInputStorageDto.SupplierCode)];
+                    worksheet.Cells[1, PositionCodeIndex].Value = Utilities.InputStorageExcelHeaderNames[nameof(ImportInputStorageDto.PositionCode)];
+                    worksheet.Cells[1, QuantityIndex].Value = Utilities.InputStorageExcelHeaderNames[nameof(ImportInputStorageDto.Quantity)];
+                    worksheet.Cells[1, ErrorIndex].Value = _ERROR_SUMMARY;
+
+                    // Đặt kiểu và màu cho tiêu đề
+                    using (var range = worksheet.Cells[1, 1, 1, ErrorIndex])
+                    {
+                        range.Style.Font.Bold = true;
+                        range.Style.Fill.PatternType = ExcelFillStyle.None;
+                    }
+
+                    // Điền dữ liệu vào Excel
+                    for (int i = 0; i < dataLength; i++)
+                    {
+                        var item = records.ElementAtOrDefault(i);
+                        item.Errors.TryAdd("Summary", string.Join("\n", item.Errors.Select(x => x.Value)));
+                        var errorContent = item.Errors.TryGetValue("Summary", out string errContent);
+
+                        worksheet.Cells[i + 2, ComponentCodeIndex].Value = item.ComponentCode;
+                        worksheet.Cells[i + 2, SupplierCodeIndex].Value = item.SupplierCode;
+                        worksheet.Cells[i + 2, PositionCodeIndex].Value = item.PositionCode;
+                        worksheet.Cells[i + 2, QuantityIndex].Value = item.Quantity;
+                        worksheet.Cells[i + 2, ErrorIndex].Value = errContent;
+
+                        if (item.Errors.Any() == true)
+                        {
+                            using (var errorRange = worksheet.Cells[i + 2, ErrorIndex, i + 2, ErrorIndex])
+                            {
+                                errorRange.Style.Font.Color.SetColor(Color.Red);
+                                errorRange.Style.Fill.PatternType = ExcelFillStyle.None;
+                            }
+                        }
+                    }
+
+                    // Lưu file Excel
+                    var stream = new MemoryStream();
+                    package.SaveAs(stream);
+                    return stream.ToArray();
+                }
+            }
+
+            return default;
+        }
+
+        public async Task<ResponseModel<bool>> DeleteBwinImport(Guid inputId)
+        {
+            var bwinInput = await _storageContext.InputFromBwins.FirstOrDefaultAsync(x => x.Id == inputId);
+            var inputDetails = _storageContext.InputDetails.Where(x => x.InputId == inputId);
+
+            try
+            {
+                if (inputDetails != null || inputDetails.Any() == true)
+                {
+                    _storageContext.InputDetails.RemoveRange(inputDetails);
+                }
+                if (bwinInput != null)
+                {
+                    _storageContext.InputFromBwins.Remove(bwinInput);
+                }
+
+                await _storageContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Có lỗi khi xóa lần nhập kho", ex.Message);
+
+                return new ResponseModel<bool>
+                {
+                    Code = StatusCodes.Status404NotFound,
+                    Message = "Có lỗi khi xóa lần nhập kho.",
+                    Data = false
+                };
+            }
+
+            return new ResponseModel<bool>
+            {
+                Code = StatusCodes.Status200OK,
+                Data = true,
+                Message = "Xóa lần nhập kho thành công.",
+            };
+        }
+
+        public async Task<ResponseModel> Export(string userId, InputStorageListQueryModel queryModel)
+        {
+            //var users 
+            var users = await GetInternalUsers();
+            var usersDictionary = users.ToDictionary(x => x.Id.ToLower());
+            var userIds = users.Select(x => x.Id.ToLower());
+
+            var factoryIds = await _storageContext.Factories.AsNoTracking().Select(x => x.Id.ToString().ToLower()).ToListAsync();
+            var userPermissions = await UserPermissions(userId);
+
+            var userViewFactoryIds = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY)
+                                                    .Select(x => x.ClaimValue.ToLower())
+                                    ?? queryModel.Factories;
+            //Nếu không có quyền truy cập nhà máy nào thì không trả về dữ liệu gì
+            if (userViewFactoryIds?.Any() == false)
+            {
+                return new ResponseModel
+                {
+                    Code = StatusCodes.Status404NotFound,
+                    Message = "Không tìm thấy dữ liệu phù hợp."
+                };
+            }
+
+            var result = from bw in _storageContext.InputFromBwins.AsNoTracking()
+                         join dt in (from dt in _storageContext.InputDetails.AsNoTracking()
+                                     join p in _storageContext.Positions.AsNoTracking() on dt.PositionCode equals p.PositionCode into t1Group
+                                     from t1 in t1Group.DefaultIfEmpty()
+                                     let convertFactoryId = t1 != null ? t1.FactoryId.ToString().ToLower() : string.Empty
+                                     where ((dt.SuplierCode == t1.SupplierCode && dt.ComponentCode == t1.ComponentCode && userViewFactoryIds.Contains(convertFactoryId)) || (dt.PositionCode == Constants.InputStorage.remainingPostionCode))
+                                     select new InputDetailPositionModel
+                                     {
+                                         DetailId = dt.Id,
+                                         InputId = dt.InputId,
+                                         PositionCode = dt.PositionCode,
+                                         ComponentCode = dt.ComponentCode,
+                                         SuplierCode = dt.SuplierCode,
+                                         Quantity = dt.Quantity,
+                                         FactoryId = t1 != null && t1.FactoryId.HasValue ? t1.FactoryId.ToString().ToLower() : string.Empty
+                                     })
+                        on bw.Id equals dt.InputId into dtGroup
+                        let convertedCreateBy = bw.CreatedBy.ToLower()
+                        let user = usersDictionary.ContainsKey(convertedCreateBy) == true ? usersDictionary[convertedCreateBy] : null
+                        where dtGroup.Any(x => userViewFactoryIds.Contains(x.FactoryId.ToLower()) || x.PositionCode == Constants.InputStorage.remainingPostionCode)
+                        select new BwinInputDetailModel
+                        {
+                            BwinId = bw.Id,
+                            CreatedAt = bw.CreatedAt,
+                            CreatedBy = bw.CreatedBy,
+                            Status = (int)bw.Status,
+                            UserCode = user != null ? user.Code : string.Empty,
+                            UserName = user != null ? user.Name : string.Empty,
+                            InputDetailPositionModels = dtGroup,
+                            Total = dtGroup.Where(x => userViewFactoryIds.Contains(x.FactoryId) || x.PositionCode == Constants.InputStorage.remainingPostionCode).Sum(x => x.Quantity)
+                        };
+
+            Func<BwinInputDetailModel, bool> conditionClause = (x) =>
+            {
+                if (queryModel == null)
+                {
+                    return true;
+                }
+
+                bool isValidUserName = true;
+                bool isValidDateRange = true;
+                bool isValidStatus = true;
+
+                //Lọc điều kiện theo tên
+                if (!string.IsNullOrEmpty(queryModel.UserName))
+                {
+                    var convertedUserName = queryModel.UserName.ToLower();
+                    isValidUserName = string.IsNullOrEmpty(x.UserName) ? false : x.UserName.ToLower().Contains(convertedUserName);
+                }
+                //Lọc điều kiện theo 3 case: Có cả bắt đầu và kết thúc, chỉ có bắt đầu, chỉ có kết thúc
+                if (queryModel.DateFrom != null && queryModel.DateTo != null)
+                {
+                    isValidDateRange = x.CreatedAt.Date >= queryModel.DateFrom.Value.Date && x.CreatedAt.Date <= queryModel.DateTo.Value.Date;
+                }
+                else if (queryModel.DateFrom != null)
+                {
+                    isValidDateRange = x.CreatedAt.Date >= queryModel.DateFrom.Value.Date;
+                }
+                else if (queryModel.DateTo != null)
+                {
+                    isValidDateRange = x.CreatedAt.Date <= queryModel.DateTo.Value.Date;
+                }
+
+                //Lọc điều kiện theo trạng thái
+                if (queryModel.Statuses?.Any() == true)
+                {
+                    var convertedStatuses = queryModel.Statuses.Select(x => int.Parse(x));
+                    isValidStatus = convertedStatuses.Contains(x.Status);
+                }
+
+                var aggregateCondition = isValidUserName && isValidDateRange && isValidStatus;
+                return aggregateCondition;
+            };
+
+            result = result?.OrderByDescending(x => x.CreatedAt);
+
+            Byte[] fileBytes;
+            var dataLength = result?.Where(conditionClause)?.Count() ?? 0;
+            var filterResults = result?.Where(conditionClause)?.AsEnumerable();
+
+            if (dataLength == 0)
+            {
+                return new ResponseModel
+                {
+                    Code = StatusCodes.Status404NotFound,
+                    Message = "Không tìm thấy dữ liệu phù hợp để xuất file."
+                };
+            }
+            try
+            {
+                using var stream =  new MemoryStream();
+                using (var package = new ExcelPackage())
+                {
+
+                    var worksheet = package.Workbook.Worksheets.Add("Danh sách nhập kho");
+
+                    // Đặt tiêu đề cho cột
+                    worksheet.Cells[1, 1].Value = "STT";
+                    worksheet.Cells[1, 2].Value = "Mã nhân viên";
+                    worksheet.Cells[1, 3].Value = "Người nhập";
+                    worksheet.Cells[1, 4].Value = "Ngày nhập kho";
+                    worksheet.Cells[1, 5].Value = "Tổng số mã LK";
+                    worksheet.Cells[1, 6].Value = "Trạng thái";
+
+                    // Đặt kiểu và màu cho tiêu đề
+                    using (var range = worksheet.Cells[1, 1, 1, 6])
+                    {
+                        range.Style.Font.Bold = true;
+                        range.Style.Fill.PatternType = ExcelFillStyle.None;
+                    }
+
+                    // Điền dữ liệu vào Excel
+                    int row = 3, index = 1;
+                    foreach (var item in filterResults)
+                    {
+                        worksheet.Cells[row, 1].Value = index;
+                        worksheet.Cells[row, 2].Value = item?.UserCode;
+                        worksheet.Cells[row, 3].Value = item?.UserName;
+                        worksheet.Cells[row, 4].Value = item?.CreatedAt.ToString(Constants.DefaultDateFormat);
+                        worksheet.Cells[row, 5].Value = item?.Total;
+                        worksheet.Cells[row, 6].Value = item?.Status == 0 ? "Xác nhận" : "Tạm thời";
+                        row++;
+                        index++;
+                    }
+
+                    // Lưu file Excel
+                    
+                    package.SaveAs(stream);
+                    fileBytes = stream.ToArray();
+                }
+
+                return new ResponseModel
+                {
+                    Code = StatusCodes.Status200OK,
+                    Data = fileBytes.ToArray(),
+                    Message = "Xuất file thành công."
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseModel
+                {
+                    Code = StatusCodes.Status500InternalServerError,
+                    Message = $"Lỗi khi xuất file: {ex.Message}"
+                };
+            }
+
+            
+        }
+    }
+}

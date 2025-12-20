@@ -1,0 +1,22 @@
+﻿img#FileDOImage {
+    width: 200px;
+    height: 150px;
+}
+.DropOut {
+    position: absolute;
+    background: #0e0e0e;
+    opacity: 0.6;
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+    .DropOut p {
+        margin: 0;
+        padding-top: 40px;
+        padding-left: 13px;
+    }

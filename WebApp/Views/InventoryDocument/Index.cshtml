@@ -1,0 +1,370 @@
+﻿@using BIVN.FixedStorage.Services.Common.API.Dto.Inventory;
+@{
+    ViewBag.Title = Html.Translate("Danh sách phiếu kiểm kê");
+}
+
+@{
+    var inventoryNames = ViewBag.InventoryNames as IEnumerable<ListInventoryModel>;
+    var inventoryDepartments = ViewBag.InventoryDepartments as IEnumerable<DepartmentInventoryDto>;
+    var inventoryLocations = ViewBag.InventoryLocations as IEnumerable<DepartmentInventoryDto>;
+
+    var currUser = Context.UserFromContext();
+
+    var validPrivateDepartmentLocation = currUser.AccountType == nameof(AccountType.TaiKhoanRieng) &&
+                                                    (User.IsGrant(commonAPIConstant.Permissions.VIEW_ALL_INVENTORY) ||
+                                                    User.IsGrant(commonAPIConstant.Permissions.VIEW_CURRENT_INVENTORY) ||
+                                                    User.IsGrant(commonAPIConstant.Permissions.EDIT_INVENTORY));
+
+    string assigneeAccount = string.Empty;
+    @if (validPrivateDepartmentLocation || Context.IsPromoter())
+    {
+        assigneeAccount = string.Empty;
+    }
+    else
+    {
+        assigneeAccount = currUser.Username;
+    }
+}
+
+<link href="./assets/css/InventoryDocument.css" asp-append-version="true" rel="stylesheet" />
+
+<section class="container_inventory_document">
+    @*Điều kiện tìm kiếm *@
+    <section class="bg-white py-2 px-3 rounded">
+        <form id="input_storage_search_form">
+            <div class="row d-flex align-items-end mb-4">
+                <div class="col-2 col-lg-2 col-xxl-1">
+                    <div class="wrapper_select">
+                        <label class="text_label">@Html.Translate("Đợt kiểm kê")</label>
+                        <select class="custom_select" hidden id="select_inventory_name" name=""
+                            placeholder="Chọn đợt kiểm kê" 
+                            data-search="true"
+                            @*multiple*@
+                            data-silent-initial-value-set="true">
+                            @if (inventoryNames != null || inventoryNames.Any())
+                            {
+                                @foreach (var item in inventoryNames)
+                                {
+                                    <option value="@item.InventoryName">@item.InventoryName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2 col-lg-2 col-xxl-1">
+                    <div class="">
+                        <label class="text_label">@Html.Translate("Phòng ban")</label>
+                        @{
+                            //Nếu là tài khoản giám sát thì dropdown cho chọn nhiều
+                            //Các quyền khác thì dropdown chọn 1
+                        }
+                        <select class="custom_select" hidden 
+                            id="select_inventory_department" 
+                            name="select_inventory_department" 
+                            @*@(inventoryDepartments?.Count() > 1 ? "multiple" : "")*@
+                            @*multiple*@
+                            placeholder="Chọn phòng ban" data-search="true" data-silent-initial-value-set="true">
+                        @if (inventoryDepartments != null || inventoryDepartments.Any())
+                        {
+                                @if (validPrivateDepartmentLocation || Context.IsPromoter())
+                            {
+                                <option value=""></option>
+                            }
+
+                            @foreach (var item in inventoryDepartments)
+                            {
+                                <option value="@item.DepartmentName">@item.DepartmentName</option>
+                            }
+                        }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2 col-lg-2 col-xxl-1">
+                    <div class="">
+                        <label class="text_label">@Html.Translate("Khu vực")</label>
+                            <select class="custom_select" hidden 
+                                id="select_inventory_location" 
+                                name="select_inventory_location" 
+                                @*@(inventoryLocations?.Count() > 1 ? "multiple" : "")*@
+                                multiple
+                                placeholder="Chọn khu vực" data-search="true" data-silent-initial-value-set="true">
+                                @if (inventoryLocations != null || inventoryLocations.Any())
+                                {
+                                    @foreach (var item in inventoryLocations)
+                                    {
+                                        <option value="@item.LocationName">@item.LocationName</option>
+                                    }
+                                }
+                            </select>
+                    </div>
+                </div>
+                <div class="col-2 col-lg-2 col-xxl-1">
+                    <div class="wrapper_select">
+                        <label class="text_label">@Html.Translate("Loại phiếu")</label>
+                        <select class="custom_select" hidden id="select_inventory_doctype" 
+                            @*multiple *@
+                            name="select_doctype" 
+                            placeholder="Chọn loại phiếu..." data-search="true" data-silent-initial-value-set="true">
+                            <option value="0">A</option>
+                            <option value="1">B</option>
+                            <option value="2">E</option>
+                            <option value="3">C</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-4 col-xxl-2">
+                    <div class="wrapper_select">
+                        <label class="text_label">@Html.Translate("Số phiếu")</label>
+                        <div class="row">
+                            <div class="col pe-0">
+                                <input id="input_quantity_inventory_document_from" name="input_quantity_inventory_document_from" placeholder="@Html.Translate("Nhập số")..." type="text" class="form-control background-color-grey text_ellipsis">
+                            </div>
+                            <div class="custom_arrow_right">
+                                <div><img src="./assets/images/icons/Muitensangphai.png"></div>
+                            </div>
+                            <div class="col ps-0">
+                                <input id="input_quantity_inventory_document_to" name="input_quantity_inventory_document_to" placeholder="@Html.Translate("Nhập số")..." type="text" class="form-control background-color-grey text_ellipsis">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2 col-lg-2 col-xxl-1">
+                    <div class="wrapper_select">
+                        <label class="text_label">@Html.Translate("Plant")</label>
+                        <input id="input_plant_inventory" name="input_plant_inventory" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập plant")...">
+                    </div>
+                </div>
+                <div class="col-2 col-lg-2 col-xxl-1">
+                    <div class="">
+                        <label class="text_label">@Html.Translate("WH Loc.")</label>
+                        <input id="input_whloc_inventory" name="input_whloc_inventory" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập WH Loc")....">
+                    </div>
+                </div>
+                <div class="col-2 col-lg-2 col-xxl-1 wrapper_select componentcode_container">
+                    <label class="text_label">@Html.Translate("Mã linh kiện")</label>
+                    <input id="input_componentcode_inventory" name="input_componentcode_inventory" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập mã LK")...">
+                </div>
+                <div class="col-2 col-lg-2 col-xxl-1">
+                    <div class="">
+                        <label class="text_label">@Html.Translate("Model code")</label>
+                        <input id="input_modelcode_inventory" name="input_modelcode_inventory" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập model code")...">
+                    </div>
+                </div>
+                <div class="col-2 col-lg-2 col-xxl-1">
+                    <div class="wrapper_select">
+                        <label class="text_label">@Html.Translate("Trạng thái")</label>
+                        @{
+                            var validPrivateAccount = currUser.AccountType == nameof(AccountType.TaiKhoanRieng) &&
+                                                        (User.IsGrant(commonAPIConstant.Permissions.VIEW_ALL_INVENTORY) ||
+                                                            User.IsGrant(commonAPIConstant.Permissions.VIEW_CURRENT_INVENTORY) ||
+                                                            User.IsGrant(commonAPIConstant.Permissions.EDIT_INVENTORY));
+                        }
+                        <select class="custom_select" hidden id="select_inventory_docstatus" 
+                            @*multiple *@
+                            name="select_inventory_docstatus" 
+                            placeholder="Chọn trạng thái" 
+                            data-search="true" data-silent-initial-value-set="true">
+                            <option value="0">@Html.Translate("Chưa tiếp nhận")</option>
+                            @if (validPrivateAccount || Context.IsPromoter())
+                            {
+                                <option value="1">@Html.Translate("Không kiểm kê")</option>
+                            }
+                            <option value="2">@Html.Translate("Chưa kiểm kê")</option>
+                            <option value="3">@Html.Translate("Chờ xác nhận")</option>
+                            <option value="5">@Html.Translate("Đã xác nhận")</option>
+                            <option value="4">@Html.Translate("Cần chỉnh sửa")</option>
+                            <option value="6">@Html.Translate("Đã đạt giám sát")</option>
+                            <option value="7">@Html.Translate("Không đạt giám sát")</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2 col-lg-2 col-xxl-1">
+                    <div class="wrapper_select">
+                        <label class="text_label">@Html.Translate("Tài khoản phân phát")</label>
+                        
+                        <input id="input_user_distribution_inventory" name="input_user_distribution_inventory" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập tài khoản phân phát")..." value="@assigneeAccount">
+                    </div>
+                </div>
+                
+            </div>
+
+        </form>
+        <div class="d-flex justify-content-between">
+            
+            @await Html.PartialAsync("~/Views/Shared/_commonSearch.cshtml")
+        </div>
+    </section>
+
+    @*List*@
+    <section class="bg-white py-2 px-3 mt-4 rounded table_controls">
+        @{
+            var canChangeStatus = User.IsGrant(commonAPIConstant.Permissions.EDIT_INVENTORY) &&
+                                (currUser?.InventoryLoggedInfo?.InventoryRoleType == commonAPIConstant.Permissions.InventoryAccountRoleType.Inventory
+                                    && currUser?.InventoryLoggedInfo?.HasRoleType == true) 
+                                    && Context.IsInInventoryDate();
+        }
+        <div class="container_top_table mb-2">
+            @if (canChangeStatus)
+            {
+                <div class="export_file d-flex align-items-center">
+                    <div data-bind="visible: (notReceiveDocsCount() > 0)">
+                        <input type="checkbox" id="receiveAllPage" data-bind="checked: receiveAll" />
+                        <label>@Html.Translate("Chọn toàn bộ phiếu")</label>
+                    </div>  
+                    <div id="inventory_list_checked_count" class="px-2"></div>
+                </div>
+            }else
+            {
+                <div class="export_file d-flex align-items-center"></div>
+            }
+
+            <div class="d-flex ">
+                @if (canChangeStatus)
+                {
+                    <button class="export_file btn_disabled" id="receive-list-inventory">
+                        <div class="">
+                            <img src="./assets/images/icons/icon-exchange.svg">
+                        </div>
+                        <h5>@Html.Translate("Tiếp nhận")</h5>
+                    </button>
+                }
+
+                <button class="export_file" id="download-file-update-quantity">
+                    <div class="">
+                        <img src="./assets/images/icons/icon-download.svg">
+                    </div>
+                    <h5>@Html.Translate("Tải biểu mẫu cập nhật số lượng")</h5>
+                </button>
+
+                <button class="export_file" id="import-file-update-quantity">
+                    <div class="">
+                        <img src="./assets/images/icons/icon-upload-green.svg">
+                    </div>
+                    <h5>@Html.Translate("Cập nhật số lượng phiếu")</h5>
+                </button>
+                <input type="file" id="inputImportFileUpdateQuantity" hidden />
+                
+                @{
+                  var canDownloadTemplate = false;
+                  canDownloadTemplate = User.IsGrant(commonAPIConstant.Permissions.EDIT_INVENTORY) ||
+                  currUser?.InventoryLoggedInfo?.InventoryRoleType == commonAPIConstant.Permissions.InventoryAccountRoleType.Promotion;
+                }
+
+                @if (canDownloadTemplate)
+                {
+                          <button class="export_file" id="download-file-list-inventory">
+                              <div class="">
+                                  <img src="./assets/images/icons/icon-download.svg">
+                              </div>
+                              <h5>@Html.Translate("Tải biểu mẫu trạng thái")</h5>
+                          </button>
+                }
+
+                @{
+                  var canImportUploadStatus = false;
+                  canImportUploadStatus = User.IsGrant(commonAPIConstant.Permissions.EDIT_INVENTORY) ||
+                  currUser?.InventoryLoggedInfo?.InventoryRoleType == commonAPIConstant.Permissions.InventoryAccountRoleType.Promotion;
+                }
+
+                @if (canImportUploadStatus)
+                {
+                          <button class="export_file" id="upload-status-list-inventory">
+                              <div class="">
+                                  <img src="./assets/images/icons/icon-upload-green.svg">
+                              </div>
+                              <h5>@Html.Translate("Upload chuyển trạng thái")</h5>
+                          </button>
+                          <input type="file" id="inputFile_UploadDocStatus" hidden />
+                }
+
+                @{
+                    var canExportFile = false;
+                    canExportFile = User.IsGrant(commonAPIConstant.Permissions.VIEW_ALL_INVENTORY) ||
+                    User.IsGrant(commonAPIConstant.Permissions.VIEW_CURRENT_INVENTORY) ||
+                    User.IsGrant(commonAPIConstant.Permissions.EDIT_INVENTORY) ||
+                    currUser?.InventoryLoggedInfo?.InventoryRoleType == commonAPIConstant.Permissions.InventoryAccountRoleType.Promotion;
+                }
+
+                @if (canExportFile)
+                {
+                    <button class="export_file" id="export-file-list-inventory">
+                        <div class="">
+                            <img src="./assets/images/icons/export_excel.png">
+                        </div>
+                        <h5>@Html.Translate("Xuất file")</h5>
+                    </button>
+                }
+
+            </div>
+        </div>
+        <div class="container_table">
+          <table id="inventory_list_table" class="table table-responsive custom_table" width="100%">
+              <thead>
+                  <tr class="title_table">
+                      <th>
+                          @if (canChangeStatus)
+                          {
+                            <input type="checkbox" id="input_checkall" />
+                          }
+                      </th>
+                      <th>STT</th>
+                      <th>@Html.Translate("Đợt kiểm kê")</th>
+                      <th>@Html.Translate("Phòng ban")</th>
+                      <th>@Html.Translate("Khu vực")</th>
+                      <th>@Html.Translate("Mã phiếu")</th>
+                      <th>@Html.Translate("Plant")</th>
+                      <th>@Html.Translate("W.H.Loc")</th>
+                      <th>@Html.Translate("Mã linh kiện")</th>
+                      <th>@Html.Translate("Model code")</th>
+                      <th>@Html.Translate("Tên linh kiện")</th>
+                      <th>@Html.Translate("Quantity")</th>
+                      <th>@Html.Translate("Vị trí")</th>
+                      <th>@Html.Translate("Trạng thái")</th>
+                      <th>@Html.Translate("Stock types")</th>
+                      <th>@Html.Translate("Special stock")</th>
+                      <th>@Html.Translate("S/O No.")</th>
+                      <th>@Html.Translate("S/O List")</th>
+                      <th>@Html.Translate("Tài khoản phân phát")</th>
+                      <th>@Html.Translate("Tài khoản tiếp nhận")</th>
+                      <th>@Html.Translate("Thời gian tiếp nhận")</th>
+                      <th>@Html.Translate("Tài khoản kiểm kê")</th>
+                      <th>@Html.Translate("Thời gian kiểm kê")</th>
+                      <th>@Html.Translate("Tài khoản xác nhận")</th>
+                      <th>@Html.Translate("Thời gian xác nhận")</th>
+                      <th>@Html.Translate("Tài khoản giám sát")</th>
+                      <th>@Html.Translate("Thời gian giám sát")</th>
+                      <th>@Html.Translate("SAP Inventory No.")</th>
+                      <th>@Html.Translate("Assembly Loc.")</th>
+                      <th>@Html.Translate("Vendor code")</th>
+                      <th>@Html.Translate("Phys.Inv")</th>
+                      <th>@Html.Translate("Fisscal year")</th>
+                      <th>@Html.Translate("ITEM")</th>
+                      <th>@Html.Translate("Planned count")</th>
+                      <th>@Html.Translate("Cột C")</th>
+                      <th>@Html.Translate("Cột N")</th>
+                      <th>@Html.Translate("Cột O")</th>
+                      <th>@Html.Translate("Cột P")</th>
+                      <th>@Html.Translate("Cột Q")</th>
+                      <th>@Html.Translate("Cột R")</th>
+                      <th>@Html.Translate("Cột S")</th>
+                      <th>@Html.Translate("Người tạo")</th>
+                      <th>@Html.Translate("Thời gian tạo")</th>
+                      <th></th>
+                      @*<th>Xem chi tiết</th>*@
+                  </tr>
+              </thead>
+              <tbody>
+              </tbody>
+          </table>
+        </div>
+    </section>
+
+    @*InputInventoryDetailModal*@
+</section>
+    @await Html.PartialAsync("~/Views/Shared/Common/_InventoryDocumentDetailModal.cshtml")
+
+<script asp-append-version="true" src="./lib/chartjs_ver4.1.1/jspdf.min.js"></script>
+@*<script asp-append-version="true" src="~/assets/libs/html2pdf.bundle.min.js"></script>*@
+<script defer asp-append-version="true" src="./assets/js/InventoryDocument.js"></script>
+
+

@@ -1,0 +1,658 @@
+﻿#Reporting_Layout {
+    padding: 0 1rem;
+}
+
+.Reporting_Layout_Content {
+    padding: 0 .5rem;
+}
+
+.Reporting_Layout_Top {
+    margin-top: 150px;
+    background-color: #FFFFFF;
+    padding: 1rem;
+    border-radius: 5px;
+    min-height: 250px;
+}
+
+.Reporting_Layout_Top #viewListInventory,.Reporting_Layout_Top #filterReporting, .Reporting_Layout_Top #filterReporting2 {
+    background-color: #0D2EA0;
+    border: none;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 500;
+    padding: .3rem 1rem;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.Reporting_Layout_Top h3 {
+    font-size: 24px;
+    color: #0D2EA0;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+}
+
+.Reporting_Layout_Top h4 {
+    font-size: 20px;
+    color: #333333;
+    font-weight: 700;
+    margin: 1rem 0;
+}
+
+.Reporting_Layout_Content_Container {
+    background: white;
+    border-radius: 8px;
+    width: 24%;
+    border: 1px solid #E4E4E4;
+    margin: 0 7.9px;
+}
+
+.Reporting_Layout_Content_Container .Title {
+    padding: 20px 0;
+}
+
+.Reporting_Layout_Content_Container .Title h4 {
+    color: #0D2EA0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.Reporting_Layout_Content_Container .Content h5 {
+    font-size: 16px;
+    color: black;
+}
+
+.Reporting_Layout_Content_Container .Content p {
+    color: #0D2EA0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.Reporting_Layout_Content .Image {
+    display: flex;
+    gap: .5rem;
+}
+
+.Reporting_Layout_Content .Image svg {
+    cursor: pointer;
+}
+
+.Reporting_Header {
+    background-color: #FFFFFF;
+    z-index: 1;
+    position: absolute;
+    width: calc(100% - 250px);
+    /* 250px is the width of the left side bar */
+    padding: 1.5rem 2.5rem;
+    top: 70px;
+    right: 12px;
+    border-top: 2px solid #eee;
+}
+
+.Reporting_Header>div {
+    display: flex;
+    gap: 1rem;
+    place-content: end;
+}
+
+.Reporting_Header>div>button {
+    background-color: #DCDCDC;
+    color: #333333;
+    font-size: 18px;
+    font-weight: 500;
+    flex: 1;
+    border: none;
+    padding: 1rem;
+    max-height: 53px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.Reporting_Header>div>button.active {
+    background-color: #0D2EA0;
+    color: #FFFFFF;
+}
+
+.Reporting_Header #exportFile {
+    background-color: #F1F0F4;
+    border: 2px solid #E4E4E4;
+    color: #E60000;
+    font-size: 16px;
+    font-weight: 500;
+    max-height: 48px;
+    max-width: 140px;
+}
+
+.Reporting_Header #exportFile img {
+    margin-right: .5rem;
+}
+
+.Reporting_Header .exportArea {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+    .Reporting_Header #reportType {
+        max-height: 48px;
+        height: 100%;
+        border: 2px solid #E4E4E4;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #333333;
+        padding: 0 .5rem;
+        font-weight: 500;
+        height: 48px;
+        background: #f1f0f4;
+    }
+
+.Reporting_Header #reportType:focus {
+    outline: none;
+}
+
+.Reporting_Header #reportType option {
+    font-size: 14px;
+    color: #333333;
+    font-weight: 500;
+}
+
+.Reporting_Header #reportType option:hover {
+    background-color: #E0FFE2;
+    color: #17AE5C;
+}
+
+.Reporting_Header #reportType option:checked {
+    background-color: #E0FFE2;
+    color: #17AE5C;
+}
+
+@media screen and (max-width: 992px) {
+    .Reporting_Header {
+        width: 100%;
+    }
+}
+
+#page-topbar>.navbar-header {
+    box-shadow: none !important;
+}
+
+#supervision-report-tab {
+    display: none;
+}
+
+#Inventory_AddAreaModal .modal.show .modal-dialog {
+    max-width: 700px;
+}
+
+#Inventory_AddAreaModal .modal-header {
+    text-align: center;
+    display: block;
+}
+
+#Inventory_AddAreaModal .modal-header h4 {
+    font-weight: bold;
+    font-size: 24px;
+    color: #333333;
+}
+
+#Inventory_AddAreaModal .modal-body {
+    padding: 0rem 1rem 0.5rem 1rem;
+}
+
+#Inventory_AddAreaModal .bold_component_label {
+    font-weight: 400;
+    font-size: 12px;
+    color: #333333;
+    margin-bottom: 0;
+}
+
+#Inventory_AddAreaModal .bold_component_label span {
+    color: #E60000;
+}
+
+#button_Cancel_AddNewArea {
+    background-color: #F1F0F4;
+    border-color: #DCDCDC;
+    color: #E60000;
+    font-weight: 500;
+    font-size: 18px !important;
+}
+
+#button_Apply_AddNewArea {
+    background-color: #0D2EA0;
+    border-color: #0D2EA0;
+    color: white;
+    font-weight: 500;
+    font-size: 18px !important;
+}
+
+#addAreaModal {
+    width: 100%;
+    height: 40px;
+}
+
+#Inventory_AddAreaModal .factory2 {
+    display: flex;
+    align-items: center;
+}
+
+#Inventory_AddAreaModal .factory2 div {
+    margin: 0 1rem;
+}
+
+#Inventory_AddAreaModal .modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+#Inventory_AddAreaModal .modal-footer button {
+    width: auto;
+    flex: 1;
+}
+
+.InventoryReporting_supervision {
+    margin-top: 90px;
+    background-color: #FFFFFF;
+}
+
+.table-striped {
+    border: none;
+    border-color: transparent;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table-striped td,
+.table-striped th {
+    border-color: #E4E4E4;
+}
+
+.table-striped td p {
+    margin-bottom: 0;
+}
+
+.table-striped .th-sm {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#supervision_table select {
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+}
+
+#supervision_table select:focus {
+    outline: none;
+}
+
+.InventoryReporting_feature_container {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    padding: 15px;
+}
+
+h5.InventoryReporting_ExportExcel_Title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.InventoryReporting_ExportExcel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+}
+
+#container-chart {
+    min-height: 60vh;
+}
+
+.buttonChart-area {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.buttonChart-area .buttonChart {
+    background-color: #DCDCDC;
+    border: none;
+    outline: none;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 500;
+    height: 36px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.buttonChart-area .buttonChart.active {
+    background-color: #0D2EA0;
+    color: #FFFFFF;
+}
+
+.descriptionArea {
+    display: flex;
+    align-items: center;
+    gap: 10vw;
+}
+
+.descriptionArea span {
+    color: #333333;
+    font-weight: 400;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.descriptionArea span.confirmed::before {
+    content: "";
+    height: 32px;
+    width: 32px;
+    background-color: #009543;
+}
+
+.descriptionArea span.confirmedLine::before {
+    content: "";
+    height: 2px;
+    width: 32px;
+    background-color: #009543;
+}
+
+.descriptionArea span.confirmedLine::after {
+    content: "";
+    height: 8px;
+    width: 8px;
+    background-color: #009543;
+    border-radius: 15px;
+    position: absolute;
+}
+
+.descriptionArea span.pre::before {
+    content: "";
+    height: 32px;
+    width: 32px;
+    background-color: #C2C2C2;
+}
+
+.descriptionArea span.preLine::before {
+    content: "";
+    height: 2px;
+    width: 32px;
+    background-color: #50555C;
+}
+
+.descriptionArea span.preLine::after {
+    content: "";
+    height: 8px;
+    width: 8px;
+    background-color: #50555C;
+    border-radius: 15px;
+    position: absolute;
+}
+
+.descriptionArea span.pending::before {
+    content: "";
+    height: 32px;
+    width: 32px;
+    background-color: #DA8D00;
+}
+
+.descriptionArea span.pendingLine::before {
+    content: "";
+    height: 2px;
+    width: 32px;
+    background-color: #DA8D00;
+}
+
+.descriptionArea span.pendingLine::after {
+    content: "";
+    height: 8px;
+    width: 8px;
+    background-color: #DA8D00;
+    border-radius: 15px;
+    position: absolute;
+}
+
+.headerDetailTable {
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerDetailTable span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.headerDetailTable span#hideDetailTable, .headerDetailTable span#showTableReport3 {
+    font-weight: 500;
+    color: #0D2EA0;
+    cursor: pointer;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    --bs-table-accent-bg: #FFFFFF;
+}
+
+#InventoryReporting3_DataTable th.th-sm,#InventoryReporting3_DataTable tbody>tr>td {
+    width: auto!important;
+}
+
+#InventoryReporting_DataTable th.th-sm,#InventoryReporting_DataTable tbody>tr>td {
+    width: calc(100% / 7);
+}
+
+.table-striped th.th-sm,.table-striped td.th-sm,.table-striped tbody>tr>td {
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    color: #333333;
+}
+
+.table-striped th.th-sm:nth-child(1),.table-striped tbody>tr>td:nth-child(1) {
+    text-align: start;
+    vertical-align: middle;
+}
+
+.table-striped th.th-sm, .table-striped td.th-sm {
+    background-color: #F1F0F4;
+    font-weight: 500;
+}
+
+.chartCol {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.chartCol p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+}
+
+#myChart {
+    width: 100%!important;
+    height: 100%!important;
+}
+
+.chartArea {
+    display: flex;
+    align-items: end;
+}
+
+.chartArea .chartLeft {
+    flex: 1;
+}
+
+.chartArea .chartRight {
+    margin-bottom: 2.1rem;
+}
+
+.chartArea .chartRight button {
+    height: 28px;
+    width: 28px;
+    border: none;
+    outline: none;
+    background-color: #0D2EA0;
+    border-radius: 3px;
+}
+
+.chartArea .chartRight p {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.filterPanel {
+    box-shadow: 2px 2px 8px 0px #00000014;
+    border-radius: 5px;
+    padding: 1rem;
+    position: absolute;
+    z-index: 1;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    right: 4rem;
+    top: 1.6rem;
+    max-width: 600px;
+    min-width: 350px;
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+
+.filterPanel h3 {
+    text-align: start;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.filterPanel .spanBtn {
+    border: 1px solid #E4E4E4;
+    padding: .5rem 1rem;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.filterPanel .spanBtn.active {
+    background-color: #0D2EA0;
+    color: #FFFFFF;
+}
+
+    .filterPanel #pbList, .filterPanel #kvList, .filterPanel #dtList, #DepartmentProgressReportFilter, #LocationProgressReportFilter, .filterPanel #gsList {
+        gap: .5rem;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+.filterPanel #pbList .spanBtn {
+    /*width: calc(100% / 5.3);*/
+}
+
+.filterPanel #kvList .spanBtn {
+    /*width: calc(100% / 3.1);*/
+}
+
+
+
+.chartWrapper {
+    position: relative;
+}
+
+.chartWrapper > canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+}
+
+.chartAreaWrapper {
+    width: 600px;
+    overflow-x: scroll;
+}
+
+.HideArea{
+    display: none;
+}
+.padding-bottom-30{
+    padding-bottom: 30px;
+}
+.min-height-600{
+    min-height: 600px;
+}
+
+#inventory-report-tab, #supervision-report-tab {
+    position: relative;
+    top: 20px;
+}
+
+#ReportingAudit_Type .vscomp-wrapper, #ReportingAudit_InventoryName .vscomp-wrapper {
+    height: 48px;
+}
+
+#ReportingAudit_InventoryName.vscomp-ele{
+    max-width: 150px !important;
+}
+
+#ReportingAudit_InventoryName .vscomp-toggle-button, #ReportingAudit_Type .vscomp-toggle-button {
+    border-radius: 4px !important;
+    background: #f1f0f4;
+    color: #303030;
+    font-size: 1em;
+}
+
+#ReportingAudit_InventoryName {
+    max-height: 48px;
+    height: 100%;
+    border: 2px solid #E4E4E4;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333333;
+    padding: 0 .5rem;
+    font-weight: 500;
+    height: 48px;
+    background: #f1f0f4;
+}
+
+#FixedAuditReporting span.hideDetailTable, #FreeAuditReporting span.hideDetailTable {
+    cursor: pointer;
+}
+
+.DepartmentAuditReportingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .DepartmentAuditReportingContainer h3{
+        margin-right: 10px;
+    }
+
+.LocationAuditReportingContainer, .AuditorAuditReportingContainer, .DepartmentProgressReportingContainer, .LocationProgressReportingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+    justify-items: center;
+}
+
+    .LocationAuditReportingContainer h3, .AuditorAuditReportingContainer h3, .DepartmentProgressReportingContainer h3, .LocationProgressReportingContainer h3 {
+        margin-right: 10px;
+    }

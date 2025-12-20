@@ -1,0 +1,224 @@
+﻿@using BIVN.FixedStorage.Services.Common.API.Dto.Inventory;
+
+@{
+    var detailDocument = ViewBag.DetailDocument as DocumentDetailModel;
+    double quantity = 0;
+    string currentStatus = string.Empty;
+    string colorClass = string.Empty;
+
+    Dictionary<int, string> statusName = new Dictionary<int, string>()
+    {
+        {0, "Chưa tiếp nhận"},
+        {1, "Không kiểm kê"},
+        {2, "Chưa kiểm kê"},
+        {3, "Chờ xác nhận"},
+        {4, "Cần chỉnh sửa"},
+        {5, "Đã xác nhận"},
+        {6, "Đã đạt giám sát"},
+        {7, "Không đạt giám sát"},
+    };
+
+    Dictionary<int, string> colorClassName = new Dictionary<int, string>()
+    {
+        {0, "color-0D2EA0"},
+        {1, "color-333333"},
+        {2, "color-87868C"},
+        {3, "color-F3A600"},
+        {4, "color-ED7200"},
+        {5, "color-17AE5C"},
+        {6, "color-5092FC"},
+        {7, "color-E60000"},
+    };
+
+    currentStatus = statusName[detailDocument.Status];
+    colorClass = colorClassName[detailDocument.Status];
+
+     var headerViewModel = new AuditMobileTopBarViewModelBuilder()
+                           .CreateTitle(detailDocument?.DocCode ?? string.Empty)
+                           .DisplayGoBackButton(true)
+                           .Build();
+
+}
+
+<link href="~/assets/css/audittargetdetail.css" rel="stylesheet" />
+
+@Html.Partial("~/Views/Shared/_mobile_topbar.cshtml", headerViewModel)
+
+
+<div class="AuditTargetDetail">
+    <div class="AuditTargetDetail_ComponentInfo px-3">
+        <div class="AuditTargetDetail_ComponentInfo_container">
+            <label class="AuditTargetDetail_ComponentInfo_left">
+                Mã linh kiện:
+            </label>
+            <label class="AuditTargetDetail_ComponentInfo_right main_color fw-bold font-size-24">
+                @detailDocument?.ComponentCode
+            </label>
+        </div>
+        <div class="AuditTargetDetail_ComponentInfo_container">
+            <label class="AuditTargetDetail_ComponentInfo_left">
+                Tên linh kiện:
+            </label>
+            <label class="AuditTargetDetail_ComponentInfo_right font-size-14 label-color-hex333333 text-break fw-normal">
+                @detailDocument?.ComponentName
+            </label>
+        </div>
+        <div class="AuditTargetDetail_ComponentInfo_container">
+            <label class="AuditTargetDetail_ComponentInfo_left">
+                Vị trí:
+            </label>
+            <label class="AuditTargetDetail_ComponentInfo_right font-size-14 label-color-hex333333 text-break fw-normal">
+                @detailDocument?.PositionCode
+            </label>
+        </div>
+        <div class="AuditTargetDetail_ComponentInfo_container">
+            <label class="AuditTargetDetail_ComponentInfo_left">
+                Trạng thái:
+            </label>
+            <label class="AuditTargetDetail_ComponentInfo_right font-size-12 fw-normal @colorClass OldStatusDocDetail" oldStatus="@detailDocument?.Status">
+                @currentStatus
+            </label>
+        </div>
+        <div class="AuditTargetDetail_ComponentInfo_container">
+            <label class="AuditTargetDetail_ComponentInfo_left">
+                Sales order:
+            </label>
+            <label class="AuditTargetDetail_ComponentInfo_right font-size-14 label-color-hex333333 text-break fw-normal">
+                @detailDocument?.SalesOrder
+            </label>
+        </div>
+        <div class="AuditTargetDetail_ComponentInfo_container">
+            <label class="AuditTargetDetail_ComponentInfo_left">
+                Lưu ý:
+            </label>
+            <label class="AuditTargetDetail_ComponentInfo_right font-size-14 text-break fw-normal failed_supervision_color">
+                @detailDocument?.Note
+            </label>
+        </div>
+    </div>
+    <div class="AuditTargetDetail_DataTable_Container">
+        @*<div class="AuditTargetDetail_DataTable_Container_AddColumn px-3 pb-1">
+            <button class="AddNewRow_btn">
+                <img src="~/assets/images/audit_target_mobile/add.png" />
+                Thêm dòng
+            </button>
+        </div>*@
+        <table id="AuditTargetDetail_DataTable">
+            <thead>
+                <tr>
+                    <th class="bt-bb-none" style="width:6%;border:none;background-color: white;"></th>
+                    <th class="ps-2 py-2" style="width:60%">Số lượng/thùng</th>
+                    <th class="ps-2 py-2">Số thùng</th>
+                    <th class="bt-bb-none" style="border:none;background-color: white;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var doc in detailDocument?.DocComponentABEs)
+                {
+                    <tr class="DocOutputs" value="@doc.Id">
+                        <td class="bt-bb-none AuditTargetDetail_DataTable_Delete opacity-0" style="border:none">
+                            @* <img src="~/assets/images/audit_target_mobile/chu_x.png" />*@
+                        </td>
+                        <td class="border_left border_is_delete">
+                            <div class="QuantityInput_Container">
+                                <input type="text" class="QuantityPerBom" placeholder="Nhập số lượng/thùng" value="@doc.QuantityPerBom" disabled />
+                            </div>
+                        </td>
+                        <td class="border_right border_is_delete">
+                            <div class="QuantityInput_Container">
+                                <input type="text" class="QuantityOfBom" placeholder="Nhập số thùng" value="@doc.QuantityOfBom" disabled>
+                            </div>
+                        </td>
+                        <td class="bt-bb-none" style="border:none">
+                            <div class="d-flex mx-1">
+                                <label class="form-check-label label"></label>
+                                @{
+                                    var opacity = detailDocument.Status == 6 ? "opacity-0" : "opacity-1";
+                                }
+                                <input type="checkbox" class="form-check-input CheckBoxItem @opacity" />
+                            </div>
+                        </td>
+                    </tr>
+                    quantity += (doc.QuantityOfBom * doc.QuantityPerBom);
+                }
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td style="border:none"></td>
+                    <td class="datatable_tfoot_container" colspan="2">
+                        <div class="Quantity_Container">
+                            <div class="Quantity_Container_Text">
+                                Tổng:
+                            </div>
+                            <div class="Quantity_Container_Value">
+                                @quantity
+                            </div>
+                        </div>
+                    </td>
+                    <td style="border:none"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="AuditTargetDetail_Comment px-3 mt-3">
+        <div class="AuditTargetDetail_Comment_AddComment">
+            <label class="label-color-hex333333">Ghi chú</label>
+            <label class="AuditTargetDetail_Comment_AddComment_Iamge">
+                <img id="icon-add-note" src="~/assets/images/audit_target_mobile/add.png" />
+            </label>
+        </div>
+        <div class="AuditTargetDetail_Comment_TextArea display-none">
+            <textarea class="Comment_Here w-100" placeholder="Nhập ghi chú của bạn..."></textarea>
+        </div>
+    </div>
+    <div class="AuditTargetDetail_History px-3">
+        <h5 class="my-2 main_color fw-bold">Lịch sử</h5>
+        @foreach (var docHis in detailDocument?.DocHistories)
+        {
+            var changeLog = @BIVN.FixedStorage.Services.Common.API.Utilities.DisplayChangeLogHistory(docHis.ChangeLogModel.OldQuantity, docHis.ChangeLogModel.NewQuantity, docHis.ChangeLogModel.OldStatus, docHis.ChangeLogModel.NewStatus, docHis.ChangeLogModel.IsChangeCDetail);
+
+            <div class="AuditTargetDetail_History_Item">
+                <div class="AuditTargetDetail_History_Item_Left">
+                    <p class="mb-0 fw-bolder">@docHis.CreatedAt.ToString(commonAPIConstant.DefaultDateFormat)</p>
+                    <p class="mb-0">Người xác nhận: <label class="mb-0 fw-bolder">@docHis.CreatedBy</label></p>
+                    <p class="mb-0">@Html.Raw(changeLog)</p>
+                </div>
+                <div class="AuditTargetDetail_History_Item_Right">
+                    <a href="/AuditMobile/HistoryDetail/@docHis.Id" class="AuditTargetDetail_History_Item_Right_ViewDetail"><img src="~/assets/images/audit_target_mobile/arrow-right.png" /></a>
+                </div>
+            </div>
+        }
+        
+    </div>
+    <div class="AuditTargetDetail_Buttons px-3 row">
+        @if (detailDocument?.Status != 6 && detailDocument?.Status != 7)
+        {
+            <div class="FailAuditButton col-6">
+                <button class="FailAudit_Btn">
+                    <img class="me-1" src="~/assets/images/audit_target_mobile/icon-x-black.png" />
+                    Không đạt
+                </button>
+            </div>
+            <div class="SuccessAuditButton col-6">
+                <button class="SuccessAudit_Btn opacity-haftpart-1" disabled>
+                    <img class="me-1" src="~/assets/images/audit_target_mobile/icon-tick.png" />
+                    Xác nhận đạt
+                </button>
+            </div>
+        }
+        else if(detailDocument?.Status == 7)
+        {
+            <div class="UpdateAuditButton col-12">
+                <button class="UpdateAudit_Btn opacity-haftpart-1">
+                    <img class="me-1" src="~/assets/images/PencilIcon.svg" />
+                    Cập nhật
+                </button>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<script src="~/assets/js/audit-mobile/audittargetdetail.js" defer></script>

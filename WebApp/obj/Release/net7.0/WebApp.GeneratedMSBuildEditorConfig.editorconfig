@@ -1,0 +1,457 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebApp
+build_property.RootNamespace = WebApp
+build_property.ProjectDir = C:\khanhmf\FIX_Stock_Sever\WebApp\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\khanhmf\FIX_Stock_Sever\WebApp
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 7.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Presentation/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJlc2VudGF0aW9uXFBhZ2VzXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Presentation/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJlc2VudGF0aW9uXFBhZ2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Presentation/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJlc2VudGF0aW9uXFBhZ2VzXFByaXZhY3kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Presentation/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJlc2VudGF0aW9uXFBhZ2VzXFNoYXJlZFxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Presentation/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJlc2VudGF0aW9uXFBhZ2VzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Presentation/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJlc2VudGF0aW9uXFBhZ2VzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Account/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Account/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/AuditMobile/AuditTargetList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRNb2JpbGVcQXVkaXRUYXJnZXRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/AuditMobile/Components/_AuditFilterView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRNb2JpbGVcQ29tcG9uZW50c1xfQXVkaXRGaWx0ZXJWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/AuditMobile/Components/_GoBackView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRNb2JpbGVcQ29tcG9uZW50c1xfR29CYWNrVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/AuditMobile/Components/_SideBarView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRNb2JpbGVcQ29tcG9uZW50c1xfU2lkZUJhclZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/AuditMobile/DocumentDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRNb2JpbGVcRG9jdW1lbnREZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/AuditMobile/HistoryDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRNb2JpbGVcSGlzdG9yeURldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/AuditMobile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVkaXRNb2JpbGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Components/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcG9uZW50c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Departments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/ErrorCategoryManagement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JDYXRlZ29yeU1hbmFnZW1lbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/ErrorInvestigationHistory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JJbnZlc3RpZ2F0aW9uSGlzdG9yeVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/ErrorInvestigation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JJbnZlc3RpZ2F0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Home/PreventAccess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcmV2ZW50QWNjZXNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/InventoryAssignment/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5QXNzaWdubWVudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/InventoryDocument/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5RG9jdW1lbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/InventoryHistory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5SGlzdG9yeVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/InventoryReporting/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5UmVwb3J0aW5nXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Inventory/CreateInventory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENyZWF0ZUludmVudG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Inventory/CreateMonitoringList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XENyZWF0ZU1vbml0b3JpbmdMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Inventory/GeneralInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEdlbmVyYWxJbmZvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Inventory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Inventory/ResultInventory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XFJlc3VsdEludmVudG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Inventory/TabInventory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XFRhYkludmVudG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/InvestigationDetail/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZXN0aWdhdGlvbkRldGFpbFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Roles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/AccountLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEFjY291bnRMYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/Role/_CreateRoleView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxSb2xlXF9DcmVhdGVSb2xlVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/Role/_EditRoleView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxSb2xlXF9FZGl0Um9sZVZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_AddNewComponentModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfQWRkTmV3Q29tcG9uZW50TW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_AddNewErrorManagementModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfQWRkTmV3RXJyb3JNYW5hZ2VtZW50TW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_AuditTargetFilter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfQXVkaXRUYXJnZXRGaWx0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_ChangePasswordUpdateUserInfoModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfQ2hhbmdlUGFzc3dvcmRVcGRhdGVVc2VySW5mb01vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_ChangePasswordViewDetailUserModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfQ2hhbmdlUGFzc3dvcmRWaWV3RGV0YWlsVXNlck1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_DeleteDepartmentModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfRGVsZXRlRGVwYXJ0bWVudE1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_DropDownFilterModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfRHJvcERvd25GaWx0ZXJNb2RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_EditComponentModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfRWRpdENvbXBvbmVudE1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_EditDepartmentModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfRWRpdERlcGFydG1lbnRNb2RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_EditErrorManagementModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfRWRpdEVycm9yTWFuYWdlbWVudE1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_ErrorInvestigationConfirmModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfRXJyb3JJbnZlc3RpZ2F0aW9uQ29uZmlybU1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_ErrorInvestigationHistoriesModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfRXJyb3JJbnZlc3RpZ2F0aW9uSGlzdG9yaWVzTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_ErrorInvestigationHistoryInventoriesModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfRXJyb3JJbnZlc3RpZ2F0aW9uSGlzdG9yeUludmVudG9yaWVzTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_ErrorInvestigationHistoryModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfRXJyb3JJbnZlc3RpZ2F0aW9uSGlzdG9yeU1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_ErrorInvestigationInventoryHistoriesModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfRXJyb3JJbnZlc3RpZ2F0aW9uSW52ZW50b3J5SGlzdG9yaWVzTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_ErrorPercentModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfRXJyb3JQZXJjZW50TW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_HistoryDetailModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSGlzdG9yeURldGFpbE1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InputStorageDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW5wdXRTdG9yYWdlRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryAssignmentAddModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5QXNzaWdubWVudEFkZE1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryAssignmentArea.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5QXNzaWdubWVudEFyZWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryAssignmentEditModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5QXNzaWdubWVudEVkaXRNb2RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryAssignmentEmployee.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5QXNzaWdubWVudEVtcGxveWVlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryDocumentDetailModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5RG9jdW1lbnREZXRhaWxNb2RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryEditComponentByAreaModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5RWRpdENvbXBvbmVudEJ5QXJlYU1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryExportFileInventoryErrorModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5RXhwb3J0RmlsZUludmVudG9yeUVycm9yTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryHistoryViewImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5SGlzdG9yeVZpZXdJbWFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryListAddModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5TGlzdEFkZE1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryListDetailModal_A.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5TGlzdERldGFpbE1vZGFsX0EuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryListDetailModal_BE.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5TGlzdERldGFpbE1vZGFsX0JFLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryListDetailModal_C.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5TGlzdERldGFpbE1vZGFsX0MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryListDownloadFormModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5TGlzdERvd25sb2FkRm9ybU1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryListExportClusterTreeModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5TGlzdEV4cG9ydENsdXN0ZXJUcmVlTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryListExportQRCodeClusterTreeModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5TGlzdEV4cG9ydFFSQ29kZUNsdXN0ZXJUcmVlTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryReporting.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5UmVwb3J0aW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryReportingSupervision.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5UmVwb3J0aW5nU3VwZXJ2aXNpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryResultDownloadFormModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5UmVzdWx0RG93bmxvYWRGb3JtTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_InventoryViewDetailModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfSW52ZW50b3J5Vmlld0RldGFpbE1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_ListComponentViewDetailModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfTGlzdENvbXBvbmVudFZpZXdEZXRhaWxNb2RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_ListErrorInvestigationDocumentDetailModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfTGlzdEVycm9ySW52ZXN0aWdhdGlvbkRvY3VtZW50RGV0YWlsTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_ListUsersViewDetailModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfTGlzdFVzZXJzVmlld0RldGFpbE1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_NewDepartmentModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfTmV3RGVwYXJ0bWVudE1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Common/_ViewDetailUserModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbW1vblxfVmlld0RldGFpbFVzZXJNb2RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Components/CreateDepartment/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ3JlYXRlRGVwYXJ0bWVudFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Components/DepartmentItem/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRGVwYXJ0bWVudEl0ZW1cRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Components/EditDepartment/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRWRpdERlcGFydG1lbnRcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Components/Message/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWVzc2FnZVxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_bottom_css.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9ib3R0b21fY3NzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_bottom_scripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9ib3R0b21fc2NyaXB0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_commonSearch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9jb21tb25TZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_end_scripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9lbmRfc2NyaXB0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9mb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_head_css.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9oZWFkX2Nzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_layout_ico_loading.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9sYXlvdXRfaWNvX2xvYWRpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_LoginLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_mobile_topbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9tb2JpbGVfdG9wYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_right_sidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9yaWdodF9zaWRlYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_sidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9zaWRlYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_title_meta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF90aXRsZV9tZXRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_topbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF90b3BiYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Storage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmFnZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Storage/InOutHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmFnZVxJbk91dEhpc3RvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Storage/ListLayoutIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmFnZVxMaXN0TGF5b3V0SW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Users/_AddNewUserModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcX0FkZE5ld1VzZXJNb2RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/Users/_EditUserModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcX0VkaXRVc2VyTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/khanhmf/FIX_Stock_Sever/WebApp/Presentation/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UHJlc2VudGF0aW9uXFBhZ2VzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-p2luthl09x

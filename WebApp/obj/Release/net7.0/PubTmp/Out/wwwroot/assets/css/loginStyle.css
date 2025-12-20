@@ -1,0 +1,139 @@
+﻿#loginBody {
+    /*background-image: url('../images/banner_BIVN.jpg');*/
+    /*background-repeat: no-repeat;
+    background-position: center center;*/
+
+    background-color: #0D2EA0;
+}
+
+#LoginBody {
+    height: 100vh;
+}
+
+.content-login-pages {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-fluid.login-pages {
+    height: 100vh;
+}
+
+.top-login-pages-image {
+    background: #0D2EA0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.top-login-pages {
+    height: 90px;
+}
+
+.top-login-pages-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+}
+
+    .top-login-pages-title label {
+        padding-left: 50px;
+        color: #0D2EA0;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+.Logo_Login_Small {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .Logo_Login_Small img {
+        /* width: 100%; */
+        /* height: 100%; */
+        object-fit: contain;
+    }
+
+    .Logo_Login_Small img {
+        object-fit: contain;
+    }
+
+h4.Title_Login {
+    font-size: 32px;
+    text-align: center;
+    padding: 20px 0 5px 0;
+    color: #0D2EA0;
+    font-weight: bold;
+}
+
+#UserName_Login, #Password_Login {
+    background-color: #F1F0F4;
+}
+
+.Password_Login_Container {
+    position: relative;
+}
+
+.btn_Password_Login_Image {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+    .btn_Password_Login_Image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+#btnLogin_Form, #btn_Apply_BIVN_ChangePassword_Form {
+    width: 100%;
+    height: 45px;
+    font-size: 18px;
+    background: #0D2EA0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.ChangePassword_Login a {
+    color: #5092FC;
+    font-size: 15px;
+}
+
+.ChangePassword_Login {
+    text-align: center;
+}
+
+.content-login-pages-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.content-login-pages-container {
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.25);
+/*    padding: 10px;*/
+}
+
+.content-login-pages-right {
+    padding: inherit;
+}
+
+.btn_Password_Login_Image img {
+    cursor: pointer;
+}
+
+#UserName_Login-error, #Password_Login-error, #UserName_ChangePassword-error, #OldPassword_ChangePassword-error, #NewPassword_ChangePassword-error, #ConfirmNewPassword_ChangePassword-error {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity)) !important;
+}
+
+

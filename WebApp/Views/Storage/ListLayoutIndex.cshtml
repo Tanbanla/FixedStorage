@@ -1,0 +1,97 @@
+﻿@using BIVN.FixedStorage.Services.Common.API.Dto.Layout
+@using webapConstants = BIVN.FixedStorage.Services.Common.API.Constants;
+
+@model List<LayoutDto>
+@{
+    ViewBag.Title = Html.Translate("Quản lý khu vực");
+    var getListLayout = Model;
+}
+
+<link href="./assets/css/StorageLayout.css" asp-append-version="true" rel="stylesheet" />
+
+<div id="ListStorage_Layout">
+    <div class="row ListStorage_Layout_Content mt-2">
+        @if (getListLayout?.Any() == true){
+            foreach (var layout in getListLayout)
+            {
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 ListStorage_Layout_Content_Container mb-3">
+                    <div class="Title">
+                        <div class="row">
+                            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10">
+                                <h4>@Html.Translate("Khu vực") @layout?.Layout</h4>
+                            </div>
+                            @if (User.IsGrant(webapConstants.Permissions.MASTER_DATA_WRITE))
+                            {
+                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 Image" data-id="@layout.Layout" onclick="DeleteLayoutById(@layout.Layout)">
+                                    <img src="./assets/images/icons/ThungRacDo.png" width="21" />
+                            </div>
+                            }
+                        
+                        </div>
+                    </div>
+                    <div class="Content mb-3">
+                        <div class="row">
+                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                                <h5>@Html.Translate("Nhà máy"):</h5>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                                <p>@layout?.FactoryName</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                                <h5>@Html.Translate("Tầng"):</h5>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                                <p>@layout?.StorageName</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                                <h5>@Html.Translate("Giá"):</h5>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                                <p>@layout?.ShelfName</p>
+                            </div>
+                        </div>
+                        <div class="row">                           
+                                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                                    <form class="frmGetComponentListFromLayoutDetail" action="/get-component-list" Method="GET">
+                                        <input type="hidden" name="layout" value="@layout.Layout" />
+                                        <input type="hidden" name="inventoryStatus" value="" />
+                                    <h5><a class="layout-component" href="javascript:;" style="color:#5092FC;text-decoration:underline !important;">@Html.Translate("Tổng số lượng vị trí linh kiện"):</a></h5>
+                                    </form>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                                    <form class="frmGetComponentListFromLayoutDetail" action="/get-component-list" Method="GET">
+                                        <input type="hidden" name="layout" value="@layout.Layout" />
+                                        <input type="hidden" name="inventoryStatus" value="" />
+                                    <p>@layout.PositionCount</p>
+                                    </form>
+                                </div>                             
+                        </div>
+                        <div class="row">                        
+                                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                                    <form class="frmGetComponentListFromInventoryStatus" action="/get-component-list" Method="GET">
+                                        <input type="hidden" name="layout" value="@layout.Layout" />
+                                        <input type="hidden" name="inventoryStatus" value="@layout.InventoryStatus" />
+                                    <h5><a class="layout-inventorystatus" href="javascript:;" style="color:#5092FC;text-decoration:underline !important;">@Html.Translate("Số lượng vị trí gần hết linh kiện"):</a></h5>
+                                    </form>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                                    <form class="frmGetComponentListFromInventoryStatus" action="/get-component-list" Method="GET">
+                                        <input type="hidden" name="layout" value="@layout.Layout" />
+                                        <input type="hidden" name="inventoryStatus" value="@layout.InventoryStatus" />
+                                    <p>@layout.InventoryNumberCount</p>
+                                </form>
+                                </div>                       
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+
+<script asp-append-version="true" src="./assets/js/StorageLayout.js"></script>

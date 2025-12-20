@@ -1,0 +1,43 @@
+
+<!-- Modal -->
+<div class="modal fade" id="AddNewInventoryModal" tabindex="-1" role="dialog" aria-labelledby="AddNewUserModalLabel" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="modal_title">@Html.Translate("Thêm đợt kiểm kê")</h4>
+                <form id="AddNewInventory_Form" method="post" class="form-horizontal" asp-controller="Users" asp-action="CreateAsync">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  ip-form-update box-container mb-4">
+                            <h5 class="txt-bolder txt-12">@Html.Translate("Ngày kiểm kê") <span style="color:red;">*</span></h5>
+                            <input id="Input_Date_Inventory" name="Input_Date_Inventory" type="text" class="form-control background-color-grey caret_color font-size14 color-black" placeholder="DD/MM/YYYY">
+                            <svg class="calendar_icon" width="20" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.20044 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.2004 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M3.70044 9.08984H20.7004" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M21.2004 8.5V17C21.2004 20 19.7004 22 16.2004 22H8.20044C4.70044 22 3.20044 20 3.20044 17V8.5C3.20044 5.5 4.70044 3.5 8.20044 3.5H16.2004C19.7004 3.5 21.2004 5.5 21.2004 8.5Z" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.8951 13.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M15.8951 16.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12.1959 13.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12.1959 16.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.49475 13.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.49475 16.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            <span id="Input_Date_Inventory-span" class="text-danger error-notification"></span>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ip-form-update box-container mb-4">
+                            <h5>@Html.Translate("Tỉ lệ kiểm kê lại (%)") <span style="color:red;">*</span></h5>
+                            <input id="Ratio_Inventory" name="Ratio_Inventory" value="5" class="form-control form-control-lg background-color-grey font-size14 color-black" placeholder="@Html.Translate("Nhập tỉ lệ kiểm kê lại")..." />
+                            <span id="Ratio_Inventory-span" class="text-danger error-notification"></span>
+                        </div>
+                    </div>
+                </form>
+                <div class="custom_bottom_modal">
+                    <button type="button" id="btn_Cancel_AddInventory" class="btn btn_cancel btn-light text-danger w-50" data-bs-dismiss="modal">@Html.Translate("Hủy bỏ")</button>
+                    <button type="submit" id="btn_Apply_AddInventory" class="btn btn-primary w-50">@Html.Translate("Đồng ý")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script asp-append-version="true" src="./assets/js/inventory/ListInventoryModal.js"></script>

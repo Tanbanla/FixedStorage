@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập hệ thống";
+    Layout = null;
+    @using Microsoft.AspNetCore.Localization
+    @using Microsoft.Extensions.Configuration
+    @inject IConfiguration Configuration
+
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureList = ViewBag.Cultures as List<SelectListItem>;
+    Context.Request.Cookies.TryGetValue(CookieRequestCultureProvider.DefaultCookieName, out var cookieValue);
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>BIVN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="TSO Admin & Dashboard Template" name="description" />
+    <meta content="TSO" name="author" />
+    <!-- App favicon -->
+    <link rel="icon" href="~/assets/images/logo/brotherIcon.png">
+    <!-- Bootstrap Css -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+    <!-- Icons Css -->
+    <link href="~/assets/css/icons.min.css" rel="stylesheet" asp-append-version="true" />
+    <!-- App Css-->
+    <link asp-append-version="true" rel="stylesheet" type="text/css" href="~/assets/libs/toastr/build/toastr.min.css">
+    <link asp-append-version="true" href="~/assets/css/Login.css" rel="stylesheet" />
+
+</head>
+<body id="LoginBody">
+    <div class="container-fluid login-pages">
+        <div class="row top-login-pages">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 top-login-pages-image">
+                <div>  <img src="~/assets/images/logo/logo-white.svg" height="50" /></div>
+                @* <div>  <h6 style="color:#fff">@Configuration.GetSection("Version").Value</h6></div> *@
+            </div>
+            @RenderSection("TopLoginTitle", required: false)
+        </div>
+        <div class="container-xl container-lg container-md container-sm content-login-pages">
+            <div class="row content-login-pages-container">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 content-login-pages-left" >
+                    <div class="Logo_Login_Small">
+                        <img src="~/assets/images/logo/brotherLogo_txt_blue.svg" height="65" />
+                    </div>
+                    @RenderBody()
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 content-login-pages-right">                
+
+                     <div class="login-right">
+                        <div class="login-right-logo">
+                            <img src="~/assets/images/logo/computer.svg" />
+                        </div>
+                        <div class="login-right-content">
+                            <img src="~/assets/images/logo/logo-white.svg" />
+                            <div class="sub-text">
+                                @Html.Translate("CHÀO MỪNG BẠN TRỞ LẠI!")
+                            </div>
+                        </div>
+                     </div>
+
+                </div>
+            </div>
+        </div>
+
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="text-md-center text-center">
+                            <p class="mb-0 text-muted">© @DateTime.UtcNow.Year Brother Industries, Ltd. All Rights Reserved. Version @Configuration.GetSection("Version").Value</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    
+    <!-- JAVASCRIPT -->
+    <script src="~/assets/libs/jquery/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/assets/libs/jquery-validation/jquery.validate.min.js" asp-append-version="true"></script>
+    <!-- toastr plugin -->
+    <script src="~/assets/libs/toastr/build/toastr.min.js" asp-append-version="true"></script>
+    <!-- toastr init -->
+    <script src="~/assets/js/pages/toastr.init.js" asp-append-version="true"></script>
+    <script src="~/assets/js/Login.js" asp-append-version="true"></script>
+    <script src="~/assets/js/Login_ChangePassword.js" asp-append-version="true"></script>
+    <script src="~/assets/libs/sweetalert2/sweetalert2.all.min.js" asp-append-version="true"></script>
+</body>
+</html>
+
+

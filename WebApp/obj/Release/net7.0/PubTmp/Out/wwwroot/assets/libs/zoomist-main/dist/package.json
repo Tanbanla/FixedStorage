@@ -1,0 +1,57 @@
+{
+  "name": "zoomist",
+  "version": "2.0.11",
+  "description": "A TypeScript library for zooming any element. Also supports mobile devices.",
+  "type": "module",
+  "main": "./zoomist.umd.js",
+  "module": "./zoomist.js",
+  "style": "./zoomist.css",
+  "types": "./zoomist.d.ts",
+  "exports": {
+    ".": {
+      "types": "./zoomist.d.ts",
+      "default": "./zoomist.js"
+    },
+    "./css": "./zoomist.css",
+    "./types": "./types.d.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cotton123236/zoomist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cotton123236/zoomist/issues"
+  },
+  "keywords": [
+    "image",
+    "move",
+    "darg",
+    "scale",
+    "zoom",
+    "zoomist",
+    "zoomer",
+    "zooming",
+    "pinch",
+    "pinchzoom",
+    "gesture",
+    "touch",
+    "touchzoom",
+    "touchmove",
+    "mobile",
+    "javascript",
+    "front-end"
+  ],
+  "author": "Wilson Wu",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.64.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.0",
+    "vite-plugin-dts": "^3.5.4"
+  }
+}

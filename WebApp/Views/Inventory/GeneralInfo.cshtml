@@ -1,0 +1,77 @@
+﻿<div id="inventory-form" class="custom_height">
+    <div id="inventory-id" class="">
+        <div class="">
+            <h4 class="h3 txt-blue txt-heading txt-bolder">@Html.Translate("Đợt kiểm kê") <span class="InventoryDetail_InventoryName"></span></h4>
+        </div>
+        <form id="InventoryDetail_Form">
+            <div class="content_inventory_detail">
+                <div class="row mb-4">
+                    <h5 class="label-bold">@Html.Translate("Ngày kiểm kê"): </h5>
+                    <input id="InventoryDetail_input_date_from" name="FromDate" type="text" class="form-control custom_input_date" placeholder="DD/MM/YYYY">
+                    <svg class="custom_calendar_icon calendar_icon CalenderIcon" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.20044 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M16.2004 2V5" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M3.70044 9.08984H20.7004" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M21.2004 8.5V17C21.2004 20 19.7004 22 16.2004 22H8.20044C4.70044 22 3.20044 20 3.20044 17V8.5C3.20044 5.5 4.70044 3.5 8.20044 3.5H16.2004C19.7004 3.5 21.2004 5.5 21.2004 8.5Z" stroke="#0D2EA0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M15.8951 13.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M15.8951 16.7002H15.9041" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12.1959 13.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12.1959 16.7002H12.2049" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M8.49475 13.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M8.49475 16.7002H8.50373" stroke="#0D2EA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="row mb-4" style="height: 24px">
+                    <h5 class="label-bold">@Html.Translate("Trạng thái"): </h5>
+                    <select id="InventoryDetail_Status" class="form-select">
+                        <option value="0">@Html.Translate("Chưa kiểm kê")</option>
+                        <option value="1">@Html.Translate("Đang kiểm kê")</option>
+                        <option value="2">@Html.Translate("Đang giám sát")</option>
+                        <option value="3">@Html.Translate("Hoàn thành")</option>
+                    </select>
+                </div>
+                <div class="row mb-4">
+                    <h5 class="label-bold">@Html.Translate("Tỉ lệ kiểm kê lại (%)"): </h5>
+                    <h5 class="inventory_ratio">
+                        <input id="InventoryDetail_input_inventory_ratio" name="InventoryDetail_input_inventory_ratio" type="text" class="form-control valid hidden-input" />
+                        <span>
+                            <svg class="custom_icon_edit PencilIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.6962 5.47381C15.6862 3.48381 17.5862 3.53381 19.5262 5.47381C20.5262 6.46381 21.0062 7.42381 20.9962 8.41381C20.9962 9.37381 20.5162 10.3238 19.5262 11.3038L18.3262 12.5138C18.2462 12.5938 18.1462 12.6338 18.0362 12.6338C17.9962 12.6338 17.9562 12.6238 17.9162 12.6138C15.2662 11.8538 13.1462 9.73381 12.3862 7.08381C12.3462 6.94381 12.3862 6.78381 12.4862 6.68381L13.6962 5.47381ZM15.2762 13.0838C15.5462 13.2438 15.8262 13.3838 16.1162 13.5238C16.1551 13.5407 16.1935 13.5572 16.2315 13.5734C16.5691 13.7175 16.667 14.1629 16.4075 14.4225L10.6862 20.1438C10.5662 20.2738 10.3162 20.3938 10.1362 20.4238L6.29618 20.9638C6.17618 20.9838 6.05618 20.9938 5.93618 20.9938C5.39618 20.9938 4.89618 20.8038 4.53618 20.4538C4.11618 20.0238 3.92618 19.3838 4.02618 18.7038L4.56618 14.8738C4.59618 14.7038 4.71618 14.4538 4.84618 14.3238L10.5746 8.59534C10.8324 8.33758 11.267 8.43503 11.4146 8.76834C11.4345 8.81325 11.455 8.85841 11.4762 8.90381C11.6162 9.18381 11.7562 9.45381 11.9162 9.72381C12.0462 9.94381 12.1862 10.1638 12.3062 10.3138C12.4463 10.5286 12.6038 10.7172 12.7054 10.839C12.7126 10.8476 12.7196 10.8559 12.7262 10.8638C12.7403 10.882 12.7537 10.8994 12.7662 10.9157C12.8156 10.9801 12.8522 11.0279 12.8762 11.0438C13.2062 11.4438 13.5762 11.8038 13.9062 12.0838C13.9862 12.1638 14.0562 12.2238 14.0762 12.2338C14.2662 12.3938 14.4662 12.5538 14.6362 12.6638C14.8462 12.8138 15.0562 12.9538 15.2762 13.0838Z" fill="#87868C"/>
+                            </svg>
+                        </span>
+                    </h5>
+                </div>
+                <div class="row mb-4">
+                    <h5 class="label-bold mt-2">@Html.Translate("Khóa đợt kiểm kê"): </h5>
+                    <h5 class="inventory_ratio">
+                        <div class="SlideonContainer">
+                            <label class="slideon">
+                                <input id="IsLockedInventory" type="checkbox" class="slideon slideon-auto slideon-success">
+                                <span class="slideon-slider"></span>
+                            </label>
+                        </div>
+                    </h5>
+                </div>
+                <div class="row mb-4">
+                    <h5 class ="label-bold">@Html.Translate("Người tạo"): </h5>
+                    <h5 class="text_content InventoryDetail_CreatedBy">Nguyễn Văn A</h5>
+                </div>
+                <div class="row mb-4">
+                    <h5 class ="label-bold">@Html.Translate("Thời gian tạo"): </h5>
+                    <h5 class="text_content InventoryDetail_CreatedAt">22/08/2023 10:22</h5>
+                </div>
+                <div class="row mb-4">
+                    <h5 class="label-bold">@Html.Translate("Người sửa"): </h5>
+                    <h5 class="text_content InventoryDetail_UpdatetedBy">Nguyễn Công Thành</h5>
+                </div>
+                <div class="row mb-4">
+                    <h5 class="label-bold">@Html.Translate("Thời gian sửa"): </h5>
+                    <h5 class="text_content InventoryDetail_UpdatetedAt">22/08/2023 11:00</h5>
+                </div>
+            </div>
+        </form>
+        <div class="d-flex">
+            <button id="btn-update-inventory" type="button" class="btn btn_custom_inventory">@Html.Translate("Lưu")</button>
+        </div>
+    </div>
+</div>

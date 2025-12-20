@@ -1,0 +1,50 @@
+﻿.ListStorage_Layout_Top h3 {
+    font-size: 24px;
+    color: #0D2EA0;
+    font-weight: bold;
+    margin: 0;
+}
+
+.ListStorage_Layout_Top p {
+    font-size: 14px;
+    color: #6A707E;
+}
+.ListStorage_Layout_Content_Container {
+    background: white;
+    border-radius: 8px;
+    width: 24%;
+    border: 1px solid #E4E4E4;
+    margin: 0 4px;
+}
+
+    .ListStorage_Layout_Content_Container .Title {
+        padding: 20px 0;
+    }
+
+        .ListStorage_Layout_Content_Container .Title h4 {
+            color: #0D2EA0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+    .ListStorage_Layout_Content_Container .Content h5 {
+        font-size: 12px;
+        color: black;
+    }
+
+    .ListStorage_Layout_Content_Container .Content p {
+        color: #5092FC;
+        font-size: 12px;
+        font-weight: bold;
+    }
+.ListStorage_Layout_Content .Image img{
+    cursor:pointer;
+}
+
+.ListStorage_Layout_Content .Content h5, .ListStorage_Layout_Content .Content p {
+    margin: 0;
+}
+
+.ListStorage_Layout_Content .Content .row {
+    height: 25px;
+}

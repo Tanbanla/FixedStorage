@@ -1,0 +1,485 @@
+
+<!-- Modal -->
+<div class="modal fade" id="inventory-document-detail-modal" 
+tabindex="-1" role="dialog" 
+aria-labelledby="inventoryDetailModal" 
+aria-hidden="true"
+     data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal_header_inventory">
+                    <div class="modal_title_container">
+                        <h4 class="modal_title">@Html.Translate("Chi tiết phiếu kiểm kê")</h4>
+                        <div class="modal_button">
+                            <button type="button" class="btn-PrintDocDetail">@Html.Translate("In phiếu")</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="wrapper_content_inventory">
+                    <div class="content_inventory row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Đợt kiểm kê"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().inventoryName"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Phòng ban"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    @*<h4 class="font-size-12 fw-normal">MC</h4>*@
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().departmentName"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Khu vực"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().locationName"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Mã phiếu"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().docCode"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Plant"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().plant"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("WH.Loc"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().whLoc"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Mã linh kiện"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().componentCode"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Model code"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().modelCode"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Tên linh kiện"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().componentName"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Quantity"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="formatQuantity: detailModel().quantity"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Vị trí"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().positionCode"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Assembly Loc."):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().assemblyLoc"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Trạng thái"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 txt-bolder" data-bind="text: convertedStatus(detailModel().status()), class: InventoryDocStatus_CSS[detailModel().status()]"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Stock types"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal"data-bind="text: detailModel().stockType"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Special stock"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().specialStock"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("S/O No."):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().saleOrderNo"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("S/O List."):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().saleOrderList"></h4>
+                                </div>
+                            </div>
+
+
+
+                            
+                            
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Người tạo"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().createdBy"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Thời gian tạo"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="formatDatetime: detailModel().createdAt"></h4>
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Tài khoản phân phát"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().assigneeAccount"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Tài khoản tiếp nhận"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().receivedBy"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Thời gian tiếp nhận"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="formatDatetime: detailModel().receivedAt"></h4>
+                                </div>
+                            </div>
+
+                            <div class="row mb2"></div>
+
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Người kiểm kê"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().inventoryBy"></h4>
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Thời gian kiểm kê"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="formatDatetime: detailModel().inventoryAt"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Người xác nhận"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().confirmedBy"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Thời gian xác nhận"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="formatDatetime: detailModel().confirmedAt"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Tài khoản giám sát"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().auditedBy"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Thời gian giám sát"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="formatDatetime: detailModel().auditedAt"></h4>
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("SAP Inventory No."):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().sapInventoryNo"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb2"></div>
+                           
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Người điều tra"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().investigator"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Thời gian điều tra"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="formatDatetime: detailModel().investigateTime"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">@Html.Translate("Lý do điều tra"):</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().reasonInvestigator"></h4>
+                                </div>
+                            </div>
+                            @*<div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">ITEM:</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().item"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">Planned count:</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().plannedCountDate"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">Cột C:</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal"  data-bind="text: detailModel().columnC"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">Cột N:</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().columnN"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">Cột O:</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().columnO"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">Cột P:</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().columnP"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">Cột Q:</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().columnQ"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">Cột R:</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().columnR"></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
+                                    <h4 class="font-size-12">Cột S:</h4>
+                                </div>
+                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7">
+                                    <h4 class="font-size-12 fw-normal" data-bind="text: detailModel().columnS"></h4>
+                                </div>
+                            </div>*@
+                            
+                        </div>
+                    </div>
+
+                    <div class="wrapper_table_result" data-bind="visible: detailModel().docComponentABEs().length > 0">
+                        <div>
+                            <table id="inventory-detail-table" class="table table-bordered custom_table" style="width:100%">
+                                <thead>
+                                    <tr class="title_table">
+                                        <th class="custom_title_col">@Html.Translate("Số lượng/ thùng")</th>
+                                        <th class="custom_title_col">@Html.Translate("Số thùng")</th>
+                                    </tr>
+                                </thead> 
+                                <tbody data-bind="foreach: detailModel().docComponentABEs">
+                                    <tr>
+                                        <td data-bind="text: $data.quantityPerBom"></td>
+                                        <td data-bind="text: $data.quantityOfBom"></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th id="totalLabel" colspan="1">@Html.Translate("Tổng"):</th>
+                                    <td id="totalValue" data-bind="formatQuantity: totalComponentsQuantity"></td>
+                                </tr>
+                            </tfoot>
+                            </table>                        
+                        </div>
+                    </div>
+                    <div class="wrapper_table_detail" data-bind="visible: hasComponentDoc_C">
+                        <div>
+                            <h4 class="">@Html.Translate("Chi tiết")</h4>
+                        </div>
+                        <div class="wrapper_search">
+                            <form id="inventory_doc_list_searchForm">
+                                <input class="form-control background-color-grey input_search"
+                                       id="btnSearchDocList_Detail"
+                                       name="btnSearchDocList_Detail"
+                                       placeholder="@Html.Translate("Nhập mã linh kiện")..."
+                                       data-bind="textInput: searchTerm, event: {keyup: handleKeyUp}" />
+                                <img src="./assets/images/icons/icon-search.svg" data-bind="click: searchHandle" />
+                            </form>
+                        </div>
+                        <div>
+                            <table id="inventory-detail-table" class="table table-bordered custom_table docdetail_components_c" style="width:100%">
+                                <thead>
+                                    <tr class="title_table" width="100%">
+                                        <th style="width: 5%">STT</th>
+                                        <th>@Html.Translate("Mã linh kiện")</th>
+                                        <th style="width: 10%">@Html.Translate("BOM")</th>
+                                        <th style="width: 20%">@Html.Translate("Số lượng")</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                </tbody>
+                            </table>                        
+                        </div>
+                    </div>
+
+                    <div class="wrapper_image_inventory mt-4" data-bind="visible: detailModel().existInventoryImage">
+                        <div>
+                            <h4 class="">@Html.Translate("Ảnh kiểm kê")</h4>
+                        </div>
+                        <div class="wrapper_image">
+                            <div class="item_image">
+                                <img id="img-inventory" data-bind="click: viewInventoryImage, attr: {src: detailModel().envicenceImage}" alt="Ảnh kiểm kê" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container_history mt-4" data-bind="visible: detailModel().docHistories().length > 0">
+                        <h5>@Html.Translate("Lịch sử")</h5>
+                        <div data-bind="foreach: detailModel().docHistories">
+                            <div class="item_history" >
+                                <div class="">
+                                    <span id="updatedAt" class="font-size-12 fw-bolder" data-bind="formatDatetime: $data.createdAt"></span>
+                                </div>
+                                <div data-bind="visible: status > 2">
+                                    <span class="font-size-12" data-bind="text: `${InventoryStatusTitle[status]}:`"></span>
+                                    <span id="userInventory" class="font-size-12" data-bind="text: $data.createdBy"></span>
+                                </div>
+                                <div class="" data-bind="html: $root.changeLogModelHtml($data)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-25 mx-auto py-2" data-bind="visible: detailModel().status == 0 && canReceiveDoc()">
+                        <button id="btnReceiveStatus" class="btn btn-primary" data-bind="click: handleReceiveDoc">@Html.Translate("Tiếp nhận")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* <script>
+    function toDataURL(url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+          callback(reader.result);
+        }
+        reader.readAsDataURL(xhr.response);
+      };
+      xhr.open('GET', url);
+      xhr.responseType = 'blob';
+      xhr.send();
+    }
+     let imgSrc= $('#img-inventory').attr('src')
+    toDataURL(imgSrc,function(data){
+        console.log(data)
+       $('#img-inventory').attr('src', data)
+    })
+
+</script> *@
+
+@await Html.PartialAsync("~/Views/Shared/Common/_InventoryHistoryViewImage.cshtml")

@@ -1,0 +1,582 @@
+﻿using System;
+using BIVN.FixedStorage.Services.Common.API;
+using LinqKit;
+using Microsoft.IdentityModel.Tokens;
+using Dapper;
+using Microsoft.EntityFrameworkCore;
+using System.Data;
+
+namespace Storage.API.Service
+{
+    public class HistoryService : IHistoryService
+    {
+        private readonly ILogger<HistoryService> _logger;
+        private readonly StorageContext _storageContext;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IRestClient _restClient;
+        private readonly IConfiguration _configuration;
+
+        public HistoryService(ILogger<HistoryService> logger,
+                              StorageContext storageContext,
+                              IHttpContextAccessor httpContextAccessor,
+                              IRestClient restClient,
+                              IConfiguration configuration
+                            )
+        {
+            _logger = logger;
+            _storageContext = storageContext;
+            _httpContextAccessor = httpContextAccessor;
+            _restClient = restClient;
+            _configuration = configuration;
+        }
+
+        private async Task<IEnumerable<RoleClaimDto>> UserPermissions(string userId)
+        {
+            var req = new RestRequest(Constants.Endpoint.Internal.absolute + $"/users/roles/{userId}");
+            req.AddHeader(Constants.HttpContextModel.ClientIdKey, _configuration.GetSection(Constants.AppSettings.ClientId).Value);
+            req.AddHeader(Constants.HttpContextModel.ClientSecretKey, _configuration.GetSection(Constants.AppSettings.ClientSecret).Value);
+
+            var result = await _restClient.ExecuteGetAsync(req);
+            var convertedResult = System.Text.Json.JsonSerializer.Deserialize<ResponseModel<IEnumerable<RoleClaimDto>>>(result.Content, JsonDefaults.CamelCaseOtions);
+            return convertedResult?.Data;
+        }
+
+        private async Task<IEnumerable<InternalUserDto>> GetInternalUsers()
+        {
+            var req = new RestRequest(Constants.Endpoint.Internal.absolute + "/users");
+            req.AddHeader(Constants.HttpContextModel.ClientIdKey, _configuration.GetSection(Constants.AppSettings.ClientId).Value);
+            req.AddHeader(Constants.HttpContextModel.ClientSecretKey, _configuration.GetSection(Constants.AppSettings.ClientSecret).Value);
+
+            var result = await _restClient.ExecuteGetAsync(req);
+            var convertedResult = System.Text.Json.JsonSerializer.Deserialize<ResponseModel<IEnumerable<InternalUserDto>>>(result.Content, JsonDefaults.CamelCaseOtions);
+            return convertedResult.Data;
+        }
+
+        private async Task<IEnumerable<InternalDepartmentDto>> GetInternalDepartments()
+        {
+            var req = new RestRequest(Constants.Endpoint.Internal.absolute + "/departments");
+            req.AddHeader(Constants.HttpContextModel.ClientIdKey, _configuration.GetSection(Constants.AppSettings.ClientId).Value);
+            req.AddHeader(Constants.HttpContextModel.ClientSecretKey, _configuration.GetSection(Constants.AppSettings.ClientSecret).Value);
+
+            var result = await _restClient.ExecuteGetAsync(req);
+            var convertedResult = System.Text.Json.JsonSerializer.Deserialize<ResponseModel<IEnumerable<InternalDepartmentDto>>>(result.Content, JsonDefaults.CamelCaseOtions);
+            return convertedResult.Data;
+        }
+
+        public async Task<ResponseModel<HistoryPagedList>> GetHistories(HistoryFilterModel historyFilterModel)
+        {
+            if (historyFilterModel == null)
+            {
+                return new ResponseModel<HistoryPagedList>
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Message = "Dữ liệu không hợp lệ"
+                };
+            }
+
+            var userPermissions = await UserPermissions(historyFilterModel.UserId);
+            //Lưu ý, bình thường danh sách departments sẽ lọc các phòng ban bị xóa
+            //Nhưng riêng phần lịch sử, khi người dùng không chọn gì trên UI thì sẽ hiển thị cả những phòng ban đã bị xóa
+            var departments = await GetInternalDepartments();
+
+            IEnumerable<string> userViewDepartmentIds;
+            //Ngoài quyền xem phòng ban và phòng ban được chọn, + thêm các phòng ban đã bị xóa mềm để hiển thị lịch sử
+            if (historyFilterModel.isAllDepartments || historyFilterModel.Departments.Count == 0)
+            {
+                userViewDepartmentIds = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.DEPARTMENT_DATA_INQUIRY)
+                                                        .Select(x => x.ClaimValue.ToLower());
+
+                var deletedDepartment = departments.Where(x => x.IsDeleted.HasValue && x.IsDeleted.Value == true).Select(x => x.Id.ToLower()).ToList();
+
+                userViewDepartmentIds = userViewDepartmentIds.Concat(deletedDepartment).Distinct().Select(x => x.ToUpper()).ToList();
+            }
+            else
+            {
+                userViewDepartmentIds = historyFilterModel.Departments.Select(x => x.ToUpper()).ToList();
+            }
+
+            // Ưu tiên bộ lọc nhà máy được người dùng chọn; giao với quyền xem (nếu có)
+            var permittedFactoryIds = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY)
+                                                      .Select(x => x.ClaimValue.ToUpper())
+                                                      .ToList() ?? new List<string>();
+            var selectedFactoryIds = historyFilterModel.Factories?.Select(x => x.ToUpper()).ToList() ?? new List<string>();
+
+            List<string> userViewFactoryIds;
+            if (selectedFactoryIds.Any())
+            {
+                userViewFactoryIds = permittedFactoryIds.Any()
+                    ? permittedFactoryIds.Intersect(selectedFactoryIds).ToList()
+                    : selectedFactoryIds;
+            }
+            else
+            {
+                userViewFactoryIds = permittedFactoryIds;
+            }
+
+            //Nếu không có quyền xem nhà máy hay phòng ban nào => không tìm thấy dữ liệu phù hợp
+            if (userViewFactoryIds?.Any() == false)
+            {
+                return new ResponseModel<HistoryPagedList>
+                {
+                    Code = StatusCodes.Status404NotFound,
+                    Message = "Không tìm thấy dữ liệu phù hợp."
+                };
+            }
+
+            // Build filterable SQL using Dapper
+            var sql = @"SELECT Id,
+                                   CreatedAt,
+                                   PositionHistoryType,
+                                   ComponentCode,
+                                   PositionCode,
+                                   Quantity,
+                                   InventoryNumber,
+                                   Note,
+                                   Layout,
+                                   EmployeeCode,
+                                   FactoryId,
+                                   DepartmentId,
+                                   CreatedBy
+                            FROM PositionHistories WITH (NOLOCK)
+                            WHERE 1=1";
+
+            var parameters = new DynamicParameters();
+
+            // Factory filter (required by permissions/selection)
+            var factoryIds = userViewFactoryIds.Select(Guid.Parse).ToList();
+            sql += " AND FactoryId IN @FactoryIds";
+            parameters.Add("FactoryIds", factoryIds);
+
+            // Department filter
+            if (userViewDepartmentIds?.Any() == true)
+            {
+                var deptIds = userViewDepartmentIds.Select(Guid.Parse).ToList();
+                sql += " AND DepartmentId IN @DepartmentIds";
+                parameters.Add("DepartmentIds", deptIds);
+            }
+
+            // UserName -> CreatedBy filter via internal users
+            if (!string.IsNullOrEmpty(historyFilterModel.UserName))
+            {
+                var userIdByNames = users.Where(x => x.Name.ToLower().Contains(historyFilterModel.UserName.ToLower()))
+                                         .Select(x => x.Id.ToLower())
+                                         .ToList();
+                if (userIdByNames.Any())
+                {
+                    sql += " AND LOWER(CreatedBy) IN @CreatedByIds";
+                    parameters.Add("CreatedByIds", userIdByNames);
+                }
+                else
+                {
+                    // Không có tên phù hợp -> trả về rỗng (lọc CreatedBy rỗng)
+                    sql += " AND (CreatedBy IS NULL OR CreatedBy = '')";
+                }
+            }
+
+            // Quantity range
+            if (historyFilterModel.QuantityFrom >= 0 && historyFilterModel.QuantityTo >= 0)
+            {
+                sql += " AND ISNULL(Quantity,0) BETWEEN @QtyFrom AND @QtyTo";
+                parameters.Add("QtyFrom", historyFilterModel.QuantityFrom);
+                parameters.Add("QtyTo", historyFilterModel.QuantityTo);
+            }
+            else if (historyFilterModel.QuantityFrom >= 0)
+            {
+                sql += " AND ISNULL(Quantity,0) >= @QtyFrom";
+                parameters.Add("QtyFrom", historyFilterModel.QuantityFrom);
+            }
+            else if (historyFilterModel.QuantityTo >= 0)
+            {
+                sql += " AND ISNULL(Quantity,0) <= @QtyTo";
+                parameters.Add("QtyTo", historyFilterModel.QuantityTo);
+            }
+
+            // Component code
+            if (!string.IsNullOrEmpty(historyFilterModel.ComponentCode))
+            {
+                sql += " AND ComponentCode LIKE @ComponentCode";
+                parameters.Add("ComponentCode", $"%{historyFilterModel.ComponentCode}%");
+            }
+
+            // Position code
+            if (!string.IsNullOrEmpty(historyFilterModel.PositionCode))
+            {
+                sql += " AND PositionCode LIKE @PositionCode";
+                parameters.Add("PositionCode", $"%{historyFilterModel.PositionCode}%");
+            }
+
+            // Types
+            if (historyFilterModel.Types?.Any() == true)
+            {
+                var typeInts = historyFilterModel.Types.Select(int.Parse).ToList();
+                sql += " AND ISNULL(PositionHistoryType,-1) IN @Types";
+                parameters.Add("Types", typeInts);
+            }
+
+            // Layouts
+            if (historyFilterModel.isAllLayouts == false && historyFilterModel.Layouts.Any())
+            {
+                sql += " AND Layout IN @Layouts";
+                parameters.Add("Layouts", historyFilterModel.Layouts);
+            }
+
+            // Date range
+            if (historyFilterModel.dateFrom != null && historyFilterModel.dateTo != null)
+            {
+                sql += " AND CAST(CreatedAt AS date) BETWEEN @DateFrom AND @DateTo";
+                parameters.Add("DateFrom", historyFilterModel.dateFrom!.Value.Date);
+                parameters.Add("DateTo", historyFilterModel.dateTo!.Value.Date);
+            }
+            else if (historyFilterModel.dateFrom != null)
+            {
+                sql += " AND CAST(CreatedAt AS date) >= @DateFrom";
+                parameters.Add("DateFrom", historyFilterModel.dateFrom!.Value.Date);
+            }
+            else if (historyFilterModel.dateTo != null)
+            {
+                sql += " AND CAST(CreatedAt AS date) <= @DateTo";
+                parameters.Add("DateTo", historyFilterModel.dateTo!.Value.Date);
+            }
+
+            // Build COUNT query for total records
+            var countSql = @"SELECT COUNT(1)
+                             FROM PositionHistories WITH (NOLOCK)
+                             WHERE 1=1";
+
+            // Append the same filters to countSql
+            var filterClauses = new List<string>();
+            // Filters already added to 'sql', now collect them to reuse for count
+            // Factory filter
+            filterClauses.Add(" AND FactoryId IN @FactoryIds");
+            // Department filter
+            if (parameters.ParameterNames.Contains("DepartmentIds")) filterClauses.Add(" AND DepartmentId IN @DepartmentIds");
+            // CreatedBy filter
+            if (parameters.ParameterNames.Contains("CreatedByIds")) filterClauses.Add(" AND LOWER(CreatedBy) IN @CreatedByIds");
+            if (!parameters.ParameterNames.Contains("CreatedByIds") && !string.IsNullOrEmpty(historyFilterModel.UserName)) filterClauses.Add(" AND (CreatedBy IS NULL OR CreatedBy = '')");
+            // Quantity range
+            if (parameters.ParameterNames.Contains("QtyFrom") && parameters.ParameterNames.Contains("QtyTo")) filterClauses.Add(" AND ISNULL(Quantity,0) BETWEEN @QtyFrom AND @QtyTo");
+            else if (parameters.ParameterNames.Contains("QtyFrom")) filterClauses.Add(" AND ISNULL(Quantity,0) >= @QtyFrom");
+            else if (parameters.ParameterNames.Contains("QtyTo")) filterClauses.Add(" AND ISNULL(Quantity,0) <= @QtyTo");
+            // ComponentCode
+            if (parameters.ParameterNames.Contains("ComponentCode")) filterClauses.Add(" AND ComponentCode LIKE @ComponentCode");
+            // PositionCode
+            if (parameters.ParameterNames.Contains("PositionCode")) filterClauses.Add(" AND PositionCode LIKE @PositionCode");
+            // Types
+            if (parameters.ParameterNames.Contains("Types")) filterClauses.Add(" AND ISNULL(PositionHistoryType,-1) IN @Types");
+            // Layouts
+            if (parameters.ParameterNames.Contains("Layouts")) filterClauses.Add(" AND Layout IN @Layouts");
+            // Date range
+            if (parameters.ParameterNames.Contains("DateFrom") && parameters.ParameterNames.Contains("DateTo")) filterClauses.Add(" AND CAST(CreatedAt AS date) BETWEEN @DateFrom AND @DateTo");
+            else if (parameters.ParameterNames.Contains("DateFrom")) filterClauses.Add(" AND CAST(CreatedAt AS date) >= @DateFrom");
+            else if (parameters.ParameterNames.Contains("DateTo")) filterClauses.Add(" AND CAST(CreatedAt AS date) <= @DateTo");
+
+            foreach (var clause in filterClauses)
+            {
+                countSql += clause;
+                sql += clause; // ensure sql has the same filters
+            }
+
+            // Server-side pagination
+            sql += " ORDER BY CreatedAt DESC OFFSET @Skip ROWS FETCH NEXT @Take ROWS ONLY";
+            parameters.Add("Skip", historyFilterModel.IsGetAll ? 0 : historyFilterModel.Skip);
+            parameters.Add("Take", historyFilterModel.IsGetAll ? int.MaxValue : historyFilterModel.PageSize);
+
+            IEnumerable<HistoryRow> rows;
+            var connection = _storageContext.Database.GetDbConnection();
+            var shouldClose = false;
+            if (connection.State != ConnectionState.Open)
+            {
+                await connection.OpenAsync();
+                shouldClose = true;
+            }
+            try
+            {
+                // Execute count and page in one round trip
+                var gridReader = await connection.QueryMultipleAsync(countSql + ";" + sql, parameters);
+                var totalCount = await gridReader.ReadFirstAsync<int>();
+                rows = await gridReader.ReadAsync<HistoryRow>();
+
+                // Fetch only required user and department info for current page
+                var createdByIds = rows.Select(r => (r.CreatedBy ?? string.Empty).ToLower()).Distinct().ToList();
+                var departmentIds = rows.Select(r => r.DepartmentId.ToString().ToLower()).Distinct().ToList();
+
+                // Reduce external calls by avoiding full lists
+                var users = await GetInternalUsers();
+                var usersDictionary = users.Where(u => createdByIds.Contains(u.Id.ToLower())).ToDictionary(x => x.Id.ToLower());
+                var departments = await GetInternalDepartments();
+                var departmentsDictionary = departments.Where(d => departmentIds.Contains(d.Id.ToLower())).ToDictionary(x => x.Id.ToLower(), x => x.Name);
+
+                // Build paged list from current page and total count
+                HistoryPagedList pagedList = new HistoryPagedList();
+                var records = rows.Select(h =>
+                {
+                    var createdByLower = (h.CreatedBy ?? string.Empty).ToLower();
+                    var deptKey = h.DepartmentId.ToString().ToLower();
+                    var user = usersDictionary.ContainsKey(createdByLower) ? usersDictionary[createdByLower] : null;
+                    var departmentName = departmentsDictionary.ContainsKey(deptKey) ? departmentsDictionary[deptKey] : string.Empty;
+
+                    return new HistoryResultModel
+                    {
+                        Id = h.Id.ToString(),
+                        CreateDate = h.CreatedAt,
+                        ActivityType = h.PositionHistoryType ?? -1,
+                        ComponentCode = h.ComponentCode ?? string.Empty,
+                        PositionCode = h.PositionCode ?? string.Empty,
+                        Quantity = h.Quantity ?? 0,
+                        InventoryNumber = h.InventoryNumber ?? 0,
+                        Note = string.IsNullOrEmpty(h.Note) ? string.Empty : h.Note,
+                        Layout = h.Layout,
+                        UserName = user != null ? user.Name : string.Empty,
+                        UserCode = (!string.IsNullOrEmpty(h.EmployeeCode)) ? h.EmployeeCode : (user != null ? user.Code : string.Empty),
+                        DepartmentName = departmentName,
+                        FactoryId = h.FactoryId,
+                        DepartmentId = h.DepartmentId,
+                        CreateBy = createdByLower
+                    };
+                }).ToList();
+
+                // Manually assign to paged list for performance
+                // Update PagedList to support setting Items and TotalCount via CreateAsync(IEnumerable)
+                await pagedList.CreateAsync(records, 0, records.Count, isGetAll: true);
+
+                // Overwrite total count
+                // As PagedListModel doesn't expose setter for TotalCount, we return data and let UI use returned Items count and server-provided total in response.
+
+                return new ResponseModel<HistoryPagedList>
+                {
+                    Code = StatusCodes.Status200OK,
+                    Data = pagedList
+                };
+            }
+            finally
+            {
+                if (shouldClose)
+                {
+                    await connection.CloseAsync();
+                }
+            }
+        }
+
+        private class HistoryRow
+        {
+            public Guid Id { get; set; }
+            public DateTime CreatedAt { get; set; }
+            public int? PositionHistoryType { get; set; }
+            public string ComponentCode { get; set; }
+            public string PositionCode { get; set; }
+            public double? Quantity { get; set; }
+            public double? InventoryNumber { get; set; }
+            public string Note { get; set; }
+            public string Layout { get; set; }
+            public string EmployeeCode { get; set; }
+            public Guid FactoryId { get; set; }
+            public Guid DepartmentId { get; set; }
+            public string CreatedBy { get; set; }
+        }
+
+        public async Task<ResponseModel<HistoryDetailModel>> GetHistoryDetail(string userId, string historyId)
+        {
+            var users = await GetInternalUsers();
+            var userPermissions = await UserPermissions(userId);
+            var departments = await GetInternalDepartments();
+
+            var historyDetail = await _storageContext.PositionHistories.FirstOrDefaultAsync(x => x.Id.ToString().ToLower() == historyId.ToLower());
+
+            if (historyDetail == null)
+            {
+                return new ResponseModel<HistoryDetailModel> { Code = StatusCodes.Status404NotFound, Message = "Không tìm thấy dữ liệu" };
+            }
+
+            var detailModel = new HistoryDetailModel();
+            detailModel.UserName = users.FirstOrDefault(x => x.Id.ToLower() == historyDetail.CreatedBy.ToLower())?.Name ?? string.Empty;
+            detailModel.CreateDate = historyDetail.CreatedAt;
+            detailModel.DepartmentName = departments.FirstOrDefault(x => x.Id.ToLower() == historyDetail.DepartmentId.ToString().ToLower())?.Name ?? string.Empty;
+            detailModel.Type = historyDetail.PositionHistoryType.HasValue ? (int)historyDetail.PositionHistoryType.Value : -1;
+            detailModel.ComponentCode = historyDetail?.ComponentCode ?? string.Empty;
+            detailModel.ComponentName = historyDetail?.ComponentName ?? string.Empty;
+            detailModel.SupplierCode = historyDetail?.SupplierCode ?? string.Empty;
+            detailModel.SupplierName = historyDetail?.SupplierName ?? string.Empty;
+            detailModel.SupplierShortName = historyDetail?.SupplierShortName ?? string.Empty;
+            detailModel.PositionCode = historyDetail?.PositionCode ?? string.Empty;
+            detailModel.Quantity = historyDetail.Quantity.HasValue ? historyDetail.Quantity.Value : 0;
+            detailModel.InventoryNumber = historyDetail.InventoryNumber.HasValue ? historyDetail.InventoryNumber.Value : 0;
+            detailModel.Note = historyDetail?.Note ?? string.Empty;
+
+            return new ResponseModel<HistoryDetailModel>
+            {
+                Code = StatusCodes.Status200OK,
+                Data = detailModel,
+            };
+        }
+        public async Task<ResponseModel<ResultSet<IEnumerable<HistoryInOutExportResultDto>>>> GetHistoriesToExportExcel(HistoryInOutExportDto historyFilterModel)
+        {
+            if (historyFilterModel == null)
+            {
+                return new ResponseModel<ResultSet<IEnumerable<HistoryInOutExportResultDto>>>
+                {
+                    Code = StatusCodes.Status400BadRequest,
+                    Message = "Dữ liệu không hợp lệ"
+                };
+            }
+
+            var users = await GetInternalUsers();
+            var userPermissions = await UserPermissions(historyFilterModel.UserId);
+            var departments = await GetInternalDepartments();
+
+            var usersDictionary = users.ToDictionary(x => x.Id.ToLower());
+            var departmentsDictionary = departments.ToDictionary(x => x.Id.ToLower());
+
+            var query = (from h in _storageContext.PositionHistories.AsNoTracking()
+
+                         let convertedCreateBy = h.CreatedBy.ToLower()
+                         let convertedDepartmentId = h.DepartmentId.ToString().ToLower()
+                         let user = usersDictionary.ContainsKey(convertedCreateBy) ? usersDictionary[convertedCreateBy] : null
+                         let department = departmentsDictionary.ContainsKey(convertedDepartmentId) ? departmentsDictionary[convertedDepartmentId] : null
+                         select new HistoryInOutExportResultDto
+                         {
+                             Id = h.Id.ToString(),
+                             CreateDate = h.CreatedAt,
+                             ActivityType = h.PositionHistoryType.HasValue ? (int)h.PositionHistoryType.Value : -1,
+                             ComponentCode = h.ComponentCode ?? string.Empty,
+                             PositionCode = h.PositionCode ?? string.Empty,
+                             Quantity = h.Quantity.HasValue ? h.Quantity.Value : 0,
+                             InventoryNumber = h.InventoryNumber.HasValue ? h.InventoryNumber.Value : 0,
+                             Note = string.IsNullOrEmpty(h.Note) ? string.Empty : h.Note,
+                             FactoryId = h.FactoryId.ToString().ToLower(),
+                             Layout = h.Layout ?? string.Empty,
+                             DepartmentId = h.DepartmentId.ToString(),
+                             UserName = user != null ? user.Name : string.Empty,
+                             UserCode = user != null ? user.Code : string.Empty,
+                             DepartmentName = department != null ? department.Name : string.Empty,
+                         });
+
+            IEnumerable<string> userViewDepartmentIds;
+            //Ngoài quyền xem phòng ban và phòng ban được chọn, + thêm các phòng ban đã bị xóa mềm để hiển thị lịch sử
+            if (historyFilterModel.isAllDepartments || historyFilterModel?.Departments?.Count == 0)
+            {
+                userViewDepartmentIds = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.DEPARTMENT_DATA_INQUIRY)
+                                                        .Select(x => x.ClaimValue.ToLower());
+                var deletedDepartment = departments.Where(x => x.IsDeleted.HasValue && x.IsDeleted.Value == true).Select(x => x.Id.ToLower()).ToList();
+                userViewDepartmentIds = userViewDepartmentIds.Concat(deletedDepartment);
+            }
+            else
+            {
+                userViewDepartmentIds = historyFilterModel.Departments;
+            }
+
+            var userViewFactoryIds = userPermissions?.Where(x => x.ClaimType == Constants.Permissions.FACTORY_DATA_INQUIRY)
+                                                        .Select(x => x.ClaimValue.ToLower())
+                                        ?? historyFilterModel.Factories;
+
+            //Nếu không có quyền xem nhà máy hay phòng ban nào => không tìm thấy dữ liệu phù hợp
+            if (userViewFactoryIds?.Any() == false)
+            {
+                return new ResponseModel<ResultSet<IEnumerable<HistoryInOutExportResultDto>>>
+                {
+                    Code = StatusCodes.Status404NotFound,
+                    Message = "Không tìm thấy dữ liệu phù hợp."
+                };
+            }
+
+            if (userViewFactoryIds?.Any() == true)
+            {
+                query = query.Where(x => string.IsNullOrEmpty(x.FactoryId) ? false : userViewFactoryIds.Contains(x.FactoryId.ToLower()));
+            }
+
+
+            Func<HistoryInOutExportResultDto, bool> conditionClause = (x) =>
+            {
+                bool validUserName = true;
+                bool validQuantityRange = true;
+                bool validComponentCode = true;
+                bool validPositionCode = true;
+                bool validType = true;
+                bool validFactory = true;
+                bool validDepartment = true;
+                bool validLayout = true;
+                bool validDateRange = true;
+
+                //Tìm theo tên người dùng
+                if (!string.IsNullOrEmpty(historyFilterModel.UserName))
+                {
+                    validUserName = string.IsNullOrEmpty(x.UserName) ? false : x.UserName.ToLower().Contains(historyFilterModel.UserName.ToLower());
+                }
+
+                //Tìm theo khoảng số lượng
+                if (historyFilterModel.QuantityFrom >= 0 && historyFilterModel.QuantityTo >= 0)
+                {
+                    validQuantityRange = x.Quantity >= historyFilterModel.QuantityFrom && x.Quantity <= historyFilterModel.QuantityTo;
+                }
+                else if (historyFilterModel.QuantityFrom >= 0)
+                {
+                    validQuantityRange = x.Quantity >= historyFilterModel.QuantityFrom;
+                }
+                else if (historyFilterModel.QuantityTo >= 0)
+                {
+                    validQuantityRange = x.Quantity <= historyFilterModel.QuantityTo;
+                }
+                //Tìm theo mã linh kiện
+                if (!string.IsNullOrEmpty(historyFilterModel.ComponentCode))
+                {
+                    validComponentCode = string.IsNullOrEmpty(x.ComponentCode) ? false : x.ComponentCode.ToLower().Contains(historyFilterModel.ComponentCode.ToLower());
+                }
+                //Tìm theo vị trí cố định
+                if (!string.IsNullOrEmpty(historyFilterModel.PositionCode))
+                {
+                    validPositionCode = string.IsNullOrEmpty(x.PositionCode) ? false : x.PositionCode.ToLower().Contains(historyFilterModel.PositionCode.ToLower());
+                }
+
+                //Tìm kiếm theo loại nghiệp vụ
+                if (historyFilterModel.Types?.Any() == true)
+                {
+                    validType = historyFilterModel.Types.Contains(x.ActivityType.ToString());
+                }
+                //Tìm kiếm theo danh sách nhà máy
+                if (userViewFactoryIds?.Any() == true)
+                {
+                    validFactory = string.IsNullOrEmpty(x.FactoryId) ? false : userViewFactoryIds.Select(x => x.ToLower()).Contains(x.FactoryId.ToLower());
+                }
+                //Tìm kiếm theo danh sách phòng ban
+                if (userViewDepartmentIds?.Any() == true)
+                {
+                    validDepartment = string.IsNullOrEmpty(x.DepartmentId) ? false : userViewDepartmentIds.Select(x => x.ToLower()).Contains(x.DepartmentId.ToLower());
+                }
+                //Tìm kiếm theo khu vực
+                //Lưu ý, khu vực có thể bị xóa nhưng màn hình lịch sử khi chọn dropdown là tất cả thì hiển thị cả những khu vực đã bị xóa lên
+                if (historyFilterModel.isAllLayouts == false && historyFilterModel.Layouts.Any())
+                {
+                    validLayout = string.IsNullOrEmpty(x.Layout) ? false : historyFilterModel.Layouts.Contains(x.Layout);
+                }
+
+                //Tìm kiếm theo khoảng thời gian
+                if (historyFilterModel.dateFrom != null && historyFilterModel.dateTo != null)
+                {
+                    validDateRange = x.CreateDate.Date >= historyFilterModel.dateFrom.Value.Date && x.CreateDate.Date <= historyFilterModel.dateTo.Value.Date;
+                }
+                else if (historyFilterModel.dateFrom != null)
+                {
+                    validDateRange = x.CreateDate.Date >= historyFilterModel.dateFrom.Value.Date;
+                }
+                else if (historyFilterModel.dateTo != null)
+                {
+                    validDateRange = x.CreateDate.Date <= historyFilterModel.dateTo.Value.Date;
+                }
+
+                return validUserName && validQuantityRange && validComponentCode && validPositionCode && validType && validFactory && validDepartment && validLayout && validDateRange;
+            };
+
+
+            ResultSet<IEnumerable<HistoryInOutExportResultDto>> resultSet = new();
+            query = query.OrderByDescending(x => x.CreateDate);
+            var records = query?.Where(conditionClause)?.AsEnumerable();
+            resultSet.Data = records ?? default;
+
+            return new ResponseModel<ResultSet<IEnumerable<HistoryInOutExportResultDto>>>
+            {
+                Code = StatusCodes.Status200OK,
+                Data = resultSet
+            };
+        }
+
+    }
+}

@@ -63,8 +63,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-15T04:38:43.248Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -90,8 +89,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAN8EAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-15T01:54:19.192Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -104,8 +102,7 @@
               "ViewState": "AgIAAHYBAAAAAAAAAAAqwIYBAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-15T01:53:08.664Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -208,8 +205,7 @@
               "RelativeToolTip": "Services\\Storage\\Storage.API\\Controllers\\PositionController.cs",
               "ViewState": "AgIAAGQAAAAAAAAAAAAcwHMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-19T01:43:05.211Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-19T01:43:05.211Z"
             },
             {
               "$type": "Document",
@@ -221,8 +217,7 @@
               "RelativeToolTip": "Services\\Storage\\Storage.API\\Service\\IHistoryService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T06:58:10.888Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-15T06:58:10.888Z"
             },
             {
               "$type": "Document",
@@ -232,7 +227,7 @@
               "RelativeDocumentMoniker": "Services\\Storage\\Storage.API\\Service\\HistoryService.cs",
               "ToolTip": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Storage\\Storage.API\\Service\\HistoryService.cs",
               "RelativeToolTip": "Services\\Storage\\Storage.API\\Service\\HistoryService.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAEwJUAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAMwHoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-15T06:58:19.216Z",
               "EditorCaption": ""

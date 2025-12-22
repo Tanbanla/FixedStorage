@@ -63,7 +63,43 @@
             {
                 return BadRequest(new ResponseModel<List<LayoutDto>>(result.Code, result.Message, result.Data));
             }
-            return View("ListLayoutIndex", result.Data);
+
+            // get factories for filter dropdown
+            try
+            {
+                var factoryReq = new RestRequest(commonAPIConstant.Endpoint.api_Storage_Factory);
+                factoryReq.AddHeader(commonAPIConstant.HttpContextModel.AuthorizationKey, $"{token}");
+                var factoryResp = await _restClient.GetAsync(factoryReq);
+                if (factoryResp?.IsSuccessful == true && !string.IsNullOrEmpty(factoryResp.Content))
+                {
+                    var factories = JsonConvert.DeserializeObject<ResponseModel<IEnumerable<FactoryInfoModel>>>(factoryResp.Content)?.Data;
+                    ViewBag.Factories = factories;
+                }
+                else
+                {
+                    ViewBag.Factories = null;
+                }
+            }
+            catch
+            {
+                ViewBag.Factories = null;
+            }
+
+            // support filtering by factory via query string ?factoryId={id}
+            var factoryIdQuery = Request.Query["factoryId"].ToString();
+            ViewBag.SelectedFactory = factoryIdQuery;
+            var layouts = result.Data ?? new List<LayoutDto>();
+            if (!string.IsNullOrEmpty(factoryIdQuery) && Guid.TryParse(factoryIdQuery, out var parsedFactoryId))
+            {
+                var factoriesObj = ViewBag.Factories as IEnumerable<BIVN.FixedStorage.Services.Common.API.Dto.Factory.FactoryInfoModel>;
+                var selectedFactoryName = factoriesObj?.FirstOrDefault(f => f.Id == parsedFactoryId)?.Name;
+                if (!string.IsNullOrEmpty(selectedFactoryName))
+                {
+                    layouts = layouts.Where(l => string.Equals(l.FactoryName, selectedFactoryName, StringComparison.OrdinalIgnoreCase)).ToList();
+                }
+            }
+
+            return View("ListLayoutIndex", layouts);
         }
 
         [RouteDisplayValue(RouteDisplay.HISTORY)]

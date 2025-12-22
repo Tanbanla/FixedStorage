@@ -10,6 +10,36 @@
 <link href="./assets/css/StorageLayout.css" asp-append-version="true" rel="stylesheet" />
 
 <div id="ListStorage_Layout">
+    <div class="row mb-3">
+        <div class="col-4">
+            @{ 
+                var factories = ViewBag.Factories as IEnumerable<BIVN.FixedStorage.Services.Common.API.Dto.Factory.FactoryInfoModel>;
+                var userViewFactoryIds = User?.Claims?.Where(x => x.Type == webapConstants.Permissions.FACTORY_DATA_INQUIRY).Select(x => x.Value.ToString().ToLower());
+                var filteredFactories = factories?.Where(x => userViewFactoryIds?.Contains(x.Id.ToString().ToLowerInvariant()) == true);
+                var selectedFactory = (string)ViewBag.SelectedFactory ?? "";
+            }
+            <form id="frmFilterFactory" method="get" action="/list-layout">
+                <label class="text_label">@Html.Translate("Nhà máy")</label>
+                <select id="filterFactory" name="factoryId" class="form-select background-color-grey" onchange="document.getElementById('frmFilterFactory').submit();">
+                    <option value="">@Html.Translate("Tất cả")</option>
+                    @if (filteredFactories != null)
+                    {
+                        foreach (var f in filteredFactories)
+                        {
+                            if (!string.IsNullOrEmpty(selectedFactory) && string.Equals(selectedFactory, f.Id.ToString(), StringComparison.OrdinalIgnoreCase))
+                            {
+                                <option selected value="@f.Id">@f.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@f.Id">@f.Name</option>
+                            }
+                        }
+                    }
+                </select>
+            </form>
+        </div>
+    </div>
     <div class="row ListStorage_Layout_Content mt-2">
         @if (getListLayout?.Any() == true){
             foreach (var layout in getListLayout)

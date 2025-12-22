@@ -105,3 +105,4 @@ C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Debug\net7.0\refint\
 C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Debug\net7.0\Storage.API.pdb
 C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Debug\net7.0\Storage.API.genruntimeconfig.cache
 C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Debug\net7.0\ref\Storage.API.dll
+C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Debug\net7.0\Storage.API.sourcelink.json

@@ -11,5 +11,6 @@
         public IList<string> LayoutIds { get; set; }
         public string? AllLayouts { get; set; }
         public string? InventoryStatus { get; set; }
+        public IList<Guid> FactoryIds { get; set; }
     }
 }

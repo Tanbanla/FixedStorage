@@ -645,7 +645,13 @@
                 };
             }
 
-            if (factoryFilter?.Any() == true)
+            // If UI provided FactoryIds filter, apply it (multi-select). Otherwise restrict by user's role claims (factoryFilter)
+            if (filterModel.FactoryIds != null && filterModel.FactoryIds.Any())
+            {
+                var upperIds = filterModel.FactoryIds.Select(g => g.ToString().ToUpper()).ToList();
+                query = query.Where(x => upperIds.Contains(x.FactoryId.ToString().ToUpper()));
+            }
+            else if (factoryFilter?.Any() == true)
             {
                 query = query.Where(x => factoryFilter.Contains(x.FactoryId.ToString().ToUpper()));
             }

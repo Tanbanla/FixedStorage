@@ -2829,6 +2829,14 @@
           "inventoryStatus": {
             "type": "string",
             "nullable": true
+          },
+          "factoryIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

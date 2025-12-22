@@ -1,0 +1,694 @@
+name: dockercompose15761529369374003685
+services:
+  identity.api:
+    build:
+      context: C:\khanhmf\FIX_Stock_Sever
+      dockerfile: ./Services/Identity/Identity.API/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+        LAUNCHING_FROM_VS: "true"
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Identity.API
+      target: base
+    entrypoint:
+      - dotnet
+      - --roll-forward
+      - Major
+      - /VSTools/DistrolessHelper/DistrolessHelper.dll
+      - --wait
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      IdentityServiceUrl__Address: http://172.26.248.68:9223
+      NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages;/.nuget/fallbackpackages2;/.nuget/fallbackpackages3
+      UploadPath: /app/wwwroot
+    image: identityapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2 --additionalProbingPath /.nuget/fallbackpackages3  "/app/bin/Debug/net7.0/Identity.API.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      storage-net: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "9223"
+        protocol: tcp
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - type: volume
+        source: upload-file
+        target: c:/app/wwwroot
+        volume: {}
+      - type: bind
+        source: C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API
+        target: /app
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\khanhmf\FIX_Stock_Sever
+        target: /src
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\.nuget\packages
+        target: /.nuget/packages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\DevExpress 20.2\Components\Offline Packages
+        target: /.nuget/fallbackpackages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages
+        target: /.nuget/fallbackpackages2
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\DevExpress 22.2\Components\Offline Packages
+        target: /.nuget/fallbackpackages3
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0
+        target: /VSTools
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+  identity.background:
+    build:
+      context: C:\khanhmf\FIX_Stock_Sever
+      dockerfile: ./Services/Identity/Identity.Background/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+        LAUNCHING_FROM_VS: "true"
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Identity.Background
+      target: base
+    entrypoint:
+      - dotnet
+      - --roll-forward
+      - Major
+      - /VSTools/DistrolessHelper/DistrolessHelper.dll
+      - --wait
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      BackgroundJob__LockUsersInterval: "60"
+      IdentityServiceUrl__Address: http://172.26.248.68:9223
+      NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages;/.nuget/fallbackpackages2;/.nuget/fallbackpackages3
+    image: identitybackground:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2 --additionalProbingPath /.nuget/fallbackpackages3  "/app/bin/Debug/net7.0/Identity.Background.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      storage-net: null
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - type: bind
+        source: C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.Background
+        target: /app
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\khanhmf\FIX_Stock_Sever
+        target: /src
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\.nuget\packages
+        target: /.nuget/packages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\DevExpress 20.2\Components\Offline Packages
+        target: /.nuget/fallbackpackages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages
+        target: /.nuget/fallbackpackages2
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\DevExpress 22.2\Components\Offline Packages
+        target: /.nuget/fallbackpackages3
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0
+        target: /VSTools
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+  inventory.api:
+    build:
+      context: C:\khanhmf\FIX_Stock_Sever
+      dockerfile: ./Services/Inventory/Inventory.API/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+        LAUNCHING_FROM_VS: "true"
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Inventory.API
+      target: base
+    entrypoint:
+      - dotnet
+      - --roll-forward
+      - Major
+      - /VSTools/DistrolessHelper/DistrolessHelper.dll
+      - --wait
+    environment:
+      APIGateWay__BaseAddress: http://172.26.248.68:9121
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages;/.nuget/fallbackpackages2;/.nuget/fallbackpackages3
+      UploadPath: /app/wwwroot
+    image: inventoryapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2 --additionalProbingPath /.nuget/fallbackpackages3  "/app/bin/Debug/net7.0/Inventory.API.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      storage-net: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "9201"
+        protocol: tcp
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - type: volume
+        source: upload-file
+        target: c:/app/wwwroot
+        volume: {}
+      - type: bind
+        source: C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API
+        target: /app
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\khanhmf\FIX_Stock_Sever
+        target: /src
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\.nuget\packages
+        target: /.nuget/packages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\DevExpress 20.2\Components\Offline Packages
+        target: /.nuget/fallbackpackages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages
+        target: /.nuget/fallbackpackages2
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\DevExpress 22.2\Components\Offline Packages
+        target: /.nuget/fallbackpackages3
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0
+        target: /VSTools
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+  storage.api:
+    build:
+      context: C:\khanhmf\FIX_Stock_Sever
+      dockerfile: ./Services/Storage/Storage.API/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+        LAUNCHING_FROM_VS: "true"
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Storage.API
+      target: base
+    entrypoint:
+      - dotnet
+      - --roll-forward
+      - Major
+      - /VSTools/DistrolessHelper/DistrolessHelper.dll
+      - --wait
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages;/.nuget/fallbackpackages2;/.nuget/fallbackpackages3
+    image: storageapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2 --additionalProbingPath /.nuget/fallbackpackages3  "/app/bin/Debug/net7.0/Storage.API.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      storage-net: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "9101"
+        protocol: tcp
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - type: bind
+        source: C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API
+        target: /app
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\khanhmf\FIX_Stock_Sever
+        target: /src
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\.nuget\packages
+        target: /.nuget/packages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\DevExpress 20.2\Components\Offline Packages
+        target: /.nuget/fallbackpackages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages
+        target: /.nuget/fallbackpackages2
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\DevExpress 22.2\Components\Offline Packages
+        target: /.nuget/fallbackpackages3
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0
+        target: /VSTools
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+  webapp:
+    build:
+      context: C:\khanhmf\FIX_Stock_Sever
+      dockerfile: ./WebApp/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+        LAUNCHING_FROM_VS: "true"
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: WebApp
+      target: base
+    entrypoint:
+      - dotnet
+      - --roll-forward
+      - Major
+      - /VSTools/DistrolessHelper/DistrolessHelper.dll
+      - --wait
+    environment:
+      APIGateWay__BaseAddress: http://172.26.248.68:9121
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: http://+:80
+      CookieSettings__Domain: localhost
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages;/.nuget/fallbackpackages2;/.nuget/fallbackpackages3
+    image: webapp:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2 --additionalProbingPath /.nuget/fallbackpackages3  "/app/bin/Debug/net7.0/WebApp.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      storage-net: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "9999"
+        protocol: tcp
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - type: bind
+        source: C:\khanhmf\FIX_Stock_Sever\WebApp
+        target: /app
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\khanhmf\FIX_Stock_Sever
+        target: /src
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\.nuget\packages
+        target: /.nuget/packages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\DevExpress 20.2\Components\Offline Packages
+        target: /.nuget/fallbackpackages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages
+        target: /.nuget/fallbackpackages2
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\DevExpress 22.2\Components\Offline Packages
+        target: /.nuget/fallbackpackages3
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0
+        target: /VSTools
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+  webgateway:
+    build:
+      context: C:\khanhmf\FIX_Stock_Sever
+      dockerfile: ./ApiGateways/WebGateway/Dockerfile
+      args:
+        BUILD_CONFIGURATION: Debug
+        LAUNCHING_FROM_VS: "true"
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: WebGateway
+      target: base
+    entrypoint:
+      - dotnet
+      - --roll-forward
+      - Major
+      - /VSTools/DistrolessHelper/DistrolessHelper.dll
+      - --wait
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: http://+:80
+      Clusters__identity__Destinations__destination0__Address: http://172.26.248.68:9223
+      Clusters__inventory__Destinations__destination0__Address: http://172.26.248.68:9201
+      Clusters__storage__Destinations__destination0__Address: http://172.26.248.68:9101
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: /.nuget/fallbackpackages;/.nuget/fallbackpackages2;/.nuget/fallbackpackages3
+      Urls__Identity: http://172.26.248.68:9223
+      Urls__Inventory: http://172.26.248.68:9201
+      Urls__Storage: http://172.26.248.68:9101
+    image: webgateway:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2 --additionalProbingPath /.nuget/fallbackpackages3  "/app/bin/Debug/net7.0/WebGateway.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      storage-net: null
+    ports:
+      - mode: ingress
+        target: 80
+        published: "9121"
+        protocol: tcp
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - type: bind
+        source: C:\khanhmf\FIX_Stock_Sever\ApiGateways\WebGateway
+        target: /app
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\khanhmf\FIX_Stock_Sever
+        target: /src
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\vsdbg\vs2017u5
+        target: /remote_debugger
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\.nuget\packages
+        target: /.nuget/packages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\DevExpress 20.2\Components\Offline Packages
+        target: /.nuget/fallbackpackages
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages
+        target: /.nuget/fallbackpackages2
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\DevExpress 22.2\Components\Offline Packages
+        target: /.nuget/fallbackpackages3
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https
+        target: /root/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets
+        target: /root/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0
+        target: /VSTools
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\HotReload
+        target: /HotReloadAgent
+        read_only: true
+        bind:
+          create_host_path: true
+networks:
+  storage-net:
+    name: bivn_network
+volumes:
+  upload-file:
+    name: dockercompose15761529369374003685_upload-file

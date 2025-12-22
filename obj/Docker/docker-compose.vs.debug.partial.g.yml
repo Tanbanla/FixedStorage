@@ -1,0 +1,217 @@
+services:
+  identity.api:
+    image: identityapi:dev
+    build:
+      args:
+        LAUNCHING_FROM_VS: true
+        BUILD_CONFIGURATION: Debug
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Identity.API"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2;/.nuget/fallbackpackages3
+    volumes:
+      - C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API:/app:rw
+      - C:\khanhmf\FIX_Stock_Sever:/src:rw
+      - C:\Users\khanhmf\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\khanhmf\.nuget\packages:/.nuget/packages:ro
+      - C:\Program Files (x86)\DevExpress 20.2\Components\Offline Packages:/.nuget/fallbackpackages:ro
+      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages2:ro
+      - C:\Program Files\DevExpress 22.2\Components\Offline Packages:/.nuget/fallbackpackages3:ro
+      - C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0:/VSTools:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
+
+    entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2 --additionalProbingPath /.nuget/fallbackpackages3  \"/app/bin/Debug/net7.0/Identity.API.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
+    tty: true
+  identity.background:
+    image: identitybackground:dev
+    build:
+      args:
+        LAUNCHING_FROM_VS: true
+        BUILD_CONFIGURATION: Debug
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Identity.Background"
+    environment:
+      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2;/.nuget/fallbackpackages3
+    volumes:
+      - C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.Background:/app:rw
+      - C:\khanhmf\FIX_Stock_Sever:/src:rw
+      - C:\Users\khanhmf\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\khanhmf\.nuget\packages:/.nuget/packages:ro
+      - C:\Program Files (x86)\DevExpress 20.2\Components\Offline Packages:/.nuget/fallbackpackages:ro
+      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages2:ro
+      - C:\Program Files\DevExpress 22.2\Components\Offline Packages:/.nuget/fallbackpackages3:ro
+      - C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0:/VSTools:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
+
+    entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2 --additionalProbingPath /.nuget/fallbackpackages3  \"/app/bin/Debug/net7.0/Identity.Background.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
+    tty: true
+
+  inventory.api:
+    image: inventoryapi:dev
+    build:
+      args:
+        LAUNCHING_FROM_VS: true
+        BUILD_CONFIGURATION: Debug
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Inventory.API"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2;/.nuget/fallbackpackages3
+    volumes:
+      - C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API:/app:rw
+      - C:\khanhmf\FIX_Stock_Sever:/src:rw
+      - C:\Users\khanhmf\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\khanhmf\.nuget\packages:/.nuget/packages:ro
+      - C:\Program Files (x86)\DevExpress 20.2\Components\Offline Packages:/.nuget/fallbackpackages:ro
+      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages2:ro
+      - C:\Program Files\DevExpress 22.2\Components\Offline Packages:/.nuget/fallbackpackages3:ro
+      - C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0:/VSTools:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
+
+    entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2 --additionalProbingPath /.nuget/fallbackpackages3  \"/app/bin/Debug/net7.0/Inventory.API.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
+    tty: true
+
+  storage.api:
+    image: storageapi:dev
+    build:
+      args:
+        LAUNCHING_FROM_VS: true
+        BUILD_CONFIGURATION: Debug
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Storage.API"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2;/.nuget/fallbackpackages3
+    volumes:
+      - C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API:/app:rw
+      - C:\khanhmf\FIX_Stock_Sever:/src:rw
+      - C:\Users\khanhmf\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\khanhmf\.nuget\packages:/.nuget/packages:ro
+      - C:\Program Files (x86)\DevExpress 20.2\Components\Offline Packages:/.nuget/fallbackpackages:ro
+      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages2:ro
+      - C:\Program Files\DevExpress 22.2\Components\Offline Packages:/.nuget/fallbackpackages3:ro
+      - C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0:/VSTools:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
+
+    entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2 --additionalProbingPath /.nuget/fallbackpackages3  \"/app/bin/Debug/net7.0/Storage.API.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
+    tty: true
+
+  webapp:
+    image: webapp:dev
+    build:
+      args:
+        LAUNCHING_FROM_VS: true
+        BUILD_CONFIGURATION: Debug
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "WebApp"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2;/.nuget/fallbackpackages3
+    volumes:
+      - C:\khanhmf\FIX_Stock_Sever\WebApp:/app:rw
+      - C:\khanhmf\FIX_Stock_Sever:/src:rw
+      - C:\Users\khanhmf\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\khanhmf\.nuget\packages:/.nuget/packages:ro
+      - C:\Program Files (x86)\DevExpress 20.2\Components\Offline Packages:/.nuget/fallbackpackages:ro
+      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages2:ro
+      - C:\Program Files\DevExpress 22.2\Components\Offline Packages:/.nuget/fallbackpackages3:ro
+      - C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0:/VSTools:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
+
+    entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2 --additionalProbingPath /.nuget/fallbackpackages3  \"/app/bin/Debug/net7.0/WebApp.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
+    tty: true
+
+  webgateway:
+    image: webgateway:dev
+    build:
+      args:
+        LAUNCHING_FROM_VS: true
+        BUILD_CONFIGURATION: Debug
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "WebGateway"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      - NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2;/.nuget/fallbackpackages3
+    volumes:
+      - C:\khanhmf\FIX_Stock_Sever\ApiGateways\WebGateway:/app:rw
+      - C:\khanhmf\FIX_Stock_Sever:/src:rw
+      - C:\Users\khanhmf\vsdbg\vs2017u5:/remote_debugger:rw
+      - C:\Users\khanhmf\.nuget\packages:/.nuget/packages:ro
+      - C:\Program Files (x86)\DevExpress 20.2\Components\Offline Packages:/.nuget/fallbackpackages:ro
+      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/.nuget/fallbackpackages2:ro
+      - C:\Program Files\DevExpress 22.2\Components\Offline Packages:/.nuget/fallbackpackages3:ro
+      - C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+      - C:\Users\khanhmf\AppData\Roaming\ASP.NET\Https:/home/app/.aspnet/https:ro
+      - C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - C:\Users\khanhmf\AppData\Roaming\Microsoft\UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\linux-x64\net7.0:/VSTools:ro
+      - C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\CommonExtensions\Microsoft\HotReload:/HotReloadAgent:ro
+
+    entrypoint: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --wait"
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /.nuget/packages --additionalProbingPath /.nuget/fallbackpackages --additionalProbingPath /.nuget/fallbackpackages2 --additionalProbingPath /.nuget/fallbackpackages3  \"/app/bin/Debug/net7.0/WebGateway.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "dotnet --roll-forward Major /VSTools/DistrolessHelper/DistrolessHelper.dll --stop dotnet"
+    tty: true

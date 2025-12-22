@@ -106,3 +106,4 @@ C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Debug\net7.0\Inv
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Debug\net7.0\Inventory.API.genruntimeconfig.cache
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Debug\net7.0\ref\Inventory.API.dll
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\bin\Debug\net7.0\Inventory.API.staticwebassets.runtime.json
+C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Debug\net7.0\Inventory.API.sourcelink.json

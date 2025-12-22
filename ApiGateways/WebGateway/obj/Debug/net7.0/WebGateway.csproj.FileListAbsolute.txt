@@ -94,3 +94,4 @@ C:\khanhmf\FIX_Stock_Sever\ApiGateways\WebGateway\obj\Debug\net7.0\refint\WebGat
 C:\khanhmf\FIX_Stock_Sever\ApiGateways\WebGateway\obj\Debug\net7.0\WebGateway.pdb
 C:\khanhmf\FIX_Stock_Sever\ApiGateways\WebGateway\obj\Debug\net7.0\WebGateway.genruntimeconfig.cache
 C:\khanhmf\FIX_Stock_Sever\ApiGateways\WebGateway\obj\Debug\net7.0\ref\WebGateway.dll
+C:\khanhmf\FIX_Stock_Sever\ApiGateways\WebGateway\obj\Debug\net7.0\WebGateway.sourcelink.json

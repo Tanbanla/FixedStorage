@@ -25,6 +25,36 @@
                         <input id="Component_Name" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập tên linh kiện")..." />
                     </div>
                     <div class="custom_col_7 ip-form-update">
+                        <div class="col">
+                            <label class="text_label">@Html.Translate("Nhà máy")</label>
+                            @{ 
+                                var factories = ViewBag.Factories as IEnumerable<BIVN.FixedStorage.Services.Common.API.Dto.Factory.FactoryInfoModel>;
+                                var userViewFactoryIds = User?.Claims?.Where(x => x.Type == BIVN.FixedStorage.Services.Common.API.Constants.Permissions.FACTORY_DATA_INQUIRY).Select(x => x.Value.ToString().ToLower());
+                                var filteredFactories = factories?.Where(x => userViewFactoryIds?.Contains(x.Id.ToString().ToLowerInvariant()) == true);
+                                var selectedFactoriesQuery = (string)ViewBag.SelectedFactories;
+                                var selectedFactories = new List<string>();
+                                if (!string.IsNullOrEmpty(selectedFactoriesQuery)) { selectedFactories = selectedFactoriesQuery.Split(',').ToList(); }
+                            }
+                            <select hidden id="select_factories" multiple name="Factories" placeholder="Chọn nhà máy..." data-search="true" data-silent-initial-value-set="true">
+                                @if (filteredFactories != null && filteredFactories.Any())
+                                {
+                                    @foreach (var factory in filteredFactories)
+                                    {
+                                        var isSelected = selectedFactories.Contains(factory.Id.ToString(), StringComparer.OrdinalIgnoreCase);
+                                        if (isSelected)
+                                        {
+                                            <option selected value="@factory.Id">@factory.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@factory.Id">@factory.Name</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="custom_col_7 ip-form-update">
                         <label class="text_label">@Html.Translate("Nhà cung cấp")</label>
                         <input id="Supplier_Name" type="text" class="form-control background-color-grey text_ellipsis" placeholder="@Html.Translate("Nhập tên NCC")..." />
                     </div>

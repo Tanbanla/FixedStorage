@@ -169,6 +169,10 @@
                 ComponentInventoryQtyEnd = Int32.TryParse(Request.Form["ComponentInventoryQtyEnd"].FirstOrDefault(), out int qtyInventoryEnd) ? qtyInventoryEnd : null,
                 Paging = new Common.API.Dto.PagedList.PagingInfo(pageSize, currentPage),
                 InventoryStatus = Request.Form["InventoryStatus"].FirstOrDefault(),
+                // Support multiple factories from UI: FactoryIds[]
+                FactoryIds = Request.Form.ContainsKey("FactoryIds[]") ? Request.Form["FactoryIds[]"].ToList().Where(x => Guid.TryParse(x, out _)).Select(x => Guid.Parse(x)).ToList() : new List<Guid>(),
+                // Back-compat: single factory id (if provided) will be used as FactoryId
+                //FactoryId = Guid.TryParse(Request.Form["FactoryId"].FirstOrDefault(), out Guid singleFactoryId) ? singleFactoryId : (Request.Form.ContainsKey("FactoryIds[]") && Request.Form["FactoryIds[]"].Count > 0 && Guid.TryParse(Request.Form["FactoryIds[]"].FirstOrDefault(), out Guid firstFactoryId) ? firstFactoryId : (Guid?)null),
             };
             var validateFilterModel = await _positionService.ValidateFilterModelGetFilterComponents(componentsFilterModel);
             if (validateFilterModel.IsInvalid)

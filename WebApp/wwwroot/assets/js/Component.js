@@ -27,6 +27,21 @@ function waitForComponentLanguageData() {
             return componentIsValidText(character);
         });
 
+    // Initialize factories multi-select if present
+    if (document.querySelector('#select_factories')) {
+        VirtualSelect.init({
+            ele: '#select_factories',
+            selectAllText: window.languageData[window.currentLanguage]['Tất cả'],
+            noOptionsText: window.languageData[window.currentLanguage]['Không có kết quả'],
+            noSearchResultsText: window.languageData[window.currentLanguage]['Không có kết quả'],
+            searchPlaceholderText: window.languageData[window.currentLanguage]['Tìm kiếm'],
+            allOptionsSelectedText: window.languageData[window.currentLanguage]['Tất cả'],
+            optionsSelectedText: window.languageData[window.currentLanguage]["điều kiện đã được chọn"],
+            hideClearButton: true,
+            multiple: true,
+        });
+    }
+
         //Hàm chỉ cho nhập số, chữ, "-", "/":
         $('#Add_Components_PositionCode,#Edit_Components_PositionCode').keypress(function (event) {
             var character = String.fromCharCode(event.keyCode);
@@ -419,6 +434,7 @@ function GetComponents() {
                     return;
                 }
                 var inventoryStatus = $('#InventoryStatus').val();
+                var factoryIds = $('#select_factories').val();
 
                 var allLayouts;
                 var layoutIds;
@@ -439,7 +455,8 @@ function GetComponents() {
                     LayoutIds: layoutIds,
                     ComponentInventoryQtyStart: componentInventoryQtyStart == "" ? null : inventoryQtyStartVal,
                     ComponentInventoryQtyEnd: componentInventoryQtyEnd == "" ? null : inventoryQtyEndVal,
-                    InventoryStatus: inventoryStatus
+                    InventoryStatus: inventoryStatus,
+                    FactoryIds: factoryIds
                 };
 
 
@@ -1338,6 +1355,14 @@ function ResetSearch() {
         $('#Component_Inventory_Qty_Start_span-error').text('');
         $('#Component_Inventory_Qty_End_span-error').text('');
         //GetComponents()
+
+        // reset factories multi-select if exists
+        if (document.querySelector('#select_factories')) {
+            try {
+                $("#select_factories")[0].reset();
+                $("#select_factories")[0].toggleSelectAll(true);
+            } catch (e) { }
+        }
 
         componentDataTable.draw();
     })

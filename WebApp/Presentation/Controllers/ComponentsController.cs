@@ -1,4 +1,5 @@
 ﻿using BIVN.FixedStorage.Services.Common.API.Dto.Component;
+using BIVN.FixedStorage.Services.Common.API.Dto.Factory;
 
 namespace WebApp.Presentation.Controllers
 {
@@ -48,6 +49,15 @@ namespace WebApp.Presentation.Controllers
             var inventoryStatusDropdownListResponse = await _restClient.GetAsync(inventoryStatusDropdownListRequest);
             ViewBag.SelectedInventoryStatus = Request.Query["inventoryStatus"].ToString();
             ViewBag.InventoryStatusList = JsonConvert.DeserializeObject<ResponseModel<List<DropDownListItemDto>>>(inventoryStatusDropdownListResponse?.Content)?.Data;
+
+            // factory dropdown-list (multi select)
+            var factoryListRequest = new RestRequest(commonAPIConstant.Endpoint.api_Storage_Factory);
+            factoryListRequest.AddHeader(commonAPIConstant.HttpContextModel.AuthorizationKey, token);
+            var factoryListResponse = await _restClient.GetAsync(factoryListRequest);
+            var factories = JsonConvert.DeserializeObject<ResponseModel<IEnumerable<FactoryInfoModel>>>(factoryListResponse?.Content ?? string.Empty)?.Data;
+            ViewBag.Factories = factories;
+            // accept comma separated factory ids in query string
+            ViewBag.SelectedFactories = Request.Query["factoryIds"].ToString();
             return View();
         }
 

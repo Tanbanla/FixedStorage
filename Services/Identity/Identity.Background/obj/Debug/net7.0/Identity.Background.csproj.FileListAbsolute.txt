@@ -76,3 +76,4 @@ C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.Background\obj\Debug\net7.
 C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.Background\obj\Debug\net7.0\Identity.Background.pdb
 C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.Background\obj\Debug\net7.0\Identity.Background.genruntimeconfig.cache
 C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.Background\obj\Debug\net7.0\ref\Identity.Background.dll
+C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.Background\obj\Debug\net7.0\Identity.Background.sourcelink.json

@@ -91,6 +91,7 @@ C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\I
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\Inventory.API.csproj.CoreCompileInputs.cache
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\Inventory.API.MvcApplicationPartsAssemblyInfo.cs
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\Inventory.API.MvcApplicationPartsAssemblyInfo.cache
+C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\Inventory.API.sourcelink.json
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\rjimswa.dswa.cache.json
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\rjsmrazor.dswa.cache.json
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\rjsmcshtml.dswa.cache.json
@@ -106,4 +107,3 @@ C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\r
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\Inventory.API.pdb
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\Inventory.API.genruntimeconfig.cache
 C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\ref\Inventory.API.dll
-C:\khanhmf\FIX_Stock_Sever\Services\Inventory\Inventory.API\obj\Release\net7.0\Inventory.API.sourcelink.json

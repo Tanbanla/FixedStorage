@@ -90,6 +90,7 @@ C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\Stora
 C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\Storage.API.csproj.CoreCompileInputs.cache
 C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\Storage.API.MvcApplicationPartsAssemblyInfo.cs
 C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\Storage.API.MvcApplicationPartsAssemblyInfo.cache
+C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\Storage.API.sourcelink.json
 C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\rjimswa.dswa.cache.json
 C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\rjsmrazor.dswa.cache.json
 C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\rjsmcshtml.dswa.cache.json
@@ -105,4 +106,3 @@ C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\refin
 C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\Storage.API.pdb
 C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\Storage.API.genruntimeconfig.cache
 C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\ref\Storage.API.dll
-C:\khanhmf\FIX_Stock_Sever\Services\Storage\Storage.API\obj\Release\net7.0\Storage.API.sourcelink.json

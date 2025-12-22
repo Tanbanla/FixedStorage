@@ -1,1 +1,0 @@
-C:\khanhmf\FIX_Stock_Sever\obj\Release\docker-compose.dcproj.CoreCompileInputs.cache

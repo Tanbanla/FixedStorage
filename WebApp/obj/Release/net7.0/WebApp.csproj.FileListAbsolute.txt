@@ -103,6 +103,7 @@ C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\WebApp.MvcApplicationPartsA
 C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\WebApp.MvcApplicationPartsAssemblyInfo.cache
 C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\WebApp.RazorAssemblyInfo.cache
 C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\WebApp.RazorAssemblyInfo.cs
+C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\WebApp.sourcelink.json
 C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\en-US\WebApp.resources.dll
 C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\vi-VN\WebApp.resources.dll
 C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\rjimswa.dswa.cache.json
@@ -122,4 +123,3 @@ C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\refint\WebApp.dll
 C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\WebApp.pdb
 C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\WebApp.genruntimeconfig.cache
 C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\ref\WebApp.dll
-C:\khanhmf\FIX_Stock_Sever\WebApp\obj\Release\net7.0\WebApp.sourcelink.json

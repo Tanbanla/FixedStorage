@@ -96,6 +96,7 @@ C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\Ide
 C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\Identity.API.csproj.CoreCompileInputs.cache
 C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\Identity.API.MvcApplicationPartsAssemblyInfo.cs
 C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\Identity.API.MvcApplicationPartsAssemblyInfo.cache
+C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\Identity.API.sourcelink.json
 C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\rjimswa.dswa.cache.json
 C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\rjsmrazor.dswa.cache.json
 C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\rjsmcshtml.dswa.cache.json
@@ -111,4 +112,3 @@ C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\ref
 C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\Identity.API.pdb
 C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\Identity.API.genruntimeconfig.cache
 C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\ref\Identity.API.dll
-C:\khanhmf\FIX_Stock_Sever\Services\Identity\Identity.API\obj\Release\net7.0\Identity.API.sourcelink.json

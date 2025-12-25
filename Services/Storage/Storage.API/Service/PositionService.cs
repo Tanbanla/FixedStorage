@@ -1042,9 +1042,16 @@
                 };
             }
 
-            if (factoryFilter?.Any() == true)
+            if (model.FactoryIds?.Any() == true)
             {
-                query = query.Where(x => factoryFilter.Contains(x.FactoryId.ToString().ToUpper()));
+                // model.FactoryIds is a list of Guid. Filter by matching FactoryId value.
+                var factoryGuidSet = model.FactoryIds.ToHashSet();
+                query = query.Where(x => x.FactoryId.HasValue && factoryGuidSet.Contains(x.FactoryId.Value));
+            }
+            else if (factoryFilter?.Any() == true)
+            {
+                // restrict to factories from user's role claims
+                query = query.Where(x => x.FactoryId.HasValue && factoryFilter.Contains(x.FactoryId.Value.ToString().ToUpper()));
             }
             var inventoryStatus = (InventoryStatus)int.Parse(model.InventoryStatus);
             switch (inventoryStatus)

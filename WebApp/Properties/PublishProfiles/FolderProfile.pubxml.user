@@ -3,7 +3,7 @@
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\khanhmf\FIX_Stock_Sever\WebApp\bin\Release\net7.0\publish\</_PublishTargetUrl>
-    <History>True|2025-12-19T08:18:01.5756167Z||;True|2025-12-15T15:24:34.8094796+07:00||;</History>
+    <History>True|2025-12-25T06:51:17.0933431Z||;True|2025-12-22T15:52:01.1388531+07:00||;True|2025-12-19T15:18:01.5756167+07:00||;True|2025-12-15T15:24:34.8094796+07:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebGateway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7edfd344e1e34ccdb70bb3908be31d8f293c9adf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+877832df0632bc7c8634a31ca4c303c1e47826cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebGateway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebGateway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

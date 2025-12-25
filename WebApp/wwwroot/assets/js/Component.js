@@ -1529,6 +1529,7 @@ function ExportComponentList() {
         var componentInventoryQtyStart = $("#Component_Inventory_Qty_Start").val() == "" ? null : $("#Component_Inventory_Qty_Start").val().replace(',', '');
         var componentInventoryQtyEnd = $("#Component_Inventory_Qty_End").val() == "" ? null : $("#Component_Inventory_Qty_End").val().replace(',', '');
         var inventoryStatus = $('#InventoryStatus').val();
+        var factoryIds = $('#select_factories').val();
         //Check selected option Layout:
         var checkAllLayouts = document.querySelector('#Component_Layout').isAllSelected();
         var allLayouts;
@@ -1549,7 +1550,8 @@ function ExportComponentList() {
             ComponentInventoryQtyEnd: componentInventoryQtyEnd,
             AllLayouts: allLayouts,
             LayoutIds: layoutIds,
-            InventoryStatus: inventoryStatus
+            InventoryStatus: inventoryStatus,
+            FactoryIds: factoryIds
         };
 
         $.ajax({

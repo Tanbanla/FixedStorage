@@ -1850,6 +1850,16 @@
                     var convertedUserName = queryModel.UserName.ToLower();
                     isValidUserName = string.IsNullOrEmpty(x.UserName) ? false : x.UserName.ToLower().Contains(convertedUserName);
                 }
+                // Lọc theo điều kiện nhà máy 
+                if (!queryModel.isAllFactories && queryModel.Factories?.Any() == true)
+                {
+                    var convertedFactoryIds = queryModel.Factories.Select(x => x.ToLower());
+                    var hasFactory = x.InputDetailPositionModels.Any(dt => convertedFactoryIds.Contains(dt.FactoryId.ToLower()));
+                    if (!hasFactory)
+                    {
+                        return false;
+                    }
+                }
                 //Lọc điều kiện theo 3 case: Có cả bắt đầu và kết thúc, chỉ có bắt đầu, chỉ có kết thúc
                 if (queryModel.DateFrom != null && queryModel.DateTo != null)
                 {
@@ -1865,12 +1875,31 @@
                 }
 
                 //Lọc điều kiện theo trạng thái
-                if (queryModel.Statuses?.Any() == true)
+                //if (queryModel.Statuses?.Any() == true)
+                //{
+                //    var convertedStatuses = queryModel.Statuses.Select(x => int.Parse(x));
+                //    isValidStatus = convertedStatuses.Contains(x.Status);
+                //}
+                if (!queryModel.isAllStatuses && queryModel.Statuses?.Any() == true)
                 {
-                    var convertedStatuses = queryModel.Statuses.Select(x => int.Parse(x));
-                    isValidStatus = convertedStatuses.Contains(x.Status);
-                }
+                    try
+                    {
+                        var statusTokens = queryModel.Statuses
+                            .Where(s => !string.IsNullOrWhiteSpace(s))
+                            .SelectMany(s => s.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                            .Select(s => s.Trim())
+                            .Where(s => s.Length > 0)
+                            .ToHashSet(StringComparer.OrdinalIgnoreCase);
 
+                        isValidStatus = statusTokens.Contains(x.Status.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        // Xử lý khi có string không phải số
+                        var mess = ex.Message;
+                        return false;
+                    }
+                }
                 var aggregateCondition = isValidUserName && isValidDateRange && isValidStatus;
                 return aggregateCondition;
             };

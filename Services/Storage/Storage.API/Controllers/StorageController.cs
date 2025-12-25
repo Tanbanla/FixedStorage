@@ -621,8 +621,8 @@
             var userName = Request.Form["userName"].FirstOrDefault();
             var fromDate = Request.Form["fromDate"].FirstOrDefault();
             var toDate = Request.Form["toDate"].FirstOrDefault();
-            var factories = Request.Form["factories[]"].ToList();
-            var statuses = Request.Form["statuses[]"].ToList();
+            var factories = Request.Form["factories"].ToList();
+            var statuses = Request.Form["statuses"].ToList();
 
             InputStorageListQueryModel queryModel = new();
             queryModel.UserName = userName;

@@ -3,6 +3,42 @@
   "WorkspaceRootPath": "C:\\khanhmf\\FIX_Stock_Sever\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|c:\\khanhmf\\fix_stock_sever\\services\\storage\\storage.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|solutionrelative:services\\storage\\storage.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|c:\\khanhmf\\fix_stock_sever\\services\\storage\\storage.api\\service\\storageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|solutionrelative:services\\storage\\storage.api\\service\\storageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|c:\\khanhmf\\fix_stock_sever\\services\\storage\\storage.api\\service\\istorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|solutionrelative:services\\storage\\storage.api\\service\\istorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|c:\\khanhmf\\fix_stock_sever\\services\\storage\\storage.api\\controllers\\storagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|solutionrelative:services\\storage\\storage.api\\controllers\\storagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|c:\\khanhmf\\fix_stock_sever\\webapp\\wwwroot\\assets\\js\\inputstorage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\assets\\js\\inputstorage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|c:\\khanhmf\\fix_stock_sever\\webapp\\views\\storage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\storage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|c:\\khanhmf\\fix_stock_sever\\webapp\\presentation\\controllers\\componentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|solutionrelative:webapp\\presentation\\controllers\\componentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|c:\\khanhmf\\fix_stock_sever\\webapp\\wwwroot\\assets\\js\\inputstoragedetail.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\assets\\js\\inputstoragedetail.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|c:\\khanhmf\\fix_stock_sever\\webapp\\presentation\\controllers\\storagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|solutionrelative:webapp\\presentation\\controllers\\storagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|c:\\khanhmf\\fix_stock_sever\\services\\storage\\storage.api\\service\\positionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|solutionrelative:services\\storage\\storage.api\\service\\positionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,10 +51,6 @@
       "RelativeMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|solutionrelative:services\\storage\\storage.api\\controllers\\positioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|c:\\khanhmf\\fix_stock_sever\\webapp\\presentation\\controllers\\componentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|solutionrelative:webapp\\presentation\\controllers\\componentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|c:\\khanhmf\\fix_stock_sever\\webapp\\wwwroot\\assets\\js\\component.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\assets\\js\\component.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
@@ -27,44 +59,12 @@
       "RelativeMoniker": "D:0:0:{30156ED0-9529-4645-BB5A-70DA6291DC88}|Services\\Common.API\\Common.API.csproj|solutionrelative:services\\common.api\\dto\\component\\componentsfiltertoexportdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|c:\\khanhmf\\fix_stock_sever\\services\\storage\\storage.api\\service\\storageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|solutionrelative:services\\storage\\storage.api\\service\\storageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{30156ED0-9529-4645-BB5A-70DA6291DC88}|Services\\Common.API\\Common.API.csproj|c:\\khanhmf\\fix_stock_sever\\services\\common.api\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{30156ED0-9529-4645-BB5A-70DA6291DC88}|Services\\Common.API\\Common.API.csproj|solutionrelative:services\\common.api\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|c:\\khanhmf\\fix_stock_sever\\webapp\\views\\components\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\components\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|c:\\khanhmf\\fix_stock_sever\\webapp\\presentation\\controllers\\storagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|solutionrelative:webapp\\presentation\\controllers\\storagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|c:\\khanhmf\\fix_stock_sever\\webapp\\views\\storage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\storage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|c:\\khanhmf\\fix_stock_sever\\services\\storage\\storage.api\\controllers\\storagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|solutionrelative:services\\storage\\storage.api\\controllers\\storagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|c:\\khanhmf\\fix_stock_sever\\webapp\\wwwroot\\assets\\js\\inputstorage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\assets\\js\\inputstorage.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|c:\\khanhmf\\fix_stock_sever\\webapp\\wwwroot\\assets\\js\\inputstoragedetail.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{EC706689-2113-4F38-8F82-5F61ED08A167}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\assets\\js\\inputstoragedetail.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|c:\\khanhmf\\fix_stock_sever\\services\\storage\\storage.api\\service\\istorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|solutionrelative:services\\storage\\storage.api\\service\\istorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|c:\\khanhmf\\fix_stock_sever\\services\\storage\\storage.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{2FB95D61-C460-4B21-9AA0-37E32F49C261}|Services\\Storage\\Storage.API\\Storage.API.csproj|solutionrelative:services\\storage\\storage.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,11 +74,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 954,
-          "SelectedChildIndex": 24,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "StorageController.cs",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\WebApp\\Presentation\\Controllers\\StorageController.cs",
               "RelativeDocumentMoniker": "WebApp\\Presentation\\Controllers\\StorageController.cs",
@@ -87,32 +87,30 @@
               "ViewState": "AgIAAHoAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-23T02:19:17.189Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\WebApp\\Views\\Storage\\Index.cshtml",
               "RelativeDocumentMoniker": "WebApp\\Views\\Storage\\Index.cshtml",
               "ToolTip": "C:\\khanhmf\\FIX_Stock_Sever\\WebApp\\Views\\Storage\\Index.cshtml",
               "RelativeToolTip": "WebApp\\Views\\Storage\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAAAHUAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-12-23T02:19:06.224Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 4,
               "Title": "InputStorage.js",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\WebApp\\wwwroot\\assets\\js\\InputStorage.js",
               "RelativeDocumentMoniker": "WebApp\\wwwroot\\assets\\js\\InputStorage.js",
               "ToolTip": "C:\\khanhmf\\FIX_Stock_Sever\\WebApp\\wwwroot\\assets\\js\\InputStorage.js",
               "RelativeToolTip": "WebApp\\wwwroot\\assets\\js\\InputStorage.js",
-              "ViewState": "AgIAAEkAAAAAAAAAAAArwFgAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAFQBAAAAAAAAAAAEwGsBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-12-23T05:44:52.965Z",
               "IsPinned": true,
@@ -120,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 7,
               "Title": "InputStorageDetail.js",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\WebApp\\wwwroot\\assets\\js\\InputStorageDetail.js",
               "RelativeDocumentMoniker": "WebApp\\wwwroot\\assets\\js\\InputStorageDetail.js",
@@ -129,18 +127,17 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-12-23T02:19:43.626Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 3,
               "Title": "StorageController.cs",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Storage\\Storage.API\\Controllers\\StorageController.cs",
               "RelativeDocumentMoniker": "Services\\Storage\\Storage.API\\Controllers\\StorageController.cs",
               "ToolTip": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Storage\\Storage.API\\Controllers\\StorageController.cs",
               "RelativeToolTip": "Services\\Storage\\Storage.API\\Controllers\\StorageController.cs",
-              "ViewState": "AgIAAIoCAAAAAAAAAADgv5kCAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAPUAAAAAAAAAAADgvwQBAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-23T02:22:30.643Z",
               "IsPinned": true,
@@ -148,13 +145,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 2,
               "Title": "IStorageService.cs",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Storage\\Storage.API\\Service\\IStorageService.cs",
               "RelativeDocumentMoniker": "Services\\Storage\\Storage.API\\Service\\IStorageService.cs",
               "ToolTip": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Storage\\Storage.API\\Service\\IStorageService.cs",
               "RelativeToolTip": "Services\\Storage\\Storage.API\\Service\\IStorageService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAABLAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-23T02:55:26.847Z",
               "IsPinned": true,
@@ -162,13 +159,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "StorageService.cs",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Storage\\Storage.API\\Service\\StorageService.cs",
               "RelativeDocumentMoniker": "Services\\Storage\\Storage.API\\Service\\StorageService.cs",
               "ToolTip": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Storage\\Storage.API\\Service\\StorageService.cs",
               "RelativeToolTip": "Services\\Storage\\Storage.API\\Service\\StorageService.cs",
-              "ViewState": "AgIAADMHAAAAAAAAAAAAAD0HAABVAAAAAAAAAA==",
+              "ViewState": "AgIAAGcBAAAAAAAAAIAwwDECAABjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-23T02:27:50.032Z",
               "IsPinned": true,
@@ -176,13 +173,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Storage\\Storage.API\\appsettings.json",
               "RelativeDocumentMoniker": "Services\\Storage\\Storage.API\\appsettings.json",
               "ToolTip": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Storage\\Storage.API\\appsettings.json",
               "RelativeToolTip": "Services\\Storage\\Storage.API\\appsettings.json",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAvwA8AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABQAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-12-23T02:23:18.644Z",
               "IsPinned": true,
@@ -242,7 +239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "PositionController.cs",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Storage\\Storage.API\\Controllers\\PositionController.cs",
               "RelativeDocumentMoniker": "Services\\Storage\\Storage.API\\Controllers\\PositionController.cs",
@@ -255,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 14,
               "Title": "Constants.cs",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Common.API\\Constants.cs",
               "RelativeDocumentMoniker": "Services\\Common.API\\Constants.cs",
@@ -263,25 +260,24 @@
               "RelativeToolTip": "Services\\Common.API\\Constants.cs",
               "ViewState": "AgIAANsAAAAAAAAAAAAEwOsAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-23T10:21:36.295Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-23T10:21:36.295Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "ComponentsController.cs",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\WebApp\\Presentation\\Controllers\\ComponentsController.cs",
               "RelativeDocumentMoniker": "WebApp\\Presentation\\Controllers\\ComponentsController.cs",
               "ToolTip": "C:\\khanhmf\\FIX_Stock_Sever\\WebApp\\Presentation\\Controllers\\ComponentsController.cs",
               "RelativeToolTip": "WebApp\\Presentation\\Controllers\\ComponentsController.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAowEUAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAwwEUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-23T10:21:53.247Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
               "Title": "PositionService.cs",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Storage\\Storage.API\\Service\\PositionService.cs",
               "RelativeDocumentMoniker": "Services\\Storage\\Storage.API\\Service\\PositionService.cs",
@@ -289,12 +285,11 @@
               "RelativeToolTip": "Services\\Storage\\Storage.API\\Service\\PositionService.cs",
               "ViewState": "AgIAABIEAAAAAAAAAAAvwBsEAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-23T10:23:44.303Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-23T10:23:44.303Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\WebApp\\Views\\Components\\Index.cshtml",
               "RelativeDocumentMoniker": "WebApp\\Views\\Components\\Index.cshtml",
@@ -302,12 +297,11 @@
               "RelativeToolTip": "WebApp\\Views\\Components\\Index.cshtml",
               "ViewState": "AgIAAA0AAAAAAAAAAAAEwDUAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-25T06:12:09.762Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-25T06:12:09.762Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "Component.js",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\WebApp\\wwwroot\\assets\\js\\Component.js",
               "RelativeDocumentMoniker": "WebApp\\wwwroot\\assets\\js\\Component.js",
@@ -320,7 +314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "ComponentsFilterToExportDto.cs",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\Services\\Common.API\\Dto\\Component\\ComponentsFilterToExportDto.cs",
               "RelativeDocumentMoniker": "Services\\Common.API\\Dto\\Component\\ComponentsFilterToExportDto.cs",
@@ -328,12 +322,11 @@
               "RelativeToolTip": "Services\\Common.API\\Dto\\Component\\ComponentsFilterToExportDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T06:22:02.78Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-25T06:22:02.78Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "ComponentService.cs",
               "DocumentMoniker": "C:\\khanhmf\\FIX_Stock_Sever\\WebApp\\Application\\Services\\ComponentService.cs",
               "RelativeDocumentMoniker": "WebApp\\Application\\Services\\ComponentService.cs",

@@ -304,6 +304,8 @@
                 for (int i = 0; i < validRecords.Count(); i++)
                 {
                     var item = validRecords.ElementAtOrDefault(i);
+                    // Xác định prefix vị trí hợp lệ theo mã chỉ thị xuất kho
+                    var allowedPrefix = GetAllowedPositionPrefix(item?.BwinOutputCode);
 
                     //Trường hợp nhập kho số lượng âm
                     if (item.Quantity < 0)
@@ -312,12 +314,27 @@
                                                                                && (x.PositionCode == item.PositionCode && x.ComponentCode == item.ComponentCode && x.SupplierCode == item.SupplierCode) || (x.ComponentCode == item.ComponentCode && x.SupplierCode == item.SupplierCode))
                                                                              .OrderByDescending(x => x.InventoryNumber)
                                                                              .ToList();
+                        // Áp dụng ràng buộc prefix vị trí khi có mã chỉ thị EXF5/EXF6
+                        if (!string.IsNullOrEmpty(allowedPrefix))
+                        {
+                            positionMatchItem = positionMatchItem?
+                                .Where(x => !string.IsNullOrEmpty(x.PositionCode) && x.PositionCode.StartsWith(allowedPrefix, StringComparison.OrdinalIgnoreCase))
+                                .ToList();
+                        }
+
                         //Tổng số lượng tồn các vị trí tìm được
-                        var positionNumberTotal = positionMatchItem.Sum(x => x.InventoryNumber);
+                        var positionNumberTotal = positionMatchItem?.Sum(x => x.InventoryNumber) ?? 0;
                         //Nếu tổng các vị trí có thể phân bổ hết
                         List<InputDetail> inputDetailsEntity = new();
                         var remain = item.Quantity;
 
+                        // Nếu có ràng buộc nhưng không có vị trí phù hợp => đánh dấu lỗi
+                        if (!string.IsNullOrEmpty(allowedPrefix) && (positionMatchItem == null || positionMatchItem.Count == 0))
+                        {
+                            item.Valid = false;
+                            item.Errors.TryAdd("Summary", "Không tìm thấy vị trí phù hợp theo mã chỉ thị xuất kho.");
+                        }
+                        else
                         if ((positionNumberTotal + item.Quantity) >= 0)
                         {
                             int start = 0;
@@ -380,11 +397,27 @@
                                                 ?.Where(x => (x.PositionCode == item.PositionCode && x.ComponentCode == item.ComponentCode && x.SupplierCode == item.SupplierCode) || (x.ComponentCode == item.ComponentCode && x.SupplierCode == item.SupplierCode))
                                                 .ToList();
 
+                        // Áp dụng ràng buộc prefix vị trí khi có mã chỉ thị EXF5/EXF6
+                        if (!string.IsNullOrEmpty(allowedPrefix))
+                        {
+                            positionsMatchItem = positionsMatchItem?
+                                .Where(x => !string.IsNullOrEmpty(x.PositionCode) && x.PositionCode.StartsWith(allowedPrefix, StringComparison.OrdinalIgnoreCase))
+                                .ToList();
+                        }
+
                         int start = 0;
                         int end = positionsMatchItem?.Count() ?? 0;
                         var remain = item.Quantity;
 
                         List<InputDetail> inputDetailsEntity = new();
+                        // Không có vị trí phù hợp theo ràng buộc => đánh dấu lỗi và bỏ qua phân bổ
+                        var blockedByPrefix = end == 0 && !string.IsNullOrEmpty(allowedPrefix);
+                        if (blockedByPrefix)
+                        {
+                            item.Valid = false;
+                            item.Errors.TryAdd("Summary", "Vị trí không hợp lệ với mã chỉ thị xuất kho.");
+                        }
+                        else
                         while (remain > 0 && start < end)
                         {
                             var position = positionsMatchItem.ElementAtOrDefault(start);
@@ -445,7 +478,7 @@
                             start++;
                         }
 
-                        if (remain > 0)
+                        if (remain > 0 && !blockedByPrefix)
                         {
                             var inputDetailEntity = new InputDetail
                             {
@@ -519,6 +552,15 @@
                 Data = records,
                 Message = "Đã hoàn thành phân bổ các vị trí."
             };
+        }
+
+        // Ràng buộc vị trí theo mã chỉ thị xuất kho: EXF5 -> 5T*, EXF6 -> 6T*
+        private static string GetAllowedPositionPrefix(string bwinOutputCode)
+        {
+            if (string.IsNullOrWhiteSpace(bwinOutputCode)) return null;
+            if (bwinOutputCode.StartsWith("EXF5", StringComparison.OrdinalIgnoreCase)) return "5T";
+            if (bwinOutputCode.StartsWith("EXF6", StringComparison.OrdinalIgnoreCase)) return "6T";
+            return null;
         }
 
         private async Task<IEnumerable<RoleClaimDto>> UserPermissions(string userId)
